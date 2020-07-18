@@ -4,19 +4,19 @@
 
 
 
-# TP2 Algoritmos 3: {nombre}
+# TP2 Algoritmos 3: {Preghoot}
 
 Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUBA
 
-## Grupo {N}
+## Grupo {9}
 
-* **Joaquin Hetrea**  - [integrante1](https://github.com/integrante1)
-* **Leo Tarditi** - [integrante2](https://github.com/integrante2)
-* **Tomas Galian** - [integrante3](https://github.com/integrante3)
-* **Federico Jose Pacheco** - [integrante4](https://github.com/integrante4)
-* **Julian Biancardi** - [integrante4](https://github.com/integrante4)
+* **{Julian Biancardi}** - [integrante1](https://github.com/JulianBiancardi)
+* **{Joaquin Hetrea}**  - [integrante2](https://github.com/JoaquinHetrea)
+* **{Leo Tarditi}** - [integrante3](https://github.com/leotarditi)
+* **{Tomas Galian}** - [integrante4](https://github.com/TomiGalian)
+* **{Federico Jose Pacheco}** - [integrante5](https://github.com/fjpacheco)
 
-Corrector: **Martín Picco **
+Corrector: **{Martín Picco}**
 
 ### Pre-requisitos
 
