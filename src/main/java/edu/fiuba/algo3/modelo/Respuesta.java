@@ -1,16 +1,18 @@
 package edu.fiuba.algo3.modelo;
 
 public class Respuesta {
-    private boolean valor;
-    private Jugador jugador;
+    private final boolean valor;
+    private final Jugador responsable;
 
-    public Respuesta(boolean valor,Jugador jugador) {
+    public Respuesta(boolean valor, Jugador jugador) {
       this.valor = valor;
-      this.jugador = jugador;
+      responsable = jugador;
     }
-    public boolean valor() {return valor;}
+    public boolean valor() { return valor; }
+
+    public Jugador responsable() { return responsable; }
 
     public void sumarPuntos(int puntaje) {
-        jugador.sumarPuntos(puntaje);
+        responsable.sumarPuntos(puntaje);
     }
 }

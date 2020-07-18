@@ -1,7 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
 public class Jugador {
-    private String nombre;
+    private final String nombre;
     private int puntos;
 
     public Jugador(String nombre) {
@@ -17,5 +17,7 @@ public class Jugador {
         puntos += puntaje;
     }
 
-    public int puntos() {return puntos;}
+    public int puntos() { return puntos; }
+
+    public String nombre() { return nombre; }
 }
