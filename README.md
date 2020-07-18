@@ -10,12 +10,13 @@ Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUB
 
 ## Grupo {N}
 
-* **Integrante 1** - [integrante1](https://github.com/integrante1)
-* **Integrante 2** - [integrante2](https://github.com/integrante2)
-* **Integrante 3** - [integrante3](https://github.com/integrante3)
-* **Integrante 4** - [integrante4](https://github.com/integrante4)
+* **Joaquin Hetrea**  - [integrante1](https://github.com/integrante1)
+* **Leo Tarditi** - [integrante2](https://github.com/integrante2)
+* **Tomas Galian** - [integrante3](https://github.com/integrante3)
+* **Federico Jose Pacheco** - [integrante4](https://github.com/integrante4)
+* **Julian Biancardi** - [integrante4](https://github.com/integrante4)
 
-Corrector: **{Corrector}**
+Corrector: **Martín Picco **
 
 ### Pre-requisitos
 
