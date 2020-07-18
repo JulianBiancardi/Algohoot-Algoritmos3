@@ -16,7 +16,7 @@ Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUB
 * **Tomas Galian** - [TomiGalian](https://github.com/TomiGalian)
 * **Federico Jose Pacheco** - [fjpacheco](https://github.com/fjpacheco)
 
-Corrector: **{Martín Picco}**
+Corrector: **Martín Picco**
 
 ### Pre-requisitos
 
