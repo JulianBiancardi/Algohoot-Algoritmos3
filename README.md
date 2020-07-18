@@ -4,17 +4,17 @@
 
 
 
-# TP2 Algoritmos 3: {Preghoot}
+# TP2 Algoritmos 3: Preghoot
 
 Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUBA
 
-## Grupo {9}
+## Grupo 9
 
-* **{Julian Biancardi}** - [integrante1](https://github.com/JulianBiancardi)
-* **{Joaquin Hetrea}**  - [integrante2](https://github.com/JoaquinHetrea)
-* **{Leo Tarditi}** - [integrante3](https://github.com/leotarditi)
-* **{Tomas Galian}** - [integrante4](https://github.com/TomiGalian)
-* **{Federico Jose Pacheco}** - [integrante5](https://github.com/fjpacheco)
+* **Julian Biancardi** - [JulianBiancardi](https://github.com/JulianBiancardi)
+* **Joaquin Hetrea**  - [JoaquinHetrea](https://github.com/JoaquinHetrea)
+* **Leo Tarditi** - [leotarditi](https://github.com/leotarditi)
+* **Tomas Galian** - [TomiGalian](https://github.com/TomiGalian)
+* **Federico Jose Pacheco** - [fjpacheco](https://github.com/fjpacheco)
 
 Corrector: **{Martín Picco}**
 
