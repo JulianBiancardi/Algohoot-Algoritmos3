@@ -18,7 +18,7 @@ Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUB
 
 Corrector: **Martín Picco**
 
-## Informe : https://www.overleaf.com/project/5ec9bbccf2e82500011f7ab7
+### Informe : https://www.overleaf.com/project/5ec9bbccf2e82500011f7ab7
 
 ### Pre-requisitos
 
