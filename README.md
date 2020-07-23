@@ -2,7 +2,7 @@
 
 [![codecov](https://codecov.io/gh/fiuba/algo3_proyecto_base_tp2/branch/master/graph/badge.svg)](https://codecov.io/gh/fiuba/algo3_proyecto_base_tp2)
 
-# Informe : https://www.overleaf.com/project/5ec9bbccf2e82500011f7ab7
+
 
 # TP2 Algoritmos 3: Preghoot
 
@@ -17,6 +17,8 @@ Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUB
 * **Federico Jose Pacheco** - [fjpacheco](https://github.com/fjpacheco)
 
 Corrector: **Martín Picco**
+
+## Informe : https://www.overleaf.com/project/5ec9bbccf2e82500011f7ab7
 
 ### Pre-requisitos
 
