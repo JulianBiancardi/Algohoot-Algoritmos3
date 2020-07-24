@@ -1,14 +1,17 @@
 package edu.fiuba.algo3.modelo;
 
 public class Respuesta {
-    private final boolean valor;
+    private Opcion opcionElegida;
     private final Jugador responsable;
 
-    public Respuesta(boolean valor, Jugador jugador) {
-      this.valor = valor;
+    public Respuesta(Opcion unaOpcion, Jugador jugador) {
+      opcionElegida = unaOpcion;
       responsable = jugador;
     }
-    public boolean valor() { return valor; }
+
+    public boolean esCorrecta() { return opcionElegida.esCorrecta(); }
+
+    public Opcion valor() { return opcionElegida; }
 
     public Jugador responsable() { return responsable; }
 

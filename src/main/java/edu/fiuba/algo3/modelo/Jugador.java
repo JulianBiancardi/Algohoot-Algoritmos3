@@ -9,10 +9,6 @@ public class Jugador {
         puntos = 0;
     }
 
-    public Respuesta responder(boolean valor){
-        return (new Respuesta(valor,this));
-    }
-
     public void sumarPuntos(int puntaje) {
         puntos += puntaje;
     }

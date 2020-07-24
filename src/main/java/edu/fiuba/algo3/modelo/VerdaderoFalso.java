@@ -2,8 +2,8 @@ package edu.fiuba.algo3.modelo;
 
 import java.util.ArrayList;
 
-public class VerdaderoFalso implements Pregunta {
-    private final boolean respuesta;
+public class VerdaderoFalso {
+/*  private final boolean respuesta;
     static final int PUNTAJE = 1;
 
     public VerdaderoFalso(boolean respuestaCorrecta) {
@@ -25,5 +25,5 @@ public class VerdaderoFalso implements Pregunta {
     public boolean respuesta(){
         return respuesta;
     }
-
+*/
 }
