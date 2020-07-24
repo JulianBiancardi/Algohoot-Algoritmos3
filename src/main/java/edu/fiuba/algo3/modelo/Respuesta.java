@@ -18,4 +18,6 @@ public class Respuesta {
     public void sumarPuntos(int puntaje) {
         responsable.sumarPuntos(puntaje);
     }
+
+    public void restarPuntos(int puntaje) { responsable.restarPuntos(puntaje); }
 }

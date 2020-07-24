@@ -13,6 +13,10 @@ public class Jugador {
         puntos += puntaje;
     }
 
+    public void restarPuntos(int puntaje) {
+        puntos -= puntaje;
+    }
+
     public int puntos() { return puntos; }
 
     public String nombre() { return nombre; }
