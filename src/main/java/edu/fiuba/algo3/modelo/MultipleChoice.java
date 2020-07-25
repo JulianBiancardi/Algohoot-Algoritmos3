@@ -1,20 +1,40 @@
 package edu.fiuba.algo3.modelo;
 
-import java.util.ArrayList;
-
 public class MultipleChoice extends Pregunta {
 
-    public MultipleChoice (String unEnunciado, ModoPregunta unModo) {
+    private int cantidadCorrectas = 0;
 
+    public MultipleChoice (String unEnunciado, ModoPregunta unModo) {
         modo = unModo;
         enunciado = unEnunciado;
     }
 
-    public void agregarOpciones(Opcion unaOpcion) {
-        opciones.put(idOpcion, unaOpcion);
-        idOpcion++;
-        if (opciones.size() > 6) {
-            //ErrorSuperoElMaximoDeOpciones
+    //private void modificarContadorCorrectas(){ if(...) cantidadCorrectas++; }
+
+    public void agregarOpciones(Opcion opcion) {
+        //Supuesto de al menos una correcta
+        if(opciones.size() > 5)
+            //Leo se encarga de programar una excepción
+        opciones.agregarOpcion(Opcion);
+
+    }
+
+    private obtenerCantidadOpcionesCorrectas(){
+        /*
+        int contador = 0;
+        for (Opcion opcionElegida : opcionesElegidas) {
+            if(opcionElegida.esCorrecta())
+                contador++;
         }
+        return contador;
+        */
+    }
+
+    private void evaluarRespuesta(Respuesta respuesta) {
+        int aciertos = respuesta.cantidadOpcionesCorrectas();
+        int errores = respuesta.cantidadOpcionesIncorrectas();
+
+        int cantidadCorrectaPregunta = ;
+        modo.modificarPuntos(respuesta.responsable(), aciertos, errores);
     }
 }

@@ -1,13 +1,11 @@
 package edu.fiuba.algo3.modelo;
 
-public class Opcion {
+public abstract class Opcion {
     private String descripcion;
-    private boolean esCorrecta;
 
-    public Opcion(String unaDescripcion, boolean correcta) {
+    public Opcion(String unaDescripcion) {
         descripcion = unaDescripcion;
-        esCorrecta = correcta;
     }
 
-    public boolean esCorrecta() { return esCorrecta; }
+    public abstract boolean esCorrecta();
 }

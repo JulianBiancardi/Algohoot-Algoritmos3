@@ -1,16 +1,19 @@
 package edu.fiuba.algo3.modelo;
 
 import java.util.ArrayList;
-import java.util.Hashtable;
 
 abstract class Pregunta {
     protected String enunciado;
-    protected Hashtable<Character, Opcion> opciones = new Hashtable<Character, Opcion>();
-    protected Character idOpcion = 'A';
+    protected ListaOpciones opciones = new ListaOpciones(); //Esto capaz vuela!
     protected ModoPregunta modo;
 
-    public void evaluarRespuestas (ArrayList<Jugador> jugadores) {
+    public ListaOpciones obtenerOpciones(){ return opciones; }
 
-        modo.evaluarRespuestas(jugadores, opciones);
+    public abstract void evaluarRespuesta(Respuesta respuesta);
+
+    public void evaluarRespuestas(ArrayList<Respuesta> respuestas){
+        for (Respuesta respuesta : respuestas) {
+            evaluarRespuesta(respuesta);
+        }
     }
 }

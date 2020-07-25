@@ -1,10 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
-import java.util.ArrayList;
-
 public class Jugador {
     private final String nombre;
-    private ArrayList<Character> opcionesElegidas = new ArrayList<Character>();
     private int puntos;
 
     public Jugador(String nombre) {
@@ -12,9 +9,9 @@ public class Jugador {
         puntos = 0;
     }
 
-    public void responder (Character unaOpcion) { opcionesElegidas.add(unaOpcion); }
+    public Respuesta responder () { Respuesta respuesta = new Respuesta(this); }
 
-    public ArrayList<Character> getOpcionesElegidas () { return opcionesElegidas; }
+    public void agregarOpcion(Opcion opcion, Respuesta respuesta){ respuesta.agregarOpcion(opcion); }
 
     public void sumarPuntos(int puntaje) {
         puntos += puntaje;
