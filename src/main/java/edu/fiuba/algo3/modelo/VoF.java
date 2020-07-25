@@ -4,13 +4,17 @@ import java.util.ArrayList;
 
 public class VoF extends Pregunta {
 
-    public VoF (String unEnunciado, ArrayList<Opcion> listaOpciones, ModoPregunta unModo) {
-        if (listaOpciones.size() != 2) {
-            //
-        }
+    public VoF (String unEnunciado, ModoPregunta unModo) {
 
         modo = unModo;
         enunciado = unEnunciado;
-        opciones = listaOpciones;
+    }
+
+    public void agregarOpciones(Opcion unaOpcion) {
+        opciones.put(idOpcion, unaOpcion);
+        idOpcion++;
+        if (opciones.size() > 2) {
+            //ErrorSuperoElMaximoDeOpciones
+        }
     }
 }
