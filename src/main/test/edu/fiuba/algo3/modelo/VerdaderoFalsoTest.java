@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.Opciones.ListaOpciones;
 import edu.fiuba.algo3.modelo.Opciones.OpcionCorrecta;
 import edu.fiuba.algo3.modelo.Opciones.OpcionIncorrecta;
 import edu.fiuba.algo3.modelo.Preguntas.ModosPreguntas.Clasico;
@@ -15,50 +16,51 @@ public class VerdaderoFalsoTest {
 
     @Test
     public void test01SeCreaUnaPreguntaVoFClasicoConRespuestaFalseYEvaluaCorrectamente() {
-        OpcionIncorrecta opcionElegidaPorJugador = new OpcionIncorrecta("Es verdadera");
+        ListaOpciones listaOpcionesPregunta = new ListaOpciones();
+        listaOpcionesPregunta.agregarOpcion(new OpcionCorrecta("Verdadero"));
+        listaOpcionesPregunta.agregarOpcion(new OpcionIncorrecta("Falso"));
+        VoF pregunta = new VoF("¿2 + 2 = 4?", new Clasico(), listaOpcionesPregunta);
         Jugador jugador = new Jugador("LeoProgramador");
         Respuesta respuestaJugador = new Respuesta(jugador);
-        respuestaJugador.agregarOpcion(opcionElegidaPorJugador);
-        OpcionCorrecta opcionPreguntaCorrecta = new OpcionCorrecta("Es falso");
-        VoF pregunta = new VoF("¿2 + 2 = 5?", new Clasico(), opcionPreguntaCorrecta);
 
+        respuestaJugador.agregarOpcion(listaOpcionesPregunta.obtener(1)); //Elijo incorrecta
         ArrayList<Respuesta> respuestas = new ArrayList<Respuesta>();
         respuestas.add(respuestaJugador);
         pregunta.evaluarRespuestas(respuestas);
 
-        assertEquals(0, jugador.puntos());
+        assertEquals(jugador.puntos(), 0);
     }
 
     @Test
     public void test02SeCreaUnaPreguntaVoFClasicoConRespuestaTrueYEvaluaCorrectamente() {
-        OpcionCorrecta opcionElegidaPorJugador = new OpcionCorrecta("Es verdadera");
+        ListaOpciones listaOpcionesPregunta = new ListaOpciones();
+        listaOpcionesPregunta.agregarOpcion(new OpcionCorrecta("Verdadero"));
+        listaOpcionesPregunta.agregarOpcion(new OpcionIncorrecta("Falso"));
+        VoF pregunta = new VoF("¿2 + 2 = 4?", new Clasico(), listaOpcionesPregunta);
         Jugador jugador = new Jugador("LeoProgramador");
         Respuesta respuestaJugador = new Respuesta(jugador);
-        respuestaJugador.agregarOpcion(opcionElegidaPorJugador);
-        OpcionCorrecta opcionPreguntaCorrecta = new OpcionCorrecta("Es verdadera");
-        VoF pregunta = new VoF("¿2 + 2 = 4?", new Clasico(), opcionPreguntaCorrecta);
 
+        respuestaJugador.agregarOpcion(listaOpcionesPregunta.obtener(0)); //Elijo correcta
         ArrayList<Respuesta> respuestas = new ArrayList<Respuesta>();
         respuestas.add(respuestaJugador);
         pregunta.evaluarRespuestas(respuestas);
 
-        assertEquals(1, jugador.puntos());
+        assertEquals(jugador.puntos(), 1);
     }
 
     @Test
     public void test03RecibeUnaListaDeRespuestasTodasIncorrectasYNingunoSumaPuntos(){
-        OpcionIncorrecta opcionElegidaPorJugador1 = new OpcionIncorrecta("Es falsa");
+        ListaOpciones listaOpcionesPregunta = new ListaOpciones();
+        listaOpcionesPregunta.agregarOpcion(new OpcionCorrecta("Verdadero"));
+        listaOpcionesPregunta.agregarOpcion(new OpcionIncorrecta("Falso"));
+        VoF pregunta = new VoF("¿2 + 2 = 4?", new Clasico(), listaOpcionesPregunta);
         Jugador jugador1 = new Jugador("LeoProgramador");
         Respuesta respuestaJugador1 = new Respuesta(jugador1);
-        respuestaJugador1.agregarOpcion(opcionElegidaPorJugador1);
-        OpcionIncorrecta opcionElegidaPorJugador2 = new OpcionIncorrecta("Es falsa");
-        Jugador jugador2 = new Jugador("LeoProgramador");
+        Jugador jugador2 = new Jugador("Joaco");
         Respuesta respuestaJugador2 = new Respuesta(jugador2);
-        respuestaJugador2.agregarOpcion(opcionElegidaPorJugador2);
 
-        OpcionCorrecta opcionPreguntaCorrecta = new OpcionCorrecta("Es verdadera");
-        VoF pregunta = new VoF("¿2 + 2 = 4?", new Clasico(), opcionPreguntaCorrecta);
-
+        respuestaJugador1.agregarOpcion(listaOpcionesPregunta.obtener(1)); //Elijo incorrecta
+        respuestaJugador2.agregarOpcion(listaOpcionesPregunta.obtener(1)); //Elijo incorrecta
         ArrayList<Respuesta> respuestas = new ArrayList<Respuesta>();
         respuestas.add(respuestaJugador1);
         respuestas.add(respuestaJugador2);
@@ -70,18 +72,17 @@ public class VerdaderoFalsoTest {
 
     @Test
     public void test04RecibeUnaListaDeRespuestasTodasCorrectasYAmbosSumanPuntos(){
-        OpcionCorrecta opcionElegidaPorJugador1 = new OpcionCorrecta("Es verdadera");
+        ListaOpciones listaOpcionesPregunta = new ListaOpciones();
+        listaOpcionesPregunta.agregarOpcion(new OpcionCorrecta("Verdadero"));
+        listaOpcionesPregunta.agregarOpcion(new OpcionIncorrecta("Falso"));
+        VoF pregunta = new VoF("¿2 + 2 = 4?", new Clasico(), listaOpcionesPregunta);
         Jugador jugador1 = new Jugador("LeoProgramador");
         Respuesta respuestaJugador1 = new Respuesta(jugador1);
-        respuestaJugador1.agregarOpcion(opcionElegidaPorJugador1);
-        OpcionCorrecta opcionElegidaPorJugador2 = new OpcionCorrecta("Es verdadera");
-        Jugador jugador2 = new Jugador("JulianCraack");
+        Jugador jugador2 = new Jugador("Fede");
         Respuesta respuestaJugador2 = new Respuesta(jugador2);
-        respuestaJugador2.agregarOpcion(opcionElegidaPorJugador2);
 
-        OpcionCorrecta opcionPreguntaCorrecta = new OpcionCorrecta("Es verdadera");
-        VoF pregunta = new VoF("¿2 + 2 = 4?", new Clasico(), opcionPreguntaCorrecta);
-
+        respuestaJugador1.agregarOpcion(listaOpcionesPregunta.obtener(0)); //Elijo correcta
+        respuestaJugador2.agregarOpcion(listaOpcionesPregunta.obtener(0)); //Elijo correcta
         ArrayList<Respuesta> respuestas = new ArrayList<Respuesta>();
         respuestas.add(respuestaJugador1);
         respuestas.add(respuestaJugador2);
@@ -93,18 +94,17 @@ public class VerdaderoFalsoTest {
 
     @Test
     public void test05RecibeUnaListaDeRespuestasDistintasYSoloElQueRespondioBienSumaPuntos() {
-        OpcionIncorrecta opcionElegidaPorJugador1 = new OpcionIncorrecta("Es falsa");
+        ListaOpciones listaOpcionesPregunta = new ListaOpciones();
+        listaOpcionesPregunta.agregarOpcion(new OpcionCorrecta("Verdadero"));
+        listaOpcionesPregunta.agregarOpcion(new OpcionIncorrecta("Falso"));
+        VoF pregunta = new VoF("¿2 + 2 = 4?", new Clasico(), listaOpcionesPregunta);
         Jugador jugador1 = new Jugador("LeoProgramador");
         Respuesta respuestaJugador1 = new Respuesta(jugador1);
-        respuestaJugador1.agregarOpcion(opcionElegidaPorJugador1);
-        OpcionCorrecta opcionElegidaPorJugador2 = new OpcionCorrecta("Es verdadera");
-        Jugador jugador2 = new Jugador("JulianCraack");
+        Jugador jugador2 = new Jugador("Julian");
         Respuesta respuestaJugador2 = new Respuesta(jugador2);
-        respuestaJugador2.agregarOpcion(opcionElegidaPorJugador2);
 
-        OpcionCorrecta opcionPreguntaCorrecta = new OpcionCorrecta("Es verdadera");
-        VoF pregunta = new VoF("¿2 + 2 = 4?", new Clasico(), opcionPreguntaCorrecta);
-
+        respuestaJugador1.agregarOpcion(listaOpcionesPregunta.obtener(1)); //Elijo incorrecta
+        respuestaJugador2.agregarOpcion(listaOpcionesPregunta.obtener(0)); //Elijo correcta
         ArrayList<Respuesta> respuestas = new ArrayList<Respuesta>();
         respuestas.add(respuestaJugador1);
         respuestas.add(respuestaJugador2);
@@ -116,13 +116,14 @@ public class VerdaderoFalsoTest {
 
     @Test
     public void test06SeCreaUnaPreguntaVoFConPenalidadConRespuestaFalseYEvaluaCorrectamente() {
-        OpcionIncorrecta opcionElegidaPorJugador = new OpcionIncorrecta("Es verdadera");
+        ListaOpciones listaOpcionesPregunta = new ListaOpciones();
+        listaOpcionesPregunta.agregarOpcion(new OpcionCorrecta("Verdadero"));
+        listaOpcionesPregunta.agregarOpcion(new OpcionIncorrecta("Falso"));
+        VoF pregunta = new VoF("¿2 + 2 = 4?", new ConPenalidad(), listaOpcionesPregunta);
         Jugador jugador = new Jugador("LeoProgramador");
         Respuesta respuestaJugador = new Respuesta(jugador);
-        respuestaJugador.agregarOpcion(opcionElegidaPorJugador);
-        OpcionCorrecta opcionPreguntaCorrecta = new OpcionCorrecta("Es falsa");
-        VoF pregunta = new VoF("¿2 + 2 = 5?", new ConPenalidad(), opcionPreguntaCorrecta);
 
+        respuestaJugador.agregarOpcion(listaOpcionesPregunta.obtener(1)); //Elijo incorrecta
         ArrayList<Respuesta> respuestas = new ArrayList<Respuesta>();
         respuestas.add(respuestaJugador);
         pregunta.evaluarRespuestas(respuestas);
@@ -132,34 +133,34 @@ public class VerdaderoFalsoTest {
 
     @Test
     public void test07SeCreaUnaPreguntaVoFConPenalidadConRespuestaTrueYEvaluaCorrectamente() {
-        OpcionIncorrecta opcionElegidaPorJugador = new OpcionIncorrecta("Es falsa");
+        ListaOpciones listaOpcionesPregunta = new ListaOpciones();
+        listaOpcionesPregunta.agregarOpcion(new OpcionCorrecta("Verdadero"));
+        listaOpcionesPregunta.agregarOpcion(new OpcionIncorrecta("Falso"));
+        VoF pregunta = new VoF("¿2 + 2 = 4?", new ConPenalidad(), listaOpcionesPregunta);
         Jugador jugador = new Jugador("LeoProgramador");
         Respuesta respuestaJugador = new Respuesta(jugador);
-        respuestaJugador.agregarOpcion(opcionElegidaPorJugador);
-        OpcionCorrecta opcionPreguntaCorrecta = new OpcionCorrecta("Es verdadera");
-        VoF pregunta = new VoF("¿2 + 2 = 4?", new ConPenalidad(), opcionPreguntaCorrecta);
 
+        respuestaJugador.agregarOpcion(listaOpcionesPregunta.obtener(0)); //Elijo correcta
         ArrayList<Respuesta> respuestas = new ArrayList<Respuesta>();
         respuestas.add(respuestaJugador);
         pregunta.evaluarRespuestas(respuestas);
 
-        assertEquals(-1, jugador.puntos());
+        assertEquals(1, jugador.puntos());
     }
 
     @Test
     public void test08RecibeUnaListaDeRespuestasTodasIncorrectasYNingunoSumaPuntos(){
-        OpcionIncorrecta opcionElegidaPorJugador1 = new OpcionIncorrecta("Es falsa");
+        ListaOpciones listaOpcionesPregunta = new ListaOpciones();
+        listaOpcionesPregunta.agregarOpcion(new OpcionCorrecta("Verdadero"));
+        listaOpcionesPregunta.agregarOpcion(new OpcionIncorrecta("Falso"));
+        VoF pregunta = new VoF("¿2 + 2 = 4?", new ConPenalidad(), listaOpcionesPregunta);
         Jugador jugador1 = new Jugador("LeoProgramador");
         Respuesta respuestaJugador1 = new Respuesta(jugador1);
-        respuestaJugador1.agregarOpcion(opcionElegidaPorJugador1);
-        OpcionIncorrecta opcionElegidaPorJugador2 = new OpcionIncorrecta("Es falsa");
-        Jugador jugador2 = new Jugador("JulianCraack");
+        Jugador jugador2 = new Jugador("Joaco");
         Respuesta respuestaJugador2 = new Respuesta(jugador2);
-        respuestaJugador2.agregarOpcion(opcionElegidaPorJugador2);
 
-        OpcionCorrecta opcionPreguntaCorrecta = new OpcionCorrecta("Es verdadera");
-        VoF pregunta = new VoF("¿2 + 2 = 4?", new ConPenalidad(), opcionPreguntaCorrecta);
-
+        respuestaJugador1.agregarOpcion(listaOpcionesPregunta.obtener(1)); //Elijo incorrecta
+        respuestaJugador2.agregarOpcion(listaOpcionesPregunta.obtener(1)); //Elijo incorrecta
         ArrayList<Respuesta> respuestas = new ArrayList<Respuesta>();
         respuestas.add(respuestaJugador1);
         respuestas.add(respuestaJugador2);
@@ -171,18 +172,17 @@ public class VerdaderoFalsoTest {
 
     @Test
     public void test09RecibeUnaListaDeRespuestasTodasCorrectasYAmbosSumanPuntos(){
-        OpcionCorrecta opcionElegidaPorJugador1 = new OpcionCorrecta("Es verdadera");
+        ListaOpciones listaOpcionesPregunta = new ListaOpciones();
+        listaOpcionesPregunta.agregarOpcion(new OpcionCorrecta("Verdadero"));
+        listaOpcionesPregunta.agregarOpcion(new OpcionIncorrecta("Falso"));
+        VoF pregunta = new VoF("¿2 + 2 = 4?", new ConPenalidad(), listaOpcionesPregunta);
         Jugador jugador1 = new Jugador("LeoProgramador");
         Respuesta respuestaJugador1 = new Respuesta(jugador1);
-        respuestaJugador1.agregarOpcion(opcionElegidaPorJugador1);
-        OpcionCorrecta opcionElegidaPorJugador2 = new OpcionCorrecta("Es verdadera");
-        Jugador jugador2 = new Jugador("JulianCraack");
+        Jugador jugador2 = new Jugador("Tomas");
         Respuesta respuestaJugador2 = new Respuesta(jugador2);
-        respuestaJugador2.agregarOpcion(opcionElegidaPorJugador2);
 
-        OpcionCorrecta opcionPreguntaCorrecta = new OpcionCorrecta("Es verdadera");
-        VoF pregunta = new VoF("¿2 + 2 = 4?", new ConPenalidad(), opcionPreguntaCorrecta);
-
+        respuestaJugador1.agregarOpcion(listaOpcionesPregunta.obtener(0)); //Elijo correcta
+        respuestaJugador2.agregarOpcion(listaOpcionesPregunta.obtener(0)); //Elijo correcta
         ArrayList<Respuesta> respuestas = new ArrayList<Respuesta>();
         respuestas.add(respuestaJugador1);
         respuestas.add(respuestaJugador2);
@@ -194,18 +194,17 @@ public class VerdaderoFalsoTest {
 
     @Test
     public void test10RecibeUnaListaDeRespuestasDistintasYSoloElQueRespondioBienSumaPuntos(){
-        OpcionIncorrecta opcionElegidaPorJugador1 = new OpcionIncorrecta("Es FAAAALSA");
+        ListaOpciones listaOpcionesPregunta = new ListaOpciones();
+        listaOpcionesPregunta.agregarOpcion(new OpcionCorrecta("Verdadero"));
+        listaOpcionesPregunta.agregarOpcion(new OpcionIncorrecta("Falso"));
+        VoF pregunta = new VoF("¿2 + 2 = 4?", new ConPenalidad(), listaOpcionesPregunta);
         Jugador jugador1 = new Jugador("LeoProgramador");
         Respuesta respuestaJugador1 = new Respuesta(jugador1);
-        respuestaJugador1.agregarOpcion(opcionElegidaPorJugador1);
-        OpcionCorrecta opcionElegidaPorJugador2 = new OpcionCorrecta("Es verdadera");
-        Jugador jugador2 = new Jugador("JulianCraack");
+        Jugador jugador2 = new Jugador("Julian");
         Respuesta respuestaJugador2 = new Respuesta(jugador2);
-        respuestaJugador2.agregarOpcion(opcionElegidaPorJugador2);
 
-        OpcionCorrecta opcionPreguntaCorrecta = new OpcionCorrecta("Es verdadera");
-        VoF pregunta = new VoF("¿2 + 2 = 4?", new ConPenalidad(), opcionPreguntaCorrecta);
-
+        respuestaJugador1.agregarOpcion(listaOpcionesPregunta.obtener(1)); //Elijo incorrecta
+        respuestaJugador2.agregarOpcion(listaOpcionesPregunta.obtener(0)); //Elijo correcta
         ArrayList<Respuesta> respuestas = new ArrayList<Respuesta>();
         respuestas.add(respuestaJugador1);
         respuestas.add(respuestaJugador2);
@@ -214,4 +213,6 @@ public class VerdaderoFalsoTest {
         assertEquals(jugador1.puntos(), -1);
         assertEquals(jugador2.puntos(), 1);
     }
+
+
 }

@@ -1,15 +1,15 @@
 package edu.fiuba.algo3.modelo.Preguntas;
 
+import edu.fiuba.algo3.modelo.Opciones.ListaOpciones;
 import edu.fiuba.algo3.modelo.Preguntas.ModosPreguntas.ModoPregunta;
 import edu.fiuba.algo3.modelo.Opciones.OpcionCorrecta;
 import edu.fiuba.algo3.modelo.Respuesta;
 
 public class VoF extends Pregunta {
 
-    public VoF (String unEnunciado, ModoPregunta unModo, OpcionCorrecta opcionCorrecta) {
-        // [opcionCorrecta.esCorrecta() == false ] lanzo excepción
+    public VoF (String unEnunciado, ModoPregunta unModo, ListaOpciones opciones) {
+        // [listaOpciones.cantidadOpciones() != 5 ] lanzo excepción
 
-        opciones.agregarOpcion(opcionCorrecta);
         cantidadCorrectas = opciones.cantidadOpcionesCorrectas();
         modo = unModo;
         enunciado = unEnunciado;

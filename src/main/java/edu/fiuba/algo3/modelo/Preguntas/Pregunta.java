@@ -8,11 +8,8 @@ import java.util.ArrayList;
 
 abstract class Pregunta {
     protected String enunciado;
-    protected ListaOpciones opciones = new ListaOpciones();
     protected int cantidadCorrectas;
     protected ModoPregunta modo;
-
-    public ListaOpciones obtenerOpciones(){ return opciones; }
 
     protected abstract void evaluarRespuesta(Respuesta respuesta);
 

@@ -8,7 +8,7 @@ import edu.fiuba.algo3.modelo.Respuesta;
 public class MultipleChoice extends Pregunta {
 
     public MultipleChoice (String unEnunciado, ModoPregunta unModo, ListaOpciones listaOpciones) {
-        // [listaOpciones.cantidadOpciones() > 5 o sino nulas] lanzo excepcion
+        // [2 < listaOpciones.cantidadOpciones() > 5 o sino nulas] lanzo excepcion
         cantidadCorrectas = listaOpciones.cantidadOpcionesCorrectas();
 
         modo = unModo;
