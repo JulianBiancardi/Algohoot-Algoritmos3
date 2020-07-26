@@ -10,14 +10,15 @@ public class MultipleChoice extends Pregunta {
 
     //private void modificarContadorCorrectas(){ if(...) cantidadCorrectas++; }
 
-    public void agregarOpciones(Opcion opcion) {
+    public void agregarOpciones(Opcion unaOpcion) {
         //Supuesto de al menos una correcta
-        if(opciones.cantidadOpciones() > 5)
+        if(opciones.cantidadOpciones() > 5) {
             //Exepcion
-
-        if(opcion.esCorrecta())
+        }
+        if(unaOpcion.esCorrecta()) {
             cantidadCorrectas++;
-        opciones.agregarOpcion(opcion);
+        }
+        opciones.agregarOpcion(unaOpcion);
     }
 
     protected void evaluarRespuesta(Respuesta respuesta) {

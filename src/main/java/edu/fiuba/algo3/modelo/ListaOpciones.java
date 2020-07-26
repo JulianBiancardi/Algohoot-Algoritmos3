@@ -28,7 +28,12 @@ public class ListaOpciones {
         return contador;
     }
 
-    public int cantidadOpcionesIncorrectas(){
-        return this.cantidadOpciones() - cantidadOpcionesCorrectas();
+    public int cantidadOpcionesIncorrectas() {
+        int contador = 0;
+        for (Opcion opcionElegida : opciones) {
+            if(!(opcionElegida.esCorrecta()))
+                contador++;
+        }
+        return contador;
     }
 }

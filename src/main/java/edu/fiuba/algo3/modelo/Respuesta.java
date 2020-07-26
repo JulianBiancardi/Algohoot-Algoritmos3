@@ -17,6 +17,4 @@ public class Respuesta {
    public int cantidadOpcionesCorrectas() { return opcionesElegidas.cantidadOpcionesCorrectas(); }
 
    public int cantidadOpcionesIncorrectas() { return opcionesElegidas.cantidadOpcionesIncorrectas(); }
-
-
 }

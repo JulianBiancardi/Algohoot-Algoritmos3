@@ -6,7 +6,7 @@ public class Clasico implements ModoPregunta {
 
     @Override
     public void modificarPuntos(Jugador jugador, int cantidadCorrectas, int aciertos, int errores){
-        if(cantidadCorrectas == aciertos)
+        if(aciertos == cantidadCorrectas && errores == 0)
             jugador.sumarPuntos(PUNTAJE);
     }
 }
