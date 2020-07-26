@@ -1,32 +1,27 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.Preguntas;
 
+import edu.fiuba.algo3.modelo.Preguntas.ModosPreguntas.ModoPregunta;
 import edu.fiuba.algo3.modelo.Opciones.OpcionCorrecta;
-import edu.fiuba.algo3.modelo.Opciones.OpcionIncorrecta;
+import edu.fiuba.algo3.modelo.Respuesta;
 
 public class VoF extends Pregunta {
 
-    public VoF (String unEnunciado, ModoPregunta unModo, boolean valor) {
+    public VoF (String unEnunciado, ModoPregunta unModo, OpcionCorrecta opcionCorrecta) {
+        // [opcionCorrecta.esCorrecta() == false ] lanzo excepción
 
-        //Esto se puede hacer mas lindo seguramente, no me juzguen :'(
-        if(valor){
-            opciones.agregarOpcion(new OpcionCorrecta("Verdadero"));
-            opciones.agregarOpcion(new OpcionIncorrecta("Falso"));
-        } else {
-            opciones.agregarOpcion(new OpcionIncorrecta("Verdadero"));
-            opciones.agregarOpcion(new OpcionCorrecta("Falso"));
-        }
-
-        cantidadCorrectas = 1;
+        opciones.agregarOpcion(opcionCorrecta);
+        cantidadCorrectas = opciones.cantidadOpcionesCorrectas();
         modo = unModo;
         enunciado = unEnunciado;
     }
 
+
     @Override
     protected void evaluarRespuesta(Respuesta respuesta) {
-        //Revisar que tenga una sola opcion
-
         int aciertos = respuesta.cantidadOpcionesCorrectas();
         int errores = respuesta.cantidadOpcionesIncorrectas();
+
+        // Si aciertos o errores son nulos, lanzo excepción; necesariamente 1 respuesta correcta o incorrecta
 
         modo.modificarPuntos(respuesta.responsable(), cantidadCorrectas, aciertos, errores);
     }

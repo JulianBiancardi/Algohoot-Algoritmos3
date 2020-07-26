@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
-import java.util.ArrayList;
+import edu.fiuba.algo3.modelo.Opciones.ListaOpciones;
+import edu.fiuba.algo3.modelo.Opciones.Opcion;
 
 public class Respuesta {
     private final ListaOpciones opcionesElegidas = new ListaOpciones();

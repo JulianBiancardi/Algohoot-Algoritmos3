@@ -1,31 +1,25 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.Preguntas;
 
+import edu.fiuba.algo3.modelo.Opciones.ListaOpciones;
+import edu.fiuba.algo3.modelo.Preguntas.ModosPreguntas.ModoPregunta;
 import edu.fiuba.algo3.modelo.Opciones.Opcion;
+import edu.fiuba.algo3.modelo.Respuesta;
 
 public class MultipleChoice extends Pregunta {
 
-    public MultipleChoice (String unEnunciado, ModoPregunta unModo) {
-        cantidadCorrectas = 0;
+    public MultipleChoice (String unEnunciado, ModoPregunta unModo, ListaOpciones listaOpciones) {
+        // [listaOpciones.cantidadOpciones() > 5 o sino nulas] lanzo excepcion
+        cantidadCorrectas = listaOpciones.cantidadOpcionesCorrectas();
+
         modo = unModo;
         enunciado = unEnunciado;
-    }
-
-    //private void modificarContadorCorrectas(){ if(...) cantidadCorrectas++; }
-
-    public void agregarOpciones(Opcion unaOpcion) {
-        //Supuesto de al menos una correcta
-        if(opciones.cantidadOpciones() > 5) {
-            //Exepcion
-        }
-        if(unaOpcion.esCorrecta()) {
-            cantidadCorrectas++;
-        }
-        opciones.agregarOpcion(unaOpcion);
     }
 
     protected void evaluarRespuesta(Respuesta respuesta) {
         int aciertos = respuesta.cantidadOpcionesCorrectas();
         int errores = respuesta.cantidadOpcionesIncorrectas();
+
+        // Si aciertos o errores son nulos, lanzo excepción; necesariamente 1 respuesta correcta o incorrecta
 
         modo.modificarPuntos(respuesta.responsable(), cantidadCorrectas, aciertos, errores);
     }

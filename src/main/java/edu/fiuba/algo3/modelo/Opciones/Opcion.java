@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.Opciones;
 
 public abstract class Opcion {
     private String descripcion;

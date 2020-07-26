@@ -1,4 +1,6 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.Preguntas.ModosPreguntas;
+
+import edu.fiuba.algo3.modelo.Jugador;
 
 public class Clasico implements ModoPregunta {
 
