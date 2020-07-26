@@ -1,5 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.Opciones.Opcion;
+
 public class MultipleChoice extends Pregunta {
 
     public MultipleChoice (String unEnunciado, ModoPregunta unModo) {

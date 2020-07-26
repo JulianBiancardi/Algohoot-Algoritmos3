@@ -1,5 +1,8 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.Opciones.OpcionCorrecta;
+import edu.fiuba.algo3.modelo.Opciones.OpcionIncorrecta;
+
 public class VoF extends Pregunta {
 
     public VoF (String unEnunciado, ModoPregunta unModo, boolean valor) {
