@@ -3,8 +3,7 @@ package edu.fiuba.algo3.modelo;
 import java.util.ArrayList;
 
 public class Respuesta {
-    private ListaOpciones opcionesElegidas = new ListaOpciones();
-
+    private final ListaOpciones opcionesElegidas = new ListaOpciones();
     private final Jugador responsable;
 
     public Respuesta(Jugador jugador) { responsable = jugador; }
@@ -15,9 +14,9 @@ public class Respuesta {
 
    public Jugador responsable() { return responsable; }
 
-   public int cantidadOpcionesCorrectas() { opcionesElegidas.cantidadOpcionesCorrectas(); }
+   public int cantidadOpcionesCorrectas() { return opcionesElegidas.cantidadOpcionesCorrectas(); }
 
-   public int cantidadOpcionesIncorrectas() { opcionesElegidas.cantidadOpcionesIncorrectas(); }
+   public int cantidadOpcionesIncorrectas() { return opcionesElegidas.cantidadOpcionesIncorrectas(); }
 
 
 }

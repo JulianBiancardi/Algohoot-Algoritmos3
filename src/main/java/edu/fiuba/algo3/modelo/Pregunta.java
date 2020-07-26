@@ -4,12 +4,13 @@ import java.util.ArrayList;
 
 abstract class Pregunta {
     protected String enunciado;
-    protected ListaOpciones opciones = new ListaOpciones(); //Esto capaz vuela!
+    protected ListaOpciones opciones = new ListaOpciones();
+    protected int cantidadCorrectas;
     protected ModoPregunta modo;
 
     public ListaOpciones obtenerOpciones(){ return opciones; }
 
-    public abstract void evaluarRespuesta(Respuesta respuesta);
+    protected abstract void evaluarRespuesta(Respuesta respuesta);
 
     public void evaluarRespuestas(ArrayList<Respuesta> respuestas){
         for (Respuesta respuesta : respuestas) {

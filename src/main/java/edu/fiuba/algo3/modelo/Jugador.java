@@ -9,8 +9,6 @@ public class Jugador {
         puntos = 0;
     }
 
-    public Respuesta responder () { Respuesta respuesta = new Respuesta(this); }
-
     public void agregarOpcion(Opcion opcion, Respuesta respuesta){ respuesta.agregarOpcion(opcion); }
 
     public void sumarPuntos(int puntaje) {

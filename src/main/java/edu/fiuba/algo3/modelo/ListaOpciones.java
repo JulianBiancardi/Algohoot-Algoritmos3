@@ -7,6 +7,18 @@ public class ListaOpciones {
 
     public void agregarOpcion(Opcion opcion) { opciones.add(opcion); }
 
+    public Opcion obtener(int posicion) {
+        if(posicion < 0 || posicion > cantidadOpciones()) {
+            //Excepcion
+        }
+
+        return opciones.get(posicion);
+    }
+
+    public int cantidadOpciones(){
+        return opciones.size();
+    }
+
     public int cantidadOpcionesCorrectas() {
         int contador = 0;
         for (Opcion opcionElegida : opciones) {
@@ -17,6 +29,6 @@ public class ListaOpciones {
     }
 
     public int cantidadOpcionesIncorrectas(){
-        return opciones.size() - cantidadOpcionesCorrectas();
+        return this.cantidadOpciones() - cantidadOpcionesCorrectas();
     }
 }
