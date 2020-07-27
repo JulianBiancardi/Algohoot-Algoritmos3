@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.com/JulianBiancardi/Algoritmos3---TP2.svg?token=EKxdtGcYaBFNUkEovYrj&branch=master)](https://travis-ci.org/JulianBiancardi/Algoritmos3---TP2)
+[![Build Status](https://travis-ci.com/JulianBiancardi/Algoritmos3---TP2.svg?token=EKxdtGcYaBFNUkEovYrj&branch=master)](https://travis-ci.com/JulianBiancardi/Algoritmos3---TP2)
 
 [![codecov](https://codecov.io/gh/fiuba/algo3_proyecto_base_tp2/branch/master/graph/badge.svg)](https://codecov.io/gh/fiuba/algo3_proyecto_base_tp2)
 
