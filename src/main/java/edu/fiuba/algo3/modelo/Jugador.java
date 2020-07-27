@@ -9,15 +9,21 @@ public class Jugador {
         puntos = 0;
     }
 
-    public Respuesta responder(boolean valor){
-        return (new Respuesta(valor,this));
-    }
-
     public void sumarPuntos(int puntaje) {
         puntos += puntaje;
     }
 
-    public int puntos() { return puntos; }
+    public void restarPuntos(int puntaje) {
+        puntos -= puntaje;
+    }
 
-    public String nombre() { return nombre; }
+    // POR AHORA sólo sirven para tests:
+
+    public int puntos() {
+        return puntos;
+    }
+
+    public String nombre() {
+        return nombre;
+    }
 }
