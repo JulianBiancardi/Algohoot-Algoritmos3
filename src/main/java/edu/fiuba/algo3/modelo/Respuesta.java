@@ -7,15 +7,27 @@ public class Respuesta {
     private final ListaOpciones opcionesElegidas = new ListaOpciones();
     private final Jugador responsable;
 
-    public Respuesta(Jugador jugador) { responsable = jugador; }
+    public Respuesta(Jugador jugador) {
+        responsable = jugador;
+    }
 
-    public void agregarOpcion(Opcion opcion) { opcionesElegidas.agregarOpcion(opcion); }
+    public void agregarOpcion(Opcion opcion) {
+        opcionesElegidas.agregarOpcion(opcion);
+    }
 
-    //public ListaOpciones opciones()  { return opcionesElegidas; }
+    public int cantidadOpcionesCorrectas() {
+        return opcionesElegidas.cantidadOpcionesCorrectas();
+    }
 
-   public Jugador responsable() { return responsable; }
+    public int cantidadOpcionesIncorrectas() {
+        return opcionesElegidas.cantidadOpcionesIncorrectas();
+    }
 
-   public int cantidadOpcionesCorrectas() { return opcionesElegidas.cantidadOpcionesCorrectas(); }
+    public void puntuarJugador(int puntaje) {
+        responsable.sumarPuntos(puntaje);
+    }
 
-   public int cantidadOpcionesIncorrectas() { return opcionesElegidas.cantidadOpcionesIncorrectas(); }
+    public void penalizarJugador(int puntaje) {
+        responsable.restarPuntos(puntaje);
+    }
 }

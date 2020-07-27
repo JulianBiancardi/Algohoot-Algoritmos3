@@ -1,7 +1,5 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.Opciones.Opcion;
-
 public class Jugador {
     private final String nombre;
     private int puntos;
@@ -11,8 +9,6 @@ public class Jugador {
         puntos = 0;
     }
 
-    public void agregarOpcion(Opcion opcion, Respuesta respuesta){ respuesta.agregarOpcion(opcion); }
-
     public void sumarPuntos(int puntaje) {
         puntos += puntaje;
     }
@@ -21,7 +17,13 @@ public class Jugador {
         puntos -= puntaje;
     }
 
-    public int puntos() { return puntos; }
+    // POR AHORA sólo sirven para tests:
 
-    public String nombre() { return nombre; }
+    public int puntos() {
+        return puntos;
+    }
+
+    public String nombre() {
+        return nombre;
+    }
 }

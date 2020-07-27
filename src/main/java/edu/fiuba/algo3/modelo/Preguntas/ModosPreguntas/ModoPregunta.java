@@ -1,8 +1,7 @@
 package edu.fiuba.algo3.modelo.Preguntas.ModosPreguntas;
 
-import edu.fiuba.algo3.modelo.Jugador;
+import edu.fiuba.algo3.modelo.Respuesta;
 
 public interface ModoPregunta {
-
-    void modificarPuntos(Jugador jugador, int cantidadCorrectas, int aciertos, int errores);
+    void modificarPuntos(Respuesta respuestaJugador, int cantidadOpcionesCorrectasDeLaPregunta);
 }
