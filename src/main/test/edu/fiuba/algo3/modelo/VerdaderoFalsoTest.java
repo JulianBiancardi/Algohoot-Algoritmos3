@@ -4,7 +4,7 @@ import edu.fiuba.algo3.modelo.Opciones.ListaOpciones;
 import edu.fiuba.algo3.modelo.Opciones.OpcionCorrecta;
 import edu.fiuba.algo3.modelo.Opciones.OpcionIncorrecta;
 import edu.fiuba.algo3.modelo.Preguntas.ModosPreguntas.Clasico;
-import edu.fiuba.algo3.modelo.Preguntas.ModosPreguntas.ConPenalidad;
+import edu.fiuba.algo3.modelo.Preguntas.ModosPreguntas.Penalidad;
 import edu.fiuba.algo3.modelo.Preguntas.VoF;
 import org.junit.jupiter.api.Test;
 
@@ -19,7 +19,7 @@ public class VerdaderoFalsoTest {
         ListaOpciones listaOpcionesPregunta = new ListaOpciones();
         listaOpcionesPregunta.agregarOpcion(new OpcionCorrecta("Verdadero"));
         listaOpcionesPregunta.agregarOpcion(new OpcionIncorrecta("Falso"));
-        VoF pregunta = new VoF("¿2 + 2 = 4?", new Clasico(), listaOpcionesPregunta);
+        VoF pregunta = VoF.conModoClasico("¿2 + 2 = 4?", listaOpcionesPregunta);
         Jugador jugador = new Jugador("LeoProgramador");
         Respuesta respuestaJugador = new Respuesta(jugador);
 
@@ -119,7 +119,7 @@ public class VerdaderoFalsoTest {
         ListaOpciones listaOpcionesPregunta = new ListaOpciones();
         listaOpcionesPregunta.agregarOpcion(new OpcionCorrecta("Verdadero"));
         listaOpcionesPregunta.agregarOpcion(new OpcionIncorrecta("Falso"));
-        VoF pregunta = new VoF("¿2 + 2 = 4?", new ConPenalidad(), listaOpcionesPregunta);
+        VoF pregunta = new VoF("¿2 + 2 = 4?", new Penalidad(), listaOpcionesPregunta);
         Jugador jugador = new Jugador("LeoProgramador");
         Respuesta respuestaJugador = new Respuesta(jugador);
 
@@ -136,7 +136,7 @@ public class VerdaderoFalsoTest {
         ListaOpciones listaOpcionesPregunta = new ListaOpciones();
         listaOpcionesPregunta.agregarOpcion(new OpcionCorrecta("Verdadero"));
         listaOpcionesPregunta.agregarOpcion(new OpcionIncorrecta("Falso"));
-        VoF pregunta = new VoF("¿2 + 2 = 4?", new ConPenalidad(), listaOpcionesPregunta);
+        VoF pregunta = new VoF("¿2 + 2 = 4?", new Penalidad(), listaOpcionesPregunta);
         Jugador jugador = new Jugador("LeoProgramador");
         Respuesta respuestaJugador = new Respuesta(jugador);
 
@@ -153,7 +153,7 @@ public class VerdaderoFalsoTest {
         ListaOpciones listaOpcionesPregunta = new ListaOpciones();
         listaOpcionesPregunta.agregarOpcion(new OpcionCorrecta("Verdadero"));
         listaOpcionesPregunta.agregarOpcion(new OpcionIncorrecta("Falso"));
-        VoF pregunta = new VoF("¿2 + 2 = 4?", new ConPenalidad(), listaOpcionesPregunta);
+        VoF pregunta = new VoF("¿2 + 2 = 4?", new Penalidad(), listaOpcionesPregunta);
         Jugador jugador1 = new Jugador("LeoProgramador");
         Respuesta respuestaJugador1 = new Respuesta(jugador1);
         Jugador jugador2 = new Jugador("Joaco");
@@ -175,7 +175,7 @@ public class VerdaderoFalsoTest {
         ListaOpciones listaOpcionesPregunta = new ListaOpciones();
         listaOpcionesPregunta.agregarOpcion(new OpcionCorrecta("Verdadero"));
         listaOpcionesPregunta.agregarOpcion(new OpcionIncorrecta("Falso"));
-        VoF pregunta = new VoF("¿2 + 2 = 4?", new ConPenalidad(), listaOpcionesPregunta);
+        VoF pregunta = new VoF("¿2 + 2 = 4?", new Penalidad(), listaOpcionesPregunta);
         Jugador jugador1 = new Jugador("LeoProgramador");
         Respuesta respuestaJugador1 = new Respuesta(jugador1);
         Jugador jugador2 = new Jugador("Tomas");
@@ -197,7 +197,7 @@ public class VerdaderoFalsoTest {
         ListaOpciones listaOpcionesPregunta = new ListaOpciones();
         listaOpcionesPregunta.agregarOpcion(new OpcionCorrecta("Verdadero"));
         listaOpcionesPregunta.agregarOpcion(new OpcionIncorrecta("Falso"));
-        VoF pregunta = new VoF("¿2 + 2 = 4?", new ConPenalidad(), listaOpcionesPregunta);
+        VoF pregunta = new VoF("¿2 + 2 = 4?", new Penalidad(), listaOpcionesPregunta);
         Jugador jugador1 = new Jugador("LeoProgramador");
         Respuesta respuestaJugador1 = new Respuesta(jugador1);
         Jugador jugador2 = new Jugador("Julian");
