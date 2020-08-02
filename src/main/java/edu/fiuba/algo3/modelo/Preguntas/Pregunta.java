@@ -8,13 +8,15 @@ import java.util.ArrayList;
 
 abstract class Pregunta {
     protected String enunciado;
+    protected ListaOpciones opcionesPregunta;
     protected int cantidadOpcionesCorrectas;
     protected ModoPregunta modo;
 
     public Pregunta(String unEnunciado, ModoPregunta unModo, ListaOpciones opcionesPregunta) {
-        cantidadOpcionesCorrectas = opcionesPregunta.cantidadOpcionesCorrectas();
-        modo = unModo;
         enunciado = unEnunciado;
+        modo = unModo;
+        this.opcionesPregunta = opcionesPregunta;
+        cantidadOpcionesCorrectas = opcionesPregunta.cantidadOpcionesCorrectas();
     }
 
     public void evaluarRespuestas(ArrayList<Respuesta> respuestas) {
