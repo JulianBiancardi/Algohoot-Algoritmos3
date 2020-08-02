@@ -1,32 +1,28 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.Opciones.ListaOpciones;
+import edu.fiuba.algo3.modelo.Opciones.Grupo;
 import edu.fiuba.algo3.modelo.Opciones.OpcionGrupal;
 
 public class RespuestaGrupal extends Respuesta{
-    private ListaOpciones lista1 = new ListaOpciones();
-    private ListaOpciones lista2 = new ListaOpciones();
-    private String nombreGrupo1;
-    private String nombreGrupo2;
+    private Grupo grupo1;
+    private Grupo grupo2;
 
     public RespuestaGrupal(Jugador jugador, String nombreGrupo1, String nombreGrupo2){
         super(jugador);
-        this.nombreGrupo1 = nombreGrupo1;
-        this.nombreGrupo2 = nombreGrupo2;
+        grupo1 = new Grupo(nombreGrupo1);
+        grupo2 = new Grupo(nombreGrupo2);
     }
 
-    public void agregarOpcionLista1(OpcionGrupal opcion){
-        opcion.setGrupoActual(nombreGrupo1);
-        lista1.agregarOpcion(opcion);
+    private void agregarOpcionALista(OpcionGrupal opcion, Grupo grupo){ grupo.agregarOpcionGrupo(opcion); }
+
+    public void agregarOpcionGrupo1(OpcionGrupal opcion){
+        agregarOpcionALista(opcion, grupo1);
     }
 
-    public void agregarOpcionLista2(OpcionGrupal opcion){
-        opcion.setGrupoActual(nombreGrupo2);
-        lista2.agregarOpcion(opcion);
+    public void agregarOpcionGrupo2(OpcionGrupal opcion){
+        agregarOpcionALista(opcion, grupo2);
     }
 
     @Override
-    public int cantidadOpcionesCorrectas() {
-        return (lista1.cantidadOpcionesCorrectas() + lista2.cantidadOpcionesCorrectas());
-    }
+    public int cantidadOpcionesCorrectas() { return (grupo1.cantidadOpcionesCorrectas() + grupo2.cantidadOpcionesCorrectas()); }
 }

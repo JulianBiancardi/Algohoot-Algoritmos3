@@ -13,19 +13,20 @@ public class GroupChoiceTest {
     @Test
     public void test01AmbosGruposCon2RespuestasCorrectasCadaUnoRespondeCorrectamente(){
 
-        GroupChoice pregunta = new GroupChoice("Numeros Pares - Numeros Impares","Numeros Pares", "Numeros Impares");
+        String nombreGrupo1 = "Numeros Pares";
+        String nombreGrupo2 = "Numeros Impares";
+        GroupChoice pregunta = new GroupChoice("Separar en Pares e Impares",nombreGrupo1, nombreGrupo2);
         pregunta.agregarOpcionGrupo1(new OpcionGrupal("2"));
         pregunta.agregarOpcionGrupo2(new OpcionGrupal("3"));
         pregunta.agregarOpcionGrupo1(new OpcionGrupal("4"));
         pregunta.agregarOpcionGrupo2(new OpcionGrupal("5"));
         Jugador jugador = new Jugador("LeoProgramador");
-        RespuestaGrupal respuestaJugador = new RespuestaGrupal(jugador, "Numeros Pares", "Numeros Impares");
+        RespuestaGrupal respuestaJugador = new RespuestaGrupal(jugador, nombreGrupo1, nombreGrupo2);
 
-
-        respuestaJugador.agregarOpcionLista1((OpcionGrupal) pregunta.obtenerOpcion(0));
-        respuestaJugador.agregarOpcionLista1((OpcionGrupal) pregunta.obtenerOpcion(2));
-        respuestaJugador.agregarOpcionLista2((OpcionGrupal) pregunta.obtenerOpcion(1));
-        respuestaJugador.agregarOpcionLista2((OpcionGrupal) pregunta.obtenerOpcion(3));
+        respuestaJugador.agregarOpcionGrupo1(pregunta.obtenerOpcion(0));
+        respuestaJugador.agregarOpcionGrupo1(pregunta.obtenerOpcion(2));
+        respuestaJugador.agregarOpcionGrupo2(pregunta.obtenerOpcion(1));
+        respuestaJugador.agregarOpcionGrupo2(pregunta.obtenerOpcion(3));
         ArrayList<Respuesta> respuestas = new ArrayList<Respuesta>();
         respuestas.add(respuestaJugador);
 
@@ -36,19 +37,20 @@ public class GroupChoiceTest {
     @Test
     public void test02AmbosGruposCon2RespuestasCorrectasCadaUnoRespondeIncorrectamente(){
 
-        GroupChoice pregunta = new GroupChoice("Numeros Pares - Numeros Impares","Numeros Pares", "Numeros Impares");
+        String nombreGrupo1 = "Numeros Pares";
+        String nombreGrupo2 = "Numeros Impares";
+        GroupChoice pregunta = new GroupChoice("Separar en Pares e Impares",nombreGrupo1, nombreGrupo2);
         pregunta.agregarOpcionGrupo1(new OpcionGrupal("2"));
         pregunta.agregarOpcionGrupo2(new OpcionGrupal("3"));
         pregunta.agregarOpcionGrupo1(new OpcionGrupal("4"));
         pregunta.agregarOpcionGrupo2(new OpcionGrupal("5"));
         Jugador jugador = new Jugador("LeoProgramador");
-        RespuestaGrupal respuestaJugador = new RespuestaGrupal(jugador, "Numeros Pares", "Numeros Impares");
+        RespuestaGrupal respuestaJugador = new RespuestaGrupal(jugador, nombreGrupo1, nombreGrupo2);
 
-
-        respuestaJugador.agregarOpcionLista1((OpcionGrupal) pregunta.obtenerOpcion(0));
-        respuestaJugador.agregarOpcionLista1((OpcionGrupal) pregunta.obtenerOpcion(1));
-        respuestaJugador.agregarOpcionLista2((OpcionGrupal) pregunta.obtenerOpcion(2));
-        respuestaJugador.agregarOpcionLista2((OpcionGrupal) pregunta.obtenerOpcion(3));
+        respuestaJugador.agregarOpcionGrupo1(pregunta.obtenerOpcion(0));
+        respuestaJugador.agregarOpcionGrupo1(pregunta.obtenerOpcion(1));
+        respuestaJugador.agregarOpcionGrupo2(pregunta.obtenerOpcion(2));
+        respuestaJugador.agregarOpcionGrupo2(pregunta.obtenerOpcion(3));
         ArrayList<Respuesta> respuestas = new ArrayList<Respuesta>();
         respuestas.add(respuestaJugador);
 
@@ -59,19 +61,20 @@ public class GroupChoiceTest {
     @Test
     public void test03GruposConDistintaCantidadDeOpcionesRespondeCorrectamente(){
 
-        GroupChoice pregunta = new GroupChoice("Numeros Pares - Numeros Impares","Numeros Pares", "Numeros Impares");
+        String nombreGrupo1 = "Numeros Pares";
+        String nombreGrupo2 = "Numeros Impares";
+        GroupChoice pregunta = new GroupChoice("Separar en Pares e Impares",nombreGrupo1, nombreGrupo2);
         pregunta.agregarOpcionGrupo1(new OpcionGrupal("2"));
         pregunta.agregarOpcionGrupo1(new OpcionGrupal("4"));
         pregunta.agregarOpcionGrupo1(new OpcionGrupal("6"));
         pregunta.agregarOpcionGrupo2(new OpcionGrupal("5"));
         Jugador jugador = new Jugador("LeoProgramador");
-        RespuestaGrupal respuestaJugador = new RespuestaGrupal(jugador, "Numeros Pares", "Numeros Impares");
+        RespuestaGrupal respuestaJugador = new RespuestaGrupal(jugador, nombreGrupo1, nombreGrupo2);
 
-
-        respuestaJugador.agregarOpcionLista1((OpcionGrupal) pregunta.obtenerOpcion(0));
-        respuestaJugador.agregarOpcionLista1((OpcionGrupal) pregunta.obtenerOpcion(1));
-        respuestaJugador.agregarOpcionLista1((OpcionGrupal) pregunta.obtenerOpcion(2));
-        respuestaJugador.agregarOpcionLista2((OpcionGrupal) pregunta.obtenerOpcion(3));
+        respuestaJugador.agregarOpcionGrupo1(pregunta.obtenerOpcion(0));
+        respuestaJugador.agregarOpcionGrupo1(pregunta.obtenerOpcion(1));
+        respuestaJugador.agregarOpcionGrupo1(pregunta.obtenerOpcion(2));
+        respuestaJugador.agregarOpcionGrupo2(pregunta.obtenerOpcion(3));
         ArrayList<Respuesta> respuestas = new ArrayList<Respuesta>();
         respuestas.add(respuestaJugador);
 

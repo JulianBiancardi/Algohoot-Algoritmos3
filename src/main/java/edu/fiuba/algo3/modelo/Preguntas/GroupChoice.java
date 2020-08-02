@@ -1,7 +1,6 @@
 package edu.fiuba.algo3.modelo.Preguntas;
 
 import edu.fiuba.algo3.modelo.Opciones.ListaOpciones;
-import edu.fiuba.algo3.modelo.Opciones.Opcion;
 import edu.fiuba.algo3.modelo.Opciones.OpcionGrupal;
 import edu.fiuba.algo3.modelo.Preguntas.ModosPreguntas.Clasico;
 
@@ -30,7 +29,7 @@ public class GroupChoice extends Pregunta{
         agregarOpcionAGrupo(opcion, nombreGrupo2);
     }
 
-    public Opcion obtenerOpcion(int posicion){
-        return opcionesPregunta.obtener(posicion);
+    public OpcionGrupal obtenerOpcion(int posicion){
+        return (OpcionGrupal) opcionesPregunta.obtener(posicion);
     }
 }

@@ -9,9 +9,7 @@ public class OpcionGrupal implements Opcion {
         descripcion = unaDescripcion;
     }
 
-    public boolean esCorrecta(){
-        return (grupoActual == grupoEsperado);
-    }
+    public boolean esCorrecta(){ return (grupoActual == grupoEsperado); }
 
     public void setGrupoEsperado(String nombre){ grupoEsperado = nombre; }
 
