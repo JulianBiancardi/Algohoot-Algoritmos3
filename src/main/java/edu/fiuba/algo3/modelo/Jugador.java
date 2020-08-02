@@ -1,8 +1,11 @@
 package edu.fiuba.algo3.modelo;
 
-public class Jugador {
+import java.util.ArrayList;
+
+public class Jugador implements Observable{
     private final String nombre;
     private int puntos;
+    ArrayList<Observador> observadores = new ArrayList<Observador>();
 
     public Jugador(String nombre) {
         this.nombre = nombre;
@@ -11,6 +14,7 @@ public class Jugador {
 
     public void sumarPuntos(int puntaje) {
         puntos += puntaje;
+        notificarObservadores();
     }
 
     public void restarPuntos(int puntaje) {
@@ -25,5 +29,16 @@ public class Jugador {
 
     public String nombre() {
         return nombre;
+    }
+
+
+    @Override
+    public void agregarObservador(Observador unObservador) {
+        observadores.add(unObservador);
+    }
+
+    @Override
+    public void notificarObservadores() {
+        observadores.stream().forEach(observador -> observador.actualizar());
     }
 }
