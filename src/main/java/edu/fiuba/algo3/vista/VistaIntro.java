@@ -1,20 +1,20 @@
 package edu.fiuba.algo3.vista;
 
+import edu.fiuba.algo3.controlador.ControladorJugar;
+import edu.fiuba.algo3.controlador.ControladorSalir;
 import javafx.geometry.Pos;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
-public class VistaIntro {
+public class VistaIntro extends StackPane{
 
-    StackPane layoutPrincipal = new StackPane();
-    Scene sceneIntro = new Scene(layoutPrincipal);
+    public VistaIntro(Stage stagePrincipal){
+        this.setPrefSize(600, 600);
 
-    public VistaIntro(){
-        ImageView fondoView = new ImageView("File:src\\main\\java\\edu\\fiuba\\algo3\\vista\\imagenes\\BackGround.png");
         ImageView logoView = new ImageView("File:src\\main\\java\\edu\\fiuba\\algo3\\vista\\imagenes\\KahootLogo.png");
         logoView.setFitHeight(100);
         logoView.setFitWidth(200);
@@ -26,21 +26,18 @@ public class VistaIntro {
 
         Button botonEntrar = new Button("Entrar");
         botonEntrar.setMaxWidth(Double.MAX_VALUE);
+        botonEntrar.setOnAction(new ControladorJugar(stagePrincipal));
 
         Button botonSalir = new Button("Salir");
         botonSalir.setMaxWidth(Double.MAX_VALUE);
+        botonSalir.setOnAction(new ControladorSalir(stagePrincipal));
 
         VBox opcionesMenu = new VBox(5,logoView,NombreJugador,botonEntrar,botonSalir);
         opcionesMenu.setMaxSize(20,20);
         opcionesMenu.setAlignment(Pos.TOP_CENTER);
 
-        layoutPrincipal.getChildren().add(fondoView);
-        layoutPrincipal.getChildren().add(opcionesMenu);
-        layoutPrincipal.setAlignment(opcionesMenu,Pos.CENTER);
+        ImageView fondoView = new ImageView("File:src\\main\\java\\edu\\fiuba\\algo3\\vista\\imagenes\\BackGround.png");
 
-    }
-
-    public Scene getScene(){
-        return sceneIntro;
+        this.getChildren().addAll(fondoView,opcionesMenu);
     }
 }

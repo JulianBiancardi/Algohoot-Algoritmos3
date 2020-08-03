@@ -1,5 +1,7 @@
 package edu.fiuba.algo3.vista;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.css.Size;
 import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
@@ -12,10 +14,16 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
+import javafx.util.Duration;
 
-public class VistaPregunta {
-    VBox layoutPrincipal = new VBox();
-    Scene scenePregunta = new Scene(layoutPrincipal);
+import java.util.Timer;
+import java.util.TimerTask;
+
+public class VistaPregunta extends VBox{
+    private final Integer startTime = 20;
+    private Integer secondsPassed = startTime;
+    private Timeline tiempo;
+    Label contador = new Label(String.valueOf(startTime));
 
     public VistaPregunta(){
 
@@ -25,11 +33,9 @@ public class VistaPregunta {
         StackPane stackPane1 = new StackPane(rectangle,enunciadoPregunta);
 
         Circle circle = new Circle(50,50,70,Color.valueOf("#844cbe"));
-        Label contador = new Label("99");
         contador.setTextFill(Color.WHITE);
-        contador.setStyle("-fx-font-size: 34");
+        contador.setStyle("-fx-font-size: 54");
         StackPane stackPane2 = new StackPane(circle,contador);
-
 
         GridPane opcionesPregunta = new GridPane();
         opcionesPregunta.setAlignment(Pos.CENTER);
@@ -38,16 +44,24 @@ public class VistaPregunta {
         opcionesPregunta.add(new Button("Opcion3"),1,0);
         opcionesPregunta.add(new Button("Opcion4"),1,1);
 
-        layoutPrincipal.setSpacing(10);
-        layoutPrincipal.getChildren().add(stackPane1);
-        layoutPrincipal.getChildren().add(stackPane2);
-        layoutPrincipal.getChildren().add(opcionesPregunta);
-        layoutPrincipal.setAlignment(Pos.TOP_CENTER);
+        this.setSpacing(10);
+        this.getChildren().add(stackPane1);
+        this.getChildren().add(stackPane2);
+        this.getChildren().add(opcionesPregunta);
+        this.setAlignment(Pos.TOP_CENTER);
+
+        tiempo = new Timeline(new KeyFrame(Duration.seconds(1),e -> contar()));
+        tiempo.setCycleCount(Timeline.INDEFINITE);
+        tiempo.play();
 
     }
 
-    public Scene getScene(){
-        return scenePregunta;
+    public void contar(){
+        if(secondsPassed > 0){
+            secondsPassed--;
+            contador.setText(String.valueOf(secondsPassed));
+        }
+        else tiempo.pause();
     }
 
 }
