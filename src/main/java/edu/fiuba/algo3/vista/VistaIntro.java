@@ -26,7 +26,7 @@ public class VistaIntro extends StackPane{
 
         Button botonEntrar = new Button("Entrar");
         botonEntrar.setMaxWidth(Double.MAX_VALUE);
-        botonEntrar.setOnAction(new ControladorJugar(stagePrincipal));
+        botonEntrar.setOnAction(new ControladorJugar(stagePrincipal,NombreJugador));
 
         Button botonSalir = new Button("Salir");
         botonSalir.setMaxWidth(Double.MAX_VALUE);
