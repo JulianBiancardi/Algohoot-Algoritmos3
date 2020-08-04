@@ -30,7 +30,7 @@ public class VistaIntro extends StackPane{
 
         Button botonSalir = new Button("Salir");
         botonSalir.setMaxWidth(Double.MAX_VALUE);
-        botonSalir.setOnAction(new ControladorSalir(stagePrincipal));
+        botonSalir.setOnAction(new ControladorSalir());
 
         VBox opcionesMenu = new VBox(5,logoView,NombreJugador,botonEntrar,botonSalir);
         opcionesMenu.setMaxSize(20,20);
@@ -39,5 +39,9 @@ public class VistaIntro extends StackPane{
         ImageView fondoView = new ImageView("File:src\\main\\java\\edu\\fiuba\\algo3\\vista\\imagenes\\BackGround.png");
 
         this.getChildren().addAll(fondoView,opcionesMenu);
+    }
+
+    public void mostarErrorNombre(){
+        System.out.println("error de nombre");
     }
 }
