@@ -1,26 +1,31 @@
 package edu.fiuba.algo3.modelo.Preguntas;
 
 import edu.fiuba.algo3.modelo.Opciones.ListaOpciones;
+import edu.fiuba.algo3.modelo.Opciones.OpcionCorrecta;
 import edu.fiuba.algo3.modelo.Preguntas.ModosPreguntas.Clasico;
 import edu.fiuba.algo3.modelo.Preguntas.ModosPreguntas.Penalidad;
 import edu.fiuba.algo3.modelo.Preguntas.ModosPreguntas.ModoPregunta;
 
 public class VoF extends Pregunta {
 
-    public VoF(String unEnunciado, ModoPregunta unModo, ListaOpciones opcionesPregunta)  {
-        /* si ListaOpciones NO ES 2: lanzo excepción
-        if(opcionesPregunta.cantidadOpciones() != 2)
-            throw new CantidadOpcionesInvalida();
-        */
-        super(unEnunciado, unModo, opcionesPregunta);
+    private VoF(String Enunciado, ModoPregunta Modo, ListaOpciones opcionesPregunta)  {
+        enunciado = Enunciado;
+        modo = Modo;
+        cantidadOpcionesCorrectas =  opcionesPregunta.cantidadOpcionesCorrectas();
     }
 
-    public static VoF conModoClasico(String unEnunciado, ListaOpciones opcionesPregunta){
-        VoF pregunta = new VoF(unEnunciado,new Clasico(),opcionesPregunta);
-        return pregunta;
+    public static VoF crearEnModoClasico(String contenido, OpcionCorrecta opcionCorrecta) {
+        return new VoF(contenido, new Clasico(), obtenerLista(opcionCorrecta));
     }
-    public static VoF conModoPenalidad(String unEnunciado, ListaOpciones opcionesPregunta){
-        VoF pregunta = new VoF(unEnunciado,new Penalidad(),opcionesPregunta);
-        return pregunta;
+
+    public static VoF crearEnModoPenalizado(String contenido, OpcionCorrecta opcionCorrecta) {
+        return new VoF(contenido, new Penalidad(), obtenerLista(opcionCorrecta));
+    }
+
+    // Preguntar a Martín para evitar crear este método
+    private static ListaOpciones obtenerLista(OpcionCorrecta opcion){
+        ListaOpciones lista = new ListaOpciones();
+        lista.agregarOpcion(opcion);
+        return lista;
     }
 }

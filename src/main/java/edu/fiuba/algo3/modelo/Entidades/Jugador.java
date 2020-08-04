@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.Entidades;
 
 public class Jugador {
     private final String nombre;

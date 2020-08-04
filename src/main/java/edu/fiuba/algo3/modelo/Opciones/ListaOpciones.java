@@ -32,4 +32,8 @@ public class ListaOpciones {
     public int cantidadOpcionesIncorrectas() {
         return cantidadIncorrectas;
     }
+
+    public int obtenerCantidadOpciones() {
+        return opciones.size();
+    }
 }

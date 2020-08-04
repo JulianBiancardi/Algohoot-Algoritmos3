@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.modelo.Preguntas.ModosPreguntas;
 
-import edu.fiuba.algo3.modelo.Respuesta;
+import edu.fiuba.algo3.modelo.Entidades.Respuesta;
 
 public class PuntajeParcial implements ModoPregunta {
     static final int PUNTAJE = 1;
