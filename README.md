@@ -1,7 +1,5 @@
 [![Build Status](https://travis-ci.com/JulianBiancardi/Algoritmos3---TP2.svg?token=EKxdtGcYaBFNUkEovYrj&branch=master)](https://travis-ci.com/JulianBiancardi/Algoritmos3---TP2)
-
-[![codecov](https://codecov.io/gh/fiuba/algo3_proyecto_base_tp2/branch/master/graph/badge.svg)](https://codecov.io/gh/fiuba/algo3_proyecto_base_tp2)
-
+[![codecov](https://codecov.io/gh/JulianBiancardi/Algoritmos3---TP2/branch/master/graph/badge.svg?token=HGKUYEBHKW)](https://codecov.io/gh/JulianBiancardi/Algoritmos3---TP2)
 
 
 # TP2 Algoritmos 3: AlgoHoot
