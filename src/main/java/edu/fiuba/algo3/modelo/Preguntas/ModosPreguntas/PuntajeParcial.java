@@ -1,9 +1,13 @@
 package edu.fiuba.algo3.modelo.Preguntas.ModosPreguntas;
 
+import edu.fiuba.algo3.modelo.Entidades.CriterioPuntuacion;
 import edu.fiuba.algo3.modelo.Entidades.Respuesta;
 
 public class PuntajeParcial implements ModoPregunta {
-    static final int PUNTAJE = 1;
+    private final static int factorAumento = 1;
+    private final static int factorDisminucion = 0;
+
+    private final CriterioPuntuacion criterioPuntuacion = new CriterioPuntuacion(factorAumento, factorDisminucion);
 
     @Override
     public void modificarPuntos(Respuesta respuestaJugador, int cantidadOpcionesCorrectasDeLaPregunta) {
@@ -11,6 +15,6 @@ public class PuntajeParcial implements ModoPregunta {
         int erroresJugador = respuestaJugador.cantidadOpcionesIncorrectas();
 
         if(erroresJugador == 0)
-            respuestaJugador.puntuarJugador(PUNTAJE * aciertosJugador);
+            respuestaJugador.puntuarJugador(criterioPuntuacion, aciertosJugador);
     }
 }

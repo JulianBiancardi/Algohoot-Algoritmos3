@@ -1,6 +1,5 @@
 package edu.fiuba.algo3.modelo.Entidades;
 
-import edu.fiuba.algo3.modelo.Entidades.Jugador;
 import edu.fiuba.algo3.modelo.Opciones.ListaOpciones;
 import edu.fiuba.algo3.modelo.Opciones.Opcion;
 
@@ -24,11 +23,11 @@ public class Respuesta {
         return opcionesElegidas.cantidadOpcionesIncorrectas();
     }
 
-    public void puntuarJugador(int puntaje) {
-        responsable.sumarPuntos(puntaje);
+    public void puntuarJugador(CriterioPuntuacion criterioPuntuacion, int aciertosJugador) {
+        responsable.puntuarJugador(criterioPuntuacion, aciertosJugador);
     }
 
-    public void penalizarJugador(int puntaje) {
-        responsable.restarPuntos(puntaje);
+    public void penalizarJugador(CriterioPuntuacion criterioPuntuacion, int erroresJugador) {
+        responsable.penalizarJugador(criterioPuntuacion, erroresJugador);
     }
 }
