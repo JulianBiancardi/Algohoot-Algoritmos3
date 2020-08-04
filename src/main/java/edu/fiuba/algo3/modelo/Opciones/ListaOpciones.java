@@ -20,6 +20,11 @@ public class ListaOpciones {
             cantidadIncorrectas++;
     }
 
+    public void agregarOpcionOrdenada(Opcion opcionOrdenada) {
+        opciones.add(opcionOrdenada);
+        cantidadCorrectas++;
+    }
+
     public Opcion obtener(int posicion) {
         /*EXCEPCION if (posicion < 0 || posicion > opciones.size())*/
         return opciones.get(posicion);
@@ -32,4 +37,10 @@ public class ListaOpciones {
     public int cantidadOpcionesIncorrectas() {
         return cantidadIncorrectas;
     }
+
+    public int tamaño() {
+        return opciones.size();
+    }
+
+
 }
