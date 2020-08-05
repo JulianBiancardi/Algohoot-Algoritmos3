@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.Opciones;
 
 import edu.fiuba.algo3.modelo.Opciones.Grupo;
 import edu.fiuba.algo3.modelo.Opciones.OpcionGrupal;

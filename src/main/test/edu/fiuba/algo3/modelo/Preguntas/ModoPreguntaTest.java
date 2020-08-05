@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.Preguntas;
 
 import edu.fiuba.algo3.modelo.Entidades.Jugador;
 import edu.fiuba.algo3.modelo.Opciones.OpcionCorrecta;
