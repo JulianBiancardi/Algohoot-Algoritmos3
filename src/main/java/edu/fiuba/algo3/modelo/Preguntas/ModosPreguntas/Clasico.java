@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.modelo.Preguntas.ModosPreguntas;
 
-import edu.fiuba.algo3.modelo.Respuesta;
+import edu.fiuba.algo3.modelo.Respuestas.Respuesta;
 
 public class Clasico implements ModoPregunta {
     static final int PUNTAJE = 1;
@@ -11,6 +11,6 @@ public class Clasico implements ModoPregunta {
         int erroresJugador = respuestaJugador.cantidadOpcionesIncorrectas();
 
         if(aciertosJugador == cantidadOpcionesCorrectasDeLaPregunta && erroresJugador == 0)
-            respuestaJugador.puntuarJugador(PUNTAJE);
+            respuestaJugador.modificarPuntos(PUNTAJE);
     }
 }
