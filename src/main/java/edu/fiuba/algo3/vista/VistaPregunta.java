@@ -2,13 +2,16 @@ package edu.fiuba.algo3.vista;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
-import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.util.Duration;
 
 
@@ -23,24 +26,17 @@ public class VistaPregunta extends VBox{
         StackPane stackPane1 = new StackPane();
         mostrarPregunta(stackPane1);
 
-        Circle circle = new Circle(50,50,70,Color.valueOf("#844cbe"));
-        contador.setTextFill(Color.WHITE);
-        contador.setStyle("-fx-font-size: 54");
-        StackPane stackPane2 = new StackPane(circle,contador);
+        StackPane stackPane2 = new StackPane();
+        mostrarContador(stackPane2);
 
         GridPane opcionesPregunta = new GridPane();
         mostrarOpciones(opcionesPregunta);
+        opcionesPregunta.maxWidthProperty().bind(this.widthProperty());
+        opcionesPregunta.setPadding(new Insets(10,10,10,10));
 
-        this.setSpacing(10);
-        this.getChildren().add(stackPane1);
-        this.getChildren().add(stackPane2);
-        this.getChildren().add(opcionesPregunta);
+        this.setSpacing(50);
+        this.getChildren().addAll(stackPane1,stackPane2,opcionesPregunta);
         this.setAlignment(Pos.TOP_CENTER);
-
-        tiempo = new Timeline(new KeyFrame(Duration.seconds(1),e -> contar()));
-        tiempo.setCycleCount(Timeline.INDEFINITE);
-        tiempo.play();
-
     }
 
     public void contar(){
@@ -51,42 +47,67 @@ public class VistaPregunta extends VBox{
         else tiempo.pause();
     }
 
-    public void mostrarPregunta(StackPane stackPane){
+    public void mostrarPregunta(StackPane stackPane) {
 
-        Rectangle rectangle = new Rectangle();
-        rectangle.setFill(Color.BLACK);
-        rectangle.widthProperty().bind(stackPane.widthProperty());
+        ImageView fondoPregunta = new ImageView("File:src\\main\\java\\edu\\fiuba\\algo3\\vista\\imagenes\\fondoPregunta.png");
+        fondoPregunta.fitWidthProperty().bind(stackPane.widthProperty());
+        stackPane.setPrefHeight(150);
 
-        Label enunciadoPregunta = new Label("Enunciado de la Pregunta");
-        enunciadoPregunta.setStyle("-fx-font-size: 22");
+        Label enunciadoPregunta = new Label("Enunciado de la pregunta...");
+        enunciadoPregunta.setFont(Font.font("Core Mellow", FontWeight.BOLD,40));
+        enunciadoPregunta.setWrapText(true);
 
-        stackPane.getChildren().addAll(rectangle,enunciadoPregunta);
+        stackPane.getChildren().addAll(fondoPregunta,enunciadoPregunta);
+    }
 
+    public void mostrarContador(StackPane stackPane){
+        Circle circle = new Circle(50,50,70,Color.valueOf("#844cbe"));
+        contador.setTextFill(Color.WHITE);
+        contador.setFont(Font.font("Core Mellow", FontWeight.BOLD,55));
+
+        stackPane.getChildren().addAll(circle,contador);
+
+        tiempo = new Timeline(new KeyFrame(Duration.seconds(1),e -> contar()));
+        tiempo.setCycleCount(Timeline.INDEFINITE);
+        tiempo.play();
     }
 
     public void mostrarOpciones(GridPane opcionesPregunta){
 
         opcionesPregunta.setMinSize(600,200);
-        opcionesPregunta.setMaxSize(1200,400);
+        opcionesPregunta.setMaxSize(1200,200);
         opcionesPregunta.setAlignment(Pos.CENTER);
         opcionesPregunta.setHgap(5);
         opcionesPregunta.setVgap(5);
 
-        Button opcion1 = new Button("Opcion1");
-        opcion1.prefWidthProperty().bind(opcionesPregunta.widthProperty());
-        opcion1.prefHeightProperty().bind(opcionesPregunta.heightProperty());
-        Button opcion2 = new Button("Opcion2");
-        opcion2.prefWidthProperty().bind(opcionesPregunta.widthProperty());
-        opcion2.prefHeightProperty().bind(opcionesPregunta.heightProperty());
-        Button opcion3 = new Button("Opcion3");
-        opcion3.prefWidthProperty().bind(opcionesPregunta.widthProperty());
-        opcion3.prefHeightProperty().bind(opcionesPregunta.heightProperty());
-        Button opcion4 = new Button("Opcion4");
-        opcion4.prefWidthProperty().bind(opcionesPregunta.widthProperty());
-        opcion4.prefHeightProperty().bind(opcionesPregunta.heightProperty());
+        Button opcion1 = crearBotonOpcion(opcionesPregunta,"Opcion 1");
+        opcion1.setStyle("-fx-background-color: #e21b3c");
+        Button opcion2 = crearBotonOpcion(opcionesPregunta,"Opcion 2");
+        opcion2.setStyle("-fx-background-color: #1368ce");
+        Button opcion3 = crearBotonOpcion(opcionesPregunta,"Opcion 3");
+        opcion3.setStyle("-fx-background-color: #d89e00");
+        Button opcion4 = crearBotonOpcion(opcionesPregunta,"Opcion 4");
+        opcion4.setStyle("-fx-background-color: #26890c");
+
 
         opcionesPregunta.addRow(0,opcion1,opcion2);
         opcionesPregunta.addRow(1,opcion3,opcion4);
+    }
+
+    private Button crearBotonOpcion(Pane root,String descripcion){
+        Button boton = new Button();
+        Label texto = new Label(descripcion);
+
+        texto.setFont(Font.font("Montserrat", FontWeight.BOLD,25));
+        texto.setStyle("-fx-effect: dropshadow( one-pass-box , black , 5 , 0.0 , 1 , 0 )");
+        texto.setTextFill(Color.WHITE);
+
+        boton.setGraphic(texto);
+        boton.prefWidthProperty().bind(root.widthProperty());
+        boton.prefHeightProperty().bind(root.heightProperty());
+        boton.setOnAction(e -> System.out.println("Me tocaron"));
+
+        return boton;
     }
 
 }
