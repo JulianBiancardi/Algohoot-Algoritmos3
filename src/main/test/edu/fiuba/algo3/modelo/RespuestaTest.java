@@ -1,7 +1,9 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.Entidades.Jugador;
 import edu.fiuba.algo3.modelo.Opciones.OpcionCorrecta;
 import edu.fiuba.algo3.modelo.Opciones.OpcionIncorrecta;
+import edu.fiuba.algo3.modelo.Respuestas.Respuesta;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -39,7 +41,7 @@ public class RespuestaTest {
         Jugador jugador = new Jugador("LeoProgramador");
         Respuesta respuesta = new Respuesta(jugador);
 
-        respuesta.puntuarJugador(5);
+        respuesta.modificarPuntos(5);
 
         assertEquals(5, jugador.puntos());
     }
@@ -49,7 +51,7 @@ public class RespuestaTest {
         Jugador jugador = new Jugador("LeoProgramador");
         Respuesta respuesta = new Respuesta(jugador);
 
-        respuesta.penalizarJugador(3);
+        respuesta.modificarPuntos(-3);
 
         assertEquals(-3, jugador.puntos());
     }
@@ -59,8 +61,8 @@ public class RespuestaTest {
         Jugador jugador = new Jugador("LeoProgramador");
         Respuesta respuesta = new Respuesta(jugador);
 
-        respuesta.penalizarJugador(2);
-        respuesta.puntuarJugador(4);
+        respuesta.modificarPuntos(-2);
+        respuesta.modificarPuntos(4);
 
         assertEquals(2, jugador.puntos());
     }
