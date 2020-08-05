@@ -109,7 +109,48 @@ public class OrderedChoiceTest {
     }
 
     @Test
-    public void test05SeCreaUnaPreguntaOrderedChoiceConSoloDosOpcionesYSeRespondeBienYEvalua() {
+    public void test05SeCreaUnaPreguntaOrderedChoiceConDosOpcionSeleccionadaYEvalua() {
+
+        listaOpcionesPregunta.agregarOpcionOrdenada(opcion1);
+        listaOpcionesPregunta.agregarOpcionOrdenada(opcion2);
+        listaOpcionesPregunta.agregarOpcionOrdenada(opcion3);
+        listaOpcionesPregunta.agregarOpcionOrdenada(opcion4);
+
+        OrderedChoice pregunta = new OrderedChoice("Ordenar de menor a mayor los numeros", listaOpcionesPregunta);
+
+        respuestaJugador.agregarOpcionOrdenada(opcion1);
+        respuestaJugador.agregarOpcionOrdenada(opcion2);
+
+        ArrayList<Respuesta> respuestas = new ArrayList<Respuesta>();
+        respuestas.add(respuestaJugador);
+
+        pregunta.evaluarRespuestas(respuestas);
+        assertEquals(0, jugador.puntos());
+    }
+
+    @Test
+    public void test06SeCreaUnaPreguntaOrderedChoiceConTresOpcionSeleccionadaYEvalua() {
+
+        listaOpcionesPregunta.agregarOpcionOrdenada(opcion1);
+        listaOpcionesPregunta.agregarOpcionOrdenada(opcion2);
+        listaOpcionesPregunta.agregarOpcionOrdenada(opcion3);
+        listaOpcionesPregunta.agregarOpcionOrdenada(opcion4);
+
+        OrderedChoice pregunta = new OrderedChoice("Ordenar de menor a mayor los numeros", listaOpcionesPregunta);
+
+        respuestaJugador.agregarOpcionOrdenada(opcion1);
+        respuestaJugador.agregarOpcionOrdenada(opcion2);
+        respuestaJugador.agregarOpcionOrdenada(opcion3);
+
+        ArrayList<Respuesta> respuestas = new ArrayList<Respuesta>();
+        respuestas.add(respuestaJugador);
+
+        pregunta.evaluarRespuestas(respuestas);
+        assertEquals(0, jugador.puntos());
+    }
+
+    @Test
+    public void test07SeCreaUnaPreguntaOrderedChoiceConSoloDosOpcionesYSeRespondeBienYEvalua() {
 
         listaOpcionesPregunta.agregarOpcionOrdenada(opcion1);
         listaOpcionesPregunta.agregarOpcionOrdenada(opcion2);

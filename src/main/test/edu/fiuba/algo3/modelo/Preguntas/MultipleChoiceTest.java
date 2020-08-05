@@ -1,6 +1,9 @@
 package edu.fiuba.algo3.modelo.Preguntas;
 
 import edu.fiuba.algo3.modelo.Entidades.Jugador;
+import edu.fiuba.algo3.modelo.Entidades.Multiplicador;
+import edu.fiuba.algo3.modelo.Exepciones.ChoiceTieneEntreDosYCincoOpcionesError;
+import edu.fiuba.algo3.modelo.Exepciones.MultiplicadorCreadoConFactorInvalidoExcepcion;
 import edu.fiuba.algo3.modelo.Opciones.ListaOpciones;
 import edu.fiuba.algo3.modelo.Opciones.OpcionCorrecta;
 import edu.fiuba.algo3.modelo.Opciones.OpcionIncorrecta;
@@ -11,6 +14,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class MultipleChoiceTest {
 
@@ -687,5 +691,42 @@ public class MultipleChoiceTest {
         pregunta.evaluarRespuestas(respuestas);
         assertEquals(1, jugador1.puntos());
         assertEquals(0, jugador2.puntos());
+    }
+
+    @Test
+    public void test32SeCreaUnaPreguntaChoiceConPuntajeParcialConUnaOpcionYLanzaExcepcion() {
+        ListaOpciones listaOpcionesPregunta = new ListaOpciones();
+        listaOpcionesPregunta.agregarOpcion(new OpcionCorrecta("Argentina"));
+
+        assertThrows(ChoiceTieneEntreDosYCincoOpcionesError.class,
+                () -> {
+                    MultipleChoice.conModoPuntajeParcial("Paises de América Latina", listaOpcionesPregunta);
+                });
+    }
+
+    @Test
+    public void test33SeCreaUnaPreguntaChoiceConPenalidadConSeisOpcionesYLanzaExcepcion() {
+        ListaOpciones listaOpcionesPregunta = new ListaOpciones();
+        listaOpcionesPregunta.agregarOpcion(new OpcionIncorrecta("Japon"));
+        listaOpcionesPregunta.agregarOpcion(new OpcionIncorrecta("España"));
+        listaOpcionesPregunta.agregarOpcion(new OpcionCorrecta("Colombia"));
+        listaOpcionesPregunta.agregarOpcion(new OpcionIncorrecta("Rusia"));
+        listaOpcionesPregunta.agregarOpcion(new OpcionCorrecta("Guatemala"));
+        listaOpcionesPregunta.agregarOpcion(new OpcionIncorrecta("Australia"));
+
+        assertThrows(ChoiceTieneEntreDosYCincoOpcionesError.class,
+                () -> {
+                    MultipleChoice.conModoPenalidad("Paises de América Latina", listaOpcionesPregunta);
+                });
+    }
+
+    @Test
+    public void test34SeCreaUnaPreguntaChoiceClasicoConNingunaOpcionYLanzaExcepcion() {
+        ListaOpciones listaOpcionesPregunta = new ListaOpciones();
+
+        assertThrows(ChoiceTieneEntreDosYCincoOpcionesError.class,
+                () -> {
+                    MultipleChoice.conModoClasico("Paises de América Latina", listaOpcionesPregunta);
+                });
     }
 }

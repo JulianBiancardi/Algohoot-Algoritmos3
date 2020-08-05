@@ -1,6 +1,9 @@
 package edu.fiuba.algo3.modelo.Preguntas;
 
 import edu.fiuba.algo3.modelo.Entidades.Jugador;
+import edu.fiuba.algo3.modelo.Entidades.Multiplicador;
+import edu.fiuba.algo3.modelo.Exepciones.MultiplicadorCreadoConFactorInvalidoExcepcion;
+import edu.fiuba.algo3.modelo.Exepciones.VoFSoloTieneDosOpcionesError;
 import edu.fiuba.algo3.modelo.Opciones.ListaOpciones;
 import edu.fiuba.algo3.modelo.Opciones.OpcionCorrecta;
 import edu.fiuba.algo3.modelo.Opciones.OpcionIncorrecta;
@@ -11,6 +14,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class VerdaderoFalsoTest {
 
@@ -213,4 +217,29 @@ public class VerdaderoFalsoTest {
         assertEquals(jugador1.puntos(), -1);
         assertEquals(jugador2.puntos(), 1);
     }
+
+    @Test
+    public void test11SeCreaUnaPreguntaVoFClasicoConMasDeDosOpciones() {
+        ListaOpciones listaOpcionesPregunta = new ListaOpciones();
+        listaOpcionesPregunta.agregarOpcion(new OpcionCorrecta("Verdadero"));
+        listaOpcionesPregunta.agregarOpcion(new OpcionIncorrecta("Falso"));
+        listaOpcionesPregunta.agregarOpcion(new OpcionIncorrecta("No lo se"));
+
+        assertThrows(VoFSoloTieneDosOpcionesError.class,
+                () -> {
+                    VoF.conModoClasico("¿2 + 2 = 4?", listaOpcionesPregunta);
+                });
+    }
+
+    @Test
+    public void test12SeCreaUnaPreguntaVoFConPenalidadConMenosDeDosOpciones() {
+        ListaOpciones listaOpcionesPregunta = new ListaOpciones();
+        listaOpcionesPregunta.agregarOpcion(new OpcionCorrecta("Verdadero"));
+
+        assertThrows(VoFSoloTieneDosOpcionesError.class,
+                () -> {
+                    VoF.conModoPenalidad("¿2 + 2 = 4?", listaOpcionesPregunta);
+                });
+    }
+
 }

@@ -20,6 +20,7 @@ public class JugadorTest {
         // Arrange
         ListaOpciones listaOpcionesPregunta = new ListaOpciones();
         listaOpcionesPregunta.agregarOpcion(new OpcionCorrecta("Verdadero"));
+        listaOpcionesPregunta.agregarOpcion(new OpcionIncorrecta("Falso"));
         Pregunta pregunta = VoF.conModoPenalidad("Argentina ganó mundial 2014", listaOpcionesPregunta);
         Jugador jugador = new Jugador("Lionel Messi");
         Respuesta respuestaJugador = new Respuesta(jugador);
@@ -40,6 +41,7 @@ public class JugadorTest {
         // Arrange
         ListaOpciones listaOpcionesPregunta = new ListaOpciones();
         listaOpcionesPregunta.agregarOpcion(new OpcionCorrecta("Verdadero"));
+        listaOpcionesPregunta.agregarOpcion(new OpcionIncorrecta("Falso"));
         Pregunta pregunta = VoF.conModoClasico("Argentina ganó mundial 2014", listaOpcionesPregunta);
         Jugador jugador = new Jugador("Lionel Messi");
         Respuesta respuestaJugador = new Respuesta(jugador);
@@ -112,6 +114,7 @@ public class JugadorTest {
         // Arrange
         ListaOpciones listaOpcionesPregunta = new ListaOpciones();
         listaOpcionesPregunta.agregarOpcion(new OpcionCorrecta("Verdadero"));
+        listaOpcionesPregunta.agregarOpcion(new OpcionIncorrecta("Falso"));
         Pregunta pregunta = VoF.conModoPenalidad("Argentina ganó mundial 2014", listaOpcionesPregunta);
         Jugador jugador = new Jugador("Lionel Messi");
         Respuesta respuestaJugador = new Respuesta(jugador);
@@ -132,6 +135,7 @@ public class JugadorTest {
         // Arrange
         ListaOpciones listaOpcionesPregunta = new ListaOpciones();
         listaOpcionesPregunta.agregarOpcion(new OpcionCorrecta("Verdadero"));
+        listaOpcionesPregunta.agregarOpcion(new OpcionIncorrecta("Falso"));
         Pregunta pregunta = VoF.conModoClasico("Argentina ganó mundial 2014", listaOpcionesPregunta);
         Jugador jugador = new Jugador("Lionel Messi");
         Respuesta respuestaJugador = new Respuesta(jugador);
