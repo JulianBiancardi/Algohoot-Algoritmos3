@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.controlador;
 
-import edu.fiuba.algo3.modelo.Jugador;
+import edu.fiuba.algo3.modelo.Entidades.Jugador;
 import edu.fiuba.algo3.vista.VistaJugador;
 import javafx.event.Event;
 import javafx.event.EventHandler;
@@ -18,6 +18,6 @@ public class ControladorJugador implements EventHandler {
 
     @Override
     public void handle(Event event) {
-        jugador.sumarPuntos(1);
+        jugador.modificarPuntos(1);
     }
 }

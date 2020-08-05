@@ -1,5 +1,6 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.Respuestas;
 
+import edu.fiuba.algo3.modelo.Entidades.Jugador;
 import edu.fiuba.algo3.modelo.Opciones.Grupo;
 import edu.fiuba.algo3.modelo.Opciones.OpcionGrupal;
 
