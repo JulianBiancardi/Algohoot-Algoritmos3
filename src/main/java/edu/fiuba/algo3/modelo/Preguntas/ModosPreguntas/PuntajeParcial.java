@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.modelo.Preguntas.ModosPreguntas;
 
-import edu.fiuba.algo3.modelo.Respuesta;
+import edu.fiuba.algo3.modelo.Respuestas.Respuesta;
 
 public class PuntajeParcial implements ModoPregunta {
     static final int PUNTAJE = 1;
@@ -11,6 +11,6 @@ public class PuntajeParcial implements ModoPregunta {
         int erroresJugador = respuestaJugador.cantidadOpcionesIncorrectas();
 
         if(erroresJugador == 0)
-            respuestaJugador.puntuarJugador(PUNTAJE * aciertosJugador);
+            respuestaJugador.modificarPuntos(PUNTAJE * aciertosJugador);
     }
 }

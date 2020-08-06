@@ -2,19 +2,21 @@ package edu.fiuba.algo3.modelo.Preguntas;
 
 import edu.fiuba.algo3.modelo.Opciones.ListaOpciones;
 import edu.fiuba.algo3.modelo.Preguntas.ModosPreguntas.ModoPregunta;
-import edu.fiuba.algo3.modelo.Respuesta;
+import edu.fiuba.algo3.modelo.Respuestas.Respuesta;
 
 import java.util.ArrayList;
 
-abstract class Pregunta {
+public abstract class Pregunta {
     protected String enunciado;
+    protected ListaOpciones opcionesPregunta;
     protected int cantidadOpcionesCorrectas;
     protected ModoPregunta modo;
 
     public Pregunta(String unEnunciado, ModoPregunta unModo, ListaOpciones opcionesPregunta) {
-        cantidadOpcionesCorrectas = opcionesPregunta.cantidadOpcionesCorrectas();
-        modo = unModo;
         enunciado = unEnunciado;
+        modo = unModo;
+        this.opcionesPregunta = opcionesPregunta;
+        cantidadOpcionesCorrectas = opcionesPregunta.cantidadOpcionesCorrectas();
     }
 
     public void evaluarRespuestas(ArrayList<Respuesta> respuestas) {

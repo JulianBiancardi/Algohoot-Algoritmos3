@@ -1,9 +1,11 @@
 package edu.fiuba.algo3.modelo.Opciones;
 
-public class OpcionCorrecta extends Opcion {
+public class OpcionCorrecta implements Opcion {
+
+    private String descripcion;
 
     public OpcionCorrecta(String unaDescripcion) {
-        super(unaDescripcion);
+        this.descripcion = unaDescripcion;
     }
 
     @Override

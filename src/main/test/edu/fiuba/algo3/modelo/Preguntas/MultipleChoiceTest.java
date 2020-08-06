@@ -1,28 +1,31 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.Preguntas;
 
+import edu.fiuba.algo3.modelo.Entidades.Jugador;
+import edu.fiuba.algo3.modelo.Entidades.Multiplicador;
+import edu.fiuba.algo3.modelo.Exepciones.ChoiceTieneEntreDosYCincoOpcionesError;
+import edu.fiuba.algo3.modelo.Exepciones.MultiplicadorCreadoConFactorInvalidoExcepcion;
 import edu.fiuba.algo3.modelo.Opciones.ListaOpciones;
 import edu.fiuba.algo3.modelo.Opciones.OpcionCorrecta;
 import edu.fiuba.algo3.modelo.Opciones.OpcionIncorrecta;
-import edu.fiuba.algo3.modelo.Preguntas.ModosPreguntas.Clasico;
-import edu.fiuba.algo3.modelo.Preguntas.ModosPreguntas.ConPenalidad;
-import edu.fiuba.algo3.modelo.Preguntas.ModosPreguntas.PuntajeParcial;
 import edu.fiuba.algo3.modelo.Preguntas.MultipleChoice;
+import edu.fiuba.algo3.modelo.Respuestas.Respuesta;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class MultipleChoiceTest {
 
     @Test
-    public void test01SeCreaUnaPreguntaChoiceConPuntajeParcialConUnaRespuestaCorrectaYFalla() {
+    public void test01SeCreaUnaPreguntaChoiceConPuntajeParcialConUnaRespuestaCorrectaYErra() {
         ListaOpciones listaOpcionesPregunta = new ListaOpciones();
         listaOpcionesPregunta.agregarOpcion(new OpcionCorrecta("Argentina"));
         listaOpcionesPregunta.agregarOpcion(new OpcionIncorrecta("China"));
         listaOpcionesPregunta.agregarOpcion(new OpcionIncorrecta("Egipto"));
         listaOpcionesPregunta.agregarOpcion(new OpcionIncorrecta("Rusia"));
-        MultipleChoice pregunta = new MultipleChoice("Paises de América Latina", new PuntajeParcial(), listaOpcionesPregunta);
+        MultipleChoice pregunta = MultipleChoice.conModoPuntajeParcial("Paises de América Latina", listaOpcionesPregunta);
         Jugador jugador = new Jugador("LeoProgramador");
         Respuesta respuestaJugador = new Respuesta(jugador);
 
@@ -42,7 +45,7 @@ public class MultipleChoiceTest {
         listaOpcionesPregunta.agregarOpcion(new OpcionIncorrecta("China"));
         listaOpcionesPregunta.agregarOpcion(new OpcionIncorrecta("Egipto"));
         listaOpcionesPregunta.agregarOpcion(new OpcionIncorrecta("Rusia"));
-        MultipleChoice pregunta = new MultipleChoice("Paises de América Latina", new PuntajeParcial(), listaOpcionesPregunta);
+        MultipleChoice pregunta = MultipleChoice.conModoPuntajeParcial("Paises de América Latina", listaOpcionesPregunta);
         Jugador jugador = new Jugador("LeoProgramador");
         Respuesta respuestaJugador = new Respuesta(jugador);
 
@@ -61,7 +64,7 @@ public class MultipleChoiceTest {
         listaOpcionesPregunta.agregarOpcion(new OpcionIncorrecta("China"));
         listaOpcionesPregunta.agregarOpcion(new OpcionCorrecta("Brasil"));
         listaOpcionesPregunta.agregarOpcion(new OpcionCorrecta("Chile"));
-        MultipleChoice pregunta = new MultipleChoice("Paises de América Latina", new PuntajeParcial(), listaOpcionesPregunta);
+        MultipleChoice pregunta = MultipleChoice.conModoPuntajeParcial("Paises de América Latina", listaOpcionesPregunta);
         Jugador jugador = new Jugador("LeoProgramador");
         Respuesta respuestaJugador = new Respuesta(jugador);
 
@@ -82,7 +85,7 @@ public class MultipleChoiceTest {
         listaOpcionesPregunta.agregarOpcion(new OpcionIncorrecta("China"));
         listaOpcionesPregunta.agregarOpcion(new OpcionCorrecta("Brasil"));
         listaOpcionesPregunta.agregarOpcion(new OpcionCorrecta("Chile"));
-        MultipleChoice pregunta = new MultipleChoice("Paises de América Latina", new PuntajeParcial(), listaOpcionesPregunta);
+        MultipleChoice pregunta = MultipleChoice.conModoPuntajeParcial("Paises de América Latina", listaOpcionesPregunta);
         Jugador jugador = new Jugador("LeoProgramador");
         Respuesta respuestaJugador = new Respuesta(jugador);
 
@@ -103,7 +106,7 @@ public class MultipleChoiceTest {
         listaOpcionesPregunta.agregarOpcion(new OpcionIncorrecta("China"));
         listaOpcionesPregunta.agregarOpcion(new OpcionIncorrecta("Egipto"));
         listaOpcionesPregunta.agregarOpcion(new OpcionIncorrecta("Rusia"));
-        MultipleChoice pregunta = new MultipleChoice("Paises de América Latina", new PuntajeParcial(), listaOpcionesPregunta);
+        MultipleChoice pregunta = MultipleChoice.conModoPuntajeParcial("Paises de América Latina", listaOpcionesPregunta);
         Jugador jugador1 = new Jugador("LeoProgramador");
         Jugador jugador2 = new Jugador("Joaco");
         Respuesta respuestaJugador1 = new Respuesta(jugador1);
@@ -129,7 +132,7 @@ public class MultipleChoiceTest {
         listaOpcionesPregunta.agregarOpcion(new OpcionCorrecta("Argentina"));
         listaOpcionesPregunta.agregarOpcion(new OpcionIncorrecta("Egipto"));
         listaOpcionesPregunta.agregarOpcion(new OpcionIncorrecta("Rusia"));
-        MultipleChoice pregunta = new MultipleChoice("Paises de América Latina", new PuntajeParcial(), listaOpcionesPregunta);
+        MultipleChoice pregunta = MultipleChoice.conModoPuntajeParcial("Paises de América Latina", listaOpcionesPregunta);
         Jugador jugador1 = new Jugador("LeoProgramador");
         Jugador jugador2 = new Jugador("Joaco");
         Respuesta respuestaJugador1 = new Respuesta(jugador1);
@@ -153,7 +156,7 @@ public class MultipleChoiceTest {
         listaOpcionesPregunta.agregarOpcion(new OpcionIncorrecta("España"));
         listaOpcionesPregunta.agregarOpcion(new OpcionCorrecta("Colombia"));
         listaOpcionesPregunta.agregarOpcion(new OpcionIncorrecta("Rusia"));
-        MultipleChoice pregunta = new MultipleChoice("Paises de América Latina", new PuntajeParcial(), listaOpcionesPregunta);
+        MultipleChoice pregunta = MultipleChoice.conModoPuntajeParcial("Paises de América Latina", listaOpcionesPregunta);
         Jugador jugador1 = new Jugador("LeoProgramador");
         Jugador jugador2 = new Jugador("Joaco");
         Respuesta respuestaJugador1 = new Respuesta(jugador1);
@@ -177,7 +180,7 @@ public class MultipleChoiceTest {
         listaOpcionesPregunta.agregarOpcion(new OpcionIncorrecta("España"));
         listaOpcionesPregunta.agregarOpcion(new OpcionCorrecta("Colombia"));
         listaOpcionesPregunta.agregarOpcion(new OpcionIncorrecta("Rusia"));
-        MultipleChoice pregunta = new MultipleChoice("Paises de América Latina", new ConPenalidad(), listaOpcionesPregunta);
+        MultipleChoice pregunta = MultipleChoice.conModoPenalidad("Paises de América Latina", listaOpcionesPregunta);
         Jugador jugador = new Jugador("LeoProgramador");
         Respuesta respuestaJugador = new Respuesta(jugador);
 
@@ -197,7 +200,7 @@ public class MultipleChoiceTest {
         listaOpcionesPregunta.agregarOpcion(new OpcionCorrecta("Uruguay"));
         listaOpcionesPregunta.agregarOpcion(new OpcionIncorrecta("Egipto"));
         listaOpcionesPregunta.agregarOpcion(new OpcionIncorrecta("Rusia"));
-        MultipleChoice pregunta = new MultipleChoice("Paises de América Latina", new ConPenalidad(), listaOpcionesPregunta);
+        MultipleChoice pregunta = MultipleChoice.conModoPenalidad("Paises de América Latina", listaOpcionesPregunta);
         Jugador jugador = new Jugador("LeoProgramador");
         Respuesta respuestaJugador = new Respuesta(jugador);
 
@@ -216,7 +219,7 @@ public class MultipleChoiceTest {
         listaOpcionesPregunta.agregarOpcion(new OpcionCorrecta("Uruguay"));
         listaOpcionesPregunta.agregarOpcion(new OpcionIncorrecta("Egipto"));
         listaOpcionesPregunta.agregarOpcion(new OpcionCorrecta("Venezuela"));
-        MultipleChoice pregunta = new MultipleChoice("Paises de América Latina", new ConPenalidad(), listaOpcionesPregunta);
+        MultipleChoice pregunta = MultipleChoice.conModoPenalidad("Paises de América Latina", listaOpcionesPregunta);
         Jugador jugador = new Jugador("LeoProgramador");
         Respuesta respuestaJugador = new Respuesta(jugador);
 
@@ -236,7 +239,7 @@ public class MultipleChoiceTest {
         listaOpcionesPregunta.agregarOpcion(new OpcionCorrecta("Uruguay"));
         listaOpcionesPregunta.agregarOpcion(new OpcionIncorrecta("Egipto"));
         listaOpcionesPregunta.agregarOpcion(new OpcionCorrecta("Venezuela"));
-        MultipleChoice pregunta = new MultipleChoice("Paises de América Latina", new ConPenalidad(), listaOpcionesPregunta);
+        MultipleChoice pregunta = MultipleChoice.conModoPenalidad("Paises de América Latina", listaOpcionesPregunta);
         Jugador jugador = new Jugador("LeoProgramador");
         Respuesta respuestaJugador = new Respuesta(jugador);
 
@@ -256,7 +259,7 @@ public class MultipleChoiceTest {
         listaOpcionesPregunta.agregarOpcion(new OpcionCorrecta("Uruguay"));
         listaOpcionesPregunta.agregarOpcion(new OpcionCorrecta("Perú"));
         listaOpcionesPregunta.agregarOpcion(new OpcionCorrecta("Venezuela"));
-        MultipleChoice pregunta = new MultipleChoice("Paises de América Latina", new ConPenalidad(), listaOpcionesPregunta);
+        MultipleChoice pregunta = MultipleChoice.conModoPenalidad("Paises de América Latina", listaOpcionesPregunta);
         Jugador jugador = new Jugador("LeoProgramador");
         Respuesta respuestaJugador = new Respuesta(jugador);
 
@@ -278,7 +281,7 @@ public class MultipleChoiceTest {
         listaOpcionesPregunta.agregarOpcion(new OpcionCorrecta("Perú"));
         listaOpcionesPregunta.agregarOpcion(new OpcionIncorrecta("Alemania"));
         listaOpcionesPregunta.agregarOpcion(new OpcionIncorrecta("Australia"));
-        MultipleChoice pregunta = new MultipleChoice("Paises de América Latina", new ConPenalidad(), listaOpcionesPregunta);
+        MultipleChoice pregunta = MultipleChoice.conModoPenalidad("Paises de América Latina", listaOpcionesPregunta);
         Jugador jugador = new Jugador("LeoProgramador");
         Respuesta respuestaJugador = new Respuesta(jugador);
 
@@ -299,7 +302,7 @@ public class MultipleChoiceTest {
         listaOpcionesPregunta.agregarOpcion(new OpcionCorrecta("Uruguay"));
         listaOpcionesPregunta.agregarOpcion(new OpcionCorrecta("Perú"));
         listaOpcionesPregunta.agregarOpcion(new OpcionCorrecta("Venezuela"));
-        MultipleChoice pregunta = new MultipleChoice("Paises de América Latina", new ConPenalidad(), listaOpcionesPregunta);
+        MultipleChoice pregunta = MultipleChoice.conModoPenalidad("Paises de América Latina", listaOpcionesPregunta);
         Jugador jugador = new Jugador("LeoProgramador");
         Respuesta respuestaJugador = new Respuesta(jugador);
 
@@ -313,13 +316,13 @@ public class MultipleChoiceTest {
     }
 
     @Test
-    public void test15PreguntaChoiceConPenalidadRecibeUnaListaDeRespuestasTodasIncorrectasYAmbosPierdenPuntos(){
+    public void test15ConPenalidadRecibeUnaListaDeRespuestasTodasIncorrectasYAmbosPierdenPuntos(){
         ListaOpciones listaOpcionesPregunta = new ListaOpciones();
         listaOpcionesPregunta.agregarOpcion(new OpcionIncorrecta("Portugal"));
         listaOpcionesPregunta.agregarOpcion(new OpcionCorrecta("Bolivia"));
         listaOpcionesPregunta.agregarOpcion(new OpcionIncorrecta("Egipto"));
         listaOpcionesPregunta.agregarOpcion(new OpcionIncorrecta("Rusia"));
-        MultipleChoice pregunta = new MultipleChoice("Paises de América Latina", new ConPenalidad(), listaOpcionesPregunta);
+        MultipleChoice pregunta = MultipleChoice.conModoPenalidad("Paises de América Latina", listaOpcionesPregunta);
         Jugador jugador1 = new Jugador("LeoProgramador");
         Jugador jugador2 = new Jugador("Joaco");
         Respuesta respuestaJugador1 = new Respuesta(jugador1);
@@ -339,13 +342,13 @@ public class MultipleChoiceTest {
     }
 
     @Test
-    public void test16PreguntaChoiceConPenalidadRecibeUnaListaDeRespuestasTodasCorrectasYAmbosSumanPuntos(){
+    public void test16ConPenalidadRecibeUnaListaDeRespuestasTodasCorrectasYAmbosSumanPuntos(){
         ListaOpciones listaOpcionesPregunta = new ListaOpciones();
         listaOpcionesPregunta.agregarOpcion(new OpcionCorrecta("Paraguay"));
         listaOpcionesPregunta.agregarOpcion(new OpcionIncorrecta("Dinamarca"));
         listaOpcionesPregunta.agregarOpcion(new OpcionCorrecta("Perú"));
         listaOpcionesPregunta.agregarOpcion(new OpcionCorrecta("Venezuela"));
-        MultipleChoice pregunta = new MultipleChoice("Paises de América Latina", new ConPenalidad(), listaOpcionesPregunta);
+        MultipleChoice pregunta = MultipleChoice.conModoPenalidad("Paises de América Latina", listaOpcionesPregunta);
         Jugador jugador1 = new Jugador("LeoProgramador");
         Jugador jugador2 = new Jugador("Joaco");
         Respuesta respuestaJugador1 = new Respuesta(jugador1);
@@ -364,13 +367,13 @@ public class MultipleChoiceTest {
     }
 
     @Test
-    public void test17RecibeUnaListaDeRespuestasDistintasYElQueRespondioBienSumaPuntos(){
+    public void test17ConPenalidadRecibeUnaListaDeRespuestasDistintasYElQueRespondioBienSumaPuntos(){
         ListaOpciones listaOpcionesPregunta = new ListaOpciones();
         listaOpcionesPregunta.agregarOpcion(new OpcionCorrecta("Argentina"));
         listaOpcionesPregunta.agregarOpcion(new OpcionIncorrecta("Japon"));
         listaOpcionesPregunta.agregarOpcion(new OpcionCorrecta("Perú"));
         listaOpcionesPregunta.agregarOpcion(new OpcionIncorrecta("Australia"));
-        MultipleChoice pregunta = new MultipleChoice("Paises de América Latina", new ConPenalidad(), listaOpcionesPregunta);
+        MultipleChoice pregunta = MultipleChoice.conModoPenalidad("Paises de América Latina", listaOpcionesPregunta);
         Jugador jugador1 = new Jugador("LeoProgramador");
         Jugador jugador2 = new Jugador("Joaco");
         Respuesta respuestaJugador1 = new Respuesta(jugador1);
@@ -396,7 +399,7 @@ public class MultipleChoiceTest {
         listaOpcionesPregunta.agregarOpcion(new OpcionCorrecta("Chile"));
         listaOpcionesPregunta.agregarOpcion(new OpcionIncorrecta("Italia"));
         listaOpcionesPregunta.agregarOpcion(new OpcionIncorrecta("Rumania"));
-        MultipleChoice pregunta = new MultipleChoice("Paises de América Latina", new Clasico(), listaOpcionesPregunta);
+        MultipleChoice pregunta = MultipleChoice.conModoClasico("Paises de América Latina", listaOpcionesPregunta);
         Jugador jugador = new Jugador("LeoProgramador");
         Respuesta respuestaJugador = new Respuesta(jugador);
 
@@ -415,7 +418,7 @@ public class MultipleChoiceTest {
         listaOpcionesPregunta.agregarOpcion(new OpcionIncorrecta("Egipto"));
         listaOpcionesPregunta.agregarOpcion(new OpcionIncorrecta("Suiza"));
         listaOpcionesPregunta.agregarOpcion(new OpcionCorrecta("Bolivia"));
-        MultipleChoice pregunta = new MultipleChoice("Paises de América Latina", new Clasico(), listaOpcionesPregunta);
+        MultipleChoice pregunta = MultipleChoice.conModoClasico("Paises de América Latina", listaOpcionesPregunta);
         Jugador jugador = new Jugador("LeoProgramador");
         Respuesta respuestaJugador = new Respuesta(jugador);
 
@@ -434,7 +437,7 @@ public class MultipleChoiceTest {
         listaOpcionesPregunta.agregarOpcion(new OpcionIncorrecta("Egipto"));
         listaOpcionesPregunta.agregarOpcion(new OpcionIncorrecta("Suiza"));
         listaOpcionesPregunta.agregarOpcion(new OpcionCorrecta("Bolivia"));
-        MultipleChoice pregunta = new MultipleChoice("Paises de América Latina", new Clasico(), listaOpcionesPregunta);
+        MultipleChoice pregunta = MultipleChoice.conModoClasico("Paises de América Latina", listaOpcionesPregunta);
         Jugador jugador = new Jugador("LeoProgramador");
         Respuesta respuestaJugador = new Respuesta(jugador);
 
@@ -454,7 +457,7 @@ public class MultipleChoiceTest {
         listaOpcionesPregunta.agregarOpcion(new OpcionIncorrecta("Egipto"));
         listaOpcionesPregunta.agregarOpcion(new OpcionIncorrecta("Suiza"));
         listaOpcionesPregunta.agregarOpcion(new OpcionCorrecta("Bolivia"));
-        MultipleChoice pregunta = new MultipleChoice("Paises de América Latina", new Clasico(), listaOpcionesPregunta);
+        MultipleChoice pregunta = MultipleChoice.conModoClasico("Paises de América Latina", listaOpcionesPregunta);
         Jugador jugador = new Jugador("LeoProgramador");
         Respuesta respuestaJugador = new Respuesta(jugador);
 
@@ -475,7 +478,7 @@ public class MultipleChoiceTest {
         listaOpcionesPregunta.agregarOpcion(new OpcionIncorrecta("China"));
         listaOpcionesPregunta.agregarOpcion(new OpcionIncorrecta("Malasia"));
         listaOpcionesPregunta.agregarOpcion(new OpcionCorrecta("Costa Rica"));
-        MultipleChoice pregunta = new MultipleChoice("Paises de América Latina", new Clasico(), listaOpcionesPregunta);
+        MultipleChoice pregunta = MultipleChoice.conModoClasico("Paises de América Latina", listaOpcionesPregunta);
         Jugador jugador = new Jugador("LeoProgramador");
         Respuesta respuestaJugador = new Respuesta(jugador);
 
@@ -495,7 +498,7 @@ public class MultipleChoiceTest {
         listaOpcionesPregunta.agregarOpcion(new OpcionIncorrecta("China"));
         listaOpcionesPregunta.agregarOpcion(new OpcionIncorrecta("Malasia"));
         listaOpcionesPregunta.agregarOpcion(new OpcionCorrecta("Costa Rica"));
-        MultipleChoice pregunta = new MultipleChoice("Paises de América Latina", new Clasico(), listaOpcionesPregunta);
+        MultipleChoice pregunta = MultipleChoice.conModoClasico("Paises de América Latina", listaOpcionesPregunta);
         Jugador jugador = new Jugador("LeoProgramador");
         Respuesta respuestaJugador = new Respuesta(jugador);
 
@@ -508,13 +511,13 @@ public class MultipleChoiceTest {
     }
 
     @Test
-    public void test24SeCreaUnaPreguntaChoiceConPuntajePacialConDosRespuestaCorrectaYAciertaDosPeroFallaUna() {
+    public void test24SeCreaUnaPreguntaChoiceClasicoConDosRespuestaCorrectaYAciertaDosPeroFallaUna() {
         ListaOpciones listaOpcionesPregunta = new ListaOpciones();
         listaOpcionesPregunta.agregarOpcion(new OpcionCorrecta("Ecuador"));
         listaOpcionesPregunta.agregarOpcion(new OpcionIncorrecta("China"));
         listaOpcionesPregunta.agregarOpcion(new OpcionIncorrecta("Malasia"));
         listaOpcionesPregunta.agregarOpcion(new OpcionCorrecta("Costa Rica"));
-        MultipleChoice pregunta = new MultipleChoice("Paises de América Latina", new Clasico(), listaOpcionesPregunta);
+        MultipleChoice pregunta = MultipleChoice.conModoClasico("Paises de América Latina", listaOpcionesPregunta);
         Jugador jugador = new Jugador("LeoProgramador");
         Respuesta respuestaJugador = new Respuesta(jugador);
 
@@ -535,7 +538,7 @@ public class MultipleChoiceTest {
         listaOpcionesPregunta.agregarOpcion(new OpcionCorrecta("Argentina"));
         listaOpcionesPregunta.agregarOpcion(new OpcionCorrecta("Brasil"));
         listaOpcionesPregunta.agregarOpcion(new OpcionCorrecta("Puerto Rico"));
-        MultipleChoice pregunta = new MultipleChoice("Paises de América Latina", new Clasico(), listaOpcionesPregunta);
+        MultipleChoice pregunta = MultipleChoice.conModoClasico("Paises de América Latina", listaOpcionesPregunta);
         Jugador jugador = new Jugador("LeoProgramador");
         Respuesta respuestaJugador = new Respuesta(jugador);
 
@@ -556,7 +559,7 @@ public class MultipleChoiceTest {
         listaOpcionesPregunta.agregarOpcion(new OpcionCorrecta("Argentina"));
         listaOpcionesPregunta.agregarOpcion(new OpcionCorrecta("Brasil"));
         listaOpcionesPregunta.agregarOpcion(new OpcionCorrecta("Puerto Rico"));
-        MultipleChoice pregunta = new MultipleChoice("Paises de América Latina", new Clasico(), listaOpcionesPregunta);
+        MultipleChoice pregunta = MultipleChoice.conModoClasico("Paises de América Latina", listaOpcionesPregunta);
         Jugador jugador = new Jugador("LeoProgramador");
         Respuesta respuestaJugador = new Respuesta(jugador);
 
@@ -575,7 +578,7 @@ public class MultipleChoiceTest {
         listaOpcionesPregunta.agregarOpcion(new OpcionCorrecta("Argentina"));
         listaOpcionesPregunta.agregarOpcion(new OpcionCorrecta("Brasil"));
         listaOpcionesPregunta.agregarOpcion(new OpcionCorrecta("Puerto Rico"));
-        MultipleChoice pregunta = new MultipleChoice("Paises de América Latina", new Clasico(), listaOpcionesPregunta);
+        MultipleChoice pregunta = MultipleChoice.conModoClasico("Paises de América Latina", listaOpcionesPregunta);
         Jugador jugador = new Jugador("LeoProgramador");
         Respuesta respuestaJugador = new Respuesta(jugador);
 
@@ -597,7 +600,7 @@ public class MultipleChoiceTest {
         listaOpcionesPregunta.agregarOpcion(new OpcionCorrecta("Argentina"));
         listaOpcionesPregunta.agregarOpcion(new OpcionCorrecta("Brasil"));
         listaOpcionesPregunta.agregarOpcion(new OpcionCorrecta("Puerto Rico"));
-        MultipleChoice pregunta = new MultipleChoice("Paises de América Latina", new Clasico(), listaOpcionesPregunta);
+        MultipleChoice pregunta = MultipleChoice.conModoClasico("Paises de América Latina", listaOpcionesPregunta);
         Jugador jugador = new Jugador("LeoProgramador");
         Respuesta respuestaJugador = new Respuesta(jugador);
 
@@ -611,13 +614,13 @@ public class MultipleChoiceTest {
     }
 
     @Test
-    public void test29PreguntaChoiseClasicoRecibeUnaListaDeRespuestasTodasIncorrectasYAmbosFallan(){
+    public void test29ClasicoRecibeUnaListaDeRespuestasTodasIncorrectasYAmbosFallan(){
         ListaOpciones listaOpcionesPregunta = new ListaOpciones();
         listaOpcionesPregunta.agregarOpcion(new OpcionIncorrecta("Portugal"));
         listaOpcionesPregunta.agregarOpcion(new OpcionCorrecta("Bolivia"));
         listaOpcionesPregunta.agregarOpcion(new OpcionIncorrecta("Egipto"));
         listaOpcionesPregunta.agregarOpcion(new OpcionIncorrecta("Rusia"));
-        MultipleChoice pregunta = new MultipleChoice("Paises de América Latina", new Clasico(), listaOpcionesPregunta);
+        MultipleChoice pregunta = MultipleChoice.conModoClasico("Paises de América Latina", listaOpcionesPregunta);
         Jugador jugador1 = new Jugador("LeoProgramador");
         Jugador jugador2 = new Jugador("Joaco");
         Respuesta respuestaJugador1 = new Respuesta(jugador1);
@@ -637,13 +640,13 @@ public class MultipleChoiceTest {
     }
 
     @Test
-    public void test30PreguntaChoiseClasicaRecibeUnaListaDeRespuestasTodasCorrectasYAmbosAciertan(){
+    public void test30ClasicaRecibeUnaListaDeRespuestasTodasCorrectasYAmbosAciertan(){
         ListaOpciones listaOpcionesPregunta = new ListaOpciones();
         listaOpcionesPregunta.agregarOpcion(new OpcionCorrecta("Paraguay"));
         listaOpcionesPregunta.agregarOpcion(new OpcionIncorrecta("Dinamarca"));
         listaOpcionesPregunta.agregarOpcion(new OpcionCorrecta("Perú"));
         listaOpcionesPregunta.agregarOpcion(new OpcionCorrecta("Venezuela"));
-        MultipleChoice pregunta = new MultipleChoice("Paises de América Latina", new Clasico(), listaOpcionesPregunta);
+        MultipleChoice pregunta = MultipleChoice.conModoClasico("Paises de América Latina", listaOpcionesPregunta);
         Jugador jugador1 = new Jugador("LeoProgramador");
         Jugador jugador2 = new Jugador("Joaco");
         Respuesta respuestaJugador1 = new Respuesta(jugador1);
@@ -665,13 +668,13 @@ public class MultipleChoiceTest {
     }
 
     @Test
-    public void test31PreguntaChoiseClasicaRecibeUnaListaDeRespuestasDistintasYElQueRespondioBienSumaPuntos(){
+    public void test31ClasicaRecibeUnaListaDeRespuestasDistintasYElQueRespondioBienSumaPuntos(){
         ListaOpciones listaOpcionesPregunta = new ListaOpciones();
         listaOpcionesPregunta.agregarOpcion(new OpcionCorrecta("Argentina"));
         listaOpcionesPregunta.agregarOpcion(new OpcionIncorrecta("Japon"));
         listaOpcionesPregunta.agregarOpcion(new OpcionCorrecta("Perú"));
         listaOpcionesPregunta.agregarOpcion(new OpcionIncorrecta("Australia"));
-        MultipleChoice pregunta = new MultipleChoice("Paises de América Latina", new Clasico(), listaOpcionesPregunta);
+        MultipleChoice pregunta = MultipleChoice.conModoClasico("Paises de América Latina", listaOpcionesPregunta);
         Jugador jugador1 = new Jugador("LeoProgramador");
         Jugador jugador2 = new Jugador("Joaco");
         Respuesta respuestaJugador1 = new Respuesta(jugador1);
@@ -688,5 +691,42 @@ public class MultipleChoiceTest {
         pregunta.evaluarRespuestas(respuestas);
         assertEquals(1, jugador1.puntos());
         assertEquals(0, jugador2.puntos());
+    }
+
+    @Test
+    public void test32SeCreaUnaPreguntaChoiceConPuntajeParcialConUnaOpcionYLanzaExcepcion() {
+        ListaOpciones listaOpcionesPregunta = new ListaOpciones();
+        listaOpcionesPregunta.agregarOpcion(new OpcionCorrecta("Argentina"));
+
+        assertThrows(ChoiceTieneEntreDosYCincoOpcionesError.class,
+                () -> {
+                    MultipleChoice.conModoPuntajeParcial("Paises de América Latina", listaOpcionesPregunta);
+                });
+    }
+
+    @Test
+    public void test33SeCreaUnaPreguntaChoiceConPenalidadConSeisOpcionesYLanzaExcepcion() {
+        ListaOpciones listaOpcionesPregunta = new ListaOpciones();
+        listaOpcionesPregunta.agregarOpcion(new OpcionIncorrecta("Japon"));
+        listaOpcionesPregunta.agregarOpcion(new OpcionIncorrecta("España"));
+        listaOpcionesPregunta.agregarOpcion(new OpcionCorrecta("Colombia"));
+        listaOpcionesPregunta.agregarOpcion(new OpcionIncorrecta("Rusia"));
+        listaOpcionesPregunta.agregarOpcion(new OpcionCorrecta("Guatemala"));
+        listaOpcionesPregunta.agregarOpcion(new OpcionIncorrecta("Australia"));
+
+        assertThrows(ChoiceTieneEntreDosYCincoOpcionesError.class,
+                () -> {
+                    MultipleChoice.conModoPenalidad("Paises de América Latina", listaOpcionesPregunta);
+                });
+    }
+
+    @Test
+    public void test34SeCreaUnaPreguntaChoiceClasicoConNingunaOpcionYLanzaExcepcion() {
+        ListaOpciones listaOpcionesPregunta = new ListaOpciones();
+
+        assertThrows(ChoiceTieneEntreDosYCincoOpcionesError.class,
+                () -> {
+                    MultipleChoice.conModoClasico("Paises de América Latina", listaOpcionesPregunta);
+                });
     }
 }

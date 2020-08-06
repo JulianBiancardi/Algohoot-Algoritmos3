@@ -1,8 +1,8 @@
 package edu.fiuba.algo3.modelo.Preguntas.ModosPreguntas;
 
-import edu.fiuba.algo3.modelo.Respuesta;
+import edu.fiuba.algo3.modelo.Respuestas.Respuesta;
 
-public class ConPenalidad implements ModoPregunta {
+public class Penalidad implements ModoPregunta {
     static final int PUNTAJE = 1;
 
     @Override
@@ -10,7 +10,7 @@ public class ConPenalidad implements ModoPregunta {
         int aciertosJugador = respuestaJugador.cantidadOpcionesCorrectas();
         int erroresJugador = respuestaJugador.cantidadOpcionesIncorrectas();
 
-        respuestaJugador.puntuarJugador(PUNTAJE * aciertosJugador);
-        respuestaJugador.penalizarJugador(PUNTAJE * erroresJugador);
+        respuestaJugador.modificarPuntosBonificadamente( PUNTAJE * aciertosJugador);
+        respuestaJugador.modificarPuntosBonificadamente(-1 * PUNTAJE * erroresJugador);
     }
 }
