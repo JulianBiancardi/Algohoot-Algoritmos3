@@ -1,10 +1,9 @@
 package edu.fiuba.algo3.modelo.Preguntas;
 
 import edu.fiuba.algo3.modelo.Entidades.Jugador;
-import edu.fiuba.algo3.modelo.Opciones.ListaOpciones;
 import edu.fiuba.algo3.modelo.Opciones.OpcionOrdenada;
-import edu.fiuba.algo3.modelo.Preguntas.OrderedChoice;
 import edu.fiuba.algo3.modelo.Respuestas.Respuesta;
+import edu.fiuba.algo3.modelo.Respuestas.RespuestaOrdenada;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -12,6 +11,7 @@ import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class OrderedChoiceTest {
+    /*
     ListaOpciones listaOpcionesPregunta = new ListaOpciones();
 
     private OpcionOrdenada opcion1 = new OpcionOrdenada("Uno",1);
@@ -166,4 +166,50 @@ public class OrderedChoiceTest {
         pregunta.evaluarRespuestas(respuestas);
         assertEquals(1, jugador.puntos());
     }
+    */
+    @Test
+    public void test08(){
+
+        OrderedChoice pregunta = new OrderedChoice("Ordenar");
+        pregunta.agregarOpcion(new OpcionOrdenada("2"));
+        pregunta.agregarOpcion(new OpcionOrdenada("3"));
+        pregunta.agregarOpcion(new OpcionOrdenada("4"));
+        pregunta.agregarOpcion(new OpcionOrdenada("5"));
+        Jugador jugador = new Jugador("LeoProgramador");
+        RespuestaOrdenada respuestaJugador = new RespuestaOrdenada(jugador);
+
+        respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(0));
+        respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(1));
+        respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(2));
+        respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(3));
+        ArrayList<Respuesta> respuestas = new ArrayList<Respuesta>();
+        respuestas.add(respuestaJugador);
+
+        pregunta.evaluarRespuestas(respuestas);
+        assertEquals(1, jugador.puntos());
+    }
+
+    @Test
+    public void test09(){
+
+        OrderedChoice pregunta = new OrderedChoice("Ordenar");
+        pregunta.agregarOpcion(new OpcionOrdenada("2"));
+        pregunta.agregarOpcion(new OpcionOrdenada("3"));
+        pregunta.agregarOpcion(new OpcionOrdenada("4"));
+        pregunta.agregarOpcion(new OpcionOrdenada("5"));
+        Jugador jugador = new Jugador("LeoProgramador");
+        RespuestaOrdenada respuestaJugador = new RespuestaOrdenada(jugador);
+
+        respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(0));
+        respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(2));
+        respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(1));
+        respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(3));
+        ArrayList<Respuesta> respuestas = new ArrayList<Respuesta>();
+        respuestas.add(respuestaJugador);
+
+        pregunta.evaluarRespuestas(respuestas);
+        assertEquals(0, jugador.puntos());
+    }
+
+    //jugador.crearRespuesta(pregunta);
 }

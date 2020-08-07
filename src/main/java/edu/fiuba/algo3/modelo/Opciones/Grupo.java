@@ -1,20 +1,24 @@
 package edu.fiuba.algo3.modelo.Opciones;
 
+import java.util.ArrayList;
+
 public class Grupo {
     private String nombre;
-    private ListaOpciones opciones;
+    private ArrayList<OpcionGrupal> opciones = new ArrayList<>();
 
     public Grupo(String nombre){
         this.nombre = nombre;
-        opciones = new ListaOpciones();
     }
 
     public void agregarOpcionGrupo(OpcionGrupal opcion){
         opcion.setGrupoActual(nombre);
-        opciones.agregarOpcion(opcion);
+        opciones.add(opcion);
     }
 
     public int cantidadOpcionesCorrectas(){
-        return opciones.cantidadOpcionesCorrectas();
+        for(OpcionGrupal opcion: opciones){
+            opcion.setGrupoActual(nombre);
+        }
+        return (int) opciones.stream().filter(opcion -> opcion.esCorrecta()).count();
     }
 }

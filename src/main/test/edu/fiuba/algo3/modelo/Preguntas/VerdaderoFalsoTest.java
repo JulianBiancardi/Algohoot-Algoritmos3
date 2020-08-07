@@ -1,13 +1,7 @@
 package edu.fiuba.algo3.modelo.Preguntas;
 
 import edu.fiuba.algo3.modelo.Entidades.Jugador;
-import edu.fiuba.algo3.modelo.Entidades.Multiplicador;
-import edu.fiuba.algo3.modelo.Exepciones.MultiplicadorCreadoConFactorInvalidoExcepcion;
-import edu.fiuba.algo3.modelo.Exepciones.VoFSoloTieneDosOpcionesError;
-import edu.fiuba.algo3.modelo.Opciones.ListaOpciones;
-import edu.fiuba.algo3.modelo.Opciones.OpcionCorrecta;
-import edu.fiuba.algo3.modelo.Opciones.OpcionIncorrecta;
-import edu.fiuba.algo3.modelo.Preguntas.VoF;
+import edu.fiuba.algo3.modelo.Opciones.OpcionBinaria;
 import edu.fiuba.algo3.modelo.Respuestas.Respuesta;
 import org.junit.jupiter.api.Test;
 
@@ -17,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class VerdaderoFalsoTest {
-
+    /*
     @Test
     public void test01SeCreaUnaPreguntaVoFClasicoConRespuestaFalseErraYEvaluaCorrectamente() {
         ListaOpciones listaOpcionesPregunta = new ListaOpciones();
@@ -240,6 +234,23 @@ public class VerdaderoFalsoTest {
                 () -> {
                     VoF.conModoPenalidad("¿2 + 2 = 4?", listaOpcionesPregunta);
                 });
+    }
+
+     */
+
+    @Test
+    public void test01() {
+        VoF pregunta = VoF.conModoClasico("Hola?");
+        pregunta.agregarOpcion(new OpcionBinaria("Verdadero", true));
+        pregunta.agregarOpcion(new OpcionBinaria("Falso", false));
+        Jugador jugador = new Jugador("LeoProgramador");
+        Respuesta respuesta = new Respuesta(jugador);
+        respuesta.agregarOpcion(pregunta.obtenerOpcion(0));
+        ArrayList<Respuesta> respuestas = new ArrayList<Respuesta>();
+        respuestas.add(respuesta);
+
+        pregunta.evaluarRespuestas(respuestas);
+        assertEquals(1, jugador.puntos());
     }
 
 }

@@ -1,13 +1,7 @@
 package edu.fiuba.algo3.modelo.Preguntas;
 
 import edu.fiuba.algo3.modelo.Entidades.Jugador;
-import edu.fiuba.algo3.modelo.Entidades.Multiplicador;
-import edu.fiuba.algo3.modelo.Exepciones.ChoiceTieneEntreDosYCincoOpcionesError;
-import edu.fiuba.algo3.modelo.Exepciones.MultiplicadorCreadoConFactorInvalidoExcepcion;
-import edu.fiuba.algo3.modelo.Opciones.ListaOpciones;
-import edu.fiuba.algo3.modelo.Opciones.OpcionCorrecta;
-import edu.fiuba.algo3.modelo.Opciones.OpcionIncorrecta;
-import edu.fiuba.algo3.modelo.Preguntas.MultipleChoice;
+import edu.fiuba.algo3.modelo.Opciones.OpcionBinaria;
 import edu.fiuba.algo3.modelo.Respuestas.Respuesta;
 import org.junit.jupiter.api.Test;
 
@@ -17,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class MultipleChoiceTest {
-
+    /*
     @Test
     public void test01SeCreaUnaPreguntaChoiceConPuntajeParcialConUnaRespuestaCorrectaYErra() {
         ListaOpciones listaOpcionesPregunta = new ListaOpciones();
@@ -729,4 +723,61 @@ public class MultipleChoiceTest {
                     MultipleChoice.conModoClasico("Paises de América Latina", listaOpcionesPregunta);
                 });
     }
+    */
+
+    @Test
+    public void test01() {
+        MultipleChoice pregunta = MultipleChoice.conModoClasico("Paises de América Latina");
+        pregunta.agregarOpcion(new OpcionBinaria("Argentina", true));
+        pregunta.agregarOpcion(new OpcionBinaria("Corea", false));
+        pregunta.agregarOpcion(new OpcionBinaria("Uruguay", true));
+        pregunta.agregarOpcion(new OpcionBinaria("Colombia", true));
+        Jugador jugador = new Jugador("LeoProgramador");
+        Respuesta respuesta = new Respuesta(jugador);
+        respuesta.agregarOpcion(pregunta.obtenerOpcion(0));
+        respuesta.agregarOpcion(pregunta.obtenerOpcion(2));
+        respuesta.agregarOpcion(pregunta.obtenerOpcion(3));
+        ArrayList<Respuesta> respuestas = new ArrayList<Respuesta>();
+        respuestas.add(respuesta);
+
+        pregunta.evaluarRespuestas(respuestas);
+        assertEquals(1, jugador.puntos());
+    }
+
+    @Test
+    public void test02() {
+        MultipleChoice pregunta = MultipleChoice.conModoClasico("Paises de América Latina");
+        pregunta.agregarOpcion(new OpcionBinaria("Argentina", true));
+        pregunta.agregarOpcion(new OpcionBinaria("Corea", false));
+        pregunta.agregarOpcion(new OpcionBinaria("Uruguay", true));
+        pregunta.agregarOpcion(new OpcionBinaria("Colombia", true));
+        Jugador jugador = new Jugador("LeoProgramador");
+        Respuesta respuesta = new Respuesta(jugador);
+        respuesta.agregarOpcion(pregunta.obtenerOpcion(0));
+        respuesta.agregarOpcion(pregunta.obtenerOpcion(1));
+        ArrayList<Respuesta> respuestas = new ArrayList<Respuesta>();
+        respuestas.add(respuesta);
+
+        pregunta.evaluarRespuestas(respuestas);
+        assertEquals(0, jugador.puntos());
+    }
+
+    @Test
+    public void test03() {
+        MultipleChoice pregunta = MultipleChoice.conModoClasico("Paises de América Latina");
+        pregunta.agregarOpcion(new OpcionBinaria("Argentina", true));
+        pregunta.agregarOpcion(new OpcionBinaria("Corea", false));
+        pregunta.agregarOpcion(new OpcionBinaria("Uruguay", true));
+        pregunta.agregarOpcion(new OpcionBinaria("Colombia", true));
+        Jugador jugador = new Jugador("LeoProgramador");
+        Respuesta respuesta = new Respuesta(jugador);
+        respuesta.agregarOpcion(pregunta.obtenerOpcion(0));
+        respuesta.agregarOpcion(pregunta.obtenerOpcion(2));
+        ArrayList<Respuesta> respuestas = new ArrayList<Respuesta>();
+        respuestas.add(respuesta);
+
+        pregunta.evaluarRespuestas(respuestas);
+        assertEquals(0, jugador.puntos());
+    }
+
 }

@@ -18,7 +18,7 @@ public class GroupChoiceTest {
 
         String nombreGrupo1 = "Numeros Pares";
         String nombreGrupo2 = "Numeros Impares";
-        GroupChoice pregunta = new GroupChoice("Separar en Pares e Impares",nombreGrupo1, nombreGrupo2);
+        GroupChoice pregunta = new GroupChoice("Separar en Pares e Impares", nombreGrupo1, nombreGrupo2);
         pregunta.agregarOpcionGrupo1(new OpcionGrupal("2"));
         pregunta.agregarOpcionGrupo2(new OpcionGrupal("3"));
         pregunta.agregarOpcionGrupo1(new OpcionGrupal("4"));
@@ -169,10 +169,13 @@ public class GroupChoiceTest {
         RespuestaGrupal respuestaJugador2 = new RespuestaGrupal(jugador2, nombreGrupo1, nombreGrupo2);
 
         //Responde jugador1
+
         respuestaJugador1.agregarOpcionGrupo1(pregunta.obtenerOpcion(3));
         respuestaJugador1.agregarOpcionGrupo1(pregunta.obtenerOpcion(1));
         respuestaJugador1.agregarOpcionGrupo1(pregunta.obtenerOpcion(0));
         respuestaJugador1.agregarOpcionGrupo2(pregunta.obtenerOpcion(2));
+
+
         //Responde jugador2
         respuestaJugador2.agregarOpcionGrupo1(pregunta.obtenerOpcion(0));
         respuestaJugador2.agregarOpcionGrupo1(pregunta.obtenerOpcion(1));

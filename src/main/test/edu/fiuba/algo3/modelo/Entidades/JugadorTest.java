@@ -1,20 +1,9 @@
 package edu.fiuba.algo3.modelo.Entidades;
 
-import edu.fiuba.algo3.modelo.Opciones.ListaOpciones;
-import edu.fiuba.algo3.modelo.Opciones.OpcionCorrecta;
-import edu.fiuba.algo3.modelo.Opciones.OpcionIncorrecta;
-import edu.fiuba.algo3.modelo.Preguntas.MultipleChoice;
-import edu.fiuba.algo3.modelo.Preguntas.Pregunta;
-import edu.fiuba.algo3.modelo.Preguntas.VoF;
-import edu.fiuba.algo3.modelo.Respuestas.Respuesta;
-import org.junit.jupiter.api.Test;
-
-import java.util.ArrayList;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class JugadorTest {
-
+    /*
     @Test
     public void test01ElJugadorPuedeUtilizarMultiplicadorDobleEnVoFConPenalidad(){
         // Arrange
@@ -220,6 +209,8 @@ public class JugadorTest {
         jugador.modificarPuntos(2);
         assertEquals(5, jugador.puntos());
     }
+    */
+
 
 }
 
