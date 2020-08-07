@@ -16,13 +16,13 @@ public abstract class Pregunta {
         modo = unModo;
     }
 
+    public abstract int calcularCantidadOpcionesCorrectas();
+
     public void evaluarRespuestas(ArrayList<Respuesta> respuestas) {
         for (Respuesta respuesta : respuestas) {
             evaluarUnaRespuesta(respuesta);
         }
     }
-
-    public abstract int calcularCantidadOpcionesCorrectas();
 
     private void evaluarUnaRespuesta(Respuesta respuesta) {
         /* Si recibo una respuesta con

@@ -10,7 +10,7 @@ import edu.fiuba.algo3.modelo.Preguntas.ModosPreguntas.PuntajeParcial;
 
 public class MultipleChoice extends Pregunta {
 
-    public MultipleChoice(String unEnunciado, ModoPregunta unModo) {
+    private MultipleChoice(String unEnunciado, ModoPregunta unModo) {
         super(unEnunciado, unModo);
         /*
         if(opcionesPregunta.tamaño() < 2  || opcionesPregunta.tamaño() > 5)
@@ -18,34 +18,15 @@ public class MultipleChoice extends Pregunta {
         */
     }
 
-    public static MultipleChoice conModoClasico(String unEnunciado){
-        MultipleChoice pregunta = new MultipleChoice(unEnunciado, new Clasico());
-        return pregunta;
-    }
-    public static MultipleChoice conModoPenalidad(String unEnunciado){
-        MultipleChoice pregunta = new MultipleChoice(unEnunciado, new Penalidad());
-        return pregunta;
-    }
-    public static MultipleChoice conModoPuntajeParcial(String unEnunciado){
-        MultipleChoice pregunta = new MultipleChoice(unEnunciado, new PuntajeParcial());
-        return pregunta;
-    }
+    public static MultipleChoice conModoClasico(String unEnunciado){ return new MultipleChoice(unEnunciado, new Clasico()); }
 
-    public void agregarOpcion(OpcionBinaria opcion){
+    public static MultipleChoice conModoPenalidad(String unEnunciado){ return new MultipleChoice(unEnunciado, new Penalidad()); }
 
-        //opcionesPregunta.agregarOpcion(opcion);
-        super.agregarOpcion(opcion);
-    }
+    public static MultipleChoice conModoPuntajeParcial(String unEnunciado){ return new MultipleChoice(unEnunciado, new PuntajeParcial()); }
 
-    public OpcionBinaria obtenerOpcion(int posicion){
-        //return (OpcionBinaria) opcionesPregunta.obtener(posicion);
-        return (OpcionBinaria) super.obtenerOpcion(posicion);
-    }
+    public void agregarOpcion(OpcionBinaria opcion){ super.agregarOpcion(opcion); }
 
-    public int calcularCantidadOpcionesCorrectas(){
+    public OpcionBinaria obtenerOpcion(int posicion){ return (OpcionBinaria) super.obtenerOpcion(posicion); }
 
-        //return opcionesPregunta.cantidadOpcionesCorrectas();
-        return (int) opcionesPregunta.stream().filter(Opcion::esCorrecta).count();
-    }
-
+    public int calcularCantidadOpcionesCorrectas(){ return (int) opcionesPregunta.stream().filter(Opcion::esCorrecta).count(); }
 }

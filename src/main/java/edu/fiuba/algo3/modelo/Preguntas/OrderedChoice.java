@@ -14,13 +14,8 @@ public class OrderedChoice extends Pregunta{
         super.agregarOpcion(opcion);
     }
 
-    public int calcularCantidadOpcionesCorrectas(){
-        //return opcionesPregunta.tamaño();
-        return opcionesPregunta.size();
-    }
+    public int calcularCantidadOpcionesCorrectas(){ return opcionesPregunta.size();}
 
-    public OpcionOrdenada obtenerOpcion(int posicion){
-        return (OpcionOrdenada) super.obtenerOpcion(posicion);
-    }
+    public OpcionOrdenada obtenerOpcion(int posicion){ return (OpcionOrdenada) super.obtenerOpcion(posicion); }
 }
 

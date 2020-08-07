@@ -5,8 +5,8 @@ import edu.fiuba.algo3.modelo.Opciones.Grupo;
 import edu.fiuba.algo3.modelo.Opciones.OpcionGrupal;
 
 public class RespuestaGrupal extends Respuesta{
-    private Grupo grupo1;
-    private Grupo grupo2;
+    private final Grupo grupo1;
+    private final Grupo grupo2;
 
     public RespuestaGrupal(Jugador jugador, String nombreGrupo1, String nombreGrupo2){
         super(jugador);

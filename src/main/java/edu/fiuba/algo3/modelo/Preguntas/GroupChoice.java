@@ -4,8 +4,8 @@ import edu.fiuba.algo3.modelo.Opciones.OpcionGrupal;
 import edu.fiuba.algo3.modelo.Preguntas.ModosPreguntas.Clasico;
 
 public class GroupChoice extends Pregunta{
-    private String nombreGrupo1;
-    private String nombreGrupo2;
+    private final String nombreGrupo1;
+    private final String nombreGrupo2;
 
     public GroupChoice(String enunciado, String nombreGrupo1, String nombreGrupo2){
         super(enunciado, new Clasico());

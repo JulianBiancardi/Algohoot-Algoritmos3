@@ -17,13 +17,9 @@ public class Respuesta {
         opcionesElegidas.add(opcion);
     }
 
-    public int cantidadOpcionesCorrectas() {
-        return (int) opcionesElegidas.stream().filter(Opcion::esCorrecta).count();
-    }
+    public int cantidadOpcionesCorrectas() { return (int) opcionesElegidas.stream().filter(Opcion::esCorrecta).count(); }
 
-    public int cantidadOpcionesIncorrectas() {
-        return (int) opcionesElegidas.stream().filter(opcion -> !opcion.esCorrecta()).count();
-    }
+    public int cantidadOpcionesIncorrectas() { return (int) opcionesElegidas.stream().filter(opcion -> !opcion.esCorrecta()).count(); }
 
     public void modificarPuntosBonificadamente(int puntaje) {
         responsable.modificarPuntosBonificadamente(puntaje);
