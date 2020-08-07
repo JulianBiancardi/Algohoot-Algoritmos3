@@ -23,7 +23,7 @@ public class GroupChoiceTest {
         pregunta.agregarOpcionGrupo1(new OpcionGrupal("4"));
         pregunta.agregarOpcionGrupo2(new OpcionGrupal("5"));
         Jugador jugador = new Jugador("LeoProgramador");
-        RespuestaGrupal respuestaJugador = new RespuestaGrupal(jugador, nombreGrupo1, nombreGrupo2);
+        RespuestaGrupal respuestaJugador = new RespuestaGrupal(jugador, pregunta, nombreGrupo1, nombreGrupo2);
 
         respuestaJugador.agregarOpcionGrupo1(pregunta.obtenerOpcion(0));
         respuestaJugador.agregarOpcionGrupo1(pregunta.obtenerOpcion(2));
@@ -47,7 +47,7 @@ public class GroupChoiceTest {
         pregunta.agregarOpcionGrupo1(new OpcionGrupal("4"));
         pregunta.agregarOpcionGrupo2(new OpcionGrupal("5"));
         Jugador jugador = new Jugador("LeoProgramador");
-        RespuestaGrupal respuestaJugador = new RespuestaGrupal(jugador, nombreGrupo1, nombreGrupo2);
+        RespuestaGrupal respuestaJugador = new RespuestaGrupal(jugador, pregunta, nombreGrupo1, nombreGrupo2);
 
         respuestaJugador.agregarOpcionGrupo1(pregunta.obtenerOpcion(0));
         respuestaJugador.agregarOpcionGrupo1(pregunta.obtenerOpcion(1));
@@ -71,7 +71,7 @@ public class GroupChoiceTest {
         pregunta.agregarOpcionGrupo1(new OpcionGrupal("6"));
         pregunta.agregarOpcionGrupo2(new OpcionGrupal("5"));
         Jugador jugador = new Jugador("LeoProgramador");
-        RespuestaGrupal respuestaJugador = new RespuestaGrupal(jugador, nombreGrupo1, nombreGrupo2);
+        RespuestaGrupal respuestaJugador = new RespuestaGrupal(jugador, pregunta, nombreGrupo1, nombreGrupo2);
 
         respuestaJugador.agregarOpcionGrupo1(pregunta.obtenerOpcion(0));
         respuestaJugador.agregarOpcionGrupo1(pregunta.obtenerOpcion(1));
@@ -96,8 +96,8 @@ public class GroupChoiceTest {
         pregunta.agregarOpcionGrupo2(new OpcionGrupal("5"));
         Jugador jugador1 = new Jugador("LeoProgramador");
         Jugador jugador2 = new Jugador("Julianaso");
-        RespuestaGrupal respuestaJugador1 = new RespuestaGrupal(jugador1, nombreGrupo1, nombreGrupo2);
-        RespuestaGrupal respuestaJugador2 = new RespuestaGrupal(jugador2, nombreGrupo1, nombreGrupo2);
+        RespuestaGrupal respuestaJugador1 = new RespuestaGrupal(jugador1, pregunta, nombreGrupo1, nombreGrupo2);
+        RespuestaGrupal respuestaJugador2 = new RespuestaGrupal(jugador2, pregunta, nombreGrupo1, nombreGrupo2);
 
         //Responde jugador1
         respuestaJugador1.agregarOpcionGrupo1(pregunta.obtenerOpcion(0));
@@ -130,8 +130,8 @@ public class GroupChoiceTest {
         pregunta.agregarOpcionGrupo2(new OpcionGrupal("5"));
         Jugador jugador1 = new Jugador("LeoProgramador");
         Jugador jugador2 = new Jugador("Joaco");
-        RespuestaGrupal respuestaJugador1 = new RespuestaGrupal(jugador1, nombreGrupo1, nombreGrupo2);
-        RespuestaGrupal respuestaJugador2 = new RespuestaGrupal(jugador2, nombreGrupo1, nombreGrupo2);
+        RespuestaGrupal respuestaJugador1 = new RespuestaGrupal(jugador1, pregunta, nombreGrupo1, nombreGrupo2);
+        RespuestaGrupal respuestaJugador2 = new RespuestaGrupal(jugador2, pregunta, nombreGrupo1, nombreGrupo2);
 
         //Responde jugador1
         respuestaJugador1.agregarOpcionGrupo1(pregunta.obtenerOpcion(0));
@@ -164,8 +164,8 @@ public class GroupChoiceTest {
         pregunta.agregarOpcionGrupo2(new OpcionGrupal("5"));
         Jugador jugador1 = new Jugador("LeoProgramador");
         Jugador jugador2 = new Jugador("Fede");
-        RespuestaGrupal respuestaJugador1 = new RespuestaGrupal(jugador1, nombreGrupo1, nombreGrupo2);
-        RespuestaGrupal respuestaJugador2 = new RespuestaGrupal(jugador2, nombreGrupo1, nombreGrupo2);
+        RespuestaGrupal respuestaJugador1 = new RespuestaGrupal(jugador1, pregunta, nombreGrupo1, nombreGrupo2);
+        RespuestaGrupal respuestaJugador2 = new RespuestaGrupal(jugador2, pregunta, nombreGrupo1, nombreGrupo2);
 
         //Responde jugador1
 

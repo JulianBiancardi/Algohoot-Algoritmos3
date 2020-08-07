@@ -43,4 +43,6 @@ public abstract class Pregunta {
     public int cantidadOpciones(){
         return opcionesPregunta.size();
     }
+
+    public boolean aceptaMultiplicador(){ return modo.aceptaMultiplicador(); }
 }

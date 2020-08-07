@@ -1,26 +1,19 @@
 package edu.fiuba.algo3.modelo.Entidades;
 
-import edu.fiuba.algo3.modelo.Exepciones.MultiplicadorCreadoConFactorInvalidoExcepcion;
-
 public class Multiplicador {
-    private int multiplicidad;
+    private final int multiplicidad;
 
     private Multiplicador(int factor) {
         this.multiplicidad = factor;
     }
 
-    public static Multiplicador crearConFactor(int factor) {
-        if(factor < 1){
-            throw new MultiplicadorCreadoConFactorInvalidoExcepcion();
-        }
-        return new Multiplicador(factor);
-    }
+    public static Multiplicador crearMultiplicadorNulo(){ return new Multiplicador(1); }
 
-    public static Multiplicador crearSinEfecto() {
-        return new Multiplicador(1);
-    }
+    public static Multiplicador crearMultiplicadorDoble(){ return new Multiplicador(2); }
 
-    public int obtenerPuntosBonificados(int factorAumento) {
-        return multiplicidad*factorAumento;
+    public static Multiplicador crearMultiplicadorTriple(){ return new Multiplicador(3); }
+
+    public int aplicarMultiplicador(int puntaje){
+        return puntaje * multiplicidad;
     }
 }

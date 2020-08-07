@@ -18,7 +18,7 @@ public class VerdaderoFalsoTest {
         pregunta.agregarOpcion(new OpcionBinaria("Verdadero", true));
         pregunta.agregarOpcion(new OpcionBinaria("Falso", false));
         Jugador jugador = new Jugador("LeoProgramador");
-        Respuesta respuesta = new Respuesta(jugador);
+        Respuesta respuesta = new Respuesta(jugador, pregunta);
         respuesta.agregarOpcion(pregunta.obtenerOpcion(0));
         ArrayList<Respuesta> respuestas = new ArrayList<Respuesta>();
         respuestas.add(respuesta);
@@ -34,7 +34,7 @@ public class VerdaderoFalsoTest {
         pregunta.agregarOpcion(new OpcionBinaria("Verdadero", true));
         pregunta.agregarOpcion(new OpcionBinaria("Falso", false));
         Jugador jugador = new Jugador("LeoProgramador");
-        Respuesta respuestaJugador = new Respuesta(jugador);
+        Respuesta respuestaJugador = new Respuesta(jugador, pregunta);
 
         respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(1)); //Elijo incorrecta
         ArrayList<Respuesta> respuestas = new ArrayList<Respuesta>();
@@ -50,7 +50,7 @@ public class VerdaderoFalsoTest {
         pregunta.agregarOpcion(new OpcionBinaria("Verdadero", true));
         pregunta.agregarOpcion(new OpcionBinaria("Falso", false));
         Jugador jugador = new Jugador("LeoProgramador");
-        Respuesta respuestaJugador = new Respuesta(jugador);
+        Respuesta respuestaJugador = new Respuesta(jugador, pregunta);
 
         respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(0)); //Elijo incorrecta
         ArrayList<Respuesta> respuestas = new ArrayList<Respuesta>();
@@ -66,9 +66,9 @@ public class VerdaderoFalsoTest {
         pregunta.agregarOpcion(new OpcionBinaria("Verdadero", true));
         pregunta.agregarOpcion(new OpcionBinaria("Falso", false));
         Jugador jugador1 = new Jugador("LeoProgramador");
-        Respuesta respuestaJugador1 = new Respuesta(jugador1);
+        Respuesta respuestaJugador1 = new Respuesta(jugador1, pregunta);
         Jugador jugador2 = new Jugador("Joaco");
-        Respuesta respuestaJugador2 = new Respuesta(jugador2);
+        Respuesta respuestaJugador2 = new Respuesta(jugador2, pregunta);
 
         respuestaJugador1.agregarOpcion(pregunta.obtenerOpcion(1)); //Elijo incorrecta
         respuestaJugador2.agregarOpcion(pregunta.obtenerOpcion(1)); //Elijo incorrecta
@@ -87,9 +87,9 @@ public class VerdaderoFalsoTest {
         pregunta.agregarOpcion(new OpcionBinaria("Verdadero", true));
         pregunta.agregarOpcion(new OpcionBinaria("Falso", false));
         Jugador jugador1 = new Jugador("LeoProgramador");
-        Respuesta respuestaJugador1 = new Respuesta(jugador1);
+        Respuesta respuestaJugador1 = new Respuesta(jugador1, pregunta);
         Jugador jugador2 = new Jugador("Joaco");
-        Respuesta respuestaJugador2 = new Respuesta(jugador2);
+        Respuesta respuestaJugador2 = new Respuesta(jugador2, pregunta);
 
         respuestaJugador1.agregarOpcion(pregunta.obtenerOpcion(0)); //Elijo correcta
         respuestaJugador2.agregarOpcion(pregunta.obtenerOpcion(0)); //Elijo correcta
@@ -108,9 +108,9 @@ public class VerdaderoFalsoTest {
         pregunta.agregarOpcion(new OpcionBinaria("Verdadero", true));
         pregunta.agregarOpcion(new OpcionBinaria("Falso", false));
         Jugador jugador1 = new Jugador("LeoProgramador");
-        Respuesta respuestaJugador1 = new Respuesta(jugador1);
+        Respuesta respuestaJugador1 = new Respuesta(jugador1, pregunta);
         Jugador jugador2 = new Jugador("Joaco");
-        Respuesta respuestaJugador2 = new Respuesta(jugador2);
+        Respuesta respuestaJugador2 = new Respuesta(jugador2, pregunta);
 
         respuestaJugador1.agregarOpcion(pregunta.obtenerOpcion(0)); //Elijo correcta
         respuestaJugador2.agregarOpcion(pregunta.obtenerOpcion(1)); //Elijo incorrecta
@@ -129,7 +129,7 @@ public class VerdaderoFalsoTest {
         pregunta.agregarOpcion(new OpcionBinaria("Verdadero", false));
         pregunta.agregarOpcion(new OpcionBinaria("Falso", true));
         Jugador jugador = new Jugador("LeoProgramador");
-        Respuesta respuestaJugador = new Respuesta(jugador);
+        Respuesta respuestaJugador = new Respuesta(jugador, pregunta);
 
         respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(0)); //Elijo incorrecta
         ArrayList<Respuesta> respuestas = new ArrayList<Respuesta>();
@@ -145,7 +145,7 @@ public class VerdaderoFalsoTest {
         pregunta.agregarOpcion(new OpcionBinaria("Verdadero", true));
         pregunta.agregarOpcion(new OpcionBinaria("Falso", false));
         Jugador jugador = new Jugador("LeoProgramador");
-        Respuesta respuestaJugador = new Respuesta(jugador);
+        Respuesta respuestaJugador = new Respuesta(jugador, pregunta);
 
         respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(0)); //Elijo incorrecta
         ArrayList<Respuesta> respuestas = new ArrayList<Respuesta>();
@@ -161,9 +161,9 @@ public class VerdaderoFalsoTest {
         pregunta.agregarOpcion(new OpcionBinaria("Verdadero", true));
         pregunta.agregarOpcion(new OpcionBinaria("Falso", false));
         Jugador jugador1 = new Jugador("LeoProgramador");
-        Respuesta respuestaJugador1 = new Respuesta(jugador1);
+        Respuesta respuestaJugador1 = new Respuesta(jugador1, pregunta);
         Jugador jugador2 = new Jugador("Joaco");
-        Respuesta respuestaJugador2 = new Respuesta(jugador2);
+        Respuesta respuestaJugador2 = new Respuesta(jugador2, pregunta);
 
         respuestaJugador1.agregarOpcion(pregunta.obtenerOpcion(1)); //Elijo incorrecta
         respuestaJugador2.agregarOpcion(pregunta.obtenerOpcion(1)); //Elijo incorrecta
@@ -182,9 +182,9 @@ public class VerdaderoFalsoTest {
         pregunta.agregarOpcion(new OpcionBinaria("Verdadero", true));
         pregunta.agregarOpcion(new OpcionBinaria("Falso", false));
         Jugador jugador1 = new Jugador("LeoProgramador");
-        Respuesta respuestaJugador1 = new Respuesta(jugador1);
+        Respuesta respuestaJugador1 = new Respuesta(jugador1, pregunta);
         Jugador jugador2 = new Jugador("Tomas");
-        Respuesta respuestaJugador2 = new Respuesta(jugador2);
+        Respuesta respuestaJugador2 = new Respuesta(jugador2, pregunta);
 
         respuestaJugador1.agregarOpcion(pregunta.obtenerOpcion(0)); //Elijo correcta
         respuestaJugador2.agregarOpcion(pregunta.obtenerOpcion(0)); //Elijo correcta
@@ -203,9 +203,9 @@ public class VerdaderoFalsoTest {
         pregunta.agregarOpcion(new OpcionBinaria("Verdadero", true));
         pregunta.agregarOpcion(new OpcionBinaria("Falso", false));
         Jugador jugador1 = new Jugador("LeoProgramador");
-        Respuesta respuestaJugador1 = new Respuesta(jugador1);
+        Respuesta respuestaJugador1 = new Respuesta(jugador1, pregunta);
         Jugador jugador2 = new Jugador("Tomas");
-        Respuesta respuestaJugador2 = new Respuesta(jugador2);
+        Respuesta respuestaJugador2 = new Respuesta(jugador2, pregunta);
 
         respuestaJugador1.agregarOpcion(pregunta.obtenerOpcion(1)); //Elijo correcta
         respuestaJugador2.agregarOpcion(pregunta.obtenerOpcion(0)); //Elijo correcta

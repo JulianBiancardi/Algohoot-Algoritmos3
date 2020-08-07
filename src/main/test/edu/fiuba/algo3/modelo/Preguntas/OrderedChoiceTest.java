@@ -20,7 +20,7 @@ public class OrderedChoiceTest {
         pregunta.agregarOpcion(new OpcionOrdenada("Cinco"));
         pregunta.agregarOpcion(new OpcionOrdenada("Diez"));
         Jugador jugador = new Jugador("LeoProgramador");
-        RespuestaOrdenada respuesta = new RespuestaOrdenada(jugador);
+        RespuestaOrdenada respuesta = new RespuestaOrdenada(jugador, pregunta);
         respuesta.agregarOpcion(pregunta.obtenerOpcion(0));
         respuesta.agregarOpcion(pregunta.obtenerOpcion(1));
         respuesta.agregarOpcion(pregunta.obtenerOpcion(2));
@@ -41,7 +41,7 @@ public class OrderedChoiceTest {
         pregunta.agregarOpcion(new OpcionOrdenada("Cinco"));
         pregunta.agregarOpcion(new OpcionOrdenada("Diez"));
         Jugador jugador = new Jugador("LeoProgramador");
-        RespuestaOrdenada respuesta = new RespuestaOrdenada(jugador);
+        RespuestaOrdenada respuesta = new RespuestaOrdenada(jugador, pregunta);
         respuesta.agregarOpcion(pregunta.obtenerOpcion(2));
         respuesta.agregarOpcion(pregunta.obtenerOpcion(1));
         respuesta.agregarOpcion(pregunta.obtenerOpcion(0));
@@ -62,7 +62,7 @@ public class OrderedChoiceTest {
         pregunta.agregarOpcion(new OpcionOrdenada("Cinco"));
         pregunta.agregarOpcion(new OpcionOrdenada("Diez"));
         Jugador jugador = new Jugador("LeoProgramador");
-        RespuestaOrdenada respuesta = new RespuestaOrdenada(jugador);
+        RespuestaOrdenada respuesta = new RespuestaOrdenada(jugador, pregunta);
         respuesta.agregarOpcion(pregunta.obtenerOpcion(2));
         respuesta.agregarOpcion(pregunta.obtenerOpcion(1));
         respuesta.agregarOpcion(pregunta.obtenerOpcion(0));
@@ -82,7 +82,7 @@ public class OrderedChoiceTest {
         pregunta.agregarOpcion(new OpcionOrdenada("Cinco"));
         pregunta.agregarOpcion(new OpcionOrdenada("Diez"));
         Jugador jugador = new Jugador("LeoProgramador");
-        RespuestaOrdenada respuesta = new RespuestaOrdenada(jugador);
+        RespuestaOrdenada respuesta = new RespuestaOrdenada(jugador, pregunta);
         respuesta.agregarOpcion(pregunta.obtenerOpcion(0));
 
         ArrayList<Respuesta> respuestas = new ArrayList<>();
@@ -100,7 +100,7 @@ public class OrderedChoiceTest {
         pregunta.agregarOpcion(new OpcionOrdenada("Cinco"));
         pregunta.agregarOpcion(new OpcionOrdenada("Diez"));
         Jugador jugador = new Jugador("LeoProgramador");
-        RespuestaOrdenada respuesta = new RespuestaOrdenada(jugador);
+        RespuestaOrdenada respuesta = new RespuestaOrdenada(jugador, pregunta);
         respuesta.agregarOpcion(pregunta.obtenerOpcion(0));
         respuesta.agregarOpcion(pregunta.obtenerOpcion(1));
 
@@ -119,7 +119,7 @@ public class OrderedChoiceTest {
         pregunta.agregarOpcion(new OpcionOrdenada("Cinco"));
         pregunta.agregarOpcion(new OpcionOrdenada("Diez"));
         Jugador jugador = new Jugador("LeoProgramador");
-        RespuestaOrdenada respuesta = new RespuestaOrdenada(jugador);
+        RespuestaOrdenada respuesta = new RespuestaOrdenada(jugador, pregunta);
         respuesta.agregarOpcion(pregunta.obtenerOpcion(0));
         respuesta.agregarOpcion(pregunta.obtenerOpcion(1));
         respuesta.agregarOpcion(pregunta.obtenerOpcion(2));
@@ -137,7 +137,7 @@ public class OrderedChoiceTest {
         pregunta.agregarOpcion(new OpcionOrdenada("Uno"));
         pregunta.agregarOpcion(new OpcionOrdenada("Tres"));
         Jugador jugador = new Jugador("LeoProgramador");
-        RespuestaOrdenada respuesta = new RespuestaOrdenada(jugador);
+        RespuestaOrdenada respuesta = new RespuestaOrdenada(jugador, pregunta);
         respuesta.agregarOpcion(pregunta.obtenerOpcion(0));
         respuesta.agregarOpcion(pregunta.obtenerOpcion(1));
 

@@ -2,6 +2,7 @@ package edu.fiuba.algo3.modelo.Respuestas;
 
 import edu.fiuba.algo3.modelo.Entidades.Jugador;
 import edu.fiuba.algo3.modelo.Opciones.OpcionBinaria;
+import edu.fiuba.algo3.modelo.Preguntas.VoF;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -11,7 +12,7 @@ public class RespuestaTest {
     @Test
     public void test01CreoUnaRespuestaConDosOpcionesIncorrectasVerificoSiEsAsi() {
         Jugador jugador = new Jugador("LeoProgramador");
-        Respuesta respuesta = new Respuesta(jugador);
+        Respuesta respuesta = new Respuesta(jugador, VoF.conModoClasico("Pregunta de Prueba"));
 
         respuesta.agregarOpcion(new OpcionBinaria("Soy correcta", true));
         respuesta.agregarOpcion(new OpcionBinaria("Soy incorrecta", false));
@@ -23,7 +24,7 @@ public class RespuestaTest {
     @Test
     public void test02CreoUnaRespuestaConTresOpcionesCorrectasVerificoSiEsAsi() {
         Jugador jugador = new Jugador("LeoProgramador");
-        Respuesta respuesta = new Respuesta(jugador);
+        Respuesta respuesta = new Respuesta(jugador, VoF.conModoClasico("Pregunta de Prueba"));
 
         respuesta.agregarOpcion(new OpcionBinaria("A caballo regalado no se le miran los dientes", true));
         respuesta.agregarOpcion(new OpcionBinaria("Mas vale pajaro en mano que hacer limonada", false));
@@ -37,7 +38,7 @@ public class RespuestaTest {
     @Test
     public void test03CreoUnaRespuestaYLeSumoPuntosAlResponsableVerificoSusPuntos() {
         Jugador jugador = new Jugador("LeoProgramador");
-        Respuesta respuesta = new Respuesta(jugador);
+        Respuesta respuesta = new Respuesta(jugador, VoF.conModoClasico("Pregunta de Prueba"));
 
         respuesta.modificarPuntos(5);
 
@@ -47,7 +48,7 @@ public class RespuestaTest {
     @Test
     public void test04CreoUnaRespuestaYLeRestoPuntosAlResponsableVerificoSusPuntos() {
         Jugador jugador = new Jugador("LeoProgramador");
-        Respuesta respuesta = new Respuesta(jugador);
+        Respuesta respuesta = new Respuesta(jugador, VoF.conModoClasico("Pregunta de Prueba"));
 
         respuesta.modificarPuntos(-3);
 
@@ -57,7 +58,7 @@ public class RespuestaTest {
     @Test
     public void test05CreoUnaRespuestaLeRestoYSumoPuntosAlResponsableVerificoSusPuntos() {
         Jugador jugador = new Jugador("LeoProgramador");
-        Respuesta respuesta = new Respuesta(jugador);
+        Respuesta respuesta = new Respuesta(jugador, VoF.conModoClasico("Pregunta de Prueba"));
 
         respuesta.modificarPuntos(-2);
         respuesta.modificarPuntos(4);

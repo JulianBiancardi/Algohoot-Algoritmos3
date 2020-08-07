@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo.Respuestas;
 
 import edu.fiuba.algo3.modelo.Entidades.Jugador;
+import edu.fiuba.algo3.modelo.Preguntas.Pregunta;
 import edu.fiuba.algo3.modelo.Opciones.Grupo;
 import edu.fiuba.algo3.modelo.Opciones.OpcionGrupal;
 
@@ -8,8 +9,8 @@ public class RespuestaGrupal extends Respuesta{
     private final Grupo grupo1;
     private final Grupo grupo2;
 
-    public RespuestaGrupal(Jugador jugador, String nombreGrupo1, String nombreGrupo2){
-        super(jugador);
+    public RespuestaGrupal(Jugador jugador, Pregunta pregunta, String nombreGrupo1, String nombreGrupo2){
+        super(jugador, pregunta);
         grupo1 = new Grupo(nombreGrupo1);
         grupo2 = new Grupo(nombreGrupo2);
     }

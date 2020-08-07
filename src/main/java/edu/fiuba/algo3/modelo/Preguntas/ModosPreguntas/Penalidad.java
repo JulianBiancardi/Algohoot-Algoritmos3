@@ -10,7 +10,11 @@ public class Penalidad implements ModoPregunta {
         int aciertosJugador = respuestaJugador.cantidadOpcionesCorrectas();
         int erroresJugador = respuestaJugador.cantidadOpcionesIncorrectas();
 
-        respuestaJugador.modificarPuntosBonificadamente( PUNTAJE * aciertosJugador);
-        respuestaJugador.modificarPuntosBonificadamente(-1 * PUNTAJE * erroresJugador);
+        respuestaJugador.modificarPuntos(PUNTAJE * (aciertosJugador - erroresJugador));
+    }
+
+    @Override
+    public boolean aceptaMultiplicador(){
+        return true;
     }
 }

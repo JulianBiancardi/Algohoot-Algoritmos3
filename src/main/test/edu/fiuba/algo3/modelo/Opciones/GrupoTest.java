@@ -90,5 +90,4 @@ public class GrupoTest {
 
         assertEquals(4, grupo.cantidadOpcionesCorrectas());
     }
-
 }

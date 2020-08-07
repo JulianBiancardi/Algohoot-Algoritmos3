@@ -20,7 +20,7 @@ public class MultipleChoiceTest {
         pregunta.agregarOpcion(new OpcionBinaria("Uruguay", true));
         pregunta.agregarOpcion(new OpcionBinaria("Colombia", true));
         Jugador jugador = new Jugador("LeoProgramador");
-        Respuesta respuesta = new Respuesta(jugador);
+        Respuesta respuesta = new Respuesta(jugador, pregunta);
         respuesta.agregarOpcion(pregunta.obtenerOpcion(0));
         respuesta.agregarOpcion(pregunta.obtenerOpcion(2));
         respuesta.agregarOpcion(pregunta.obtenerOpcion(3));
@@ -40,7 +40,7 @@ public class MultipleChoiceTest {
         pregunta.agregarOpcion(new OpcionBinaria("Egipto", false));
         pregunta.agregarOpcion(new OpcionBinaria("Rusia", false));
         Jugador jugador = new Jugador("LeoProgramador");
-        Respuesta respuesta = new Respuesta(jugador);
+        Respuesta respuesta = new Respuesta(jugador, pregunta);
 
         respuesta.agregarOpcion(pregunta.obtenerOpcion(2)); //elijo una incorrecta
         ArrayList<Respuesta> respuestas = new ArrayList<Respuesta>();
@@ -59,7 +59,7 @@ public class MultipleChoiceTest {
         pregunta.agregarOpcion(new OpcionBinaria("Egipto", false));
         pregunta.agregarOpcion(new OpcionBinaria("Rusia", false));
         Jugador jugador = new Jugador("LeoProgramador");
-        Respuesta respuesta = new Respuesta(jugador);
+        Respuesta respuesta = new Respuesta(jugador, pregunta);
 
         respuesta.agregarOpcion(pregunta.obtenerOpcion(0)); //elijo la única correcta
         ArrayList<Respuesta> respuestas = new ArrayList<Respuesta>();
@@ -77,7 +77,7 @@ public class MultipleChoiceTest {
         pregunta.agregarOpcion(new OpcionBinaria("Brasil", true));
         pregunta.agregarOpcion(new OpcionBinaria("Chile", true));
         Jugador jugador = new Jugador("LeoProgramador");
-        Respuesta respuesta = new Respuesta(jugador);
+        Respuesta respuesta = new Respuesta(jugador, pregunta);
 
         respuesta.agregarOpcion(pregunta.obtenerOpcion(0));
         respuesta.agregarOpcion(pregunta.obtenerOpcion(2));
@@ -97,7 +97,7 @@ public class MultipleChoiceTest {
         pregunta.agregarOpcion(new OpcionBinaria("Brasil", true));
         pregunta.agregarOpcion(new OpcionBinaria("Chile", true));
         Jugador jugador = new Jugador("LeoProgramador");
-        Respuesta respuesta = new Respuesta(jugador);
+        Respuesta respuesta = new Respuesta(jugador, pregunta);
 
         respuesta.agregarOpcion(pregunta.obtenerOpcion(0));
         respuesta.agregarOpcion(pregunta.obtenerOpcion(2));
@@ -118,8 +118,8 @@ public class MultipleChoiceTest {
         pregunta.agregarOpcion(new OpcionBinaria("Rusia", false));
         Jugador jugador1 = new Jugador("LeoProgramador");
         Jugador jugador2 = new Jugador("Joaco");
-        Respuesta respuestaJugador1 = new Respuesta(jugador1);
-        Respuesta respuestaJugador2 = new Respuesta(jugador2);
+        Respuesta respuestaJugador1 = new Respuesta(jugador1, pregunta);
+        Respuesta respuestaJugador2 = new Respuesta(jugador2, pregunta);
 
         respuestaJugador1.agregarOpcion(pregunta.obtenerOpcion(1));
         respuestaJugador1.agregarOpcion(pregunta.obtenerOpcion(3));
@@ -143,8 +143,8 @@ public class MultipleChoiceTest {
         pregunta.agregarOpcion(new OpcionBinaria("Rusia", false));
         Jugador jugador1 = new Jugador("LeoProgramador");
         Jugador jugador2 = new Jugador("Joaco");
-        Respuesta respuestaJugador1 = new Respuesta(jugador1);
-        Respuesta respuestaJugador2 = new Respuesta(jugador2);
+        Respuesta respuestaJugador1 = new Respuesta(jugador1, pregunta);
+        Respuesta respuestaJugador2 = new Respuesta(jugador2, pregunta);
 
         respuestaJugador1.agregarOpcion(pregunta.obtenerOpcion(1));
         respuestaJugador2.agregarOpcion(pregunta.obtenerOpcion(1));
@@ -166,8 +166,8 @@ public class MultipleChoiceTest {
         pregunta.agregarOpcion(new OpcionBinaria("Rusia", false));
         Jugador jugador1 = new Jugador("LeoProgramador");
         Jugador jugador2 = new Jugador("Joaco");
-        Respuesta respuestaJugador1 = new Respuesta(jugador1);
-        Respuesta respuestaJugador2 = new Respuesta(jugador2);
+        Respuesta respuestaJugador1 = new Respuesta(jugador1, pregunta);
+        Respuesta respuestaJugador2 = new Respuesta(jugador2, pregunta);
 
         respuestaJugador1.agregarOpcion(pregunta.obtenerOpcion(2));
         respuestaJugador2.agregarOpcion(pregunta.obtenerOpcion(1));
@@ -189,7 +189,7 @@ public class MultipleChoiceTest {
         pregunta.agregarOpcion(new OpcionBinaria("Rusia", false));
 
         Jugador jugador = new Jugador("LeoProgramador");
-        Respuesta respuestaJugador = new Respuesta(jugador);
+        Respuesta respuestaJugador = new Respuesta(jugador, pregunta);
 
         respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(1));
         ArrayList<Respuesta> respuestas = new ArrayList<Respuesta>();
@@ -208,7 +208,7 @@ public class MultipleChoiceTest {
         pregunta.agregarOpcion(new OpcionBinaria("Egipto", false));
         pregunta.agregarOpcion(new OpcionBinaria("Rusia", false));
         Jugador jugador = new Jugador("LeoProgramador");
-        Respuesta respuestaJugador = new Respuesta(jugador);
+        Respuesta respuestaJugador = new Respuesta(jugador, pregunta);
 
         respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(1));
         ArrayList<Respuesta> respuestas = new ArrayList<Respuesta>();
@@ -226,7 +226,7 @@ public class MultipleChoiceTest {
         pregunta.agregarOpcion(new OpcionBinaria("Egipto", false));
         pregunta.agregarOpcion(new OpcionBinaria("Venezuela", true));
         Jugador jugador = new Jugador("LeoProgramador");
-        Respuesta respuestaJugador = new Respuesta(jugador);
+        Respuesta respuestaJugador = new Respuesta(jugador, pregunta);
 
         respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(1));
         respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(3));
@@ -245,7 +245,7 @@ public class MultipleChoiceTest {
         pregunta.agregarOpcion(new OpcionBinaria("Egipto", false));
         pregunta.agregarOpcion(new OpcionBinaria("Venezuela", true));
         Jugador jugador = new Jugador("LeoProgramador");
-        Respuesta respuestaJugador = new Respuesta(jugador);
+        Respuesta respuestaJugador = new Respuesta(jugador, pregunta);
 
         respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(0));
         respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(2));
@@ -264,7 +264,7 @@ public class MultipleChoiceTest {
         pregunta.agregarOpcion(new OpcionBinaria("Peru", true));
         pregunta.agregarOpcion(new OpcionBinaria("Venezuela", true));
         Jugador jugador = new Jugador("LeoProgramador");
-        Respuesta respuestaJugador = new Respuesta(jugador);
+        Respuesta respuestaJugador = new Respuesta(jugador, pregunta);
         respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(1));
         respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(2));
         respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(3));
@@ -284,7 +284,7 @@ public class MultipleChoiceTest {
         pregunta.agregarOpcion(new OpcionBinaria("Alemania", false));
         pregunta.agregarOpcion(new OpcionBinaria("Australia", false));
         Jugador jugador = new Jugador("LeoProgramador");
-        Respuesta respuestaJugador = new Respuesta(jugador);
+        Respuesta respuestaJugador = new Respuesta(jugador, pregunta);
 
         respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(0));
         respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(3));
@@ -304,7 +304,7 @@ public class MultipleChoiceTest {
         pregunta.agregarOpcion(new OpcionBinaria("Peru", true));
         pregunta.agregarOpcion(new OpcionBinaria("Venezuela", true));
         Jugador jugador = new Jugador("LeoProgramador");
-        Respuesta respuestaJugador = new Respuesta(jugador);
+        Respuesta respuestaJugador = new Respuesta(jugador, pregunta);
 
         respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(0));
         respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(3));
@@ -324,8 +324,8 @@ public class MultipleChoiceTest {
         pregunta.agregarOpcion(new OpcionBinaria("Rusia", false));
         Jugador jugador1 = new Jugador("LeoProgramador");
         Jugador jugador2 = new Jugador("Joaco");
-        Respuesta respuestaJugador1 = new Respuesta(jugador1);
-        Respuesta respuestaJugador2 = new Respuesta(jugador2);
+        Respuesta respuestaJugador1 = new Respuesta(jugador1, pregunta);
+        Respuesta respuestaJugador2 = new Respuesta(jugador2, pregunta);
 
         respuestaJugador1.agregarOpcion(pregunta.obtenerOpcion(0));
         respuestaJugador1.agregarOpcion(pregunta.obtenerOpcion(2));
@@ -349,8 +349,8 @@ public class MultipleChoiceTest {
         pregunta.agregarOpcion(new OpcionBinaria("Venezuela", true));
         Jugador jugador1 = new Jugador("LeoProgramador");
         Jugador jugador2 = new Jugador("Joaco");
-        Respuesta respuestaJugador1 = new Respuesta(jugador1);
-        Respuesta respuestaJugador2 = new Respuesta(jugador2);
+        Respuesta respuestaJugador1 = new Respuesta(jugador1, pregunta);
+        Respuesta respuestaJugador2 = new Respuesta(jugador2, pregunta);
 
         respuestaJugador1.agregarOpcion(pregunta.obtenerOpcion(0));
         respuestaJugador2.agregarOpcion(pregunta.obtenerOpcion(0));
@@ -373,8 +373,8 @@ public class MultipleChoiceTest {
         pregunta.agregarOpcion(new OpcionBinaria("Egipto", false));
         Jugador jugador1 = new Jugador("LeoProgramador");
         Jugador jugador2 = new Jugador("Joaco");
-        Respuesta respuestaJugador1 = new Respuesta(jugador1);
-        Respuesta respuestaJugador2 = new Respuesta(jugador2);
+        Respuesta respuestaJugador1 = new Respuesta(jugador1, pregunta);
+        Respuesta respuestaJugador2 = new Respuesta(jugador2, pregunta);
 
         respuestaJugador1.agregarOpcion(pregunta.obtenerOpcion(1));
         respuestaJugador1.agregarOpcion(pregunta.obtenerOpcion(3));
@@ -397,7 +397,7 @@ public class MultipleChoiceTest {
         pregunta.agregarOpcion(new OpcionBinaria("Egipto", false));
         pregunta.agregarOpcion(new OpcionBinaria("Rusia", false));
         Jugador jugador = new Jugador("LeoProgramador");
-        Respuesta respuestaJugador = new Respuesta(jugador);
+        Respuesta respuestaJugador = new Respuesta(jugador, pregunta);
 
         respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(0));
         ArrayList<Respuesta> respuestas = new ArrayList<Respuesta>();
@@ -415,7 +415,7 @@ public class MultipleChoiceTest {
         pregunta.agregarOpcion(new OpcionBinaria("Suiza", false));
         pregunta.agregarOpcion(new OpcionBinaria("Bolivia", true));
         Jugador jugador = new Jugador("LeoProgramador");
-        Respuesta respuestaJugador = new Respuesta(jugador);
+        Respuesta respuestaJugador = new Respuesta(jugador, pregunta);
 
         respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(3));
         ArrayList<Respuesta> respuestas = new ArrayList<Respuesta>();
@@ -433,7 +433,7 @@ public class MultipleChoiceTest {
         pregunta.agregarOpcion(new OpcionBinaria("Suiza", false));
         pregunta.agregarOpcion(new OpcionBinaria("Bolivia", true));
         Jugador jugador = new Jugador("LeoProgramador");
-        Respuesta respuestaJugador = new Respuesta(jugador);
+        Respuesta respuestaJugador = new Respuesta(jugador, pregunta);
 
         respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(0));
         respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(3));
@@ -452,7 +452,7 @@ public class MultipleChoiceTest {
         pregunta.agregarOpcion(new OpcionBinaria("Suiza", false));
         pregunta.agregarOpcion(new OpcionBinaria("Bolivia", true));
         Jugador jugador = new Jugador("LeoProgramador");
-        Respuesta respuestaJugador = new Respuesta(jugador);
+        Respuesta respuestaJugador = new Respuesta(jugador, pregunta);
 
         respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(1));
         respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(2));
@@ -472,7 +472,7 @@ public class MultipleChoiceTest {
         pregunta.agregarOpcion(new OpcionBinaria("Malasia", false));
         pregunta.agregarOpcion(new OpcionBinaria("Costa Rica", true));
         Jugador jugador = new Jugador("LeoProgramador");
-        Respuesta respuestaJugador = new Respuesta(jugador);
+        Respuesta respuestaJugador = new Respuesta(jugador, pregunta);
 
         respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(0));
         respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(3));
@@ -491,7 +491,7 @@ public class MultipleChoiceTest {
         pregunta.agregarOpcion(new OpcionBinaria("Malasia", false));
         pregunta.agregarOpcion(new OpcionBinaria("Costa Rica", true));
         Jugador jugador = new Jugador("LeoProgramador");
-        Respuesta respuestaJugador = new Respuesta(jugador);
+        Respuesta respuestaJugador = new Respuesta(jugador, pregunta);
 
         respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(0));
         ArrayList<Respuesta> respuestas = new ArrayList<Respuesta>();
@@ -509,7 +509,7 @@ public class MultipleChoiceTest {
         pregunta.agregarOpcion(new OpcionBinaria("Malasia", false));
         pregunta.agregarOpcion(new OpcionBinaria("Costa Rica", true));
         Jugador jugador = new Jugador("LeoProgramador");
-        Respuesta respuestaJugador = new Respuesta(jugador);
+        Respuesta respuestaJugador = new Respuesta(jugador, pregunta);
 
         respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(0));
         respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(2));
@@ -529,7 +529,7 @@ public class MultipleChoiceTest {
         pregunta.agregarOpcion(new OpcionBinaria("Brasil", true));
         pregunta.agregarOpcion(new OpcionBinaria("Costa Rica", true));
         Jugador jugador = new Jugador("LeoProgramador");
-        Respuesta respuestaJugador = new Respuesta(jugador);
+        Respuesta respuestaJugador = new Respuesta(jugador, pregunta);
 
         respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(1));
         respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(2));
@@ -549,7 +549,7 @@ public class MultipleChoiceTest {
         pregunta.agregarOpcion(new OpcionBinaria("Brasil", true));
         pregunta.agregarOpcion(new OpcionBinaria("Costa Rica", true));
         Jugador jugador = new Jugador("LeoProgramador");
-        Respuesta respuestaJugador = new Respuesta(jugador);
+        Respuesta respuestaJugador = new Respuesta(jugador, pregunta);
 
         respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(2));
         ArrayList<Respuesta> respuestas = new ArrayList<Respuesta>();
@@ -567,7 +567,7 @@ public class MultipleChoiceTest {
         pregunta.agregarOpcion(new OpcionBinaria("Brasil", true));
         pregunta.agregarOpcion(new OpcionBinaria("Costa Rica", true));
         Jugador jugador = new Jugador("LeoProgramador");
-        Respuesta respuestaJugador = new Respuesta(jugador);
+        Respuesta respuestaJugador = new Respuesta(jugador, pregunta);
 
         respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(0));
         respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(1));
@@ -588,7 +588,7 @@ public class MultipleChoiceTest {
         pregunta.agregarOpcion(new OpcionBinaria("Brasil", true));
         pregunta.agregarOpcion(new OpcionBinaria("Costa Rica", true));
         Jugador jugador = new Jugador("LeoProgramador");
-        Respuesta respuestaJugador = new Respuesta(jugador);
+        Respuesta respuestaJugador = new Respuesta(jugador, pregunta);
 
         respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(1));
         respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(3));
@@ -608,8 +608,8 @@ public class MultipleChoiceTest {
         pregunta.agregarOpcion(new OpcionBinaria("Rusia", false));
         Jugador jugador1 = new Jugador("LeoProgramador");
         Jugador jugador2 = new Jugador("Joaco");
-        Respuesta respuestaJugador1 = new Respuesta(jugador1);
-        Respuesta respuestaJugador2 = new Respuesta(jugador2);
+        Respuesta respuestaJugador1 = new Respuesta(jugador1, pregunta);
+        Respuesta respuestaJugador2 = new Respuesta(jugador2, pregunta);
 
         respuestaJugador1.agregarOpcion(pregunta.obtenerOpcion(0));
         respuestaJugador2.agregarOpcion(pregunta.obtenerOpcion(2));
@@ -633,8 +633,8 @@ public class MultipleChoiceTest {
         pregunta.agregarOpcion(new OpcionBinaria("Venezuela", true));
         Jugador jugador1 = new Jugador("LeoProgramador");
         Jugador jugador2 = new Jugador("Joaco");
-        Respuesta respuestaJugador1 = new Respuesta(jugador1);
-        Respuesta respuestaJugador2 = new Respuesta(jugador2);
+        Respuesta respuestaJugador1 = new Respuesta(jugador1, pregunta);
+        Respuesta respuestaJugador2 = new Respuesta(jugador2, pregunta);
 
         respuestaJugador1.agregarOpcion(pregunta.obtenerOpcion(0));
         respuestaJugador1.agregarOpcion(pregunta.obtenerOpcion(2));
@@ -660,8 +660,8 @@ public class MultipleChoiceTest {
         pregunta.agregarOpcion(new OpcionBinaria("Venezuela", false));
         Jugador jugador1 = new Jugador("LeoProgramador");
         Jugador jugador2 = new Jugador("Joaco");
-        Respuesta respuestaJugador1 = new Respuesta(jugador1);
-        Respuesta respuestaJugador2 = new Respuesta(jugador2);
+        Respuesta respuestaJugador1 = new Respuesta(jugador1, pregunta);
+        Respuesta respuestaJugador2 = new Respuesta(jugador2, pregunta);
 
         respuestaJugador1.agregarOpcion(pregunta.obtenerOpcion(0));
         respuestaJugador1.agregarOpcion(pregunta.obtenerOpcion(2));
