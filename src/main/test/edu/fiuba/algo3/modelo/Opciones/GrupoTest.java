@@ -1,9 +1,5 @@
 package edu.fiuba.algo3.modelo.Opciones;
 
-import edu.fiuba.algo3.modelo.Opciones.Grupo;
-import edu.fiuba.algo3.modelo.Opciones.OpcionGrupal;
-import edu.fiuba.algo3.modelo.Opciones.OpcionOrdenada;
-import edu.fiuba.algo3.modelo.Preguntas.GroupChoice;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

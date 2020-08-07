@@ -1,19 +1,26 @@
 package edu.fiuba.algo3.modelo.Entidades;
 
+import edu.fiuba.algo3.modelo.Opciones.OpcionBinaria;
+import edu.fiuba.algo3.modelo.Preguntas.MultipleChoice;
+import edu.fiuba.algo3.modelo.Preguntas.VoF;
+import edu.fiuba.algo3.modelo.Respuestas.Respuesta;
+import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class JugadorTest {
-    /*
+
     @Test
     public void test01ElJugadorPuedeUtilizarMultiplicadorDobleEnVoFConPenalidad(){
         // Arrange
-        ListaOpciones listaOpcionesPregunta = new ListaOpciones();
-        listaOpcionesPregunta.agregarOpcion(new OpcionCorrecta("Verdadero"));
-        listaOpcionesPregunta.agregarOpcion(new OpcionIncorrecta("Falso"));
-        Pregunta pregunta = VoF.conModoPenalidad("Argentina ganó mundial 2014", listaOpcionesPregunta);
+        VoF pregunta = VoF.conModoPenalidad("Argentina ganó mundial 2014");
+        pregunta.agregarOpcion(new OpcionBinaria("Verdadero", true));
+        pregunta.agregarOpcion(new OpcionBinaria("Falso", false));
         Jugador jugador = new Jugador("Lionel Messi");
         Respuesta respuestaJugador = new Respuesta(jugador);
-        respuestaJugador.agregarOpcion(listaOpcionesPregunta.obtener(0));
+        respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(0));
         ArrayList<Respuesta> respuestas = new ArrayList<>();
         respuestas.add(respuestaJugador);
 
@@ -28,13 +35,12 @@ public class JugadorTest {
     @Test
     public void test02JugadorUtilizaMultiplicadorDobleEnVoFClasicoNoHaceEfectoAlEvaluarSuRespuesta(){
         // Arrange
-        ListaOpciones listaOpcionesPregunta = new ListaOpciones();
-        listaOpcionesPregunta.agregarOpcion(new OpcionCorrecta("Verdadero"));
-        listaOpcionesPregunta.agregarOpcion(new OpcionIncorrecta("Falso"));
-        Pregunta pregunta = VoF.conModoClasico("Argentina ganó mundial 2014", listaOpcionesPregunta);
+        VoF pregunta = VoF.conModoClasico("Argentina ganó mundial 2014");
+        pregunta.agregarOpcion(new OpcionBinaria("Verdadero", false));
+        pregunta.agregarOpcion(new OpcionBinaria("Falso", true));
         Jugador jugador = new Jugador("Lionel Messi");
         Respuesta respuestaJugador = new Respuesta(jugador);
-        respuestaJugador.agregarOpcion(listaOpcionesPregunta.obtener(0));
+        respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(1));
         ArrayList<Respuesta> respuestas = new ArrayList<>();
         respuestas.add(respuestaJugador);
 
@@ -49,20 +55,14 @@ public class JugadorTest {
     @Test
     public void test03JugadorUtilizaMultiplicadoDobleEnChoiceConPenalidadYFunciona(){
         // Arrange
-        OpcionIncorrecta opcionIncorrecta1 = new OpcionIncorrecta("No");
-        OpcionCorrecta opcionCorrecta = new OpcionCorrecta("Si");
-        OpcionIncorrecta opcionIncorrecta2 = new OpcionIncorrecta("No No No");
-        OpcionIncorrecta opcionIncorrecta3 = new OpcionIncorrecta("No lo se Rick");
-        ListaOpciones listaOpciones = new ListaOpciones();
-        listaOpciones.agregarOpcion(opcionCorrecta);
-        listaOpciones.agregarOpcion(opcionIncorrecta1);
-        listaOpciones.agregarOpcion(opcionIncorrecta2);
-        listaOpciones.agregarOpcion(opcionIncorrecta3);
-
-        MultipleChoice pregunta = MultipleChoice.conModoPenalidad("Argentina ganó mundial 1986", listaOpciones);
+        MultipleChoice pregunta = MultipleChoice.conModoPenalidad("Mundiales Ganados por Argentina");
+        pregunta.agregarOpcion(new OpcionBinaria("2010", false));
+        pregunta.agregarOpcion(new OpcionBinaria("1986", true));
+        pregunta.agregarOpcion(new OpcionBinaria("2014", false));
+        pregunta.agregarOpcion(new OpcionBinaria("2006", false));
         Jugador jugador = new Jugador("Lionel Messi");
         Respuesta respuestaJugador = new Respuesta(jugador);
-        respuestaJugador.agregarOpcion(opcionCorrecta);
+        respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(1));
         ArrayList<Respuesta> respuestas = new ArrayList<>();
         respuestas.add(respuestaJugador);
 
@@ -77,16 +77,12 @@ public class JugadorTest {
     @Test
     public void test04JugadorUtilizaMultiplicadoDobleEnModoParcialNoHaceEfectoAlEvaluarSuRespuesta(){
         // Arrange
-        OpcionCorrecta opcionCorrecta = new OpcionCorrecta("No");
-        OpcionCorrecta opcionIncorrecta = new OpcionCorrecta("Si");
-        ListaOpciones listaOpciones = new ListaOpciones();
-        listaOpciones.agregarOpcion(opcionCorrecta);
-        listaOpciones.agregarOpcion(opcionIncorrecta);
-
-        MultipleChoice pregunta = MultipleChoice.conModoPuntajeParcial("Argentina ganó mundial 2014", listaOpciones);
+        MultipleChoice pregunta = MultipleChoice.conModoPuntajeParcial("Mundiales Ganados por Argentina");
+        pregunta.agregarOpcion(new OpcionBinaria("2010", false));
+        pregunta.agregarOpcion(new OpcionBinaria("1986", true));
         Jugador jugador = new Jugador("Lionel Messi");
         Respuesta respuestaJugador = new Respuesta(jugador);
-        respuestaJugador.agregarOpcion(opcionCorrecta);
+        respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(1));
         ArrayList<Respuesta> respuestas = new ArrayList<>();
         respuestas.add(respuestaJugador);
 
@@ -101,13 +97,12 @@ public class JugadorTest {
     @Test
     public void test05ElJugadorPuedeUtilizarMultiplicadorTripleEnVoFConPenalidad(){
         // Arrange
-        ListaOpciones listaOpcionesPregunta = new ListaOpciones();
-        listaOpcionesPregunta.agregarOpcion(new OpcionCorrecta("Verdadero"));
-        listaOpcionesPregunta.agregarOpcion(new OpcionIncorrecta("Falso"));
-        Pregunta pregunta = VoF.conModoPenalidad("Argentina ganó mundial 2014", listaOpcionesPregunta);
+        VoF pregunta = VoF.conModoPenalidad("Argentina ganó el mundial del 78");
+        pregunta.agregarOpcion(new OpcionBinaria("Verdadero", true));
+        pregunta.agregarOpcion(new OpcionBinaria("Falso", false));
         Jugador jugador = new Jugador("Lionel Messi");
         Respuesta respuestaJugador = new Respuesta(jugador);
-        respuestaJugador.agregarOpcion(listaOpcionesPregunta.obtener(0));
+        respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(0));
         ArrayList<Respuesta> respuestas = new ArrayList<>();
         respuestas.add(respuestaJugador);
 
@@ -122,13 +117,12 @@ public class JugadorTest {
     @Test
     public void test06JugadorUtilizaMultiplicadorTripleEnVoFClasicoNoHaceEfectoAlEvaluarSuRespuesta(){
         // Arrange
-        ListaOpciones listaOpcionesPregunta = new ListaOpciones();
-        listaOpcionesPregunta.agregarOpcion(new OpcionCorrecta("Verdadero"));
-        listaOpcionesPregunta.agregarOpcion(new OpcionIncorrecta("Falso"));
-        Pregunta pregunta = VoF.conModoClasico("Argentina ganó mundial 2014", listaOpcionesPregunta);
+        VoF pregunta = VoF.conModoClasico("Argentina ganó mundial 2014");
+        pregunta.agregarOpcion(new OpcionBinaria("Verdadero", true));
+        pregunta.agregarOpcion(new OpcionBinaria("Falso", false));
         Jugador jugador = new Jugador("Lionel Messi");
         Respuesta respuestaJugador = new Respuesta(jugador);
-        respuestaJugador.agregarOpcion(listaOpcionesPregunta.obtener(0));
+        respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(0));
         ArrayList<Respuesta> respuestas = new ArrayList<>();
         respuestas.add(respuestaJugador);
 
@@ -143,20 +137,14 @@ public class JugadorTest {
     @Test
     public void test07JugadorUtilizaMultiplicadoTripleEnChoiceConPenalidadYFunciona(){
         // Arrange
-        OpcionIncorrecta opcionIncorrecta1 = new OpcionIncorrecta("No");
-        OpcionCorrecta opcionCorrecta = new OpcionCorrecta("Si");
-        OpcionIncorrecta opcionIncorrecta2 = new OpcionIncorrecta("No No No");
-        OpcionIncorrecta opcionIncorrecta3 = new OpcionIncorrecta("No lo se Rick");
-        ListaOpciones listaOpciones = new ListaOpciones();
-        listaOpciones.agregarOpcion(opcionCorrecta);
-        listaOpciones.agregarOpcion(opcionIncorrecta1);
-        listaOpciones.agregarOpcion(opcionIncorrecta2);
-        listaOpciones.agregarOpcion(opcionIncorrecta3);
-
-        MultipleChoice pregunta = MultipleChoice.conModoPenalidad("Argentina ganó mundial 1986", listaOpciones);
+        MultipleChoice pregunta = MultipleChoice.conModoPenalidad("Mundiales Ganados por Argentina");
+        pregunta.agregarOpcion(new OpcionBinaria("2010", false));
+        pregunta.agregarOpcion(new OpcionBinaria("1986", true));
+        pregunta.agregarOpcion(new OpcionBinaria("2014", false));
+        pregunta.agregarOpcion(new OpcionBinaria("2006", false));
         Jugador jugador = new Jugador("Lionel Messi");
         Respuesta respuestaJugador = new Respuesta(jugador);
-        respuestaJugador.agregarOpcion(opcionCorrecta);
+        respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(1));
         ArrayList<Respuesta> respuestas = new ArrayList<>();
         respuestas.add(respuestaJugador);
 
@@ -171,16 +159,12 @@ public class JugadorTest {
     @Test
     public void test08JugadorUtilizaMultiplicadoTripleEnModoParcialNoHaceEfectoAlEvaluarSuRespuesta(){
         // Arrange
-        OpcionCorrecta opcionCorrecta = new OpcionCorrecta("No");
-        OpcionCorrecta opcionIncorrecta = new OpcionCorrecta("Si");
-        ListaOpciones listaOpciones = new ListaOpciones();
-        listaOpciones.agregarOpcion(opcionCorrecta);
-        listaOpciones.agregarOpcion(opcionIncorrecta);
-
-        MultipleChoice pregunta = MultipleChoice.conModoPuntajeParcial("Argentina ganó mundial 2014", listaOpciones);
+        MultipleChoice pregunta = MultipleChoice.conModoPuntajeParcial("Mundiales Ganados por Argentina");
+        pregunta.agregarOpcion(new OpcionBinaria("2010", false));
+        pregunta.agregarOpcion(new OpcionBinaria("1986", true));
         Jugador jugador = new Jugador("Lionel Messi");
         Respuesta respuestaJugador = new Respuesta(jugador);
-        respuestaJugador.agregarOpcion(opcionCorrecta);
+        respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(1));
         ArrayList<Respuesta> respuestas = new ArrayList<>();
         respuestas.add(respuestaJugador);
 
@@ -209,8 +193,5 @@ public class JugadorTest {
         jugador.modificarPuntos(2);
         assertEquals(5, jugador.puntos());
     }
-    */
-
-
 }
 

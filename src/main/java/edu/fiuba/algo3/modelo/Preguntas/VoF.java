@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo.Preguntas;
 
+import edu.fiuba.algo3.modelo.Exepciones.VoFSoloTieneDosOpcionesError;
 import edu.fiuba.algo3.modelo.Opciones.Opcion;
 import edu.fiuba.algo3.modelo.Opciones.OpcionBinaria;
 import edu.fiuba.algo3.modelo.Preguntas.ModosPreguntas.Clasico;
@@ -20,9 +21,7 @@ public class VoF extends Pregunta {
         super.agregarOpcion(opcion);
     }
 
-    public OpcionBinaria obtenerOpcion(int posicion){
-        return (OpcionBinaria) super.obtenerOpcion(posicion);
-    }
+    public OpcionBinaria obtenerOpcion(int posicion){ return (OpcionBinaria) super.obtenerOpcion(posicion); }
 
     public int calcularCantidadOpcionesCorrectas(){ return (int) opcionesPregunta.stream().filter(Opcion::esCorrecta).count(); }
 }
