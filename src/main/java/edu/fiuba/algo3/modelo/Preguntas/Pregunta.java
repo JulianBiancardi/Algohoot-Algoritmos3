@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.modelo.Preguntas;
 
-import edu.fiuba.algo3.modelo.Opciones.ListaOpciones;
+import edu.fiuba.algo3.modelo.Opciones.Opcion;
 import edu.fiuba.algo3.modelo.Preguntas.ModosPreguntas.ModoPregunta;
 import edu.fiuba.algo3.modelo.Respuestas.Respuesta;
 
@@ -8,16 +8,15 @@ import java.util.ArrayList;
 
 public abstract class Pregunta {
     protected String enunciado;
-    protected ListaOpciones opcionesPregunta;
-    protected int cantidadOpcionesCorrectas;
+    protected ArrayList<Opcion> opcionesPregunta = new ArrayList<>();
     protected ModoPregunta modo;
 
-    public Pregunta(String unEnunciado, ModoPregunta unModo, ListaOpciones opcionesPregunta) {
+    public Pregunta(String unEnunciado, ModoPregunta unModo) {
         enunciado = unEnunciado;
         modo = unModo;
-        this.opcionesPregunta = opcionesPregunta;
-        cantidadOpcionesCorrectas = opcionesPregunta.cantidadOpcionesCorrectas();
     }
+
+    public abstract int calcularCantidadOpcionesCorrectas();
 
     public void evaluarRespuestas(ArrayList<Respuesta> respuestas) {
         for (Respuesta respuesta : respuestas) {
@@ -31,6 +30,19 @@ public abstract class Pregunta {
          *                     &&
          *        cantidadOpcionesIncorrectas() == 0
          *  ... lanzo excepción. Solo evalúo respuestas con a lo sumo una opción ingresada */
-        modo.modificarPuntos(respuesta, cantidadOpcionesCorrectas);
+
+        modo.modificarPuntos(respuesta, calcularCantidadOpcionesCorrectas());
     }
+
+    public void agregarOpcion(Opcion opcion) { opcionesPregunta.add(opcion); }
+
+    public Opcion obtenerOpcion(int posicion){
+        return opcionesPregunta.get(posicion);
+    }
+
+    public int cantidadOpciones(){
+        return opcionesPregunta.size();
+    }
+
+    public boolean aceptaMultiplicador(){ return modo.aceptaMultiplicador(); }
 }

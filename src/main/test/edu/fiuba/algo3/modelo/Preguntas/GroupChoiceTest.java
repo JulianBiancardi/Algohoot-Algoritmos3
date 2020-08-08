@@ -2,7 +2,6 @@ package edu.fiuba.algo3.modelo.Preguntas;
 
 import edu.fiuba.algo3.modelo.Entidades.Jugador;
 import edu.fiuba.algo3.modelo.Opciones.OpcionGrupal;
-import edu.fiuba.algo3.modelo.Preguntas.GroupChoice;
 import edu.fiuba.algo3.modelo.Respuestas.Respuesta;
 import edu.fiuba.algo3.modelo.Respuestas.RespuestaGrupal;
 import org.junit.jupiter.api.Test;
@@ -18,13 +17,13 @@ public class GroupChoiceTest {
 
         String nombreGrupo1 = "Numeros Pares";
         String nombreGrupo2 = "Numeros Impares";
-        GroupChoice pregunta = new GroupChoice("Separar en Pares e Impares",nombreGrupo1, nombreGrupo2);
+        GroupChoice pregunta = new GroupChoice("Separar en Pares e Impares", nombreGrupo1, nombreGrupo2);
         pregunta.agregarOpcionGrupo1(new OpcionGrupal("2"));
         pregunta.agregarOpcionGrupo2(new OpcionGrupal("3"));
         pregunta.agregarOpcionGrupo1(new OpcionGrupal("4"));
         pregunta.agregarOpcionGrupo2(new OpcionGrupal("5"));
         Jugador jugador = new Jugador("LeoProgramador");
-        RespuestaGrupal respuestaJugador = new RespuestaGrupal(jugador, nombreGrupo1, nombreGrupo2);
+        RespuestaGrupal respuestaJugador = new RespuestaGrupal(jugador, pregunta, nombreGrupo1, nombreGrupo2);
 
         respuestaJugador.agregarOpcionGrupo1(pregunta.obtenerOpcion(0));
         respuestaJugador.agregarOpcionGrupo1(pregunta.obtenerOpcion(2));
@@ -48,7 +47,7 @@ public class GroupChoiceTest {
         pregunta.agregarOpcionGrupo1(new OpcionGrupal("4"));
         pregunta.agregarOpcionGrupo2(new OpcionGrupal("5"));
         Jugador jugador = new Jugador("LeoProgramador");
-        RespuestaGrupal respuestaJugador = new RespuestaGrupal(jugador, nombreGrupo1, nombreGrupo2);
+        RespuestaGrupal respuestaJugador = new RespuestaGrupal(jugador, pregunta, nombreGrupo1, nombreGrupo2);
 
         respuestaJugador.agregarOpcionGrupo1(pregunta.obtenerOpcion(0));
         respuestaJugador.agregarOpcionGrupo1(pregunta.obtenerOpcion(1));
@@ -72,7 +71,7 @@ public class GroupChoiceTest {
         pregunta.agregarOpcionGrupo1(new OpcionGrupal("6"));
         pregunta.agregarOpcionGrupo2(new OpcionGrupal("5"));
         Jugador jugador = new Jugador("LeoProgramador");
-        RespuestaGrupal respuestaJugador = new RespuestaGrupal(jugador, nombreGrupo1, nombreGrupo2);
+        RespuestaGrupal respuestaJugador = new RespuestaGrupal(jugador, pregunta, nombreGrupo1, nombreGrupo2);
 
         respuestaJugador.agregarOpcionGrupo1(pregunta.obtenerOpcion(0));
         respuestaJugador.agregarOpcionGrupo1(pregunta.obtenerOpcion(1));
@@ -97,8 +96,8 @@ public class GroupChoiceTest {
         pregunta.agregarOpcionGrupo2(new OpcionGrupal("5"));
         Jugador jugador1 = new Jugador("LeoProgramador");
         Jugador jugador2 = new Jugador("Julianaso");
-        RespuestaGrupal respuestaJugador1 = new RespuestaGrupal(jugador1, nombreGrupo1, nombreGrupo2);
-        RespuestaGrupal respuestaJugador2 = new RespuestaGrupal(jugador2, nombreGrupo1, nombreGrupo2);
+        RespuestaGrupal respuestaJugador1 = new RespuestaGrupal(jugador1, pregunta, nombreGrupo1, nombreGrupo2);
+        RespuestaGrupal respuestaJugador2 = new RespuestaGrupal(jugador2, pregunta, nombreGrupo1, nombreGrupo2);
 
         //Responde jugador1
         respuestaJugador1.agregarOpcionGrupo1(pregunta.obtenerOpcion(0));
@@ -131,8 +130,8 @@ public class GroupChoiceTest {
         pregunta.agregarOpcionGrupo2(new OpcionGrupal("5"));
         Jugador jugador1 = new Jugador("LeoProgramador");
         Jugador jugador2 = new Jugador("Joaco");
-        RespuestaGrupal respuestaJugador1 = new RespuestaGrupal(jugador1, nombreGrupo1, nombreGrupo2);
-        RespuestaGrupal respuestaJugador2 = new RespuestaGrupal(jugador2, nombreGrupo1, nombreGrupo2);
+        RespuestaGrupal respuestaJugador1 = new RespuestaGrupal(jugador1, pregunta, nombreGrupo1, nombreGrupo2);
+        RespuestaGrupal respuestaJugador2 = new RespuestaGrupal(jugador2, pregunta, nombreGrupo1, nombreGrupo2);
 
         //Responde jugador1
         respuestaJugador1.agregarOpcionGrupo1(pregunta.obtenerOpcion(0));
@@ -165,14 +164,17 @@ public class GroupChoiceTest {
         pregunta.agregarOpcionGrupo2(new OpcionGrupal("5"));
         Jugador jugador1 = new Jugador("LeoProgramador");
         Jugador jugador2 = new Jugador("Fede");
-        RespuestaGrupal respuestaJugador1 = new RespuestaGrupal(jugador1, nombreGrupo1, nombreGrupo2);
-        RespuestaGrupal respuestaJugador2 = new RespuestaGrupal(jugador2, nombreGrupo1, nombreGrupo2);
+        RespuestaGrupal respuestaJugador1 = new RespuestaGrupal(jugador1, pregunta, nombreGrupo1, nombreGrupo2);
+        RespuestaGrupal respuestaJugador2 = new RespuestaGrupal(jugador2, pregunta, nombreGrupo1, nombreGrupo2);
 
         //Responde jugador1
+
         respuestaJugador1.agregarOpcionGrupo1(pregunta.obtenerOpcion(3));
         respuestaJugador1.agregarOpcionGrupo1(pregunta.obtenerOpcion(1));
         respuestaJugador1.agregarOpcionGrupo1(pregunta.obtenerOpcion(0));
         respuestaJugador1.agregarOpcionGrupo2(pregunta.obtenerOpcion(2));
+
+
         //Responde jugador2
         respuestaJugador2.agregarOpcionGrupo1(pregunta.obtenerOpcion(0));
         respuestaJugador2.agregarOpcionGrupo1(pregunta.obtenerOpcion(1));

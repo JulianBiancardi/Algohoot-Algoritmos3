@@ -1,40 +1,40 @@
 package edu.fiuba.algo3.modelo.Respuestas;
 
 import edu.fiuba.algo3.modelo.Entidades.Jugador;
-import edu.fiuba.algo3.modelo.Opciones.ListaOpciones;
+import edu.fiuba.algo3.modelo.Entidades.Multiplicador;
+import edu.fiuba.algo3.modelo.Exepciones.PreguntaNoAceptaMultiplicadorError;
 import edu.fiuba.algo3.modelo.Opciones.Opcion;
-import edu.fiuba.algo3.modelo.Opciones.OpcionOrdenada;
+import edu.fiuba.algo3.modelo.Preguntas.Pregunta;
+
+import java.util.ArrayList;
 
 public class Respuesta {
-    private final ListaOpciones opcionesElegidas = new ListaOpciones();
+    protected ArrayList<Opcion> opcionesElegidas = new ArrayList<>();
     private final Jugador responsable;
+    private final Pregunta preguntaReferenciada;
+    private Multiplicador multiplicadorActual = Multiplicador.crearMultiplicadorNulo();
 
-    public Respuesta(Jugador jugador) {
+    public Respuesta(Jugador jugador, Pregunta pregunta) {
         responsable = jugador;
+        preguntaReferenciada = pregunta;
     }
 
     public void agregarOpcion(Opcion opcion) {
-        opcionesElegidas.agregarOpcion(opcion);
+        opcionesElegidas.add(opcion);
     }
 
-    public void agregarOpcionOrdenada(OpcionOrdenada opcionOrdenada){
-        opcionOrdenada.setPosicionEsperada(opcionesElegidas.tamaño()+1);
-        opcionesElegidas.agregarOpcion(opcionOrdenada);
-    }
+    public int cantidadOpcionesCorrectas() { return (int) opcionesElegidas.stream().filter(Opcion::esCorrecta).count(); }
 
-    public int cantidadOpcionesCorrectas() {
-        return opcionesElegidas.cantidadOpcionesCorrectas();
-    }
-
-    public int cantidadOpcionesIncorrectas() {
-        return opcionesElegidas.cantidadOpcionesIncorrectas();
-    }
-
-    public void modificarPuntosBonificadamente(int puntaje) {
-        responsable.modificarPuntosBonificadamente(puntaje);
-    }
+    public int cantidadOpcionesIncorrectas() { return (int) opcionesElegidas.stream().filter(opcion -> !opcion.esCorrecta()).count(); }
 
     public void modificarPuntos(int puntaje) {
-        responsable.modificarPuntos(puntaje);
+        responsable.modificarPuntos(multiplicadorActual.aplicarMultiplicador(puntaje));
+    }
+
+    public void agregarMultiplicador(Multiplicador multiplicador){
+        if(!preguntaReferenciada.aceptaMultiplicador()){
+            throw new PreguntaNoAceptaMultiplicadorError();
+        }
+        multiplicadorActual = multiplicador;
     }
 }

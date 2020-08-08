@@ -3,7 +3,6 @@ package edu.fiuba.algo3.modelo.Respuestas;
 import edu.fiuba.algo3.modelo.Entidades.Jugador;
 import edu.fiuba.algo3.modelo.Opciones.OpcionGrupal;
 import edu.fiuba.algo3.modelo.Preguntas.GroupChoice;
-import edu.fiuba.algo3.modelo.Respuestas.RespuestaGrupal;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -20,7 +19,7 @@ public class RespuestaGrupalTest {
         pregunta.agregarOpcionGrupo1(new OpcionGrupal("Messi"));
         pregunta.agregarOpcionGrupo2(new OpcionGrupal("Cafu"));
         Jugador jugador = new Jugador("LeoProgramador");
-        RespuestaGrupal respuestaJugador = new RespuestaGrupal(jugador, nombreGrupo1, nombreGrupo2);
+        RespuestaGrupal respuestaJugador = new RespuestaGrupal(jugador, pregunta, nombreGrupo1, nombreGrupo2);
 
         respuestaJugador.agregarOpcionGrupo1(pregunta.obtenerOpcion(0));
         respuestaJugador.agregarOpcionGrupo1(pregunta.obtenerOpcion(2));
@@ -40,7 +39,7 @@ public class RespuestaGrupalTest {
         pregunta.agregarOpcionGrupo1(new OpcionGrupal("Messi"));
         pregunta.agregarOpcionGrupo2(new OpcionGrupal("Cafu"));
         Jugador jugador = new Jugador("LeoProgramador");
-        RespuestaGrupal respuestaJugador = new RespuestaGrupal(jugador, nombreGrupo1, nombreGrupo2);
+        RespuestaGrupal respuestaJugador = new RespuestaGrupal(jugador, pregunta, nombreGrupo1, nombreGrupo2);
 
         respuestaJugador.agregarOpcionGrupo1(pregunta.obtenerOpcion(0));
         respuestaJugador.agregarOpcionGrupo2(pregunta.obtenerOpcion(2));
@@ -60,7 +59,7 @@ public class RespuestaGrupalTest {
         pregunta.agregarOpcionGrupo1(new OpcionGrupal("Messi"));
         pregunta.agregarOpcionGrupo2(new OpcionGrupal("Cafu"));
         Jugador jugador = new Jugador("LeoProgramador");
-        RespuestaGrupal respuestaJugador = new RespuestaGrupal(jugador, nombreGrupo1, nombreGrupo2);
+        RespuestaGrupal respuestaJugador = new RespuestaGrupal(jugador, pregunta, nombreGrupo1, nombreGrupo2);
 
         respuestaJugador.agregarOpcionGrupo1(pregunta.obtenerOpcion(0));
         respuestaJugador.agregarOpcionGrupo2(pregunta.obtenerOpcion(2));
@@ -80,7 +79,7 @@ public class RespuestaGrupalTest {
         pregunta.agregarOpcionGrupo1(new OpcionGrupal("Messi"));
         pregunta.agregarOpcionGrupo2(new OpcionGrupal("Cafu"));
         Jugador jugador = new Jugador("LeoProgramador");
-        RespuestaGrupal respuestaJugador = new RespuestaGrupal(jugador, nombreGrupo1, nombreGrupo2);
+        RespuestaGrupal respuestaJugador = new RespuestaGrupal(jugador, pregunta, nombreGrupo1, nombreGrupo2);
 
         respuestaJugador.agregarOpcionGrupo1(pregunta.obtenerOpcion(0));
         respuestaJugador.agregarOpcionGrupo2(pregunta.obtenerOpcion(2));
@@ -100,7 +99,7 @@ public class RespuestaGrupalTest {
         pregunta.agregarOpcionGrupo1(new OpcionGrupal("Messi"));
         pregunta.agregarOpcionGrupo2(new OpcionGrupal("Cafu"));
         Jugador jugador = new Jugador("LeoProgramador");
-        RespuestaGrupal respuestaJugador = new RespuestaGrupal(jugador, nombreGrupo1, nombreGrupo2);
+        RespuestaGrupal respuestaJugador = new RespuestaGrupal(jugador, pregunta, nombreGrupo1, nombreGrupo2);
 
         respuestaJugador.agregarOpcionGrupo2(pregunta.obtenerOpcion(0));
         respuestaJugador.agregarOpcionGrupo2(pregunta.obtenerOpcion(2));

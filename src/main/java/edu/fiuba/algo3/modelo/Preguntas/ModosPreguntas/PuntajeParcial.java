@@ -13,4 +13,9 @@ public class PuntajeParcial implements ModoPregunta {
         if(erroresJugador == 0)
             respuestaJugador.modificarPuntos(PUNTAJE * aciertosJugador);
     }
+
+    @Override
+    public boolean aceptaMultiplicador(){
+        return false;
+    }
 }

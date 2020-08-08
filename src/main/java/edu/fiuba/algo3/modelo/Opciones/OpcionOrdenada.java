@@ -1,22 +1,20 @@
 package edu.fiuba.algo3.modelo.Opciones;
 
 public class OpcionOrdenada implements Opcion {
-
     private String descripcion;
-    private int posicion;
+    private int posicionActual;
     private int posicionEsperada;
 
-    public OpcionOrdenada(String descripcion, int posicion) {
-        this.descripcion = descripcion;
-        this.posicion = posicion;
-    }
+    public OpcionOrdenada(String descripcion) { this.descripcion = descripcion; }
 
     public void setPosicionEsperada (int posicionEsperada){
         this.posicionEsperada = posicionEsperada;
     }
 
+    public void setPosicionActual(int posicion){ posicionActual = posicion; }
+
     @Override
     public boolean esCorrecta() {
-        return (posicionEsperada == posicion);
+        return (posicionEsperada == posicionActual);
     }
 }

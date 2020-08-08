@@ -1,41 +1,30 @@
 package edu.fiuba.algo3.modelo.Entidades;
 
+import edu.fiuba.algo3.modelo.Exepciones.MultiplicadorYaUtilizadoError;
 import edu.fiuba.algo3.modelo.Observable;
 import edu.fiuba.algo3.modelo.Observador;
+import edu.fiuba.algo3.modelo.Respuestas.Respuesta;
 
 import java.util.ArrayList;
 
 public class Jugador implements Observable {
     private final String nombre;
     private int puntajeJugador;
+    private final Multiplicador multiplicadorDoble = Multiplicador.crearMultiplicadorDoble();
+    private final Multiplicador multiplicadorTriple = Multiplicador.crearMultiplicadorTriple();
+    private final ArrayList<Multiplicador> multiplicadoresRestantes = new ArrayList<>();
     ArrayList<Observador> observadores = new ArrayList<Observador>();
-    private Multiplicador multiplicadorDoble = Multiplicador.crearConFactor(2);
-    private Multiplicador multiplicadorTriple = Multiplicador.crearConFactor(3);
-    private Multiplicador multiplicadorActivo = Multiplicador.crearSinEfecto();
 
     public Jugador(String nombre) {
         this.nombre = nombre;
         puntajeJugador = 0;
-    }
-
-    public void modificarPuntosBonificadamente(int puntos) {
-        this.modificarPuntos(multiplicadorActivo.obtenerPuntosBonificados(puntos));
-        multiplicadorActivo = Multiplicador.crearSinEfecto();
+        multiplicadoresRestantes.add(multiplicadorDoble);
+        multiplicadoresRestantes.add(multiplicadorTriple);
     }
 
     public void modificarPuntos(int puntaje) {
         puntajeJugador = puntajeJugador + puntaje;
         notificarObservadores();
-    }
-
-    public void utilizarMultiplicadorDoble() {
-        multiplicadorActivo = multiplicadorDoble;
-        multiplicadorDoble = Multiplicador.crearSinEfecto();
-    }
-
-    public void utilizarMultiplicadorTriple() {
-        multiplicadorActivo = multiplicadorTriple;
-        multiplicadorTriple = Multiplicador.crearSinEfecto();
     }
 
     public int puntos() {
@@ -55,4 +44,18 @@ public class Jugador implements Observable {
     public void notificarObservadores() {
         observadores.stream().forEach(observador -> observador.actualizar());
     }
+
+    private void agregarMultiplicador(Respuesta respuesta, Multiplicador multiplicador){
+        if(!multiplicadoresRestantes.contains(multiplicador)){
+            throw new MultiplicadorYaUtilizadoError();
+        }
+        respuesta.agregarMultiplicador(multiplicador);
+        multiplicadoresRestantes.remove(multiplicador);
+    }
+
+    public void utilizarMultiplicadorDoble(Respuesta respuesta){
+        agregarMultiplicador(respuesta, multiplicadorDoble);
+    }
+
+    public void utilizarMultiplicadorTriple(Respuesta respuesta){ agregarMultiplicador(respuesta, multiplicadorTriple); }
 }

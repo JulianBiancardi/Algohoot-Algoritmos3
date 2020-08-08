@@ -1,12 +1,21 @@
 package edu.fiuba.algo3.modelo.Preguntas;
 
-import edu.fiuba.algo3.modelo.Opciones.ListaOpciones;
+import edu.fiuba.algo3.modelo.Opciones.OpcionOrdenada;
 import edu.fiuba.algo3.modelo.Preguntas.ModosPreguntas.Clasico;
-import edu.fiuba.algo3.modelo.Preguntas.ModosPreguntas.ModoPregunta;
 
 public class OrderedChoice extends Pregunta{
-    public OrderedChoice(String unEnunciado, ListaOpciones opcionesPregunta) {
-        super(unEnunciado,new Clasico(),opcionesPregunta);
+
+    public OrderedChoice(String unEnunciado) {
+        super(unEnunciado, new Clasico());
     }
+
+    public void agregarOpcion(OpcionOrdenada opcion){
+        opcion.setPosicionEsperada(cantidadOpciones());
+        super.agregarOpcion(opcion);
+    }
+
+    public int calcularCantidadOpcionesCorrectas(){ return opcionesPregunta.size();}
+
+    public OpcionOrdenada obtenerOpcion(int posicion){ return (OpcionOrdenada) super.obtenerOpcion(posicion); }
 }
 

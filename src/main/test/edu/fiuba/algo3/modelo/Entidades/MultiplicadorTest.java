@@ -1,5 +1,8 @@
 package edu.fiuba.algo3.modelo.Entidades;
-import edu.fiuba.algo3.modelo.Exepciones.MultiplicadorCreadoConFactorInvalidoExcepcion;
+
+import edu.fiuba.algo3.modelo.Exepciones.MultiplicadorYaUtilizadoError;
+import edu.fiuba.algo3.modelo.Preguntas.VoF;
+import edu.fiuba.algo3.modelo.Respuestas.Respuesta;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -9,39 +12,40 @@ public class MultiplicadorTest {
 
     @Test
     public void test01MultiplicadorSePuedeCrearSinEfectoObteniendoPuntosSinModificar() {
-        Multiplicador multiplicador = Multiplicador.crearSinEfecto();
+        Multiplicador multiplicador = Multiplicador.crearMultiplicadorNulo();
 
-        int puntajeObtenido = multiplicador.obtenerPuntosBonificados(10);
+        int puntajeObtenido = multiplicador.aplicarMultiplicador(10);
         assertEquals(10, puntajeObtenido);
     }
 
     @Test
-    public void test02MultiplicadorSePuedeCrearConFactorMultiplicacionPositivoObteniendoPuntosModificados() {
-        int factorMultiplicador = 10;
-        Multiplicador multiplicador = Multiplicador.crearConFactor(factorMultiplicador);
+    public void test02MultiplicadorDobleModificaPuntosCorrectamente(){
+        Multiplicador multiplicador = Multiplicador.crearMultiplicadorDoble();
 
-        int puntajeObtenido = multiplicador.obtenerPuntosBonificados(10);
+        int puntajeObtenido = multiplicador.aplicarMultiplicador(10);
 
-        assertEquals(10 * factorMultiplicador, puntajeObtenido);
+        assertEquals(10 * 2, puntajeObtenido);
     }
 
     @Test
-    public void test03MultiplicadorLanzaExcepcionSiSeCreaConFactorMultiplicacionNegativo() {
-        int factorMultiplicador = -1;
+    public void test03MultiplicadorTripleModificaPuntosCorrectamente(){
+        Multiplicador multiplicador = Multiplicador.crearMultiplicadorTriple();
 
-        assertThrows(MultiplicadorCreadoConFactorInvalidoExcepcion.class,
-                () -> {
-                    Multiplicador.crearConFactor(factorMultiplicador);
-                });
+        int puntajeObtenido = multiplicador.aplicarMultiplicador(10);
+
+        assertEquals(10 * 3, puntajeObtenido);
     }
 
     @Test
-    public void test04MultiplicadorLanzaExcepcionSiSeCreaConFactorMultiplicacionNulo() {
-        int factorMultiplicador = 0;
+    public void test04MultiplicadorDevuelveErrorAlSerUtilizadoDosVeces() {
+        Jugador jugador = new Jugador("Fede");
+        VoF pregunta = VoF.conModoPenalidad("Pregunta de prueba",true);
+        Respuesta respuesta = new Respuesta(jugador, pregunta);
+        jugador.utilizarMultiplicadorDoble(respuesta);
 
-        assertThrows(MultiplicadorCreadoConFactorInvalidoExcepcion.class,
+        assertThrows(MultiplicadorYaUtilizadoError.class,
                 () -> {
-                    Multiplicador.crearConFactor(factorMultiplicador);
+                    jugador.utilizarMultiplicadorDoble(respuesta);
                 });
     }
 }

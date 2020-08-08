@@ -1,28 +1,26 @@
 package edu.fiuba.algo3.modelo.Opciones;
 
-import edu.fiuba.algo3.modelo.Opciones.OpcionCorrecta;
-import edu.fiuba.algo3.modelo.Opciones.OpcionGrupal;
-import edu.fiuba.algo3.modelo.Opciones.OpcionIncorrecta;
-import edu.fiuba.algo3.modelo.Opciones.OpcionOrdenada;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 public class OpcionesTest {
 
     @Test
     public void test01CreoOpcionCorrectaYVerificoQueDevuelvaTrue(){
-        OpcionCorrecta opcion = new OpcionCorrecta("Soy correcta");
+        OpcionBinaria opcion = new OpcionBinaria("Soy correcta", true);
 
-        assertEquals(true, opcion.esCorrecta());
+        assertTrue(opcion.esCorrecta());
     }
 
     @Test
     public void test02CreoOpcionIncorrectaYVerificoQueDevuelvaFalse(){
-        OpcionIncorrecta opcion = new OpcionIncorrecta("Soy incorrecta");
+        OpcionBinaria opcion = new OpcionBinaria("Soy correcta", false);
 
-        assertEquals(false, opcion.esCorrecta());
+        assertFalse(opcion.esCorrecta());
     }
+
 
     @Test
     public void test03CreoOpcionGrupaYVerificoQueDevuelvaFalseSiLosGruposNoCoinciden(){
@@ -31,7 +29,7 @@ public class OpcionesTest {
         opcion.setGrupoEsperado("Leo programador");
         opcion.setGrupoActual("Leo genio");
 
-        assertEquals(false, opcion.esCorrecta());
+        assertFalse(opcion.esCorrecta());
     }
 
     @Test
@@ -41,24 +39,26 @@ public class OpcionesTest {
         opcion.setGrupoEsperado("Leo programador");
         opcion.setGrupoActual("Leo programador");
 
-        assertEquals(true, opcion.esCorrecta());
+        assertTrue(opcion.esCorrecta());
     }
 
     @Test
     public void test05CreoOpcionOrdenadaYVerificoQueDevuelvaTrueSiLasPosicionesCoinciden(){
-        OpcionOrdenada opcion = new OpcionOrdenada("Soy ordenada", 2);
+        OpcionOrdenada opcion = new OpcionOrdenada("Soy ordenada");
 
         opcion.setPosicionEsperada(2);
+        opcion.setPosicionActual(2);
 
-        assertEquals(true, opcion.esCorrecta());
+        assertTrue(opcion.esCorrecta());
     }
 
     @Test
     public void test06CreoOpcionOrdenadaYVerificoQueDevuelvaFalseSiLasPosicionesNoCoinciden(){
-        OpcionOrdenada opcion = new OpcionOrdenada("Soy ordenada", 2);
+        OpcionOrdenada opcion = new OpcionOrdenada("Soy ordenada");
 
-        opcion.setPosicionEsperada(4);
+        opcion.setPosicionEsperada(2);
+        opcion.setPosicionActual(3);
 
-        assertEquals(false, opcion.esCorrecta());
+        assertFalse(opcion.esCorrecta());
     }
 }

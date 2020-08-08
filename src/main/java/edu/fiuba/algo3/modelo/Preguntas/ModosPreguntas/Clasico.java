@@ -13,4 +13,7 @@ public class Clasico implements ModoPregunta {
         if(aciertosJugador == cantidadOpcionesCorrectasDeLaPregunta && erroresJugador == 0)
             respuestaJugador.modificarPuntos(PUNTAJE);
     }
+
+    @Override
+    public boolean aceptaMultiplicador(){ return false; }
 }
