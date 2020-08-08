@@ -71,6 +71,7 @@ public class Jugador implements Observable {
             oportunidadesDeExclusividad--;
             return new PreguntaExclusividad(pregunta);
         }
+
         return pregunta;
     }
 }

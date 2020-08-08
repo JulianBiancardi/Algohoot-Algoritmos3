@@ -7,18 +7,18 @@ import java.util.Comparator;
 import java.util.List;
 
 public class PreguntaExclusividad extends Pregunta {
-    private final int cantidadCorrectasPregunta; // se guarda por culpa del multiple choise
     private static int exclusividadesActivadas = 0;
     private static final int limiteJugadores = 2;
     private final List<Multiplicador> multiplicadores = List.of
-                    (Multiplicador.crearMultiplicadorNulo(),
+                   (Multiplicador.crearMultiplicadorNulo(),
                     Multiplicador.crearMultiplicadorDoble(),
                     Multiplicador.crearMultiplicadorCuadruple());
+    private final Pregunta preguntaInterna;
 
     public PreguntaExclusividad(Pregunta pregunta) {
         super(pregunta.enunciado, pregunta.modo);
         opcionesPregunta = pregunta.opcionesPregunta;
-        cantidadCorrectasPregunta = pregunta.calcularCantidadOpcionesCorrectas();
+        preguntaInterna = pregunta;// podria existir error zarpado...
         PreguntaExclusividad.habilitarExclusividad();
     }
 
@@ -60,6 +60,6 @@ public class PreguntaExclusividad extends Pregunta {
 
     @Override
     public int calcularCantidadOpcionesCorrectas() {
-        return cantidadCorrectasPregunta;
+        return preguntaInterna.calcularCantidadOpcionesCorrectas();
     }
 }

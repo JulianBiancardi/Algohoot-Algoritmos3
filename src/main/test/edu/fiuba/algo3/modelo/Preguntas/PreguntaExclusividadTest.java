@@ -32,6 +32,10 @@ public class PreguntaExclusividadTest {
         respuestas.add(respuestaJugador1);
         respuestas.add(respuestaJugador2);
 
+
+        /*
+        * jugador.activarExclusividad(respuesta)
+        * */
         // Act
         Pregunta preguntaExclusiva = jugador1.obtenerExclusividadEnLaPregunta(pregunta);
         Pregunta preguntaExclusivaFinal = jugador2.obtenerExclusividadEnLaPregunta(preguntaExclusiva);
@@ -91,12 +95,12 @@ public class PreguntaExclusividadTest {
 
         // Act
         Pregunta preguntaExclusiva = jugador1.obtenerExclusividadEnLaPregunta(pregunta);
-        Pregunta preguntaExclusivaFinal = jugador2.obtenerExclusividadEnLaPregunta(preguntaExclusiva);
+       // Pregunta preguntaExclusivaFinal = jugador2.obtenerExclusividadEnLaPregunta(preguntaExclusiva);
 
-        preguntaExclusivaFinal.evaluarRespuestas(respuestas);
+        preguntaExclusiva.evaluarRespuestas(respuestas);
 
         // Assert
-        assertEquals(4, jugador1.puntos());
+        assertEquals(2, jugador1.puntos());
         assertEquals(0, jugador2.puntos());
     }
 
