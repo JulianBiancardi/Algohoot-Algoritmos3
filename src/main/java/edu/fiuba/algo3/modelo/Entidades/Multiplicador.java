@@ -13,6 +13,8 @@ public class Multiplicador {
 
     public static Multiplicador crearMultiplicadorTriple(){ return new Multiplicador(3); }
 
+    public static Multiplicador crearMultiplicadorCuadruple(){ return new Multiplicador(4); }
+
     public int aplicarMultiplicador(int puntaje){
         return puntaje * multiplicidad;
     }

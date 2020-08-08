@@ -2,7 +2,6 @@ package edu.fiuba.algo3.modelo.Respuestas;
 
 import edu.fiuba.algo3.modelo.Entidades.Jugador;
 import edu.fiuba.algo3.modelo.Entidades.Multiplicador;
-import edu.fiuba.algo3.modelo.Exepciones.PreguntaNoAceptaMultiplicadorError;
 import edu.fiuba.algo3.modelo.Opciones.Opcion;
 import edu.fiuba.algo3.modelo.Preguntas.Pregunta;
 
@@ -33,8 +32,12 @@ public class Respuesta {
 
     public void agregarMultiplicador(Multiplicador multiplicador){
         if(!preguntaReferenciada.aceptaMultiplicador()){
-            throw new PreguntaNoAceptaMultiplicadorError();
+            throw new edu.fiuba.algo3.modelo.Excepciones.PreguntaNoAceptaMultiplicadorError();
         }
+        agregarBeneficio(multiplicador);
+    }
+
+    public void agregarBeneficio(Multiplicador multiplicador) {
         multiplicadorActual = multiplicador;
     }
 }

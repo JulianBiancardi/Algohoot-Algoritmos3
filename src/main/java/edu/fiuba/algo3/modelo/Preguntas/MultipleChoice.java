@@ -1,7 +1,5 @@
 package edu.fiuba.algo3.modelo.Preguntas;
 
-import edu.fiuba.algo3.modelo.Exepciones.ChoiceTieneEntreDosYCincoOpcionesError;
-import edu.fiuba.algo3.modelo.Exepciones.VoFSoloTieneDosOpcionesError;
 import edu.fiuba.algo3.modelo.Opciones.*;
 import edu.fiuba.algo3.modelo.Preguntas.ModosPreguntas.Clasico;
 import edu.fiuba.algo3.modelo.Preguntas.ModosPreguntas.ModoPregunta;

@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.modelo.Entidades;
 
-import edu.fiuba.algo3.modelo.Exepciones.MultiplicadorYaUtilizadoError;
+import edu.fiuba.algo3.modelo.Excepciones.MultiplicadorYaUtilizadoError;
 import edu.fiuba.algo3.modelo.Preguntas.VoF;
 import edu.fiuba.algo3.modelo.Respuestas.Respuesta;
 import org.junit.jupiter.api.Test;
