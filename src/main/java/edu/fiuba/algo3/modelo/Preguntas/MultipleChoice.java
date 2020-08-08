@@ -8,9 +8,12 @@ import edu.fiuba.algo3.modelo.Preguntas.ModosPreguntas.ModoPregunta;
 import edu.fiuba.algo3.modelo.Preguntas.ModosPreguntas.Penalidad;
 import edu.fiuba.algo3.modelo.Preguntas.ModosPreguntas.PuntajeParcial;
 
+import java.util.ArrayList;
+
 public class MultipleChoice extends Pregunta {
 
     private MultipleChoice(String unEnunciado, ModoPregunta unModo) {
+
         super(unEnunciado, unModo);
         /*
         if(opcionesPregunta.tamaño() < 2  || opcionesPregunta.tamaño() > 5)
@@ -24,7 +27,10 @@ public class MultipleChoice extends Pregunta {
 
     public static MultipleChoice conModoPuntajeParcial(String unEnunciado){ return new MultipleChoice(unEnunciado, new PuntajeParcial()); }
 
-    public void agregarOpcion(OpcionBinaria opcion){ super.agregarOpcion(opcion); }
+    public void agregarOpcion(String descripcion,boolean esCorrecta){
+        OpcionBinaria opcion = new OpcionBinaria(descripcion,esCorrecta);
+        super.agregarOpcion(opcion);
+    }
 
     public OpcionBinaria obtenerOpcion(int posicion){ return (OpcionBinaria) super.obtenerOpcion(posicion); }
 

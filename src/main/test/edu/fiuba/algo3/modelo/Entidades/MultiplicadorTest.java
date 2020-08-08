@@ -39,7 +39,7 @@ public class MultiplicadorTest {
     @Test
     public void test04MultiplicadorDevuelveErrorAlSerUtilizadoDosVeces() {
         Jugador jugador = new Jugador("Fede");
-        VoF pregunta = VoF.conModoPenalidad("Pregunta de prueba");
+        VoF pregunta = VoF.conModoPenalidad("Pregunta de prueba",true);
         Respuesta respuesta = new Respuesta(jugador, pregunta);
         jugador.utilizarMultiplicadorDoble(respuesta);
 

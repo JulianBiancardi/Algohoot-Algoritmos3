@@ -15,12 +15,10 @@ public class JugadorTest {
     @Test
     public void test01ElJugadorPuedeUtilizarMultiplicadorDobleEnVoFConPenalidad(){
         // Arrange
-        VoF pregunta = VoF.conModoPenalidad("Argentina ganó mundial 2014");
-        pregunta.agregarOpcion(new OpcionBinaria("Verdadero", true));
-        pregunta.agregarOpcion(new OpcionBinaria("Falso", false));
+        VoF pregunta = VoF.conModoPenalidad("Argentina ganó mundial 2014",false);
         Jugador jugador = new Jugador("Lionel Messi");
         Respuesta respuestaJugador = new Respuesta(jugador, pregunta);
-        respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(0));
+        respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(1));
         ArrayList<Respuesta> respuestas = new ArrayList<>();
         respuestas.add(respuestaJugador);
 
@@ -36,10 +34,10 @@ public class JugadorTest {
     public void test02JugadorUtilizaMultiplicadoDobleEnChoiceConPenalidadYFunciona(){
         // Arrange
         MultipleChoice pregunta = MultipleChoice.conModoPenalidad("Mundiales Ganados por Argentina");
-        pregunta.agregarOpcion(new OpcionBinaria("2010", false));
-        pregunta.agregarOpcion(new OpcionBinaria("1986", true));
-        pregunta.agregarOpcion(new OpcionBinaria("2014", false));
-        pregunta.agregarOpcion(new OpcionBinaria("2006", false));
+        pregunta.agregarOpcion("2010", false);
+        pregunta.agregarOpcion("1986", true);
+        pregunta.agregarOpcion("2014", false);
+        pregunta.agregarOpcion("2006", false);
         Jugador jugador = new Jugador("Lionel Messi");
         Respuesta respuestaJugador = new Respuesta(jugador, pregunta);
         respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(1));
@@ -57,9 +55,7 @@ public class JugadorTest {
     @Test
     public void test03ElJugadorPuedeUtilizarMultiplicadorTripleEnVoFConPenalidad(){
         // Arrange
-        VoF pregunta = VoF.conModoPenalidad("Argentina ganó el mundial del 78");
-        pregunta.agregarOpcion(new OpcionBinaria("Verdadero", true));
-        pregunta.agregarOpcion(new OpcionBinaria("Falso", false));
+        VoF pregunta = VoF.conModoPenalidad("Argentina ganó el mundial del 78",true);
         Jugador jugador = new Jugador("Lionel Messi");
         Respuesta respuestaJugador = new Respuesta(jugador, pregunta);
         respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(0));
@@ -79,10 +75,10 @@ public class JugadorTest {
     public void test04JugadorUtilizaMultiplicadoTripleEnChoiceConPenalidadYFunciona(){
         // Arrange
         MultipleChoice pregunta = MultipleChoice.conModoPenalidad("Mundiales Ganados por Argentina");
-        pregunta.agregarOpcion(new OpcionBinaria("2010", false));
-        pregunta.agregarOpcion(new OpcionBinaria("1986", true));
-        pregunta.agregarOpcion(new OpcionBinaria("2014", false));
-        pregunta.agregarOpcion(new OpcionBinaria("2006", false));
+        pregunta.agregarOpcion("2010", false);
+        pregunta.agregarOpcion("1986", true);
+        pregunta.agregarOpcion("2014", false);
+        pregunta.agregarOpcion("2006", false);
         Jugador jugador = new Jugador("Lionel Messi");
         Respuesta respuestaJugador = new Respuesta(jugador, pregunta);
         respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(1));
