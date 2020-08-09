@@ -2,7 +2,7 @@ package edu.fiuba.algo3.modelo.Preguntas.ModosPreguntas;
 
 import edu.fiuba.algo3.modelo.Respuestas.Respuesta;
 
-public class Penalidad implements ModoPregunta {
+public class Penalidad extends ModoPregunta  {
     static final int PUNTAJE = 1;
 
     @Override

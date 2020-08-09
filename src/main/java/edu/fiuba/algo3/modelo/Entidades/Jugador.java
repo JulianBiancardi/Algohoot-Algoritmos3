@@ -1,11 +1,8 @@
 package edu.fiuba.algo3.modelo.Entidades;
 
-import edu.fiuba.algo3.modelo.Excepciones.PreguntaNoAceptaExclusividadError;
 import edu.fiuba.algo3.modelo.Excepciones.MultiplicadorYaUtilizadoError;
 import edu.fiuba.algo3.modelo.Observable;
 import edu.fiuba.algo3.modelo.Observador;
-import edu.fiuba.algo3.modelo.Preguntas.Pregunta;
-import edu.fiuba.algo3.modelo.Preguntas.PreguntaExclusividad;
 import edu.fiuba.algo3.modelo.Respuestas.Respuesta;
 
 import java.util.ArrayList;
@@ -49,29 +46,26 @@ public class Jugador implements Observable {
         observadores.stream().forEach(observador -> observador.actualizar());
     }
 
-    private void agregarMultiplicador(Respuesta respuesta, Multiplicador multiplicador){
-        if(!multiplicadoresRestantes.contains(multiplicador)){
+    private void agregarMultiplicador(Respuesta respuesta, Multiplicador multiplicador) {
+        if(!multiplicadoresRestantes.contains(multiplicador)) {
             throw new MultiplicadorYaUtilizadoError();
         }
         respuesta.agregarMultiplicador(multiplicador);
         multiplicadoresRestantes.remove(multiplicador);
     }
 
-    public void utilizarMultiplicadorDoble(Respuesta respuesta){
+    public void utilizarMultiplicadorDoble(Respuesta respuesta) {
         agregarMultiplicador(respuesta, multiplicadorDoble);
     }
 
-    public void utilizarMultiplicadorTriple(Respuesta respuesta){ agregarMultiplicador(respuesta, multiplicadorTriple); }
+    public void utilizarMultiplicadorTriple(Respuesta respuesta) {
+        agregarMultiplicador(respuesta, multiplicadorTriple);
+    }
 
-    public Pregunta obtenerExclusividadEnLaPregunta(Pregunta pregunta) {
-        if(pregunta.aceptaMultiplicador())
-            throw new PreguntaNoAceptaExclusividadError();
-
-        if(oportunidadesDeExclusividad > 0){
+    public void activarExclusividad(Respuesta respuesta) {
+        if(oportunidadesDeExclusividad > 0) {
             oportunidadesDeExclusividad--;
-            return new PreguntaExclusividad(pregunta);
+            respuesta.activarExclusividad();
         }
-
-        return pregunta;
     }
 }

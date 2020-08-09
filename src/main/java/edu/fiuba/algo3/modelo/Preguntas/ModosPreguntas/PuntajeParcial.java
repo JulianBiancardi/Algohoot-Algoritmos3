@@ -2,7 +2,7 @@ package edu.fiuba.algo3.modelo.Preguntas.ModosPreguntas;
 
 import edu.fiuba.algo3.modelo.Respuestas.Respuesta;
 
-public class PuntajeParcial implements ModoPregunta {
+public class PuntajeParcial extends ModoPregunta{
     static final int PUNTAJE = 1;
 
     @Override
@@ -15,7 +15,7 @@ public class PuntajeParcial implements ModoPregunta {
     }
 
     @Override
-    public boolean aceptaMultiplicador(){
+    public boolean aceptaMultiplicador() {
         return false;
     }
 }

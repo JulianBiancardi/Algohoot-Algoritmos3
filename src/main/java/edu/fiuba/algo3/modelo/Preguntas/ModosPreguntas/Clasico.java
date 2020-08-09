@@ -2,7 +2,7 @@ package edu.fiuba.algo3.modelo.Preguntas.ModosPreguntas;
 
 import edu.fiuba.algo3.modelo.Respuestas.Respuesta;
 
-public class Clasico implements ModoPregunta {
+public class Clasico extends ModoPregunta{
     static final int PUNTAJE = 1;
 
     @Override
@@ -15,5 +15,7 @@ public class Clasico implements ModoPregunta {
     }
 
     @Override
-    public boolean aceptaMultiplicador(){ return false; }
+    public boolean aceptaMultiplicador(){
+        return false;
+    }
 }
