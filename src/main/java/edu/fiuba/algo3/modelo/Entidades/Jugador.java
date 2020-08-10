@@ -14,7 +14,7 @@ public class Jugador implements Observable {
     private final Multiplicador multiplicadorTriple = Multiplicador.crearMultiplicadorTriple();
     private final ArrayList<Multiplicador> multiplicadoresRestantes = new ArrayList<>();
     ArrayList<Observador> observadores = new ArrayList<>();
-    private int oportunidadesDeExclusividad = 2;
+    private int exclusividadesRestantes = 2;
 
     public Jugador(String nombre) {
         this.nombre = nombre;
@@ -63,8 +63,8 @@ public class Jugador implements Observable {
     }
 
     public void activarExclusividad(Respuesta respuesta) {
-        if(oportunidadesDeExclusividad > 0) {
-            oportunidadesDeExclusividad--;
+        if(exclusividadesRestantes > 0) {
+            exclusividadesRestantes--;
             respuesta.activarExclusividad();
         }
     }

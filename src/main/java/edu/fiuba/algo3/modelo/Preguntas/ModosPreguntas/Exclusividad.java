@@ -1,19 +1,9 @@
 package edu.fiuba.algo3.modelo.Preguntas.ModosPreguntas;
 
-import edu.fiuba.algo3.modelo.Entidades.Multiplicador;
 import edu.fiuba.algo3.modelo.Respuestas.Respuesta;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
-
-/* *
- *
- *  No rompería LSP
- *  pues, solo agregué funcionalidad {Decorador} al 'modoOriginal' en 'evaluarRespuestas'
- *
- *
- * */
+import java.util.Comparator;
 
 public class Exclusividad extends ModoPregunta {
     private static int exclusividadesActivadas = 0;
@@ -24,35 +14,35 @@ public class Exclusividad extends ModoPregunta {
         exclusividadesActivadas++;
     }
 
-    public void evaluarRespuestas(ArrayList<Respuesta> respuestasTotales, int cantidadOpcionesCorrectaDeLaPregunta) {
-        // Si hay más de 1 Respuesta Estrictamente Correcta, 0 errores, y aciertos idem que cantidad correcta de la pregunta
-        //...NO le asignarias exclusividad a NINGUN JUGADOR !!!
+    @Override
+    public void evaluarRespuestas(ArrayList<Respuesta> respuestas, int cantidadOpcionesCorrectasPregunta) {
+        int cantidadRespuestasCompletamenteCorrectas = (int) respuestas.stream()
+                .filter(respuesta -> esCompletamenteCorrecta(respuesta, cantidadOpcionesCorrectasPregunta)).count();
 
-        List<Respuesta> respuestasEstrictamenteCorrectas = respuestasTotales
-                .stream()
-                .filter(unaRespuesta -> esCorrectamenteEstricta(unaRespuesta, cantidadOpcionesCorrectaDeLaPregunta))
-                .collect(Collectors.toList());
-
-        if(respuestasEstrictamenteCorrectas.size() == 1 && exclusividadesActivadas != 0) {
-            Respuesta respuestaAdmiteExclusividad = respuestasEstrictamenteCorrectas.get(0);
-            respuestaAdmiteExclusividad.agregarExclusividad(Multiplicador.crearMultiplicadorDeFactor( 2 * exclusividadesActivadas ));
+        if (cantidadRespuestasCompletamenteCorrectas == 1 && exclusividadesActivadas != 0) {
+            Respuesta respuestaCompletamenteCorrecta = respuestas.stream().max(Comparator.comparing(Respuesta::cantidadOpcionesCorrectas)).get();
+            int puntosAIncrementar = modoOriginal.calcularPuntos(respuestaCompletamenteCorrecta, cantidadOpcionesCorrectasPregunta);
+            respuestaCompletamenteCorrecta.modificarPuntos(puntosAIncrementar * 2 * exclusividadesActivadas);
         }
-
-        modoOriginal.evaluarRespuestas(respuestasTotales, cantidadOpcionesCorrectaDeLaPregunta);
         exclusividadesActivadas = 0;
     }
 
-    private boolean esCorrectamenteEstricta(Respuesta unaRespuesta, int cantidadOpcionesCorrectaDeLaPregunta) {
-        return (unaRespuesta.cantidadOpcionesIncorrectas() == 0) && (unaRespuesta.cantidadOpcionesCorrectas() == cantidadOpcionesCorrectaDeLaPregunta);
+    private boolean esCompletamenteCorrecta(Respuesta respuesta, int cantidadOpcionesCorrectaDeLaPregunta) {
+        return (respuesta.cantidadOpcionesIncorrectas() == 0) && (respuesta.cantidadOpcionesCorrectas() == cantidadOpcionesCorrectaDeLaPregunta);
     }
 
     @Override
-    public void modificarPuntos(Respuesta respuestaJugador, int cantidadOpcionesCorrectasDeLaPregunta) {
-        modoOriginal.modificarPuntos(respuestaJugador, cantidadOpcionesCorrectasDeLaPregunta);
+    public int calcularPuntos(Respuesta respuesta, int cantidadOpcionesCorrectasDeLaPregunta) {
+        return modoOriginal.calcularPuntos(respuesta, cantidadOpcionesCorrectasDeLaPregunta);
     }
 
     @Override
     public boolean aceptaMultiplicador() {
         return modoOriginal.aceptaMultiplicador();
+    }
+
+    @Override
+    public boolean aceptaExclusividad() {
+        return modoOriginal.aceptaExclusividad();
     }
 }

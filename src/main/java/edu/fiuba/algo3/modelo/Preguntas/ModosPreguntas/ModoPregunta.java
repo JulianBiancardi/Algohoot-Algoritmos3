@@ -8,12 +8,14 @@ public abstract class ModoPregunta {
 
     public void evaluarRespuestas(ArrayList<Respuesta> respuestas, int calcularCantidadOpcionesCorrectas){
         for (Respuesta respuesta : respuestas) {
-            modificarPuntos(respuesta, calcularCantidadOpcionesCorrectas);
+            int puntos = calcularPuntos(respuesta, calcularCantidadOpcionesCorrectas);
+            respuesta.modificarPuntos(puntos);
         }
     }
 
-    public abstract void modificarPuntos(Respuesta respuestaJugador, int cantidadOpcionesCorrectasDeLaPregunta);
+    public abstract int calcularPuntos(Respuesta respuestaJugador, int cantidadOpcionesCorrectasDeLaPregunta);
 
     public abstract boolean aceptaMultiplicador();
 
+    public abstract boolean aceptaExclusividad();
 }

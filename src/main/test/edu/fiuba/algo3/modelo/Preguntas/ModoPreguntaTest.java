@@ -22,7 +22,8 @@ public class ModoPreguntaTest {
         respuesta.agregarOpcion(new OpcionBinaria("soy incorrecta", false));
 
         Clasico modo = new Clasico();
-        modo.modificarPuntos(respuesta, 2);
+        int puntos = modo.calcularPuntos(respuesta, 2);
+        respuesta.modificarPuntos(puntos);
 
         assertEquals(0, jugador.puntos());
     }
@@ -35,8 +36,8 @@ public class ModoPreguntaTest {
         respuesta.agregarOpcion(new OpcionBinaria("soy correcta pa", true));
 
         Clasico modo = new Clasico();
-        modo.modificarPuntos(respuesta, 2);
-
+        int puntos = modo.calcularPuntos(respuesta, 2);
+        respuesta.modificarPuntos(puntos);
         assertEquals(1, jugador.puntos());
     }
 
@@ -49,7 +50,8 @@ public class ModoPreguntaTest {
         respuesta.agregarOpcion(new OpcionBinaria("soy correcta pa", true));
 
         Penalidad modo = new Penalidad();
-        modo.modificarPuntos(respuesta, 2);
+        int puntos = modo.calcularPuntos(respuesta, 2);
+        respuesta.modificarPuntos(puntos);
 
         assertEquals(1, jugador.puntos());
     }
@@ -64,7 +66,8 @@ public class ModoPreguntaTest {
         respuesta.agregarOpcion(new OpcionBinaria("soy incorrecta", false));
 
         PuntajeParcial modo = new PuntajeParcial();
-        modo.modificarPuntos(respuesta, 2);
+        int puntos = modo.calcularPuntos(respuesta, 2);
+        respuesta.modificarPuntos(puntos);
 
         assertEquals(0, jugador.puntos());
     }
@@ -77,7 +80,8 @@ public class ModoPreguntaTest {
         respuesta.agregarOpcion(new OpcionBinaria("soy correcta pa", true));
 
         PuntajeParcial modo = new PuntajeParcial();
-        modo.modificarPuntos(respuesta, 2);
+        int puntos = modo.calcularPuntos(respuesta, 2);
+        respuesta.modificarPuntos(puntos);
 
         assertEquals(2, jugador.puntos());
     }

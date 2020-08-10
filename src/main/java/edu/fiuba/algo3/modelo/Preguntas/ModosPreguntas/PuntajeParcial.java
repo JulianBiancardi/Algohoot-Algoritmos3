@@ -6,16 +6,22 @@ public class PuntajeParcial extends ModoPregunta{
     static final int PUNTAJE = 1;
 
     @Override
-    public void modificarPuntos(Respuesta respuestaJugador, int cantidadOpcionesCorrectasDeLaPregunta) {
-        int aciertosJugador = respuestaJugador.cantidadOpcionesCorrectas();
-        int erroresJugador = respuestaJugador.cantidadOpcionesIncorrectas();
+    public int calcularPuntos(Respuesta respuesta, int cantidadOpcionesCorrectasDeLaPregunta){
+        int aciertos = respuesta.cantidadOpcionesCorrectas();
+        int errores = respuesta.cantidadOpcionesIncorrectas();
+        int puntosASumar = 0;
 
-        if(erroresJugador == 0)
-            respuestaJugador.modificarPuntos(PUNTAJE * aciertosJugador);
+        if(errores == 0)
+            puntosASumar = PUNTAJE * aciertos;
+
+        return puntosASumar;
     }
 
     @Override
     public boolean aceptaMultiplicador() {
         return false;
     }
+
+    @Override
+    public boolean aceptaExclusividad(){ return true; }
 }

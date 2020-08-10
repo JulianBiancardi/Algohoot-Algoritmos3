@@ -6,15 +6,18 @@ public class Penalidad extends ModoPregunta  {
     static final int PUNTAJE = 1;
 
     @Override
-    public void modificarPuntos(Respuesta respuestaJugador, int cantidadOpcionesCorrectasDeLaPregunta) {
-        int aciertosJugador = respuestaJugador.cantidadOpcionesCorrectas();
-        int erroresJugador = respuestaJugador.cantidadOpcionesIncorrectas();
+    public int calcularPuntos(Respuesta respuesta, int cantidadOpcionesCorrectasDeLaPregunta){
+        int aciertos = respuesta.cantidadOpcionesCorrectas();
+        int errores = respuesta.cantidadOpcionesIncorrectas();
 
-        respuestaJugador.modificarPuntos(PUNTAJE * (aciertosJugador - erroresJugador));
+        return PUNTAJE * (aciertos - errores);
     }
 
     @Override
     public boolean aceptaMultiplicador(){
         return true;
     }
+
+    @Override
+    public boolean aceptaExclusividad(){ return false; }
 }

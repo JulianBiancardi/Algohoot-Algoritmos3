@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo.Preguntas;
 
 import edu.fiuba.algo3.modelo.Excepciones.PreguntaNoAceptaExclusividadError;
+import edu.fiuba.algo3.modelo.Excepciones.RespuestasInsuficientesError;
 import edu.fiuba.algo3.modelo.Opciones.Opcion;
 import edu.fiuba.algo3.modelo.Preguntas.ModosPreguntas.Exclusividad;
 import edu.fiuba.algo3.modelo.Preguntas.ModosPreguntas.ModoPregunta;
@@ -21,6 +22,9 @@ public abstract class Pregunta {
     public abstract int calcularCantidadOpcionesCorrectas();
 
     public void evaluarRespuestas(ArrayList<Respuesta> respuestas) {
+        if(respuestas.size() == 0){
+            throw new RespuestasInsuficientesError();
+        }
         modo.evaluarRespuestas(respuestas, calcularCantidadOpcionesCorrectas());
     }
 
@@ -37,7 +41,7 @@ public abstract class Pregunta {
     public boolean aceptaMultiplicador(){ return modo.aceptaMultiplicador(); }
 
     public void activarExclusividad() {
-        if(this.aceptaMultiplicador())
+        if(!modo.aceptaExclusividad())
             throw new PreguntaNoAceptaExclusividadError();
         modo = new Exclusividad(modo);
     }
