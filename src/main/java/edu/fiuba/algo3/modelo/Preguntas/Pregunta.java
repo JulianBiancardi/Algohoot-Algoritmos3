@@ -45,4 +45,9 @@ public abstract class Pregunta {
     }
 
     public boolean aceptaMultiplicador(){ return modo.aceptaMultiplicador(); }
+
+    public String getEnunciado(){
+        return enunciado;
+    }
+
 }

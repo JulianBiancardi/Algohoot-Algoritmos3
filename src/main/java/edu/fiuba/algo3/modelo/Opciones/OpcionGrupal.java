@@ -11,6 +11,11 @@ public class OpcionGrupal implements Opcion {
 
     public boolean esCorrecta(){ return grupoActual.equals(grupoEsperado); }
 
+    @Override
+    public String getDescripcion() {
+        return descripcion;
+    }
+
     public void setGrupoEsperado(String nombre){ grupoEsperado = nombre; }
 
     public void setGrupoActual(String nombre){
