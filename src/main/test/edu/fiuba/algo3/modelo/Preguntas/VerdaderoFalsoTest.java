@@ -14,9 +14,7 @@ public class VerdaderoFalsoTest {
 
     @Test
     public void test00() {
-        VoF pregunta = VoF.conModoClasico("Hola?");
-        pregunta.agregarOpcion(new OpcionBinaria("Verdadero", true));
-        pregunta.agregarOpcion(new OpcionBinaria("Falso", false));
+        VoF pregunta = VoF.conModoClasico("Hola?",true);
         Jugador jugador = new Jugador("LeoProgramador");
         Respuesta respuesta = new Respuesta(jugador, pregunta);
         respuesta.agregarOpcion(pregunta.obtenerOpcion(0));
@@ -30,9 +28,7 @@ public class VerdaderoFalsoTest {
 
     @Test
     public void test01SeCreaUnaPreguntaVoFClasicoConRespuestaFalseErraYEvaluaCorrectamente() {
-        VoF pregunta = VoF.conModoClasico("¿2 + 2 = 4?");
-        pregunta.agregarOpcion(new OpcionBinaria("Verdadero", true));
-        pregunta.agregarOpcion(new OpcionBinaria("Falso", false));
+        VoF pregunta = VoF.conModoClasico("¿2 + 2 = 4?",true);
         Jugador jugador = new Jugador("LeoProgramador");
         Respuesta respuestaJugador = new Respuesta(jugador, pregunta);
 
@@ -46,9 +42,8 @@ public class VerdaderoFalsoTest {
 
     @Test
     public void test02SeCreaUnaPreguntaVoFClasicoConRespuestaTrueAciertaYEvaluaCorrectamente() {
-        VoF pregunta = VoF.conModoClasico("¿2 + 2 = 4?");
-        pregunta.agregarOpcion(new OpcionBinaria("Verdadero", true));
-        pregunta.agregarOpcion(new OpcionBinaria("Falso", false));
+        VoF pregunta = VoF.conModoClasico("¿2 + 2 = 4?",true);
+
         Jugador jugador = new Jugador("LeoProgramador");
         Respuesta respuestaJugador = new Respuesta(jugador, pregunta);
 
@@ -62,9 +57,8 @@ public class VerdaderoFalsoTest {
 
     @Test
     public void test03VoFClasicoRecibeUnaListaDeRespuestasTodasIncorrectasYNingunoSumaPuntos(){
-        VoF pregunta = VoF.conModoClasico("¿2 + 2 = 4?");
-        pregunta.agregarOpcion(new OpcionBinaria("Verdadero", true));
-        pregunta.agregarOpcion(new OpcionBinaria("Falso", false));
+        VoF pregunta = VoF.conModoClasico("¿2 + 2 = 4?",true);
+
         Jugador jugador1 = new Jugador("LeoProgramador");
         Respuesta respuestaJugador1 = new Respuesta(jugador1, pregunta);
         Jugador jugador2 = new Jugador("Joaco");
@@ -83,9 +77,8 @@ public class VerdaderoFalsoTest {
 
     @Test
     public void test04VoFClasicoRecibeUnaListaDeRespuestasTodasCorrectasYAmbosSumanPuntos(){
-        VoF pregunta = VoF.conModoClasico("¿2 + 2 = 4?");
-        pregunta.agregarOpcion(new OpcionBinaria("Verdadero", true));
-        pregunta.agregarOpcion(new OpcionBinaria("Falso", false));
+        VoF pregunta = VoF.conModoClasico("¿2 + 2 = 4?",true);
+
         Jugador jugador1 = new Jugador("LeoProgramador");
         Respuesta respuestaJugador1 = new Respuesta(jugador1, pregunta);
         Jugador jugador2 = new Jugador("Joaco");
@@ -104,9 +97,8 @@ public class VerdaderoFalsoTest {
 
     @Test
     public void test05VoFClasicoRecibeUnaListaDeRespuestasDistintasYSoloElQueRespondioBienSumaPuntos() {
-        VoF pregunta = VoF.conModoClasico("¿2 + 2 = 4?");
-        pregunta.agregarOpcion(new OpcionBinaria("Verdadero", true));
-        pregunta.agregarOpcion(new OpcionBinaria("Falso", false));
+        VoF pregunta = VoF.conModoClasico("¿2 + 2 = 4?",true);
+
         Jugador jugador1 = new Jugador("LeoProgramador");
         Respuesta respuestaJugador1 = new Respuesta(jugador1, pregunta);
         Jugador jugador2 = new Jugador("Joaco");
@@ -125,13 +117,11 @@ public class VerdaderoFalsoTest {
 
     @Test
     public void test06SeCreaUnaPreguntaVoFConPenalidadConRespuestaFalseErraYEvaluaCorrectamente() {
-        VoF pregunta = VoF.conModoPenalidad("¿2 + 2 = 4?");
-        pregunta.agregarOpcion(new OpcionBinaria("Verdadero", false));
-        pregunta.agregarOpcion(new OpcionBinaria("Falso", true));
+        VoF pregunta = VoF.conModoPenalidad("¿2 + 2 = 4?",true);
         Jugador jugador = new Jugador("LeoProgramador");
         Respuesta respuestaJugador = new Respuesta(jugador, pregunta);
 
-        respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(0)); //Elijo incorrecta
+        respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(1)); //Elijo incorrecta
         ArrayList<Respuesta> respuestas = new ArrayList<Respuesta>();
         respuestas.add(respuestaJugador);
         pregunta.evaluarRespuestas(respuestas);
@@ -141,9 +131,8 @@ public class VerdaderoFalsoTest {
 
     @Test
     public void test07SeCreaUnaPreguntaVoFConPenalidadConRespuestaTrueAciertaYEvaluaCorrectamente() {
-        VoF pregunta = VoF.conModoPenalidad("¿2 + 2 = 4?");
-        pregunta.agregarOpcion(new OpcionBinaria("Verdadero", true));
-        pregunta.agregarOpcion(new OpcionBinaria("Falso", false));
+        VoF pregunta = VoF.conModoPenalidad("¿2 + 2 = 4?",true);
+
         Jugador jugador = new Jugador("LeoProgramador");
         Respuesta respuestaJugador = new Respuesta(jugador, pregunta);
 
@@ -157,9 +146,8 @@ public class VerdaderoFalsoTest {
 
     @Test
     public void test08VoFConPenalidadRecibeUnaListaDeRespuestasTodasIncorrectasYNingunoSumaPuntos(){
-        VoF pregunta = VoF.conModoPenalidad("¿2 + 2 = 4?");
-        pregunta.agregarOpcion(new OpcionBinaria("Verdadero", true));
-        pregunta.agregarOpcion(new OpcionBinaria("Falso", false));
+        VoF pregunta = VoF.conModoPenalidad("¿2 + 2 = 4?",true);
+
         Jugador jugador1 = new Jugador("LeoProgramador");
         Respuesta respuestaJugador1 = new Respuesta(jugador1, pregunta);
         Jugador jugador2 = new Jugador("Joaco");
@@ -178,9 +166,8 @@ public class VerdaderoFalsoTest {
 
     @Test
     public void test09VoFConPenalidadRecibeUnaListaDeRespuestasTodasCorrectasYAmbosSumanPuntos(){
-        VoF pregunta = VoF.conModoPenalidad("¿2 + 2 = 4?");
-        pregunta.agregarOpcion(new OpcionBinaria("Verdadero", true));
-        pregunta.agregarOpcion(new OpcionBinaria("Falso", false));
+        VoF pregunta = VoF.conModoPenalidad("¿2 + 2 = 4?",true);
+
         Jugador jugador1 = new Jugador("LeoProgramador");
         Respuesta respuestaJugador1 = new Respuesta(jugador1, pregunta);
         Jugador jugador2 = new Jugador("Tomas");
@@ -199,9 +186,8 @@ public class VerdaderoFalsoTest {
 
     @Test
     public void test10VoFConPenalidadRecibeUnaListaDeRespuestasDistintasYSoloElQueRespondioBienSumaPuntos(){
-        VoF pregunta = VoF.conModoPenalidad("¿2 + 2 = 4?");
-        pregunta.agregarOpcion(new OpcionBinaria("Verdadero", true));
-        pregunta.agregarOpcion(new OpcionBinaria("Falso", false));
+        VoF pregunta = VoF.conModoPenalidad("¿2 + 2 = 4?",true);
+
         Jugador jugador1 = new Jugador("LeoProgramador");
         Respuesta respuestaJugador1 = new Respuesta(jugador1, pregunta);
         Jugador jugador2 = new Jugador("Tomas");
@@ -217,29 +203,4 @@ public class VerdaderoFalsoTest {
         assertEquals(jugador1.puntos(), -1);
         assertEquals(jugador2.puntos(), 1);
     }
-    /*
-    @Test
-    public void test11SeCreaUnaPreguntaVoFClasicoConMasDeDosOpciones() {
-        ListaOpciones listaOpcionesPregunta = new ListaOpciones();
-        listaOpcionesPregunta.agregarOpcion(new OpcionCorrecta("Verdadero"));
-        listaOpcionesPregunta.agregarOpcion(new OpcionIncorrecta("Falso"));
-        listaOpcionesPregunta.agregarOpcion(new OpcionIncorrecta("No lo se"));
-
-        assertThrows(VoFSoloTieneDosOpcionesError.class,
-                () -> {
-                    VoF.conModoClasico("¿2 + 2 = 4?", listaOpcionesPregunta);
-                });
-    }
-
-    @Test
-    public void test12SeCreaUnaPreguntaVoFConPenalidadConMenosDeDosOpciones() {
-        ListaOpciones listaOpcionesPregunta = new ListaOpciones();
-        listaOpcionesPregunta.agregarOpcion(new OpcionCorrecta("Verdadero"));
-
-        assertThrows(VoFSoloTieneDosOpcionesError.class,
-                () -> {
-                    VoF.conModoPenalidad("¿2 + 2 = 4?", listaOpcionesPregunta);
-                });
-    }
-     */
 }

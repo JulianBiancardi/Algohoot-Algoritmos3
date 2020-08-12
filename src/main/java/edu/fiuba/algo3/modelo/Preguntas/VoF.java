@@ -8,17 +8,18 @@ import edu.fiuba.algo3.modelo.Preguntas.ModosPreguntas.ModoPregunta;
 
 public class VoF extends Pregunta {
 
-    private VoF(String unEnunciado, ModoPregunta unModo)  {
+    private VoF(String unEnunciado, ModoPregunta unModo,boolean esCorrecta)  {
         super(unEnunciado, unModo);
+        agregarOpcion(new OpcionBinaria("Verdaero",esCorrecta));
+        agregarOpcion(new OpcionBinaria("Falso",!esCorrecta));
     }
 
-    public static VoF conModoClasico(String unEnunciado){ return new VoF(unEnunciado, new Clasico()); }
-
-    public static VoF conModoPenalidad(String unEnunciado){ return new VoF(unEnunciado, new Penalidad()); }
-
-    public void agregarOpcion(OpcionBinaria opcion){
-        super.agregarOpcion(opcion);
+    public static VoF conModoClasico(String unEnunciado,boolean esCorrecta){
+        return new VoF(unEnunciado, new Clasico(),esCorrecta);
     }
+
+    public static VoF conModoPenalidad(String unEnunciado,boolean esCorrecta){
+        return new VoF(unEnunciado, new Penalidad(),esCorrecta); }
 
     public OpcionBinaria obtenerOpcion(int posicion){ return (OpcionBinaria) super.obtenerOpcion(posicion); }
 

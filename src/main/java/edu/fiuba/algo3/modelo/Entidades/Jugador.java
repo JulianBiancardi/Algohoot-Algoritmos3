@@ -36,16 +36,6 @@ public class Jugador implements Observable {
         return nombre;
     }
 
-    @Override
-    public void agregarObservador(Observador unObservador) {
-        observadores.add(unObservador);
-    }
-
-    @Override
-    public void notificarObservadores() {
-        observadores.stream().forEach(observador -> observador.actualizar());
-    }
-
     private void agregarMultiplicador(Respuesta respuesta, Multiplicador multiplicador) {
         if(!multiplicadoresRestantes.contains(multiplicador)) {
             throw new MultiplicadorYaUtilizadoError();
@@ -67,5 +57,17 @@ public class Jugador implements Observable {
             exclusividadesRestantes--;
             respuesta.activarExclusividad();
         }
+    }
+
+    // Observable para la app
+
+    @Override
+    public void agregarObservador(Observador unObservador) {
+        observadores.add(unObservador);
+    }
+
+    @Override
+    public void notificarObservadores() {
+        observadores.stream().forEach(observador -> observador.actualizar());
     }
 }
