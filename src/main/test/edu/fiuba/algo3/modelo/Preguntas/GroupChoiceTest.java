@@ -14,7 +14,6 @@ public class GroupChoiceTest {
 
     @Test
     public void test01AmbosGruposConDosRespuestasCorrectasCadaUnoRespondeCorrectamente(){
-
         String nombreGrupo1 = "Numeros Pares";
         String nombreGrupo2 = "Numeros Impares";
         GroupChoice pregunta = new GroupChoice("Separar en Pares e Impares", nombreGrupo1, nombreGrupo2);
@@ -38,7 +37,6 @@ public class GroupChoiceTest {
 
     @Test
     public void test02AmbosGruposConDosRespuestasCorrectasCadaUnoRespondeIncorrectamente(){
-
         String nombreGrupo1 = "Numeros Pares";
         String nombreGrupo2 = "Numeros Impares";
         GroupChoice pregunta = new GroupChoice("Separar en Pares e Impares",nombreGrupo1, nombreGrupo2);
@@ -62,7 +60,6 @@ public class GroupChoiceTest {
 
     @Test
     public void test03GruposConDistintaCantidadDeOpcionesRespondeCorrectamente(){
-
         String nombreGrupo1 = "Numeros Pares";
         String nombreGrupo2 = "Numeros Impares";
         GroupChoice pregunta = new GroupChoice("Separar en Pares e Impares",nombreGrupo1, nombreGrupo2);
@@ -86,7 +83,6 @@ public class GroupChoiceTest {
 
     @Test
     public void test04AmbosGruposConDosRespuestasCorrectasCadaUnoRespondenAmbosCorrectamente(){
-
         String nombreGrupo1 = "Numeros Pares";
         String nombreGrupo2 = "Numeros Impares";
         GroupChoice pregunta = new GroupChoice("Separar en Pares e Impares",nombreGrupo1, nombreGrupo2);
@@ -120,7 +116,6 @@ public class GroupChoiceTest {
 
     @Test
     public void test05AmbosGruposConDosRespuestasCorrectasCadaUnoAmbosRespondeIncorrectamente(){
-
         String nombreGrupo1 = "Numeros Pares";
         String nombreGrupo2 = "Numeros Impares";
         GroupChoice pregunta = new GroupChoice("Separar en Pares e Impares",nombreGrupo1, nombreGrupo2);
@@ -154,7 +149,6 @@ public class GroupChoiceTest {
 
     @Test
     public void test06GruposConDistintaCantidadDeOpcionesUnoRespondeCorrectamenteYOtroNo(){
-
         String nombreGrupo1 = "Numeros Pares";
         String nombreGrupo2 = "Numeros Impares";
         GroupChoice pregunta = new GroupChoice("Separar en Pares e Impares",nombreGrupo1, nombreGrupo2);
@@ -168,12 +162,10 @@ public class GroupChoiceTest {
         RespuestaGrupal respuestaJugador2 = new RespuestaGrupal(jugador2, pregunta, nombreGrupo1, nombreGrupo2);
 
         //Responde jugador1
-
         respuestaJugador1.agregarOpcionGrupo1(pregunta.obtenerOpcion(3));
         respuestaJugador1.agregarOpcionGrupo1(pregunta.obtenerOpcion(1));
         respuestaJugador1.agregarOpcionGrupo1(pregunta.obtenerOpcion(0));
         respuestaJugador1.agregarOpcionGrupo2(pregunta.obtenerOpcion(2));
-
 
         //Responde jugador2
         respuestaJugador2.agregarOpcionGrupo1(pregunta.obtenerOpcion(0));

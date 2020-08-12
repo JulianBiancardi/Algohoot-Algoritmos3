@@ -108,5 +108,4 @@ public class RespuestaGrupalTest {
 
         assertEquals(0, respuestaJugador.cantidadOpcionesCorrectas());
     }
-
 }

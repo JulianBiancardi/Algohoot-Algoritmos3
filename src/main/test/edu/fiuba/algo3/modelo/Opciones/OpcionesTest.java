@@ -16,7 +16,7 @@ public class OpcionesTest {
 
     @Test
     public void test02CreoOpcionIncorrectaYVerificoQueDevuelvaFalse(){
-        OpcionBinaria opcion = new OpcionBinaria("Soy correcta", false);
+        OpcionBinaria opcion = new OpcionBinaria("Soy incorrecta", false);
 
         assertFalse(opcion.esCorrecta());
     }
@@ -54,7 +54,7 @@ public class OpcionesTest {
 
     @Test
     public void test06CreoOpcionOrdenadaYVerificoQueDevuelvaFalseSiLasPosicionesNoCoinciden(){
-        OpcionOrdenada opcion = new OpcionOrdenada("Soy ordenada");
+        OpcionOrdenada opcion = new OpcionOrdenada("Soy desordenada");
 
         opcion.setPosicionEsperada(2);
         opcion.setPosicionActual(3);

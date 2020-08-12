@@ -1,10 +1,11 @@
-package edu.fiuba.algo3.modelo.Preguntas;
+package edu.fiuba.algo3.modelo.Preguntas.ModosPreguntas;
 
 import edu.fiuba.algo3.modelo.Entidades.Jugador;
 import edu.fiuba.algo3.modelo.Opciones.OpcionBinaria;
 import edu.fiuba.algo3.modelo.Preguntas.ModosPreguntas.Clasico;
 import edu.fiuba.algo3.modelo.Preguntas.ModosPreguntas.Penalidad;
 import edu.fiuba.algo3.modelo.Preguntas.ModosPreguntas.PuntajeParcial;
+import edu.fiuba.algo3.modelo.Preguntas.VoF;
 import edu.fiuba.algo3.modelo.Respuestas.Respuesta;
 import org.junit.jupiter.api.Test;
 
@@ -33,7 +34,7 @@ public class ModoPreguntaTest {
         Jugador jugador = new Jugador("Leito");
         Respuesta respuesta = new Respuesta(jugador, VoF.conModoClasico("Pregunta de Prueba", true));
         respuesta.agregarOpcion(new OpcionBinaria("soy correcta pa", true));
-        respuesta.agregarOpcion(new OpcionBinaria("soy correcta pa", true));
+        respuesta.agregarOpcion(new OpcionBinaria("soy correcta", true));
 
         Clasico modo = new Clasico();
         int puntos = modo.calcularPuntos(respuesta, 2);
@@ -47,7 +48,7 @@ public class ModoPreguntaTest {
         Respuesta respuesta = new Respuesta(jugador, VoF.conModoClasico("Pregunta de Prueba", true));
         respuesta.agregarOpcion(new OpcionBinaria("soy correcta pa", true));
         respuesta.agregarOpcion(new OpcionBinaria("soy incorrecta", false));
-        respuesta.agregarOpcion(new OpcionBinaria("soy correcta pa", true));
+        respuesta.agregarOpcion(new OpcionBinaria("soy correcta", true));
 
         Penalidad modo = new Penalidad();
         int puntos = modo.calcularPuntos(respuesta, 2);
@@ -62,8 +63,8 @@ public class ModoPreguntaTest {
         Respuesta respuesta = new Respuesta(jugador, VoF.conModoClasico("Pregunta de Prueba", true));
         respuesta.agregarOpcion(new OpcionBinaria("soy correcta pa", true));
         respuesta.agregarOpcion(new OpcionBinaria("soy incorrecta", false));
-        respuesta.agregarOpcion(new OpcionBinaria("soy correcta pa", true));
-        respuesta.agregarOpcion(new OpcionBinaria("soy incorrecta", false));
+        respuesta.agregarOpcion(new OpcionBinaria("soy correcta", true));
+        respuesta.agregarOpcion(new OpcionBinaria("soy incorrecta pa", false));
 
         PuntajeParcial modo = new PuntajeParcial();
         int puntos = modo.calcularPuntos(respuesta, 2);
@@ -76,7 +77,7 @@ public class ModoPreguntaTest {
     public void test05CreoModoPuntajeParcialSumaPuntajeYVerificoPuntos() {
         Jugador jugador = new Jugador("Leito");
         Respuesta respuesta = new Respuesta(jugador, VoF.conModoClasico("Pregunta de Prueba", true));
-        respuesta.agregarOpcion(new OpcionBinaria("soy correcta pa", true));
+        respuesta.agregarOpcion(new OpcionBinaria("soy correcta", true));
         respuesta.agregarOpcion(new OpcionBinaria("soy correcta pa", true));
 
         PuntajeParcial modo = new PuntajeParcial();

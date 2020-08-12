@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo.Preguntas;
 
 import edu.fiuba.algo3.modelo.Entidades.Jugador;
+import edu.fiuba.algo3.modelo.Excepciones.ChoiceTieneMaxCincoOpcionesError;
 import edu.fiuba.algo3.modelo.Opciones.OpcionOrdenada;
 import edu.fiuba.algo3.modelo.Respuestas.Respuesta;
 import edu.fiuba.algo3.modelo.Respuestas.RespuestaOrdenada;
@@ -9,16 +10,17 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class OrderedChoiceTest {
 
     @Test
     public void test01SeCreaUnaPreguntaOrderedChoiceConTodasLasRespuestasBienOrdenadaYEvalua() {
         OrderedChoice pregunta = new OrderedChoice("Ordenar de mayor a menor los numeros");
-        pregunta.agregarOpcion(new OpcionOrdenada("Uno"));
-        pregunta.agregarOpcion(new OpcionOrdenada("Tres"));
-        pregunta.agregarOpcion(new OpcionOrdenada("Cinco"));
-        pregunta.agregarOpcion(new OpcionOrdenada("Diez"));
+        pregunta.agregarOpcion("Uno");
+        pregunta.agregarOpcion("Tres");
+        pregunta.agregarOpcion("Cinco");
+        pregunta.agregarOpcion("Diez");
         Jugador jugador = new Jugador("LeoProgramador");
         RespuestaOrdenada respuesta = new RespuestaOrdenada(jugador, pregunta);
         respuesta.agregarOpcion(pregunta.obtenerOpcion(0));
@@ -36,10 +38,10 @@ public class OrderedChoiceTest {
     @Test
     public void test02SeCreaUnaPreguntaOrderedChoiceConUnaRespuestaMalOrdenadaYEvalua() {
         OrderedChoice pregunta = new OrderedChoice("Ordenar de mayor a menor los numeros");
-        pregunta.agregarOpcion(new OpcionOrdenada("Uno"));
-        pregunta.agregarOpcion(new OpcionOrdenada("Tres"));
-        pregunta.agregarOpcion(new OpcionOrdenada("Cinco"));
-        pregunta.agregarOpcion(new OpcionOrdenada("Diez"));
+        pregunta.agregarOpcion("Uno");
+        pregunta.agregarOpcion("Tres");
+        pregunta.agregarOpcion("Cinco");
+        pregunta.agregarOpcion("Diez");
         Jugador jugador = new Jugador("LeoProgramador");
         RespuestaOrdenada respuesta = new RespuestaOrdenada(jugador, pregunta);
         respuesta.agregarOpcion(pregunta.obtenerOpcion(2));
@@ -57,10 +59,10 @@ public class OrderedChoiceTest {
     @Test
     public void test03SeCreaUnaPreguntaOrderedChoiceConTodasMenosUnaRespuestaBienOrdenadaYEvalua() {
         OrderedChoice pregunta = new OrderedChoice("Ordenar de mayor a menor los numeros");
-        pregunta.agregarOpcion(new OpcionOrdenada("Uno"));
-        pregunta.agregarOpcion(new OpcionOrdenada("Tres"));
-        pregunta.agregarOpcion(new OpcionOrdenada("Cinco"));
-        pregunta.agregarOpcion(new OpcionOrdenada("Diez"));
+        pregunta.agregarOpcion("Uno");
+        pregunta.agregarOpcion("Tres");
+        pregunta.agregarOpcion("Cinco");
+        pregunta.agregarOpcion("Diez");
         Jugador jugador = new Jugador("LeoProgramador");
         RespuestaOrdenada respuesta = new RespuestaOrdenada(jugador, pregunta);
         respuesta.agregarOpcion(pregunta.obtenerOpcion(2));
@@ -77,10 +79,10 @@ public class OrderedChoiceTest {
     @Test
     public void test04SeCreaUnaPreguntaOrderedChoiceConSoloUnaOpcionSeleccionadaYEvalua() {
         OrderedChoice pregunta = new OrderedChoice("Ordenar de mayor a menor los numeros");
-        pregunta.agregarOpcion(new OpcionOrdenada("Uno"));
-        pregunta.agregarOpcion(new OpcionOrdenada("Tres"));
-        pregunta.agregarOpcion(new OpcionOrdenada("Cinco"));
-        pregunta.agregarOpcion(new OpcionOrdenada("Diez"));
+        pregunta.agregarOpcion("Uno");
+        pregunta.agregarOpcion("Tres");
+        pregunta.agregarOpcion("Cinco");
+        pregunta.agregarOpcion("Diez");
         Jugador jugador = new Jugador("LeoProgramador");
         RespuestaOrdenada respuesta = new RespuestaOrdenada(jugador, pregunta);
         respuesta.agregarOpcion(pregunta.obtenerOpcion(0));
@@ -95,10 +97,10 @@ public class OrderedChoiceTest {
     @Test
     public void test05SeCreaUnaPreguntaOrderedChoiceConDosOpcionSeleccionadaYEvalua() {
         OrderedChoice pregunta = new OrderedChoice("Ordenar de mayor a menor los numeros");
-        pregunta.agregarOpcion(new OpcionOrdenada("Uno"));
-        pregunta.agregarOpcion(new OpcionOrdenada("Tres"));
-        pregunta.agregarOpcion(new OpcionOrdenada("Cinco"));
-        pregunta.agregarOpcion(new OpcionOrdenada("Diez"));
+        pregunta.agregarOpcion("Uno");
+        pregunta.agregarOpcion("Tres");
+        pregunta.agregarOpcion("Cinco");
+        pregunta.agregarOpcion("Diez");
         Jugador jugador = new Jugador("LeoProgramador");
         RespuestaOrdenada respuesta = new RespuestaOrdenada(jugador, pregunta);
         respuesta.agregarOpcion(pregunta.obtenerOpcion(0));
@@ -114,10 +116,10 @@ public class OrderedChoiceTest {
     @Test
     public void test06SeCreaUnaPreguntaOrderedChoiceConTresOpcionSeleccionadaYEvalua() {
         OrderedChoice pregunta = new OrderedChoice("Ordenar de mayor a menor los numeros");
-        pregunta.agregarOpcion(new OpcionOrdenada("Uno"));
-        pregunta.agregarOpcion(new OpcionOrdenada("Tres"));
-        pregunta.agregarOpcion(new OpcionOrdenada("Cinco"));
-        pregunta.agregarOpcion(new OpcionOrdenada("Diez"));
+        pregunta.agregarOpcion("Uno");
+        pregunta.agregarOpcion("Tres");
+        pregunta.agregarOpcion("Cinco");
+        pregunta.agregarOpcion("Diez");
         Jugador jugador = new Jugador("LeoProgramador");
         RespuestaOrdenada respuesta = new RespuestaOrdenada(jugador, pregunta);
         respuesta.agregarOpcion(pregunta.obtenerOpcion(0));
@@ -134,8 +136,8 @@ public class OrderedChoiceTest {
     @Test
     public void test07SeCreaUnaPreguntaOrderedChoiceConSoloDosOpcionesYSeRespondeBienYEvalua() {
         OrderedChoice pregunta = new OrderedChoice("Ordenar de mayor a menor los numeros");
-        pregunta.agregarOpcion(new OpcionOrdenada("Uno"));
-        pregunta.agregarOpcion(new OpcionOrdenada("Tres"));
+        pregunta.agregarOpcion("Uno");
+        pregunta.agregarOpcion("Tres");
         Jugador jugador = new Jugador("LeoProgramador");
         RespuestaOrdenada respuesta = new RespuestaOrdenada(jugador, pregunta);
         respuesta.agregarOpcion(pregunta.obtenerOpcion(0));
@@ -146,5 +148,20 @@ public class OrderedChoiceTest {
 
         pregunta.evaluarRespuestas(respuestas);
         assertEquals(1, jugador.puntos());
+    }
+
+    @Test
+    public void test08SeCreaUnaPreguntaOrderedChoiceConMasDeCincoOpcionesYLanzaExepcion() {
+        OrderedChoice pregunta = new OrderedChoice("Ordenar de mayor a menor los numeros");
+        pregunta.agregarOpcion("Uno");
+        pregunta.agregarOpcion("Tres");
+        pregunta.agregarOpcion("Cuatro");
+        pregunta.agregarOpcion("Cinco");
+        pregunta.agregarOpcion("Diez");
+
+        assertThrows(ChoiceTieneMaxCincoOpcionesError.class,
+                () -> {
+                    pregunta.agregarOpcion("Treinta");
+                });
     }
 }

@@ -1,8 +1,9 @@
-package edu.fiuba.algo3.modelo.Preguntas;
+package edu.fiuba.algo3.modelo.Preguntas.ModosPreguntas;
 
 import edu.fiuba.algo3.modelo.Entidades.Jugador;
 import edu.fiuba.algo3.modelo.Excepciones.PreguntaNoAceptaExclusividadError;
 import edu.fiuba.algo3.modelo.Opciones.OpcionBinaria;
+import edu.fiuba.algo3.modelo.Preguntas.MultipleChoice;
 import edu.fiuba.algo3.modelo.Respuestas.Respuesta;
 import org.junit.jupiter.api.Test;
 
@@ -73,8 +74,8 @@ public class PreguntaExclusividadTest {
         pregunta.agregarOpcion("Japon", false);
         pregunta.agregarOpcion("Perú", true);
         pregunta.agregarOpcion("China", false);
-        Jugador jugador1 = new Jugador("Lionel Messi");
-        Jugador jugador2 = new Jugador("Lionel Messi el mas grande");
+        Jugador jugador1 = new Jugador("Carlos Tevez");
+        Jugador jugador2 = new Jugador("Ariana Grande");
         Respuesta respuestaJugador1 = new Respuesta(jugador1, pregunta);
         Respuesta respuestaJugador2 = new Respuesta(jugador2, pregunta);
 
@@ -101,8 +102,8 @@ public class PreguntaExclusividadTest {
         pregunta.agregarOpcion("Japon", false);
         pregunta.agregarOpcion("Perú", true);
         pregunta.agregarOpcion("China", false);
-        Jugador jugador1 = new Jugador("Lionel Messi");
-        Jugador jugador2 = new Jugador("Lionel Messi el mas grande");
+        Jugador jugador1 = new Jugador("Carlos Tevez");
+        Jugador jugador2 = new Jugador("Ariana Grande");
         Respuesta respuestaJugador1 = new Respuesta(jugador1, pregunta);
         Respuesta respuestaJugador2 = new Respuesta(jugador2, pregunta);
 
@@ -129,8 +130,8 @@ public class PreguntaExclusividadTest {
         pregunta.agregarOpcion("Japon", false);
         pregunta.agregarOpcion("Perú", true);
         pregunta.agregarOpcion("China", false);
-        Jugador jugador1 = new Jugador("Lionel Messi");
-        Jugador jugador2 = new Jugador("Lionel Messi el mas grande");
+        Jugador jugador1 = new Jugador("Carlos Tevez");
+        Jugador jugador2 = new Jugador("Ariana Grande");
         Respuesta respuestaJugador1 = new Respuesta(jugador1, pregunta);
         Respuesta respuestaJugador2 = new Respuesta(jugador2, pregunta);
 
@@ -183,8 +184,8 @@ public class PreguntaExclusividadTest {
         pregunta.agregarOpcion("Japon", false);
         pregunta.agregarOpcion("Perú", true);
         pregunta.agregarOpcion("China", false);
-        Jugador jugador1 = new Jugador("Lionel Messi");
-        Jugador jugador2 = new Jugador("Lionel Messi el mas grande");
+        Jugador jugador1 = new Jugador("Carlos Tevez");
+        Jugador jugador2 = new Jugador("Ariana Grande");
         Respuesta respuestaJugador1 = new Respuesta(jugador1, pregunta);
         Respuesta respuestaJugador2 = new Respuesta(jugador2, pregunta);
 
@@ -211,8 +212,8 @@ public class PreguntaExclusividadTest {
         pregunta.agregarOpcion("Japon", false);
         pregunta.agregarOpcion("Perú", true);
         pregunta.agregarOpcion("China", false);
-        Jugador jugador1 = new Jugador("Lionel Messi");
-        Jugador jugador2 = new Jugador("Lionel Messi el mas grande");
+        Jugador jugador1 = new Jugador("Carlos Tevez");
+        Jugador jugador2 = new Jugador("Ariana Grande");
         Respuesta respuestaJugador1 = new Respuesta(jugador1, pregunta);
         Respuesta respuestaJugador2 = new Respuesta(jugador2, pregunta);
 

@@ -8,9 +8,9 @@ public class GrupoTest {
 
     @Test
     public void test01CreoGrupoConUnaIncorrectaYVerificoQueDevuelvaBienCantidadCorrectas(){
-        OpcionGrupal opcion = new OpcionGrupal("Soy grupal");
-        opcion.setGrupoEsperado("Somos un Grupo");
-        Grupo grupo = new Grupo("Soy un Grupo");
+        OpcionGrupal opcion = new OpcionGrupal("Soy extraordinario");
+        opcion.setGrupoEsperado("Somos un extraordinarios");
+        Grupo grupo = new Grupo("Soy un extraordinario");
 
         grupo.agregarOpcionGrupo(opcion);
 
@@ -19,11 +19,11 @@ public class GrupoTest {
 
     @Test
     public void test02CreoGrupoConUnaOpcionCorrectaYVerificoQueDevuelvaBienCantidadCorrectas(){
-        OpcionGrupal opcion1 = new OpcionGrupal("Soy correcta");
-        opcion1.setGrupoEsperado("5 * 2 = 10");
-        OpcionGrupal opcion2 = new OpcionGrupal("Soy incorrecta");
-        opcion2.setGrupoEsperado("5 * 2 = 20");
-        Grupo grupo = new Grupo("5 * 2 = 10");
+        OpcionGrupal opcion1 = new OpcionGrupal("10");
+        opcion1.setGrupoEsperado("5 * 2");
+        OpcionGrupal opcion2 = new OpcionGrupal("20");
+        opcion2.setGrupoEsperado("5 * 4");
+        Grupo grupo = new Grupo("5 * 2");
 
         grupo.agregarOpcionGrupo(opcion1);
         grupo.agregarOpcionGrupo(opcion2);
@@ -33,15 +33,15 @@ public class GrupoTest {
 
     @Test
     public void test03CreoGrupoConDosOpcionCorrectaYVerificoQueDevuelvaBienCantidadCorrectas(){
-        OpcionGrupal opcion1 = new OpcionGrupal("Soy correcta");
-        opcion1.setGrupoEsperado("5 * 2 = 10");
-        OpcionGrupal opcion2 = new OpcionGrupal("Soy incorrecta");
-        opcion2.setGrupoEsperado("5 * 2 = 20");
-        OpcionGrupal opcion3 = new OpcionGrupal("Soy correcta");
-        opcion3.setGrupoEsperado("5 * 2 = 10");
-        OpcionGrupal opcion4 = new OpcionGrupal("Soy incorrecta");
-        opcion4.setGrupoEsperado("5 * 2 = 20");
-        Grupo grupo = new Grupo("5 * 2 = 10");
+        OpcionGrupal opcion1 = new OpcionGrupal("10");
+        opcion1.setGrupoEsperado("5 * 2");
+        OpcionGrupal opcion2 = new OpcionGrupal("20");
+        opcion2.setGrupoEsperado("5 * 4");
+        OpcionGrupal opcion3 = new OpcionGrupal("5 + 5");
+        opcion3.setGrupoEsperado("5 * 2");
+        OpcionGrupal opcion4 = new OpcionGrupal("5 * 5");
+        opcion4.setGrupoEsperado("5 * 4");
+        Grupo grupo = new Grupo("5 * 2");
 
         grupo.agregarOpcionGrupo(opcion1);
         grupo.agregarOpcionGrupo(opcion2);
@@ -53,15 +53,15 @@ public class GrupoTest {
 
     @Test
     public void test04CreoGrupoConTresOpcionCorrectaYVerificoQueDevuelvaBienCantidadCorrectas(){
-        OpcionGrupal opcion1 = new OpcionGrupal("Soy correcta");
-        opcion1.setGrupoEsperado("5 * 2 = 10");
-        OpcionGrupal opcion2 = new OpcionGrupal("Soy correcta");
-        opcion2.setGrupoEsperado("5 * 2 = 10");
-        OpcionGrupal opcion3 = new OpcionGrupal("Soy correcta");
-        opcion3.setGrupoEsperado("5 * 2 = 10");
-        OpcionGrupal opcion4 = new OpcionGrupal("Soy incorrecta");
-        opcion4.setGrupoEsperado("5 * 2 = 20");
-        Grupo grupo = new Grupo("5 * 2 = 10");
+        OpcionGrupal opcion1 = new OpcionGrupal("10");
+        opcion1.setGrupoEsperado("5 * 2");
+        OpcionGrupal opcion2 = new OpcionGrupal("20");
+        opcion2.setGrupoEsperado("5 * 4");
+        OpcionGrupal opcion3 = new OpcionGrupal("5 + 5");
+        opcion3.setGrupoEsperado("5 * 2");
+        OpcionGrupal opcion4 = new OpcionGrupal("2 + 2 + 2 + 2 + 2");
+        opcion4.setGrupoEsperado("5 * 2");
+        Grupo grupo = new Grupo("5 * 2");
 
         grupo.agregarOpcionGrupo(opcion1);
         grupo.agregarOpcionGrupo(opcion2);
@@ -73,15 +73,15 @@ public class GrupoTest {
 
     @Test
     public void test05CreoGrupoConCuatroOpcionCorrectaYVerificoQueDevuelvaBienCantidadCorrectas(){
-        OpcionGrupal opcion1 = new OpcionGrupal("Soy correcta");
-        opcion1.setGrupoEsperado("5 * 2 = 10");
-        OpcionGrupal opcion2 = new OpcionGrupal("Soy correcta");
-        opcion2.setGrupoEsperado("5 * 2 = 10");
-        OpcionGrupal opcion3 = new OpcionGrupal("Soy correcta");
-        opcion3.setGrupoEsperado("5 * 2 = 10");
-        OpcionGrupal opcion4 = new OpcionGrupal("Soy correcta");
-        opcion4.setGrupoEsperado("5 * 2 = 10");
-        Grupo grupo = new Grupo("5 * 2 = 10");
+        OpcionGrupal opcion1 = new OpcionGrupal("10");
+        opcion1.setGrupoEsperado("5 * 2");
+        OpcionGrupal opcion2 = new OpcionGrupal("7 + 3");
+        opcion2.setGrupoEsperado("5 * 2");
+        OpcionGrupal opcion3 = new OpcionGrupal("5 + 5");
+        opcion3.setGrupoEsperado("5 * 2");
+        OpcionGrupal opcion4 = new OpcionGrupal("2 + 2 + 2 + 2 + 2");
+        opcion4.setGrupoEsperado("5 * 2");
+        Grupo grupo = new Grupo("5 * 2");
 
         grupo.agregarOpcionGrupo(opcion1);
         grupo.agregarOpcionGrupo(opcion2);
