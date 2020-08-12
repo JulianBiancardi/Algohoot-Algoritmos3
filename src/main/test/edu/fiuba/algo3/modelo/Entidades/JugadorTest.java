@@ -3,10 +3,9 @@ package edu.fiuba.algo3.modelo.Entidades;
 import edu.fiuba.algo3.modelo.Excepciones.MultiplicadorYaUtilizadoError;
 import edu.fiuba.algo3.modelo.Excepciones.PreguntaNoAceptaExclusividadError;
 import edu.fiuba.algo3.modelo.Excepciones.PreguntaNoAceptaMultiplicadorError;
-import edu.fiuba.algo3.modelo.Opciones.OpcionBinaria;
-import edu.fiuba.algo3.modelo.Preguntas.MultipleChoice;
-import edu.fiuba.algo3.modelo.Preguntas.VoF;
-import edu.fiuba.algo3.modelo.Respuestas.Respuesta;
+import edu.fiuba.algo3.modelo.Entidades.Preguntas.MultipleChoice;
+import edu.fiuba.algo3.modelo.Entidades.Preguntas.VoF;
+import edu.fiuba.algo3.modelo.Entidades.Respuestas.Respuesta;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -43,7 +42,7 @@ public class JugadorTest {
         ArrayList<Respuesta> respuestas = new ArrayList<>();
         respuestas.add(respuestaJugador);
 
-        jugador.utilizarMultiplicadorDoble(respuestaJugador);
+        jugador.activarMultiplicadorDoble(respuestaJugador);
         pregunta.evaluarRespuestas(respuestas);
 
         assertEquals(2, jugador.puntos());
@@ -62,7 +61,7 @@ public class JugadorTest {
         ArrayList<Respuesta> respuestas = new ArrayList<>();
         respuestas.add(respuestaJugador);
 
-        jugador.utilizarMultiplicadorDoble(respuestaJugador);
+        jugador.activarMultiplicadorDoble(respuestaJugador);
         pregunta.evaluarRespuestas(respuestas);
 
         assertEquals(2, jugador.puntos());
@@ -79,7 +78,7 @@ public class JugadorTest {
 
         assertThrows(PreguntaNoAceptaMultiplicadorError.class,
                 () -> {
-                    jugador.utilizarMultiplicadorDoble(respuestaJugador);
+                    jugador.activarMultiplicadorDoble(respuestaJugador);
                 });
     }
 
@@ -96,7 +95,7 @@ public class JugadorTest {
         respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(1));
         ArrayList<Respuesta> respuestas = new ArrayList<>();
         respuestas.add(respuestaJugador);
-        jugador.utilizarMultiplicadorDoble(respuestaJugador);
+        jugador.activarMultiplicadorDoble(respuestaJugador);
         pregunta.evaluarRespuestas(respuestas);
         // Pregunta 2
         pregunta = MultipleChoice.conModoPenalidad("Mundiales Ganados por Brasil");
@@ -111,7 +110,7 @@ public class JugadorTest {
 
         assertThrows(MultiplicadorYaUtilizadoError.class,
                 () -> {
-                    jugador.utilizarMultiplicadorDoble(respuesta2Jugador);
+                    jugador.activarMultiplicadorDoble(respuesta2Jugador);
                 });
     }
 
@@ -130,7 +129,7 @@ public class JugadorTest {
 
         assertThrows(PreguntaNoAceptaMultiplicadorError.class,
                 () -> {
-                    jugador.utilizarMultiplicadorDoble(respuestaJugador);
+                    jugador.activarMultiplicadorDoble(respuestaJugador);
                 });
     }
 
@@ -143,7 +142,7 @@ public class JugadorTest {
         ArrayList<Respuesta> respuestas = new ArrayList<>();
         respuestas.add(respuestaJugador);
 
-        jugador.utilizarMultiplicadorTriple(respuestaJugador);
+        jugador.activarMultiplicadorTriple(respuestaJugador);
         pregunta.evaluarRespuestas(respuestas);
 
         assertEquals(3, jugador.puntos());
@@ -162,7 +161,7 @@ public class JugadorTest {
         ArrayList<Respuesta> respuestas = new ArrayList<>();
         respuestas.add(respuestaJugador);
 
-        jugador.utilizarMultiplicadorTriple(respuestaJugador);
+        jugador.activarMultiplicadorTriple(respuestaJugador);
         pregunta.evaluarRespuestas(respuestas);
 
         assertEquals(3, jugador.puntos());
@@ -215,7 +214,7 @@ public class JugadorTest {
         respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(1));
         ArrayList<Respuesta> respuestas = new ArrayList<>();
         respuestas.add(respuestaJugador);
-        jugador.utilizarMultiplicadorTriple(respuestaJugador);
+        jugador.activarMultiplicadorTriple(respuestaJugador);
         pregunta.evaluarRespuestas(respuestas);
         // Pregunta 2
         pregunta = MultipleChoice.conModoPenalidad("Mundiales Ganados por Brasil");
@@ -230,7 +229,7 @@ public class JugadorTest {
 
         assertThrows(MultiplicadorYaUtilizadoError.class,
                 () -> {
-                    jugador.utilizarMultiplicadorTriple(respuesta2Jugador);
+                    jugador.activarMultiplicadorTriple(respuesta2Jugador);
                 });
     }
 }
