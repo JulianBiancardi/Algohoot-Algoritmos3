@@ -22,6 +22,10 @@ public class SistemaTurnos {
             index = 0;
     }
 
+    public boolean terminoRonda(){
+        return (index == 0);
+    }
+
     public Jugador obtenerTurno(){
         return jugadores.get(index);
     }

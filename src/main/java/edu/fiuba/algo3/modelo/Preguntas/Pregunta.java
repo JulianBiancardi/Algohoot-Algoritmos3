@@ -3,6 +3,8 @@ package edu.fiuba.algo3.modelo.Preguntas;
 import edu.fiuba.algo3.modelo.Opciones.Opcion;
 import edu.fiuba.algo3.modelo.Preguntas.ModosPreguntas.ModoPregunta;
 import edu.fiuba.algo3.modelo.Respuestas.Respuesta;
+import edu.fiuba.algo3.vista.VistaPrincipal;
+import javafx.stage.Stage;
 
 import java.util.ArrayList;
 
@@ -17,6 +19,8 @@ public abstract class Pregunta {
     }
 
     public abstract int calcularCantidadOpcionesCorrectas();
+
+    public abstract void crearVista(Stage stage,VistaPrincipal vistaPrincipal);
 
     public void evaluarRespuestas(ArrayList<Respuesta> respuestas) {
         for (Respuesta respuesta : respuestas) {

@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.vista;
 
 import edu.fiuba.algo3.controlador.ControladorEnviar;
+import edu.fiuba.algo3.modelo.Entidades.Juego;
 import edu.fiuba.algo3.modelo.Opciones.Opcion;
 import edu.fiuba.algo3.modelo.Preguntas.MultipleChoice;
 import edu.fiuba.algo3.vista.Opciones.VistaOpcion;
@@ -24,7 +25,7 @@ public class VistaMultipleChoice extends VBox implements VistaPregunta {
     GridPane opcionesPregunta = new GridPane();
     HashMap<Integer, VistaOpcionData> opcionesInfo = new HashMap<Integer,VistaOpcionData>();
 
-    public VistaMultipleChoice(Stage stage,MultipleChoice pregunta){
+    public VistaMultipleChoice(Stage stage, MultipleChoice pregunta, Juego juego){
 
         opcionesInfo.put(0,new VistaOpcionData(0,0, Color.valueOf("#e21b3c")));
         opcionesInfo.put(1,new VistaOpcionData(0,1, Color.valueOf("#1368ce")));
@@ -32,7 +33,7 @@ public class VistaMultipleChoice extends VBox implements VistaPregunta {
         opcionesInfo.put(3,new VistaOpcionData(1,1, Color.valueOf("#26890c")));
         opcionesInfo.put(4,new VistaOpcionData(2,0, Color.valueOf("#864cbf")));
 
-        inicializarBotonEnviar(stage);
+        inicializarBotonEnviar(stage,juego);
         inicializarOpciones(pregunta);
 
         this.getChildren().addAll(botonEnviar,opcionesPregunta);
@@ -41,7 +42,7 @@ public class VistaMultipleChoice extends VBox implements VistaPregunta {
         opcionesPregunta.maxWidthProperty().bind(this.widthProperty());
     }
 
-    private void inicializarBotonEnviar(Stage stage){
+    private void inicializarBotonEnviar(Stage stage, Juego juego){
         botonEnviar.setPrefSize(150,80);
         botonEnviar.setStyle("-fx-background-color: #26890c");
 
@@ -50,7 +51,7 @@ public class VistaMultipleChoice extends VBox implements VistaPregunta {
         label.setTextFill(Color.WHITE);
         botonEnviar.setGraphic(label);
 
-        ControladorEnviar enviarRespuesta = new ControladorEnviar(stage);
+        ControladorEnviar enviarRespuesta = new ControladorEnviar(stage,juego);
         botonEnviar.setOnAction(enviarRespuesta);
     }
 

@@ -1,6 +1,9 @@
 package edu.fiuba.algo3.vista;
 
+import edu.fiuba.algo3.controlador.ControladorEnviar;
+import edu.fiuba.algo3.modelo.Entidades.Juego;
 import edu.fiuba.algo3.modelo.Opciones.Opcion;
+import edu.fiuba.algo3.modelo.Preguntas.MultipleChoice;
 import edu.fiuba.algo3.modelo.Preguntas.VoF;
 import edu.fiuba.algo3.vista.Opciones.VistaOpcion;
 import edu.fiuba.algo3.vista.Opciones.VistaOpcionData;
@@ -14,6 +17,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+import javafx.stage.Stage;
 
 import java.util.HashMap;
 
@@ -24,11 +28,11 @@ public class VistaVoF extends VBox implements VistaPregunta {
     GridPane opcionesPregunta = new GridPane();
     HashMap<Integer, VistaOpcionData> opcionesInfo = new HashMap<Integer,VistaOpcionData>();
 
-    public VistaVoF(VoF pregunta){
+    public VistaVoF(Stage stage, VoF pregunta, Juego juego){
         opcionesInfo.put(0,new VistaOpcionData(0,0, Color.valueOf("#e21b3c")));
         opcionesInfo.put(1,new VistaOpcionData(0,1, Color.valueOf("#1368ce")));
 
-        inicializarBotonEnviar();
+        inicializarBotonEnviar(stage,juego);
         inicializarOpciones(pregunta);
 
         this.getChildren().addAll(botonEnviar,opcionesPregunta);
@@ -37,7 +41,7 @@ public class VistaVoF extends VBox implements VistaPregunta {
         opcionesPregunta.maxWidthProperty().bind(this.widthProperty());
     }
 
-    public void inicializarBotonEnviar(){
+    public void inicializarBotonEnviar(Stage stage, Juego juego){
         botonEnviar.setPrefSize(150,80);
         botonEnviar.setStyle("-fx-background-color: #e21b3c");
 
@@ -45,6 +49,9 @@ public class VistaVoF extends VBox implements VistaPregunta {
         label.setFont(Font.font("Montserrat", FontWeight.BOLD,25));
         label.setTextFill(Color.WHITE);
         botonEnviar.setGraphic(label);
+
+        ControladorEnviar enviarRespuesta = new ControladorEnviar(stage,juego);
+        botonEnviar.setOnAction(enviarRespuesta);
     }
 
     public void inicializarOpciones(VoF pregunta){

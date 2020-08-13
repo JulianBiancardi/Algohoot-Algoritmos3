@@ -2,6 +2,7 @@ package edu.fiuba.algo3.vista;
 
 
 import edu.fiuba.algo3.controlador.ControladorEnviar;
+import edu.fiuba.algo3.modelo.Entidades.Juego;
 import edu.fiuba.algo3.modelo.Preguntas.MultipleChoice;
 import edu.fiuba.algo3.modelo.Preguntas.VoF;
 import edu.fiuba.algo3.vista.Opciones.VistaPregunta;
@@ -31,8 +32,12 @@ public class VistaPrincipal extends BorderPane{
     private Timeline tiempo;
     Label contador = new Label(String.valueOf(startTime));
 
-    public VistaPrincipal(){
+    private Juego juego;
+
+    public VistaPrincipal(Juego juego){
+        this.juego = juego;
     }
+
 
     public void contar(){
         if(secondsPassed > 0){
@@ -45,11 +50,11 @@ public class VistaPrincipal extends BorderPane{
         }
     }
 
-    public void crearVistaVoF(VoF pregunta){
+    public void crearVistaVoF(Stage stage, VoF pregunta){
         mostrarPregunta(stackPane1,pregunta.getEnunciado());
         mostrarContador(hBox);
 
-        vistaOpciones = new VistaVoF(pregunta);
+        vistaOpciones = new VistaVoF(stage,pregunta,juego);
         vistaOpciones.getLayout().maxWidthProperty().bind(this.widthProperty());
         vistaOpciones.getLayout().setPadding(new Insets(10,10,10,10));
 
@@ -60,7 +65,7 @@ public class VistaPrincipal extends BorderPane{
         mostrarPregunta(stackPane1,pregunta.getEnunciado());
         mostrarContador(hBox);
 
-        vistaOpciones = new VistaMultipleChoice(stage,pregunta);
+        vistaOpciones = new VistaMultipleChoice(stage,pregunta,juego);
         vistaOpciones.getLayout().maxWidthProperty().bind(this.widthProperty());
         vistaOpciones.getLayout().setPadding(new Insets(10,10,10,10));
 
@@ -91,7 +96,7 @@ public class VistaPrincipal extends BorderPane{
         tiempo.setCycleCount(Timeline.INDEFINITE);
         tiempo.play();
 
-        Label nombreJugador = new Label("Nombre");
+        Label nombreJugador = new Label(juego.turnoDe().nombre());
         nombreJugador.setFont(Font.font("Core Mellow", FontWeight.BOLD,30));
 
         hBox.getChildren().addAll(stackPane,nombreJugador);
