@@ -15,10 +15,10 @@ public class PreguntaExclusividadTest {
     @Test
     public void test01ChoiceClasicoUnJugadorRespondeCorrectoYAplicaUnaExclusividad(){
         MultipleChoice pregunta = MultipleChoice.conModoClasico("Paises de América Latina");
-        pregunta.agregarOpcion("Argentina", true);
-        pregunta.agregarOpcion("Japon", false);
-        pregunta.agregarOpcion("Perú", true);
-        pregunta.agregarOpcion("Venezuela", false);
+        pregunta.nuevaOpcion("Argentina", true);
+        pregunta.nuevaOpcion("Japon", false);
+        pregunta.nuevaOpcion("Perú", true);
+        pregunta.nuevaOpcion("Venezuela", false);
         Jugador jugador1 = new Jugador("Carlos Tevez");
         Jugador jugador2 = new Jugador("Ariana Grande");
         Respuesta respuestaJugador1 = new Respuesta(jugador1, pregunta);
@@ -42,10 +42,10 @@ public class PreguntaExclusividadTest {
     @Test
     public void test02ChoiceClasicoAmbosJugadorRespondenCorrectoYNingunoSuma(){
         MultipleChoice pregunta = MultipleChoice.conModoClasico("Paises de América Latina");
-        pregunta.agregarOpcion("Argentina", true);
-        pregunta.agregarOpcion("Japon", false);
-        pregunta.agregarOpcion("Perú", true);
-        pregunta.agregarOpcion("China", false);
+        pregunta.nuevaOpcion("Argentina", true);
+        pregunta.nuevaOpcion("Japon", false);
+        pregunta.nuevaOpcion("Perú", true);
+        pregunta.nuevaOpcion("China", false);
         Jugador jugador1 = new Jugador("Carlos Tevez");
         Jugador jugador2 = new Jugador("Ariana Grande");
         Respuesta respuestaJugador1 = new Respuesta(jugador1, pregunta);
@@ -69,10 +69,10 @@ public class PreguntaExclusividadTest {
     @Test
     public void test03ChoiceClasicoUnJugadorRespondeCorrectoYAplicaDosExclusividades(){
         MultipleChoice pregunta = MultipleChoice.conModoClasico("Paises de América Latina");
-        pregunta.agregarOpcion("Argentina", true);
-        pregunta.agregarOpcion("Japon", false);
-        pregunta.agregarOpcion("Perú", true);
-        pregunta.agregarOpcion("China", false);
+        pregunta.nuevaOpcion("Argentina", true);
+        pregunta.nuevaOpcion("Japon", false);
+        pregunta.nuevaOpcion("Perú", true);
+        pregunta.nuevaOpcion("China", false);
         Jugador jugador1 = new Jugador("Carlos Tevez");
         Jugador jugador2 = new Jugador("Ariana Grande");
         Respuesta respuestaJugador1 = new Respuesta(jugador1, pregunta);
@@ -97,10 +97,10 @@ public class PreguntaExclusividadTest {
     @Test
     public void test04ChoiceClasicoUnNingunJugadorRespondeCorrectoYNoAplicaExclusividad(){
         MultipleChoice pregunta = MultipleChoice.conModoClasico("Paises de América Latina");
-        pregunta.agregarOpcion("Argentina", true);
-        pregunta.agregarOpcion("Japon", false);
-        pregunta.agregarOpcion("Perú", true);
-        pregunta.agregarOpcion("China", false);
+        pregunta.nuevaOpcion("Argentina", true);
+        pregunta.nuevaOpcion("Japon", false);
+        pregunta.nuevaOpcion("Perú", true);
+        pregunta.nuevaOpcion("China", false);
         Jugador jugador1 = new Jugador("Carlos Tevez");
         Jugador jugador2 = new Jugador("Ariana Grande");
         Respuesta respuestaJugador1 = new Respuesta(jugador1, pregunta);
@@ -125,10 +125,10 @@ public class PreguntaExclusividadTest {
     @Test
     public void test05ChoiceParcialUnJugadorRespondeCorrectoYAplicaUnaExclusividad(){
         MultipleChoice pregunta = MultipleChoice.conModoPuntajeParcial("Paises de América Latina");
-        pregunta.agregarOpcion("Argentina", true);
-        pregunta.agregarOpcion("Japon", false);
-        pregunta.agregarOpcion("Perú", true);
-        pregunta.agregarOpcion("China", false);
+        pregunta.nuevaOpcion("Argentina", true);
+        pregunta.nuevaOpcion("Japon", false);
+        pregunta.nuevaOpcion("Perú", true);
+        pregunta.nuevaOpcion("China", false);
         Jugador jugador1 = new Jugador("Carlos Tevez");
         Jugador jugador2 = new Jugador("Ariana Grande");
         Respuesta respuestaJugador1 = new Respuesta(jugador1, pregunta);
@@ -152,10 +152,10 @@ public class PreguntaExclusividadTest {
     @Test
     public void test06ChoiceParcialAmbosJugadorRespondenCorrectoYNoAplicaExclusividad(){
         MultipleChoice pregunta = MultipleChoice.conModoPuntajeParcial("Paises de América Latina");
-        pregunta.agregarOpcion("Argentina", true);
-        pregunta.agregarOpcion("Japon", false);
-        pregunta.agregarOpcion("Perú", true);
-        pregunta.agregarOpcion("China", false);
+        pregunta.nuevaOpcion("Argentina", true);
+        pregunta.nuevaOpcion("Japon", false);
+        pregunta.nuevaOpcion("Perú", true);
+        pregunta.nuevaOpcion("China", false);
         Jugador jugador1 = new Jugador("Carlos Tevez");
         Jugador jugador2 = new Jugador("Ariana Grande");
         Respuesta respuestaJugador1 = new Respuesta(jugador1, pregunta);
@@ -179,10 +179,10 @@ public class PreguntaExclusividadTest {
     @Test
     public void test07ChoiceParcialUnJugadorRespondeCorrectoYAplicaDosExclusividades(){
         MultipleChoice pregunta = MultipleChoice.conModoPuntajeParcial("Paises de América Latina");
-        pregunta.agregarOpcion("Argentina", true);
-        pregunta.agregarOpcion("Japon", false);
-        pregunta.agregarOpcion("Perú", true);
-        pregunta.agregarOpcion("China", false);
+        pregunta.nuevaOpcion("Argentina", true);
+        pregunta.nuevaOpcion("Japon", false);
+        pregunta.nuevaOpcion("Perú", true);
+        pregunta.nuevaOpcion("China", false);
         Jugador jugador1 = new Jugador("Carlos Tevez");
         Jugador jugador2 = new Jugador("Ariana Grande");
         Respuesta respuestaJugador1 = new Respuesta(jugador1, pregunta);
@@ -207,10 +207,10 @@ public class PreguntaExclusividadTest {
     @Test
     public void test08ChoiceParcialNingunJugadorRespondeCorrectoYNoAplicaExclusividad(){
         MultipleChoice pregunta = MultipleChoice.conModoPuntajeParcial("Paises de América Latina");
-        pregunta.agregarOpcion("Argentina", true);
-        pregunta.agregarOpcion("Japon", false);
-        pregunta.agregarOpcion("Perú", true);
-        pregunta.agregarOpcion("China", false);
+        pregunta.nuevaOpcion("Argentina", true);
+        pregunta.nuevaOpcion("Japon", false);
+        pregunta.nuevaOpcion("Perú", true);
+        pregunta.nuevaOpcion("China", false);
         Jugador jugador1 = new Jugador("Carlos Tevez");
         Jugador jugador2 = new Jugador("Ariana Grande");
         Respuesta respuestaJugador1 = new Respuesta(jugador1, pregunta);
@@ -234,10 +234,10 @@ public class PreguntaExclusividadTest {
     @Test
     public void test09ChoiceConPenalidadUnJugadorIntentaAplicarExclusividadYLanzaExcepcion(){
         MultipleChoice pregunta = MultipleChoice.conModoPenalidad("Paises de América Latina");
-        pregunta.agregarOpcion("Argentina", true);
-        pregunta.agregarOpcion("Japon", false);
-        pregunta.agregarOpcion("Perú", true);
-        pregunta.agregarOpcion("China", false);
+        pregunta.nuevaOpcion("Argentina", true);
+        pregunta.nuevaOpcion("Japon", false);
+        pregunta.nuevaOpcion("Perú", true);
+        pregunta.nuevaOpcion("China", false);
         Jugador jugador1 = new Jugador("Carlos Tevez");
         Jugador jugador2 = new Jugador("Ariana Grande");
         Respuesta respuestaJugador1 = new Respuesta(jugador1, pregunta);
@@ -261,10 +261,10 @@ public class PreguntaExclusividadTest {
     public void test10ChoiceClasicoUnJugadorIntentaAplicaExclusividadMasDeDosVecesYSoloAplicaDosVeces(){
         // PREGUNTA 1
         MultipleChoice pregunta = MultipleChoice.conModoClasico("Paises de América Latina");
-        pregunta.agregarOpcion("Argentina", true);
-        pregunta.agregarOpcion("Japon", false);
-        pregunta.agregarOpcion("Perú", true);
-        pregunta.agregarOpcion("China", false);
+        pregunta.nuevaOpcion("Argentina", true);
+        pregunta.nuevaOpcion("Japon", false);
+        pregunta.nuevaOpcion("Perú", true);
+        pregunta.nuevaOpcion("China", false);
         Jugador jugador1 = new Jugador("Carlos Tevez");
         Jugador jugador2 = new Jugador("Ariana Grande");
         Respuesta respuestaJugador1 = new Respuesta(jugador1, pregunta);
@@ -282,10 +282,10 @@ public class PreguntaExclusividadTest {
 
         // PREGUNTA 2
         pregunta = MultipleChoice.conModoClasico("Paises de Europa");
-        pregunta.agregarOpcion("Italia", true);
-        pregunta.agregarOpcion("Japon", false);
-        pregunta.agregarOpcion("Grecia", true);
-        pregunta.agregarOpcion("Venezuela", false);
+        pregunta.nuevaOpcion("Italia", true);
+        pregunta.nuevaOpcion("Japon", false);
+        pregunta.nuevaOpcion("Grecia", true);
+        pregunta.nuevaOpcion("Venezuela", false);
         respuestaJugador1 = new Respuesta(jugador1, pregunta);
         respuestaJugador2 = new Respuesta(jugador2, pregunta);
 
@@ -301,10 +301,10 @@ public class PreguntaExclusividadTest {
 
         // PREGUNTA 3
         pregunta = MultipleChoice.conModoClasico("Paises de Asia");
-        pregunta.agregarOpcion("Argentina", false);
-        pregunta.agregarOpcion("Japon", true);
-        pregunta.agregarOpcion("Perú", false);
-        pregunta.agregarOpcion("Venezuela", true);
+        pregunta.nuevaOpcion("Argentina", false);
+        pregunta.nuevaOpcion("Japon", true);
+        pregunta.nuevaOpcion("Perú", false);
+        pregunta.nuevaOpcion("Venezuela", true);
         respuestaJugador1 = new Respuesta(jugador1, pregunta);
         respuestaJugador2 = new Respuesta(jugador2, pregunta);
 
@@ -326,10 +326,10 @@ public class PreguntaExclusividadTest {
     public void test11ChoiceClasicoUnJugadorErraUnaIntentaAplicaExclusividadMasDeDosVecesYSoloAplicaCuandoAcierta(){
         // PREGUNTA 1
         MultipleChoice pregunta = MultipleChoice.conModoClasico("Paises de América Latina");
-        pregunta.agregarOpcion("Argentina", true);
-        pregunta.agregarOpcion("Japon", false);
-        pregunta.agregarOpcion("Perú", true);
-        pregunta.agregarOpcion("China", false);
+        pregunta.nuevaOpcion("Argentina", true);
+        pregunta.nuevaOpcion("Japon", false);
+        pregunta.nuevaOpcion("Perú", true);
+        pregunta.nuevaOpcion("China", false);
         Jugador jugador1 = new Jugador("Carlos Tevez");
         Jugador jugador2 = new Jugador("Ariana Grande");
         Respuesta respuestaJugador1 = new Respuesta(jugador1, pregunta);
@@ -347,10 +347,10 @@ public class PreguntaExclusividadTest {
 
         // PREGUNTA 2
         pregunta = MultipleChoice.conModoClasico("Paises de Europa");
-        pregunta.agregarOpcion("Italia", true);
-        pregunta.agregarOpcion("Japon", false);
-        pregunta.agregarOpcion("Grecia", true);
-        pregunta.agregarOpcion("Venezuela", false);
+        pregunta.nuevaOpcion("Italia", true);
+        pregunta.nuevaOpcion("Japon", false);
+        pregunta.nuevaOpcion("Grecia", true);
+        pregunta.nuevaOpcion("Venezuela", false);
         respuestaJugador1 = new Respuesta(jugador1, pregunta);
         respuestaJugador2 = new Respuesta(jugador2, pregunta);
 
@@ -366,10 +366,10 @@ public class PreguntaExclusividadTest {
 
         // PREGUNTA 3
         pregunta = MultipleChoice.conModoClasico("Paises de Asia");
-        pregunta.agregarOpcion("Argentina", false);
-        pregunta.agregarOpcion("Japon", true);
-        pregunta.agregarOpcion("Perú", false);
-        pregunta.agregarOpcion("Venezuela", true);
+        pregunta.nuevaOpcion("Argentina", false);
+        pregunta.nuevaOpcion("Japon", true);
+        pregunta.nuevaOpcion("Perú", false);
+        pregunta.nuevaOpcion("Venezuela", true);
         respuestaJugador1 = new Respuesta(jugador1, pregunta);
         respuestaJugador2 = new Respuesta(jugador2, pregunta);
 
@@ -391,10 +391,10 @@ public class PreguntaExclusividadTest {
     public void test12ChoiceClasicoUnJugadorErraDosIntentaAplicaExclusividadMasDeDosVecesYSoloAplicaCuandoAcierta(){
         // PREGUNTA 1
         MultipleChoice pregunta = MultipleChoice.conModoClasico("Paises de América Latina");
-        pregunta.agregarOpcion("Argentina", true);
-        pregunta.agregarOpcion("Japon", false);
-        pregunta.agregarOpcion("Perú", true);
-        pregunta.agregarOpcion("China", false);
+        pregunta.nuevaOpcion("Argentina", true);
+        pregunta.nuevaOpcion("Japon", false);
+        pregunta.nuevaOpcion("Perú", true);
+        pregunta.nuevaOpcion("China", false);
         Jugador jugador1 = new Jugador("Carlos Tevez");
         Jugador jugador2 = new Jugador("Ariana Grande");
         Respuesta respuestaJugador1 = new Respuesta(jugador1, pregunta);
@@ -412,10 +412,10 @@ public class PreguntaExclusividadTest {
 
         // PREGUNTA 2
         pregunta = MultipleChoice.conModoClasico("Paises de Europa");
-        pregunta.agregarOpcion("Italia", true);
-        pregunta.agregarOpcion("Japon", false);
-        pregunta.agregarOpcion("Grecia", true);
-        pregunta.agregarOpcion("Venezuela", false);
+        pregunta.nuevaOpcion("Italia", true);
+        pregunta.nuevaOpcion("Japon", false);
+        pregunta.nuevaOpcion("Grecia", true);
+        pregunta.nuevaOpcion("Venezuela", false);
         respuestaJugador1 = new Respuesta(jugador1, pregunta);
         respuestaJugador2 = new Respuesta(jugador2, pregunta);
 
@@ -431,10 +431,10 @@ public class PreguntaExclusividadTest {
 
         // PREGUNTA 3
         pregunta = MultipleChoice.conModoClasico("Paises de Asia");
-        pregunta.agregarOpcion("Argentina", false);
-        pregunta.agregarOpcion("Japon", true);
-        pregunta.agregarOpcion("Perú", false);
-        pregunta.agregarOpcion("Venezuela", true);
+        pregunta.nuevaOpcion("Argentina", false);
+        pregunta.nuevaOpcion("Japon", true);
+        pregunta.nuevaOpcion("Perú", false);
+        pregunta.nuevaOpcion("Venezuela", true);
         respuestaJugador1 = new Respuesta(jugador1, pregunta);
         respuestaJugador2 = new Respuesta(jugador2, pregunta);
 
@@ -456,10 +456,10 @@ public class PreguntaExclusividadTest {
     public void test13ChoiceParcialUnJugadorIntentaAplicaExclusividadMasDeDosVecesYSoloAplicaDosVeces(){
         // PREGUNTA 1
         MultipleChoice pregunta = MultipleChoice.conModoPuntajeParcial("Paises de América Latina");
-        pregunta.agregarOpcion("Argentina", true);
-        pregunta.agregarOpcion("Japon", false);
-        pregunta.agregarOpcion("Perú", true);
-        pregunta.agregarOpcion("China", false);
+        pregunta.nuevaOpcion("Argentina", true);
+        pregunta.nuevaOpcion("Japon", false);
+        pregunta.nuevaOpcion("Perú", true);
+        pregunta.nuevaOpcion("China", false);
         Jugador jugador1 = new Jugador("Carlos Tevez");
         Jugador jugador2 = new Jugador("Ariana Grande");
         Respuesta respuestaJugador1 = new Respuesta(jugador1, pregunta);
@@ -477,10 +477,10 @@ public class PreguntaExclusividadTest {
 
         // PREGUNTA 2
         pregunta = MultipleChoice.conModoPuntajeParcial("Paises de Europa");
-        pregunta.agregarOpcion("Italia", true);
-        pregunta.agregarOpcion("Japon", false);
-        pregunta.agregarOpcion("Grecia", true);
-        pregunta.agregarOpcion("Venezuela", false);
+        pregunta.nuevaOpcion("Italia", true);
+        pregunta.nuevaOpcion("Japon", false);
+        pregunta.nuevaOpcion("Grecia", true);
+        pregunta.nuevaOpcion("Venezuela", false);
         respuestaJugador1 = new Respuesta(jugador1, pregunta);
         respuestaJugador2 = new Respuesta(jugador2, pregunta);
 
@@ -496,10 +496,10 @@ public class PreguntaExclusividadTest {
 
         // PREGUNTA 3
         pregunta = MultipleChoice.conModoPuntajeParcial("Paises de Asia");
-        pregunta.agregarOpcion("Argentina", false);
-        pregunta.agregarOpcion("Japon", true);
-        pregunta.agregarOpcion("Perú", false);
-        pregunta.agregarOpcion("Venezuela", true);
+        pregunta.nuevaOpcion("Argentina", false);
+        pregunta.nuevaOpcion("Japon", true);
+        pregunta.nuevaOpcion("Perú", false);
+        pregunta.nuevaOpcion("Venezuela", true);
         respuestaJugador1 = new Respuesta(jugador1, pregunta);
         respuestaJugador2 = new Respuesta(jugador2, pregunta);
 
@@ -521,10 +521,10 @@ public class PreguntaExclusividadTest {
     public void test14ChoiceParcialUnJugadorErraUnaIntentaAplicaExclusividadMasDeDosVecesYSoloAplicaCuandoAcierta(){
         // PREGUNTA 1
         MultipleChoice pregunta = MultipleChoice.conModoPuntajeParcial("Paises de América Latina");
-        pregunta.agregarOpcion("Argentina", true);
-        pregunta.agregarOpcion("Japon", false);
-        pregunta.agregarOpcion("Perú", true);
-        pregunta.agregarOpcion("China", false);
+        pregunta.nuevaOpcion("Argentina", true);
+        pregunta.nuevaOpcion("Japon", false);
+        pregunta.nuevaOpcion("Perú", true);
+        pregunta.nuevaOpcion("China", false);
         Jugador jugador1 = new Jugador("Carlos Tevez");
         Jugador jugador2 = new Jugador("Ariana Grande");
         Respuesta respuestaJugador1 = new Respuesta(jugador1, pregunta);
@@ -542,10 +542,10 @@ public class PreguntaExclusividadTest {
 
         // PREGUNTA 2
         pregunta = MultipleChoice.conModoPuntajeParcial("Paises de Europa");
-        pregunta.agregarOpcion("Italia", true);
-        pregunta.agregarOpcion("Japon", false);
-        pregunta.agregarOpcion("Grecia", true);
-        pregunta.agregarOpcion("Venezuela", false);
+        pregunta.nuevaOpcion("Italia", true);
+        pregunta.nuevaOpcion("Japon", false);
+        pregunta.nuevaOpcion("Grecia", true);
+        pregunta.nuevaOpcion("Venezuela", false);
         respuestaJugador1 = new Respuesta(jugador1, pregunta);
         respuestaJugador2 = new Respuesta(jugador2, pregunta);
 
@@ -561,10 +561,10 @@ public class PreguntaExclusividadTest {
 
         // PREGUNTA 3
         pregunta = MultipleChoice.conModoPuntajeParcial("Paises de Asia");
-        pregunta.agregarOpcion("Argentina", false);
-        pregunta.agregarOpcion("Japon", true);
-        pregunta.agregarOpcion("Perú", false);
-        pregunta.agregarOpcion("Venezuela", true);
+        pregunta.nuevaOpcion("Argentina", false);
+        pregunta.nuevaOpcion("Japon", true);
+        pregunta.nuevaOpcion("Perú", false);
+        pregunta.nuevaOpcion("Venezuela", true);
         respuestaJugador1 = new Respuesta(jugador1, pregunta);
         respuestaJugador2 = new Respuesta(jugador2, pregunta);
 
@@ -586,10 +586,10 @@ public class PreguntaExclusividadTest {
     public void test15ChoiceParcialUnJugadorErraDosIntentaAplicaExclusividadMasDeDosVecesYSoloAplicaCuandoAcierta(){
         // PREGUNTA 1
         MultipleChoice pregunta = MultipleChoice.conModoPuntajeParcial("Paises de América Latina");
-        pregunta.agregarOpcion("Argentina", true);
-        pregunta.agregarOpcion("Japon", false);
-        pregunta.agregarOpcion("Perú", true);
-        pregunta.agregarOpcion("China", false);
+        pregunta.nuevaOpcion("Argentina", true);
+        pregunta.nuevaOpcion("Japon", false);
+        pregunta.nuevaOpcion("Perú", true);
+        pregunta.nuevaOpcion("China", false);
         Jugador jugador1 = new Jugador("Carlos Tevez");
         Jugador jugador2 = new Jugador("Ariana Grande");
         Respuesta respuestaJugador1 = new Respuesta(jugador1, pregunta);
@@ -607,10 +607,10 @@ public class PreguntaExclusividadTest {
 
         // PREGUNTA 2
         pregunta = MultipleChoice.conModoPuntajeParcial("Paises de Europa");
-        pregunta.agregarOpcion("Italia", true);
-        pregunta.agregarOpcion("Japon", false);
-        pregunta.agregarOpcion("Grecia", true);
-        pregunta.agregarOpcion("Venezuela", false);
+        pregunta.nuevaOpcion("Italia", true);
+        pregunta.nuevaOpcion("Japon", false);
+        pregunta.nuevaOpcion("Grecia", true);
+        pregunta.nuevaOpcion("Venezuela", false);
         respuestaJugador1 = new Respuesta(jugador1, pregunta);
         respuestaJugador2 = new Respuesta(jugador2, pregunta);
 
@@ -626,10 +626,10 @@ public class PreguntaExclusividadTest {
 
         // PREGUNTA 3
         pregunta = MultipleChoice.conModoPuntajeParcial("Paises de Asia");
-        pregunta.agregarOpcion("Argentina", false);
-        pregunta.agregarOpcion("Japon", true);
-        pregunta.agregarOpcion("Perú", false);
-        pregunta.agregarOpcion("Venezuela", true);
+        pregunta.nuevaOpcion("Argentina", false);
+        pregunta.nuevaOpcion("Japon", true);
+        pregunta.nuevaOpcion("Perú", false);
+        pregunta.nuevaOpcion("Venezuela", true);
         respuestaJugador1 = new Respuesta(jugador1, pregunta);
         respuestaJugador2 = new Respuesta(jugador2, pregunta);
 

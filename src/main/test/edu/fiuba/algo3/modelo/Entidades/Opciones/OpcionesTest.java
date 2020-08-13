@@ -24,9 +24,8 @@ public class OpcionesTest {
 
     @Test
     public void test03CreoOpcionGrupaYVerificoQueDevuelvaFalseSiLosGruposNoCoinciden(){
-        OpcionGrupal opcion = new OpcionGrupal("Soy grupal");
+        OpcionGrupal opcion = new OpcionGrupal("Soy grupal", "Leo programador");
 
-        opcion.setGrupoEsperado("Leo programador");
         opcion.setGrupoActual("Leo genio");
 
         assertFalse(opcion.esCorrecta());
@@ -34,9 +33,8 @@ public class OpcionesTest {
 
     @Test
     public void test04CreoOpcionGrupaYVerificoQueDevuelvaTrueSiLosGruposCoinciden(){
-        OpcionGrupal opcion = new OpcionGrupal("Soy grupal");
+        OpcionGrupal opcion = new OpcionGrupal("Soy grupal", "Leo programador");
 
-        opcion.setGrupoEsperado("Leo programador");
         opcion.setGrupoActual("Leo programador");
 
         assertTrue(opcion.esCorrecta());
@@ -44,9 +42,8 @@ public class OpcionesTest {
 
     @Test
     public void test05CreoOpcionOrdenadaYVerificoQueDevuelvaTrueSiLasPosicionesCoinciden(){
-        OpcionOrdenada opcion = new OpcionOrdenada("Soy ordenada");
+        OpcionOrdenada opcion = new OpcionOrdenada("Soy ordenada",2);
 
-        opcion.setPosicionEsperada(2);
         opcion.setPosicionActual(2);
 
         assertTrue(opcion.esCorrecta());
@@ -54,9 +51,8 @@ public class OpcionesTest {
 
     @Test
     public void test06CreoOpcionOrdenadaYVerificoQueDevuelvaFalseSiLasPosicionesNoCoinciden(){
-        OpcionOrdenada opcion = new OpcionOrdenada("Soy desordenada");
+        OpcionOrdenada opcion = new OpcionOrdenada("Soy desordenada", 2);
 
-        opcion.setPosicionEsperada(2);
         opcion.setPosicionActual(3);
 
         assertFalse(opcion.esCorrecta());

@@ -1,0 +1,19 @@
+{
+    "VoF": [
+        {
+            "Enunciado": "¿2 + 2 = 4?",
+            "Valor": true,
+            "Modo": "Clasico"
+        },
+        {
+            "Enunciado": "¿Julian se sacó un 9 en un TP?",
+            "Valor": false,
+            "Modo": "PuntajeParcial"
+        },
+        {
+            "Enunciado": "¿Julian ha puteado a Leo alguna vez?",
+            "Valor": true,
+            "Modo": "PuntajeParcial"
+        }
+    ]
+}

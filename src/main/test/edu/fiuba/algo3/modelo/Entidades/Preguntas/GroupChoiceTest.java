@@ -17,10 +17,10 @@ public class GroupChoiceTest {
         String nombreGrupo1 = "Numeros Pares";
         String nombreGrupo2 = "Numeros Impares";
         GroupChoice pregunta = new GroupChoice("Separar en Pares e Impares", nombreGrupo1, nombreGrupo2);
-        pregunta.agregarOpcionGrupo1(new OpcionGrupal("2"));
-        pregunta.agregarOpcionGrupo2(new OpcionGrupal("3"));
-        pregunta.agregarOpcionGrupo1(new OpcionGrupal("4"));
-        pregunta.agregarOpcionGrupo2(new OpcionGrupal("5"));
+        pregunta.nuevaOpcionGrupo1("2");
+        pregunta.nuevaOpcionGrupo2("3");
+        pregunta.nuevaOpcionGrupo1("4");
+        pregunta.nuevaOpcionGrupo2("5");
         Jugador jugador = new Jugador("LeoProgramador");
         RespuestaGrupal respuestaJugador = new RespuestaGrupal(jugador, pregunta, nombreGrupo1, nombreGrupo2);
 
@@ -40,10 +40,10 @@ public class GroupChoiceTest {
         String nombreGrupo1 = "Numeros Pares";
         String nombreGrupo2 = "Numeros Impares";
         GroupChoice pregunta = new GroupChoice("Separar en Pares e Impares",nombreGrupo1, nombreGrupo2);
-        pregunta.agregarOpcionGrupo1(new OpcionGrupal("2"));
-        pregunta.agregarOpcionGrupo2(new OpcionGrupal("3"));
-        pregunta.agregarOpcionGrupo1(new OpcionGrupal("4"));
-        pregunta.agregarOpcionGrupo2(new OpcionGrupal("5"));
+        pregunta.nuevaOpcionGrupo1("2");
+        pregunta.nuevaOpcionGrupo2("3");
+        pregunta.nuevaOpcionGrupo1("4");
+        pregunta.nuevaOpcionGrupo2("5");
         Jugador jugador = new Jugador("LeoProgramador");
         RespuestaGrupal respuestaJugador = new RespuestaGrupal(jugador, pregunta, nombreGrupo1, nombreGrupo2);
 
@@ -63,10 +63,10 @@ public class GroupChoiceTest {
         String nombreGrupo1 = "Numeros Pares";
         String nombreGrupo2 = "Numeros Impares";
         GroupChoice pregunta = new GroupChoice("Separar en Pares e Impares",nombreGrupo1, nombreGrupo2);
-        pregunta.agregarOpcionGrupo1(new OpcionGrupal("2"));
-        pregunta.agregarOpcionGrupo1(new OpcionGrupal("4"));
-        pregunta.agregarOpcionGrupo1(new OpcionGrupal("6"));
-        pregunta.agregarOpcionGrupo2(new OpcionGrupal("5"));
+        pregunta.nuevaOpcionGrupo1("2");
+        pregunta.nuevaOpcionGrupo1("4");
+        pregunta.nuevaOpcionGrupo1("6");
+        pregunta.nuevaOpcionGrupo2("5");
         Jugador jugador = new Jugador("LeoProgramador");
         RespuestaGrupal respuestaJugador = new RespuestaGrupal(jugador, pregunta, nombreGrupo1, nombreGrupo2);
 
@@ -86,10 +86,10 @@ public class GroupChoiceTest {
         String nombreGrupo1 = "Numeros Pares";
         String nombreGrupo2 = "Numeros Impares";
         GroupChoice pregunta = new GroupChoice("Separar en Pares e Impares",nombreGrupo1, nombreGrupo2);
-        pregunta.agregarOpcionGrupo1(new OpcionGrupal("2"));
-        pregunta.agregarOpcionGrupo2(new OpcionGrupal("3"));
-        pregunta.agregarOpcionGrupo1(new OpcionGrupal("4"));
-        pregunta.agregarOpcionGrupo2(new OpcionGrupal("5"));
+        pregunta.nuevaOpcionGrupo1("2");
+        pregunta.nuevaOpcionGrupo2("3");
+        pregunta.nuevaOpcionGrupo1("4");
+        pregunta.nuevaOpcionGrupo2("5");
         Jugador jugador1 = new Jugador("LeoProgramador");
         Jugador jugador2 = new Jugador("Julianaso");
         RespuestaGrupal respuestaJugador1 = new RespuestaGrupal(jugador1, pregunta, nombreGrupo1, nombreGrupo2);
@@ -119,10 +119,10 @@ public class GroupChoiceTest {
         String nombreGrupo1 = "Numeros Pares";
         String nombreGrupo2 = "Numeros Impares";
         GroupChoice pregunta = new GroupChoice("Separar en Pares e Impares",nombreGrupo1, nombreGrupo2);
-        pregunta.agregarOpcionGrupo1(new OpcionGrupal("2"));
-        pregunta.agregarOpcionGrupo2(new OpcionGrupal("3"));
-        pregunta.agregarOpcionGrupo1(new OpcionGrupal("4"));
-        pregunta.agregarOpcionGrupo2(new OpcionGrupal("5"));
+        pregunta.nuevaOpcionGrupo1("2");
+        pregunta.nuevaOpcionGrupo2("3");
+        pregunta.nuevaOpcionGrupo1("4");
+        pregunta.nuevaOpcionGrupo2("5");
         Jugador jugador1 = new Jugador("LeoProgramador");
         Jugador jugador2 = new Jugador("Joaco");
         RespuestaGrupal respuestaJugador1 = new RespuestaGrupal(jugador1, pregunta, nombreGrupo1, nombreGrupo2);
@@ -152,10 +152,10 @@ public class GroupChoiceTest {
         String nombreGrupo1 = "Numeros Pares";
         String nombreGrupo2 = "Numeros Impares";
         GroupChoice pregunta = new GroupChoice("Separar en Pares e Impares",nombreGrupo1, nombreGrupo2);
-        pregunta.agregarOpcionGrupo1(new OpcionGrupal("2"));
-        pregunta.agregarOpcionGrupo1(new OpcionGrupal("4"));
-        pregunta.agregarOpcionGrupo1(new OpcionGrupal("6"));
-        pregunta.agregarOpcionGrupo2(new OpcionGrupal("5"));
+        pregunta.nuevaOpcionGrupo1("2");
+        pregunta.nuevaOpcionGrupo1("4");
+        pregunta.nuevaOpcionGrupo1("6");
+        pregunta.nuevaOpcionGrupo2("5");
         Jugador jugador1 = new Jugador("LeoProgramador");
         Jugador jugador2 = new Jugador("Fede");
         RespuestaGrupal respuestaJugador1 = new RespuestaGrupal(jugador1, pregunta, nombreGrupo1, nombreGrupo2);

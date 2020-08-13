@@ -4,6 +4,7 @@ import edu.fiuba.algo3.modelo.Entidades.Jugador;
 import edu.fiuba.algo3.modelo.Entidades.Respuestas.Respuesta;
 import org.junit.jupiter.api.Test;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -23,7 +24,6 @@ public class VerdaderoFalsoTest {
         pregunta.evaluarRespuestas(respuestas);
         assertEquals(1, jugador.puntos());
     }
-
 
     @Test
     public void test01SeCreaUnaPreguntaVoFClasicoConRespuestaFalseErraYEvaluaCorrectamente() {
@@ -201,5 +201,18 @@ public class VerdaderoFalsoTest {
 
         assertEquals(jugador1.puntos(), -1);
         assertEquals(jugador2.puntos(), 1);
+    }
+
+    @Test
+    public void test11() throws IOException {
+        VoF pregunta = VoF.recuperar("voftest.json");
+        Jugador jugador = new Jugador("LeoProgramador");
+        Respuesta respuesta = new Respuesta(jugador, pregunta);
+        respuesta.agregarOpcion(pregunta.obtenerOpcion(0));
+        ArrayList<Respuesta> respuestas = new ArrayList<Respuesta>();
+        respuestas.add(respuesta);
+
+        pregunta.evaluarRespuestas(respuestas);
+        assertEquals(1, jugador.puntos());
     }
 }

@@ -30,6 +30,11 @@
             <version>${mockito-mockito-core-version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.8.6</version>
+        </dependency>
     </dependencies>
     <build>
         <testSourceDirectory>src/main/test</testSourceDirectory>

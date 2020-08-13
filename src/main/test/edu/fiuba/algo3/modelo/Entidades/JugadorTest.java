@@ -52,10 +52,10 @@ public class JugadorTest {
     public void test03JugadorUtilizaMultiplicadoDobleEnChoiceConPenalidadYFunciona(){
         Jugador jugador = new Jugador("Lionel Messi");
         MultipleChoice pregunta = MultipleChoice.conModoPenalidad("Mundiales Ganados por Argentina");
-        pregunta.agregarOpcion("2010", false);
-        pregunta.agregarOpcion("1986", true);
-        pregunta.agregarOpcion("2014", false);
-        pregunta.agregarOpcion("2006", false);
+        pregunta.nuevaOpcion("2010", false);
+        pregunta.nuevaOpcion("1986", true);
+        pregunta.nuevaOpcion("2014", false);
+        pregunta.nuevaOpcion("2006", false);
         Respuesta respuestaJugador = new Respuesta(jugador, pregunta);
         respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(1));
         ArrayList<Respuesta> respuestas = new ArrayList<>();
@@ -87,10 +87,10 @@ public class JugadorTest {
         Jugador jugador = new Jugador("Lionel Messi");
         // Pregunta 1
         MultipleChoice pregunta = MultipleChoice.conModoPenalidad("Mundiales Ganados por Argentina");
-        pregunta.agregarOpcion("2010", false);
-        pregunta.agregarOpcion("1986", true);
-        pregunta.agregarOpcion("2014", false);
-        pregunta.agregarOpcion("2006", false);
+        pregunta.nuevaOpcion("2010", false);
+        pregunta.nuevaOpcion("1986", true);
+        pregunta.nuevaOpcion("2014", false);
+        pregunta.nuevaOpcion("2006", false);
         Respuesta respuestaJugador = new Respuesta(jugador, pregunta);
         respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(1));
         ArrayList<Respuesta> respuestas = new ArrayList<>();
@@ -99,10 +99,10 @@ public class JugadorTest {
         pregunta.evaluarRespuestas(respuestas);
         // Pregunta 2
         pregunta = MultipleChoice.conModoPenalidad("Mundiales Ganados por Brasil");
-        pregunta.agregarOpcion("2010", false);
-        pregunta.agregarOpcion("2002", true);
-        pregunta.agregarOpcion("2014", false);
-        pregunta.agregarOpcion("2006", false);
+        pregunta.nuevaOpcion("2010", false);
+        pregunta.nuevaOpcion("2002", true);
+        pregunta.nuevaOpcion("2014", false);
+        pregunta.nuevaOpcion("2006", false);
         Respuesta respuesta2Jugador = new Respuesta(jugador, pregunta);
         respuesta2Jugador.agregarOpcion(pregunta.obtenerOpcion(1));
         respuestas = new ArrayList<>();
@@ -118,10 +118,10 @@ public class JugadorTest {
     public void test06JugadorNoPuedeUtilizarMultiplicadorTripleEnChoiceParcial(){
         Jugador jugador = new Jugador("Lionel Messi");
         MultipleChoice pregunta = MultipleChoice.conModoPuntajeParcial("Mundiales Ganados por Argentina");
-        pregunta.agregarOpcion("2010", false);
-        pregunta.agregarOpcion("1986", true);
-        pregunta.agregarOpcion("2014", false);
-        pregunta.agregarOpcion("2006", false);
+        pregunta.nuevaOpcion("2010", false);
+        pregunta.nuevaOpcion("1986", true);
+        pregunta.nuevaOpcion("2014", false);
+        pregunta.nuevaOpcion("2006", false);
         Respuesta respuestaJugador = new Respuesta(jugador, pregunta);
         respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(1));
         ArrayList<Respuesta> respuestas = new ArrayList<>();
@@ -152,10 +152,10 @@ public class JugadorTest {
     public void test08JugadorUtilizaMultiplicadoTripleEnChoiceConPenalidadYFunciona(){
         Jugador jugador = new Jugador("Lionel Messi");
         MultipleChoice pregunta = MultipleChoice.conModoPenalidad("Mundiales Ganados por Argentina");
-        pregunta.agregarOpcion("2010", false);
-        pregunta.agregarOpcion("1986", true);
-        pregunta.agregarOpcion("2014", false);
-        pregunta.agregarOpcion("2006", false);
+        pregunta.nuevaOpcion("2010", false);
+        pregunta.nuevaOpcion("1986", true);
+        pregunta.nuevaOpcion("2014", false);
+        pregunta.nuevaOpcion("2006", false);
         Respuesta respuestaJugador = new Respuesta(jugador, pregunta);
         respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(1));
         ArrayList<Respuesta> respuestas = new ArrayList<>();
@@ -186,10 +186,10 @@ public class JugadorTest {
     public void test10JugadorNoPuedeUtilizaExclusividadEnChoiceConPenalidad(){
         Jugador jugador = new Jugador("Lionel Messi");
         MultipleChoice pregunta = MultipleChoice.conModoPenalidad("Mundiales Ganados por Argentina");
-        pregunta.agregarOpcion("2010", false);
-        pregunta.agregarOpcion("1986", true);
-        pregunta.agregarOpcion("2014", false);
-        pregunta.agregarOpcion("2006", false);
+        pregunta.nuevaOpcion("2010", false);
+        pregunta.nuevaOpcion("1986", true);
+        pregunta.nuevaOpcion("2014", false);
+        pregunta.nuevaOpcion("2006", false);
         Respuesta respuestaJugador = new Respuesta(jugador, pregunta);
         respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(1));
         ArrayList<Respuesta> respuestas = new ArrayList<>();
@@ -206,10 +206,10 @@ public class JugadorTest {
         Jugador jugador = new Jugador("Lionel Messi");
         // Pregunta 1
         MultipleChoice pregunta = MultipleChoice.conModoPenalidad("Mundiales Ganados por Argentina");
-        pregunta.agregarOpcion("2010", false);
-        pregunta.agregarOpcion("1986", true);
-        pregunta.agregarOpcion("2014", false);
-        pregunta.agregarOpcion("2006", false);
+        pregunta.nuevaOpcion("2010", false);
+        pregunta.nuevaOpcion("1986", true);
+        pregunta.nuevaOpcion("2014", false);
+        pregunta.nuevaOpcion("2006", false);
         Respuesta respuestaJugador = new Respuesta(jugador, pregunta);
         respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(1));
         ArrayList<Respuesta> respuestas = new ArrayList<>();
@@ -218,10 +218,10 @@ public class JugadorTest {
         pregunta.evaluarRespuestas(respuestas);
         // Pregunta 2
         pregunta = MultipleChoice.conModoPenalidad("Mundiales Ganados por Brasil");
-        pregunta.agregarOpcion("2010", false);
-        pregunta.agregarOpcion("2002", true);
-        pregunta.agregarOpcion("2014", false);
-        pregunta.agregarOpcion("2006", false);
+        pregunta.nuevaOpcion("2010", false);
+        pregunta.nuevaOpcion("2002", true);
+        pregunta.nuevaOpcion("2014", false);
+        pregunta.nuevaOpcion("2006", false);
         Respuesta respuesta2Jugador = new Respuesta(jugador, pregunta);
         respuesta2Jugador.agregarOpcion(pregunta.obtenerOpcion(1));
         respuestas = new ArrayList<>();

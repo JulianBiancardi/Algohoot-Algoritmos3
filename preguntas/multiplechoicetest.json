@@ -1,0 +1,70 @@
+{
+    "MultipleChoice": [
+        {
+            "Descripcion": "Capitales de Provincias Argentinas",
+            "Modo": "PuntajeParcial",
+            "Opciones": [
+                {
+                    "Descripcion": "Santa Rosa",
+                    "Valor": true
+                },
+                {
+                    "Descripcion": "Santa Fe",
+                    "Valor": true
+                },
+                {
+                    "Descripcion": "Tierra del Fuego",
+                    "Valor": false
+                },
+                {
+                    "Descripcion": "San LeoProgramador del Valle de Catamarca",
+                    "Valor": false
+                }
+            ]
+        },
+        {
+            "Descripcion": "Provincias Argentinas",
+            "Modo": "Clasico",
+            "Opciones": [
+                {
+                    "Descripcion": "La Pampa",
+                    "Valor": true
+                },
+                {
+                    "Descripcion": "Santa Fe",
+                    "Valor": true
+                },
+                {
+                    "Descripcion": "Ushuaia",
+                    "Valor": false
+                },
+                {
+                    "Descripcion": "Bariloche",
+                    "Valor": false
+                }
+            ]
+        },
+        {
+            "Descripcion": "Ciudades Argentinas",
+            "Modo": "Penalidad",
+            "Opciones": [
+                {
+                    "Descripcion": "Trenel",
+                    "Valor": true
+                },
+                {
+                    "Descripcion": "El Interior",
+                    "Valor": false
+                },
+                {
+                    "Descripcion": "El Sur",
+                    "Valor": false
+                },
+                {
+                    "Descripcion": "El Norte",
+                    "Valor": false
+                }
+            ]
+        }
+    ]
+}

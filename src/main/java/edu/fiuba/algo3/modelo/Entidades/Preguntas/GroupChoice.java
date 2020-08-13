@@ -1,9 +1,13 @@
 package edu.fiuba.algo3.modelo.Entidades.Preguntas;
 
 import edu.fiuba.algo3.modelo.Entidades.Opciones.OpcionGrupal;
+import edu.fiuba.algo3.modelo.Entidades.Opciones.OpcionOrdenada;
 import edu.fiuba.algo3.modelo.Entidades.Preguntas.ModosPreguntas.Clasico;
 
+import java.util.ArrayList;
+
 public class GroupChoice extends Pregunta{
+    private final ArrayList<OpcionGrupal> opcionesPregunta = new ArrayList<>();
     private final String nombreGrupo1;
     private final String nombreGrupo2;
 
@@ -13,24 +17,27 @@ public class GroupChoice extends Pregunta{
         this.nombreGrupo2 = nombreGrupo2;
     }
 
-    private void agregarOpcionAGrupo(OpcionGrupal opcion, String nombreGrupo){
-        opcion.setGrupoEsperado(nombreGrupo);
-        super.agregarOpcion(opcion);
+    private void agregarOpcionAGrupo(String descripcion, String nombreGrupo){
+        opcionesPregunta.add(new OpcionGrupal(descripcion, nombreGrupo));
     }
 
     public int calcularCantidadOpcionesCorrectas(){
         return cantidadOpciones();
     }
 
-    public void agregarOpcionGrupo1(OpcionGrupal opcion){
-        agregarOpcionAGrupo(opcion, nombreGrupo1);
+    public void nuevaOpcionGrupo1(String descripcion){
+        agregarOpcionAGrupo(descripcion, nombreGrupo1);
     }
 
-    public void agregarOpcionGrupo2(OpcionGrupal opcion){
-        agregarOpcionAGrupo(opcion, nombreGrupo2);
+    public void nuevaOpcionGrupo2(String descripcion){
+        agregarOpcionAGrupo(descripcion, nombreGrupo2);
     }
 
     public OpcionGrupal obtenerOpcion(int posicion){
-        return (OpcionGrupal) super.obtenerOpcion(posicion);
+        return opcionesPregunta.get(posicion);
+    }
+
+    public int cantidadOpciones(){
+        return opcionesPregunta.size();
     }
 }

@@ -5,7 +5,10 @@ public class OpcionOrdenada implements Opcion {
     private int posicionActual;
     private int posicionEsperada;
 
-    public OpcionOrdenada(String descripcion) { this.descripcion = descripcion; }
+    public OpcionOrdenada(String descripcion, int posicionEsperada) {
+        this.descripcion = descripcion;
+        this.posicionEsperada = posicionEsperada;
+    }
 
     public void setPosicionEsperada (int posicionEsperada){
         this.posicionEsperada = posicionEsperada;

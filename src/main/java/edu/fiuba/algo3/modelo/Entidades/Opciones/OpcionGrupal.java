@@ -5,8 +5,9 @@ public class OpcionGrupal implements Opcion {
     private String grupoEsperado;
     private String grupoActual;
 
-    public OpcionGrupal(String unaDescripcion){
+    public OpcionGrupal(String unaDescripcion, String nombreGrupo){
         descripcion = unaDescripcion;
+        grupoEsperado = nombreGrupo;
     }
 
     public void setGrupoEsperado(String nombre){ grupoEsperado = nombre; }
