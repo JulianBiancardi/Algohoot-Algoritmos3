@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.controlador;
 
-import edu.fiuba.algo3.modelo.Exepciones.NombreVacioError;
+import edu.fiuba.algo3.modelo.Excepciones.NombreVacioError;
 import edu.fiuba.algo3.vista.VistaIntro;
 import edu.fiuba.algo3.vista.VistaPregunta;
 import javafx.event.ActionEvent;
