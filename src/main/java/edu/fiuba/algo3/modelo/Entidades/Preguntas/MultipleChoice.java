@@ -29,4 +29,8 @@ public class MultipleChoice extends Pregunta {
     public OpcionBinaria obtenerOpcion(int posicion){ return (OpcionBinaria) super.obtenerOpcion(posicion); }
 
     public int calcularCantidadOpcionesCorrectas(){ return (int) opcionesPregunta.stream().filter(Opcion::esCorrecta).count(); }
+
+    public void crearVista(Stage stage, VistaPrincipal vistaPrincipal){
+        vistaPrincipal.crearVistaMultipleChoice(stage,this);
+    }
 }

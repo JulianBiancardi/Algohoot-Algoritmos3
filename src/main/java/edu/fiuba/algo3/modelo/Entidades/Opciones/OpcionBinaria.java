@@ -13,4 +13,9 @@ public class OpcionBinaria implements Opcion{
     public boolean esCorrecta() {
         return valor;
     }
+
+    @Override
+    public String getDescripcion() {
+        return descripcion;
+    }
 }

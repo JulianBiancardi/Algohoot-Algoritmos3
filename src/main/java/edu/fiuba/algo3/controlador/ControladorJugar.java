@@ -1,8 +1,12 @@
 package edu.fiuba.algo3.controlador;
 
-import edu.fiuba.algo3.modelo.Excepciones.NombreVacioError;
-import edu.fiuba.algo3.vista.VistaIntro;
-import edu.fiuba.algo3.vista.VistaPregunta;
+import edu.fiuba.algo3.modelo.Entidades.Juego;
+import edu.fiuba.algo3.modelo.Entidades.Jugador;
+import edu.fiuba.algo3.modelo.Exepciones.NombreVacioError;
+import edu.fiuba.algo3.modelo.Preguntas.MultipleChoice;
+import edu.fiuba.algo3.modelo.Preguntas.VoF;
+import edu.fiuba.algo3.vista.Opciones.VistaOpcion;
+import edu.fiuba.algo3.vista.VistaPrincipal;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -12,10 +16,14 @@ import javafx.stage.Stage;
 public class ControladorJugar implements EventHandler<ActionEvent> {
     Stage stage;
     TextField nombreJugador;
+    TextField nombreJugador2;
+    Juego juego;
 
-    public ControladorJugar(Stage stagePrincipal, TextField nombreJugador) {
+    public ControladorJugar(Stage stagePrincipal, TextField nombreJugador, TextField nombreJugador2, Juego juego) {
         this.stage = stagePrincipal;
         this.nombreJugador = nombreJugador;
+        this.nombreJugador2 = nombreJugador2;
+        this.juego = juego;
     }
 
     @Override
@@ -25,9 +33,14 @@ public class ControladorJugar implements EventHandler<ActionEvent> {
             if(nombreJugador.getText().trim().isEmpty() || nombreJugador.getText().trim() == null)
                 throw new NombreVacioError("El nombre no es correcto");
 
-            VistaPregunta vistaPregunta = new VistaPregunta();
-            Scene scenePregunta = new Scene(vistaPregunta);
-            stage.setScene(scenePregunta);
+            Jugador jugador = new Jugador(nombreJugador.getText());
+            juego.agregarJugador(jugador);
+
+            jugador = new Jugador(nombreJugador2.getText());
+            juego.agregarJugador(jugador);
+
+
+            juego.crearVistaRonda(stage);
 
         }catch (NombreVacioError error){
 
