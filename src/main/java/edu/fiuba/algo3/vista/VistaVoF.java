@@ -2,9 +2,8 @@ package edu.fiuba.algo3.vista;
 
 import edu.fiuba.algo3.controlador.ControladorEnviar;
 import edu.fiuba.algo3.modelo.Entidades.Juego;
-import edu.fiuba.algo3.modelo.Opciones.Opcion;
-import edu.fiuba.algo3.modelo.Preguntas.MultipleChoice;
-import edu.fiuba.algo3.modelo.Preguntas.VoF;
+import edu.fiuba.algo3.modelo.Entidades.Opciones.Opcion;
+import edu.fiuba.algo3.modelo.Entidades.Preguntas.VoF;
 import edu.fiuba.algo3.vista.Opciones.VistaOpcion;
 import edu.fiuba.algo3.vista.Opciones.VistaOpcionData;
 import edu.fiuba.algo3.vista.Opciones.VistaPregunta;

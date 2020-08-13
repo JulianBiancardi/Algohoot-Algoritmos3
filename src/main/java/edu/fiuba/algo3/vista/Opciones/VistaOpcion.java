@@ -1,7 +1,7 @@
 package edu.fiuba.algo3.vista.Opciones;
 
 import edu.fiuba.algo3.controlador.ControladorOpcion;
-import edu.fiuba.algo3.modelo.Opciones.Opcion;
+import edu.fiuba.algo3.modelo.Entidades.Opciones.Opcion;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;

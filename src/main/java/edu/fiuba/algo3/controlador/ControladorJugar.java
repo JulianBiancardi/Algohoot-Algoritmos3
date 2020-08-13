@@ -2,14 +2,9 @@ package edu.fiuba.algo3.controlador;
 
 import edu.fiuba.algo3.modelo.Entidades.Juego;
 import edu.fiuba.algo3.modelo.Entidades.Jugador;
-import edu.fiuba.algo3.modelo.Exepciones.NombreVacioError;
-import edu.fiuba.algo3.modelo.Preguntas.MultipleChoice;
-import edu.fiuba.algo3.modelo.Preguntas.VoF;
-import edu.fiuba.algo3.vista.Opciones.VistaOpcion;
-import edu.fiuba.algo3.vista.VistaPrincipal;
+import edu.fiuba.algo3.modelo.Excepciones.NombreVacioError;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -27,7 +22,7 @@ public class ControladorJugar implements EventHandler<ActionEvent> {
     }
 
     @Override
-    public void handle(ActionEvent actionEvent) throws NombreVacioError {
+    public void handle(ActionEvent actionEvent) throws NombreVacioError{
 
         try{
             if(nombreJugador.getText().trim().isEmpty() || nombreJugador.getText().trim() == null)

@@ -1,7 +1,7 @@
-package edu.fiuba.algo3.modelo.Preguntas;
+package edu.fiuba.algo3.modelo.Entidades.Preguntas;
 
-import edu.fiuba.algo3.modelo.Opciones.OpcionGrupal;
-import edu.fiuba.algo3.modelo.Preguntas.ModosPreguntas.Clasico;
+import edu.fiuba.algo3.modelo.Entidades.Opciones.OpcionGrupal;
+import edu.fiuba.algo3.modelo.Entidades.Preguntas.ModosPreguntas.Clasico;
 import edu.fiuba.algo3.vista.VistaPrincipal;
 import javafx.stage.Stage;
 

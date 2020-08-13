@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.controlador;
 
-import edu.fiuba.algo3.modelo.Opciones.Opcion;
+import edu.fiuba.algo3.modelo.Entidades.Opciones.Opcion;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 

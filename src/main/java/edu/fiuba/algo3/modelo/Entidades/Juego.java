@@ -1,8 +1,8 @@
 package edu.fiuba.algo3.modelo.Entidades;
 
-import edu.fiuba.algo3.modelo.Preguntas.MultipleChoice;
-import edu.fiuba.algo3.modelo.Preguntas.Pregunta;
-import edu.fiuba.algo3.modelo.Preguntas.VoF;
+import edu.fiuba.algo3.modelo.Entidades.Preguntas.MultipleChoice;
+import edu.fiuba.algo3.modelo.Entidades.Preguntas.Pregunta;
+import edu.fiuba.algo3.modelo.Entidades.Preguntas.VoF;
 import edu.fiuba.algo3.vista.VistaPrincipal;
 import edu.fiuba.algo3.vista.VistaPuntos;
 import javafx.scene.Parent;

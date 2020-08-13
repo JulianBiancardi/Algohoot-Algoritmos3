@@ -1,7 +1,5 @@
 package edu.fiuba.algo3.modelo.Entidades;
 
-import edu.fiuba.algo3.modelo.Exepciones.MultiplicadorYaUtilizadoError;
-
 import java.util.ArrayList;
 
 public class SistemaTurnos {

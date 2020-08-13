@@ -1,4 +1,6 @@
-package edu.fiuba.algo3.modelo.Opciones;
+package edu.fiuba.algo3.modelo.Entidades.Opciones;
+
+import edu.fiuba.algo3.modelo.Entidades.Opciones.Opcion;
 
 public class OpcionGrupal implements Opcion {
     private String descripcion;

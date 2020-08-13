@@ -4,6 +4,8 @@ import edu.fiuba.algo3.modelo.Excepciones.ChoiceTieneMaxCincoOpcionesError;
 import edu.fiuba.algo3.modelo.Entidades.Opciones.OpcionOrdenada;
 import edu.fiuba.algo3.modelo.Entidades.Preguntas.ModosPreguntas.Clasico;
 import edu.fiuba.algo3.modelo.Excepciones.OrderedTieneMaxCincoOpcionesError;
+import edu.fiuba.algo3.vista.VistaPrincipal;
+import javafx.stage.Stage;
 
 public class OrderedChoice extends Pregunta{
 
@@ -22,5 +24,9 @@ public class OrderedChoice extends Pregunta{
     public int calcularCantidadOpcionesCorrectas(){ return opcionesPregunta.size();}
 
     public OpcionOrdenada obtenerOpcion(int posicion){ return (OpcionOrdenada) super.obtenerOpcion(posicion); }
+
+    public void crearVista(Stage stage, VistaPrincipal vistaPrincipal){
+        //vistaPrincipal.crearVistaMultipleChoice(stage,this);
+    }
 }
 
