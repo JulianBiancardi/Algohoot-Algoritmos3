@@ -4,7 +4,7 @@ import edu.fiuba.algo3.controlador.ControladorEnviar;
 import edu.fiuba.algo3.modelo.Entidades.Juego;
 import edu.fiuba.algo3.modelo.Entidades.Opciones.Opcion;
 import edu.fiuba.algo3.modelo.Entidades.Preguntas.MultipleChoice;
-import edu.fiuba.algo3.vista.Opciones.VistaOpcion;
+import edu.fiuba.algo3.vista.Opciones.VistaOpcionBinaria;
 import edu.fiuba.algo3.vista.Opciones.VistaOpcionData;
 import edu.fiuba.algo3.vista.Opciones.VistaPregunta;
 import javafx.geometry.Pos;
@@ -67,7 +67,7 @@ public class VistaMultipleChoice extends VBox implements VistaPregunta {
         for(int i = 0; (i < pregunta.cantidadOpciones()); i++){
             Opcion opcionActual = pregunta.obtenerOpcion(i);
             VistaOpcionData dataActual = opcionesInfo.get(i);
-            VistaOpcion vistaActual = new VistaOpcion(opcionActual,dataActual.getColor());
+            VistaOpcionBinaria vistaActual = new VistaOpcionBinaria(opcionActual,dataActual.getColor());
 
             opcionesPregunta.add(vistaActual,dataActual.getColumna(),dataActual.getFila());
             vistaActual.prefWidthProperty().bind(opcionesPregunta.widthProperty());

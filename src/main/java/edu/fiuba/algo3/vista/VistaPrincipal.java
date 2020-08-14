@@ -24,7 +24,7 @@ public class VistaPrincipal extends BorderPane{
     private HBox hBox = new HBox();
     private VistaPregunta vistaOpciones;
 
-    private final Integer startTime = 20;
+    private final Integer startTime = 100;
     private Integer secondsPassed = startTime;
     private Timeline tiempo;
     Label contador = new Label(String.valueOf(startTime));
