@@ -1,7 +1,7 @@
 package edu.fiuba.algo3.modelo.Entidades.Preguntas;
 
 import edu.fiuba.algo3.modelo.Entidades.Jugador;
-import edu.fiuba.algo3.modelo.Excepciones.ChoiceTieneMaxCincoOpcionesError;
+
 import edu.fiuba.algo3.modelo.Entidades.Respuestas.Respuesta;
 import edu.fiuba.algo3.modelo.Entidades.Respuestas.RespuestaOrdenada;
 import edu.fiuba.algo3.modelo.Excepciones.OrderedTieneMaxCincoOpcionesError;
@@ -160,8 +160,6 @@ public class OrderedChoiceTest {
         pregunta.nuevaOpcion("Diez");
 
         assertThrows(OrderedTieneMaxCincoOpcionesError.class,
-                () -> {
-                    pregunta.nuevaOpcion("Treinta");
-                });
+                () -> pregunta.nuevaOpcion("Treinta"));
     }
 }

@@ -24,6 +24,7 @@ public class OpcionBinaria implements Opcion{
         OpcionBinaria opcion = new OpcionBinaria(enunciado, valor);
 
         return opcion;
+    }
 
     @Override
     public String getDescripcion() {

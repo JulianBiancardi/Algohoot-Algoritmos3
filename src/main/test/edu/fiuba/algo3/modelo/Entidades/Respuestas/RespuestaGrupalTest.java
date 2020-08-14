@@ -1,7 +1,6 @@
 package edu.fiuba.algo3.modelo.Entidades.Respuestas;
 
 import edu.fiuba.algo3.modelo.Entidades.Jugador;
-import edu.fiuba.algo3.modelo.Entidades.Opciones.OpcionGrupal;
 import edu.fiuba.algo3.modelo.Entidades.Preguntas.GroupChoice;
 import org.junit.jupiter.api.Test;
 

@@ -13,8 +13,8 @@
                     "Valor": true
                 },
                 {
-                    "Descripcion": "Tierra del Fuego",
-                    "Valor": false
+                    "Descripcion": "Mendoza",
+                    "Valor": true
                 },
                 {
                     "Descripcion": "San LeoProgramador del Valle de Catamarca",
@@ -24,7 +24,7 @@
         },
         {
             "Descripcion": "Provincias Argentinas",
-            "Modo": "Clasico",
+            "Modo": "Penalidad",
             "Opciones": [
                 {
                     "Descripcion": "La Pampa",
@@ -46,7 +46,7 @@
         },
         {
             "Descripcion": "Ciudades Argentinas",
-            "Modo": "Penalidad",
+            "Modo": "Clasico",
             "Opciones": [
                 {
                     "Descripcion": "Trenel",
@@ -63,6 +63,28 @@
                 {
                     "Descripcion": "El Norte",
                     "Valor": false
+                }
+            ]
+        },
+        {
+            "Descripcion": "Equipos Argentinos",
+            "Modo": "Clasico",
+            "Opciones": [
+                {
+                    "Descripcion": "Estudiantes",
+                    "Valor": true
+                },
+                {
+                    "Descripcion": "Barcelona",
+                    "Valor": false
+                },
+                {
+                    "Descripcion": "Sao Pablo",
+                    "Valor": false
+                },
+                {
+                    "Descripcion": "Boca",
+                    "Valor": true
                 }
             ]
         }

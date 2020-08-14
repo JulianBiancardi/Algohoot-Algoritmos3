@@ -27,16 +27,17 @@ public class OrderedChoice extends Pregunta{
         agregarOpcion(new OpcionOrdenada(descripcion, cantidadOpciones()));
     }
 
-    public int calcularCantidadOpcionesCorrectas(){ return opcionesPregunta.size();}
+    public int calcularCantidadOpcionesCorrectas(){ return opcionesPregunta.size(); }
 
     public OpcionOrdenada obtenerOpcion(int posicion){
-        return opcionesPregunta.get(posicion);
+        return (OpcionOrdenada) opcionesPregunta.get(posicion);
     }
 
-    public int cantidadOpciones(){
+    public int cantidadOpciones() {
         return opcionesPregunta.size();
+    }
 
-    public OpcionOrdenada obtenerOpcion(int posicion){ return (OpcionOrdenada) super.obtenerOpcion(posicion); }
+    //public OpcionOrdenada obtenerOpcion(int posicion){ return (OpcionOrdenada) super.obtenerOpcion(posicion); }
 
     public void crearVista(Stage stage, VistaPrincipal vistaPrincipal){
         //vistaPrincipal.crearVistaMultipleChoice(stage,this);

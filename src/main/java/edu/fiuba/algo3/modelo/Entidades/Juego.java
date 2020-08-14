@@ -21,20 +21,20 @@ public class Juego {
 
         //Creo un par de preguntas para testear el sistema de turnos del juego
         MultipleChoice pregunta = MultipleChoice.conModoPuntajeParcial("Paises de América Latina");
-        pregunta.agregarOpcion("Argentina", true);
-        pregunta.agregarOpcion("China", false);
-        pregunta.agregarOpcion("Egipto", false);
-        pregunta.agregarOpcion("Rusia", false);
+        pregunta.nuevaOpcion("Argentina", true);
+        pregunta.nuevaOpcion("China", false);
+        pregunta.nuevaOpcion("Egipto", false);
+        pregunta.nuevaOpcion("Rusia", false);
         agregarRonda(pregunta);
 
         VoF vof = VoF.conModoClasico("La guitarra tiene 6 cuerdas",true);
         agregarRonda(vof);
 
         pregunta = MultipleChoice.conModoPuntajeParcial("Cuantos mundiales de futbol tiene Argentina");
-        pregunta.agregarOpcion("1", false);
-        pregunta.agregarOpcion("2", true);
-        pregunta.agregarOpcion("3", false);
-        pregunta.agregarOpcion("4", false);
+        pregunta.nuevaOpcion("1", false);
+        pregunta.nuevaOpcion("2", true);
+        pregunta.nuevaOpcion("3", false);
+        pregunta.nuevaOpcion("4", false);
         agregarRonda(pregunta);
     }
 
