@@ -73,13 +73,9 @@ public class JugadorTest {
         VoF pregunta = VoF.conModoClasico("Argentina ganó mundial 2014",false);
         Respuesta respuestaJugador = new Respuesta(jugador, pregunta);
         respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(1));
-        ArrayList<Respuesta> respuestas = new ArrayList<>();
-        respuestas.add(respuestaJugador);
 
         assertThrows(PreguntaNoAceptaMultiplicadorError.class,
-                () -> {
-                    jugador.activarMultiplicadorDoble(respuestaJugador);
-                });
+                () -> jugador.activarMultiplicadorDoble(respuestaJugador));
     }
 
     @Test
@@ -109,9 +105,7 @@ public class JugadorTest {
         respuestas.add(respuesta2Jugador);
 
         assertThrows(MultiplicadorYaUtilizadoError.class,
-                () -> {
-                    jugador.activarMultiplicadorDoble(respuesta2Jugador);
-                });
+                () -> jugador.activarMultiplicadorDoble(respuesta2Jugador));
     }
 
     @Test
@@ -124,13 +118,9 @@ public class JugadorTest {
         pregunta.nuevaOpcion("2006", false);
         Respuesta respuestaJugador = new Respuesta(jugador, pregunta);
         respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(1));
-        ArrayList<Respuesta> respuestas = new ArrayList<>();
-        respuestas.add(respuestaJugador);
 
         assertThrows(PreguntaNoAceptaMultiplicadorError.class,
-                () -> {
-                    jugador.activarMultiplicadorDoble(respuestaJugador);
-                });
+                () -> jugador.activarMultiplicadorDoble(respuestaJugador));
     }
 
     @Test
@@ -175,13 +165,9 @@ public class JugadorTest {
         VoF pregunta = VoF.conModoPenalidad("Argentina ganó mundial 2014",false);
         Respuesta respuestaJugador = new Respuesta(jugador, pregunta);
         respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(1));
-        ArrayList<Respuesta> respuestas = new ArrayList<>();
-        respuestas.add(respuestaJugador);
 
         assertThrows(PreguntaNoAceptaExclusividadError.class,
-                () -> {
-                    jugador.activarExclusividad(respuestaJugador);
-                });
+                () -> jugador.activarExclusividad(respuestaJugador));
     }
 
     @Test
@@ -194,13 +180,9 @@ public class JugadorTest {
         pregunta.nuevaOpcion("2006", false);
         Respuesta respuestaJugador = new Respuesta(jugador, pregunta);
         respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(1));
-        ArrayList<Respuesta> respuestas = new ArrayList<>();
-        respuestas.add(respuestaJugador);
 
         assertThrows(PreguntaNoAceptaExclusividadError.class,
-                () -> {
-                    jugador.activarExclusividad(respuestaJugador);
-                });
+                () -> jugador.activarExclusividad(respuestaJugador));
     }
 
     @Test
@@ -230,9 +212,7 @@ public class JugadorTest {
         respuestas.add(respuesta2Jugador);
 
         assertThrows(MultiplicadorYaUtilizadoError.class,
-                () -> {
-                    jugador.activarMultiplicadorTriple(respuesta2Jugador);
-                });
+                () -> jugador.activarMultiplicadorTriple(respuesta2Jugador));
     }
 }
 

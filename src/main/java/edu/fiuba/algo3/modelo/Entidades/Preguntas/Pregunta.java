@@ -43,4 +43,5 @@ public abstract class Pregunta {
 
     public abstract void crearVista(Stage stage, VistaPrincipal vistaPrincipal);
 
+    public abstract int cantidadOpciones();
 }

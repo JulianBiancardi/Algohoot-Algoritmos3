@@ -1,7 +1,6 @@
 package edu.fiuba.algo3.modelo.Entidades.Preguntas;
 
 import edu.fiuba.algo3.modelo.Entidades.Jugador;
-import edu.fiuba.algo3.modelo.Entidades.Opciones.OpcionGrupal;
 import edu.fiuba.algo3.modelo.Entidades.Respuestas.Respuesta;
 import edu.fiuba.algo3.modelo.Entidades.Respuestas.RespuestaGrupal;
 import org.junit.jupiter.api.Test;
@@ -28,7 +27,7 @@ public class GroupChoiceTest {
         respuestaJugador.agregarOpcionGrupo1(pregunta.obtenerOpcion(2));
         respuestaJugador.agregarOpcionGrupo2(pregunta.obtenerOpcion(1));
         respuestaJugador.agregarOpcionGrupo2(pregunta.obtenerOpcion(3));
-        ArrayList<Respuesta> respuestas = new ArrayList<Respuesta>();
+        ArrayList<Respuesta> respuestas = new ArrayList<>();
         respuestas.add(respuestaJugador);
 
         pregunta.evaluarRespuestas(respuestas);
@@ -51,7 +50,7 @@ public class GroupChoiceTest {
         respuestaJugador.agregarOpcionGrupo1(pregunta.obtenerOpcion(1));
         respuestaJugador.agregarOpcionGrupo2(pregunta.obtenerOpcion(2));
         respuestaJugador.agregarOpcionGrupo2(pregunta.obtenerOpcion(3));
-        ArrayList<Respuesta> respuestas = new ArrayList<Respuesta>();
+        ArrayList<Respuesta> respuestas = new ArrayList<>();
         respuestas.add(respuestaJugador);
 
         pregunta.evaluarRespuestas(respuestas);
@@ -74,7 +73,7 @@ public class GroupChoiceTest {
         respuestaJugador.agregarOpcionGrupo1(pregunta.obtenerOpcion(1));
         respuestaJugador.agregarOpcionGrupo1(pregunta.obtenerOpcion(2));
         respuestaJugador.agregarOpcionGrupo2(pregunta.obtenerOpcion(3));
-        ArrayList<Respuesta> respuestas = new ArrayList<Respuesta>();
+        ArrayList<Respuesta> respuestas = new ArrayList<>();
         respuestas.add(respuestaJugador);
 
         pregunta.evaluarRespuestas(respuestas);
@@ -105,7 +104,7 @@ public class GroupChoiceTest {
         respuestaJugador2.agregarOpcionGrupo1(pregunta.obtenerOpcion(2));
         respuestaJugador2.agregarOpcionGrupo2(pregunta.obtenerOpcion(1));
         respuestaJugador2.agregarOpcionGrupo2(pregunta.obtenerOpcion(3));
-        ArrayList<Respuesta> respuestas = new ArrayList<Respuesta>();
+        ArrayList<Respuesta> respuestas = new ArrayList<>();
         respuestas.add(respuestaJugador1);
         respuestas.add(respuestaJugador2);
 
@@ -138,7 +137,7 @@ public class GroupChoiceTest {
         respuestaJugador2.agregarOpcionGrupo1(pregunta.obtenerOpcion(1));
         respuestaJugador2.agregarOpcionGrupo2(pregunta.obtenerOpcion(0));
         respuestaJugador2.agregarOpcionGrupo2(pregunta.obtenerOpcion(2));
-        ArrayList<Respuesta> respuestas = new ArrayList<Respuesta>();
+        ArrayList<Respuesta> respuestas = new ArrayList<>();
         respuestas.add(respuestaJugador1);
         respuestas.add(respuestaJugador2);
 
@@ -172,7 +171,7 @@ public class GroupChoiceTest {
         respuestaJugador2.agregarOpcionGrupo1(pregunta.obtenerOpcion(1));
         respuestaJugador2.agregarOpcionGrupo1(pregunta.obtenerOpcion(2));
         respuestaJugador2.agregarOpcionGrupo2(pregunta.obtenerOpcion(3));
-        ArrayList<Respuesta> respuestas = new ArrayList<Respuesta>();
+        ArrayList<Respuesta> respuestas = new ArrayList<>();
         respuestas.add(respuestaJugador1);
         respuestas.add(respuestaJugador2);
 

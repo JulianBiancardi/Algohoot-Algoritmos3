@@ -47,6 +47,11 @@ public class MultipleChoice extends Pregunta {
 
     public int calcularCantidadOpcionesCorrectas(){ return (int) opcionesPregunta.stream().filter(Opcion::esCorrecta).count(); }
 
+    @Override
+    public int cantidadOpciones() {
+        return opcionesPregunta.size();
+    }
+
 
     //JSON
 
@@ -106,6 +111,7 @@ public class MultipleChoice extends Pregunta {
         JsonObject jsonObject = JsonParser.parseString(texto).getAsJsonObject();
 
         return recuperar(jsonObject);
+    }
 
     public void crearVista(Stage stage, VistaPrincipal vistaPrincipal){
         vistaPrincipal.crearVistaMultipleChoice(stage,this);

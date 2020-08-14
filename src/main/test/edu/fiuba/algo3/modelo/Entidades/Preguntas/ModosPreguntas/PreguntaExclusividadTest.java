@@ -28,7 +28,7 @@ public class PreguntaExclusividadTest {
         respuestaJugador1.agregarOpcion(pregunta.obtenerOpcion(2));
         respuestaJugador2.agregarOpcion(pregunta.obtenerOpcion(0));
         respuestaJugador2.agregarOpcion(pregunta.obtenerOpcion(1));
-        ArrayList<Respuesta> respuestas = new ArrayList<Respuesta>();
+        ArrayList<Respuesta> respuestas = new ArrayList<>();
         respuestas.add(respuestaJugador1);
         respuestas.add(respuestaJugador2);
 
@@ -55,7 +55,7 @@ public class PreguntaExclusividadTest {
         respuestaJugador1.agregarOpcion(pregunta.obtenerOpcion(2));
         respuestaJugador2.agregarOpcion(pregunta.obtenerOpcion(0));
         respuestaJugador2.agregarOpcion(pregunta.obtenerOpcion(2));
-        ArrayList<Respuesta> respuestas = new ArrayList<Respuesta>();
+        ArrayList<Respuesta> respuestas = new ArrayList<>();
         respuestas.add(respuestaJugador1);
         respuestas.add(respuestaJugador2);
 
@@ -82,7 +82,7 @@ public class PreguntaExclusividadTest {
         respuestaJugador1.agregarOpcion(pregunta.obtenerOpcion(2));
         respuestaJugador2.agregarOpcion(pregunta.obtenerOpcion(0));
         respuestaJugador2.agregarOpcion(pregunta.obtenerOpcion(1));
-        ArrayList<Respuesta> respuestas = new ArrayList<Respuesta>();
+        ArrayList<Respuesta> respuestas = new ArrayList<>();
         respuestas.add(respuestaJugador1);
         respuestas.add(respuestaJugador2);
 
@@ -110,7 +110,7 @@ public class PreguntaExclusividadTest {
         respuestaJugador1.agregarOpcion(pregunta.obtenerOpcion(2));
         respuestaJugador2.agregarOpcion(pregunta.obtenerOpcion(0));
         respuestaJugador2.agregarOpcion(pregunta.obtenerOpcion(2));
-        ArrayList<Respuesta> respuestas = new ArrayList<Respuesta>();
+        ArrayList<Respuesta> respuestas = new ArrayList<>();
         respuestas.add(respuestaJugador1);
         respuestas.add(respuestaJugador2);
 
@@ -138,7 +138,7 @@ public class PreguntaExclusividadTest {
         respuestaJugador1.agregarOpcion(pregunta.obtenerOpcion(2));
         respuestaJugador2.agregarOpcion(pregunta.obtenerOpcion(0));
         respuestaJugador2.agregarOpcion(pregunta.obtenerOpcion(1));
-        ArrayList<Respuesta> respuestas = new ArrayList<Respuesta>();
+        ArrayList<Respuesta> respuestas = new ArrayList<>();
         respuestas.add(respuestaJugador1);
         respuestas.add(respuestaJugador2);
 
@@ -165,7 +165,7 @@ public class PreguntaExclusividadTest {
         respuestaJugador1.agregarOpcion(pregunta.obtenerOpcion(2));
         respuestaJugador2.agregarOpcion(pregunta.obtenerOpcion(0));
         respuestaJugador2.agregarOpcion(pregunta.obtenerOpcion(2));
-        ArrayList<Respuesta> respuestas = new ArrayList<Respuesta>();
+        ArrayList<Respuesta> respuestas = new ArrayList<>();
         respuestas.add(respuestaJugador1);
         respuestas.add(respuestaJugador2);
 
@@ -192,7 +192,7 @@ public class PreguntaExclusividadTest {
         respuestaJugador1.agregarOpcion(pregunta.obtenerOpcion(2));
         respuestaJugador2.agregarOpcion(pregunta.obtenerOpcion(0));
         respuestaJugador2.agregarOpcion(pregunta.obtenerOpcion(1));
-        ArrayList<Respuesta> respuestas = new ArrayList<Respuesta>();
+        ArrayList<Respuesta> respuestas = new ArrayList<>();
         respuestas.add(respuestaJugador1);
         respuestas.add(respuestaJugador2);
 
@@ -219,7 +219,7 @@ public class PreguntaExclusividadTest {
         respuestaJugador1.agregarOpcion(pregunta.obtenerOpcion(0));
         respuestaJugador2.agregarOpcion(pregunta.obtenerOpcion(0));
         respuestaJugador2.agregarOpcion(pregunta.obtenerOpcion(1));
-        ArrayList<Respuesta> respuestas = new ArrayList<Respuesta>();
+        ArrayList<Respuesta> respuestas = new ArrayList<>();
         respuestas.add(respuestaJugador1);
         respuestas.add(respuestaJugador2);
 
@@ -247,14 +247,9 @@ public class PreguntaExclusividadTest {
         respuestaJugador1.agregarOpcion(pregunta.obtenerOpcion(2));
         respuestaJugador2.agregarOpcion(pregunta.obtenerOpcion(0));
         respuestaJugador2.agregarOpcion(pregunta.obtenerOpcion(1));
-        ArrayList<Respuesta> respuestas = new ArrayList<Respuesta>();
-        respuestas.add(respuestaJugador1);
-        respuestas.add(respuestaJugador2);
 
         assertThrows(PreguntaNoAceptaExclusividadError.class,
-                () -> {
-                    jugador1.activarExclusividad(respuestaJugador1);
-                });
+                () -> jugador1.activarExclusividad(respuestaJugador1));
     }
 
     @Test
@@ -274,7 +269,7 @@ public class PreguntaExclusividadTest {
         respuestaJugador1.agregarOpcion(pregunta.obtenerOpcion(2));
         respuestaJugador2.agregarOpcion(pregunta.obtenerOpcion(0));
         respuestaJugador2.agregarOpcion(pregunta.obtenerOpcion(1));
-        ArrayList<Respuesta> respuestas = new ArrayList<Respuesta>();
+        ArrayList<Respuesta> respuestas = new ArrayList<>();
         respuestas.add(respuestaJugador1);
         respuestas.add(respuestaJugador2);
         jugador1.activarExclusividad(respuestaJugador1);
@@ -293,7 +288,7 @@ public class PreguntaExclusividadTest {
         respuestaJugador1.agregarOpcion(pregunta.obtenerOpcion(2));
         respuestaJugador2.agregarOpcion(pregunta.obtenerOpcion(0));
         respuestaJugador2.agregarOpcion(pregunta.obtenerOpcion(1));
-        respuestas = new ArrayList<Respuesta>();
+        respuestas = new ArrayList<>();
         respuestas.add(respuestaJugador1);
         respuestas.add(respuestaJugador2);
         jugador1.activarExclusividad(respuestaJugador1);
@@ -312,7 +307,7 @@ public class PreguntaExclusividadTest {
         respuestaJugador1.agregarOpcion(pregunta.obtenerOpcion(3));
         respuestaJugador2.agregarOpcion(pregunta.obtenerOpcion(0));
         respuestaJugador2.agregarOpcion(pregunta.obtenerOpcion(1));
-        respuestas = new ArrayList<Respuesta>();
+        respuestas = new ArrayList<>();
         respuestas.add(respuestaJugador1);
         respuestas.add(respuestaJugador2);
         jugador1.activarExclusividad(respuestaJugador1);
@@ -339,7 +334,7 @@ public class PreguntaExclusividadTest {
         respuestaJugador1.agregarOpcion(pregunta.obtenerOpcion(2));
         respuestaJugador2.agregarOpcion(pregunta.obtenerOpcion(0));
         respuestaJugador2.agregarOpcion(pregunta.obtenerOpcion(1));
-        ArrayList<Respuesta> respuestas = new ArrayList<Respuesta>();
+        ArrayList<Respuesta> respuestas = new ArrayList<>();
         respuestas.add(respuestaJugador1);
         respuestas.add(respuestaJugador2);
         jugador1.activarExclusividad(respuestaJugador1);
@@ -358,7 +353,7 @@ public class PreguntaExclusividadTest {
         respuestaJugador1.agregarOpcion(pregunta.obtenerOpcion(1));
         respuestaJugador2.agregarOpcion(pregunta.obtenerOpcion(0));
         respuestaJugador2.agregarOpcion(pregunta.obtenerOpcion(1));
-        respuestas = new ArrayList<Respuesta>();
+        respuestas = new ArrayList<>();
         respuestas.add(respuestaJugador1);
         respuestas.add(respuestaJugador2);
         jugador1.activarExclusividad(respuestaJugador1);
@@ -377,7 +372,7 @@ public class PreguntaExclusividadTest {
         respuestaJugador1.agregarOpcion(pregunta.obtenerOpcion(3));
         respuestaJugador2.agregarOpcion(pregunta.obtenerOpcion(0));
         respuestaJugador2.agregarOpcion(pregunta.obtenerOpcion(1));
-        respuestas = new ArrayList<Respuesta>();
+        respuestas = new ArrayList<>();
         respuestas.add(respuestaJugador1);
         respuestas.add(respuestaJugador2);
         jugador1.activarExclusividad(respuestaJugador1);
@@ -404,7 +399,7 @@ public class PreguntaExclusividadTest {
         respuestaJugador1.agregarOpcion(pregunta.obtenerOpcion(1));
         respuestaJugador2.agregarOpcion(pregunta.obtenerOpcion(0));
         respuestaJugador2.agregarOpcion(pregunta.obtenerOpcion(1));
-        ArrayList<Respuesta> respuestas = new ArrayList<Respuesta>();
+        ArrayList<Respuesta> respuestas = new ArrayList<>();
         respuestas.add(respuestaJugador1);
         respuestas.add(respuestaJugador2);
         jugador1.activarExclusividad(respuestaJugador1);
@@ -423,7 +418,7 @@ public class PreguntaExclusividadTest {
         respuestaJugador1.agregarOpcion(pregunta.obtenerOpcion(1));
         respuestaJugador2.agregarOpcion(pregunta.obtenerOpcion(0));
         respuestaJugador2.agregarOpcion(pregunta.obtenerOpcion(1));
-        respuestas = new ArrayList<Respuesta>();
+        respuestas = new ArrayList<>();
         respuestas.add(respuestaJugador1);
         respuestas.add(respuestaJugador2);
         jugador1.activarExclusividad(respuestaJugador1);
@@ -442,7 +437,7 @@ public class PreguntaExclusividadTest {
         respuestaJugador1.agregarOpcion(pregunta.obtenerOpcion(3));
         respuestaJugador2.agregarOpcion(pregunta.obtenerOpcion(0));
         respuestaJugador2.agregarOpcion(pregunta.obtenerOpcion(1));
-        respuestas = new ArrayList<Respuesta>();
+        respuestas = new ArrayList<>();
         respuestas.add(respuestaJugador1);
         respuestas.add(respuestaJugador2);
         jugador1.activarExclusividad(respuestaJugador1);
@@ -469,7 +464,7 @@ public class PreguntaExclusividadTest {
         respuestaJugador1.agregarOpcion(pregunta.obtenerOpcion(2));
         respuestaJugador2.agregarOpcion(pregunta.obtenerOpcion(0));
         respuestaJugador2.agregarOpcion(pregunta.obtenerOpcion(1));
-        ArrayList<Respuesta> respuestas = new ArrayList<Respuesta>();
+        ArrayList<Respuesta> respuestas = new ArrayList<>();
         respuestas.add(respuestaJugador1);
         respuestas.add(respuestaJugador2);
         jugador1.activarExclusividad(respuestaJugador1);
@@ -488,7 +483,7 @@ public class PreguntaExclusividadTest {
         respuestaJugador1.agregarOpcion(pregunta.obtenerOpcion(2));
         respuestaJugador2.agregarOpcion(pregunta.obtenerOpcion(0));
         respuestaJugador2.agregarOpcion(pregunta.obtenerOpcion(1));
-        respuestas = new ArrayList<Respuesta>();
+        respuestas = new ArrayList<>();
         respuestas.add(respuestaJugador1);
         respuestas.add(respuestaJugador2);
         jugador1.activarExclusividad(respuestaJugador1);
@@ -507,7 +502,7 @@ public class PreguntaExclusividadTest {
         respuestaJugador1.agregarOpcion(pregunta.obtenerOpcion(3));
         respuestaJugador2.agregarOpcion(pregunta.obtenerOpcion(0));
         respuestaJugador2.agregarOpcion(pregunta.obtenerOpcion(1));
-        respuestas = new ArrayList<Respuesta>();
+        respuestas = new ArrayList<>();
         respuestas.add(respuestaJugador1);
         respuestas.add(respuestaJugador2);
         jugador1.activarExclusividad(respuestaJugador1);
@@ -534,7 +529,7 @@ public class PreguntaExclusividadTest {
         respuestaJugador1.agregarOpcion(pregunta.obtenerOpcion(2));
         respuestaJugador2.agregarOpcion(pregunta.obtenerOpcion(0));
         respuestaJugador2.agregarOpcion(pregunta.obtenerOpcion(1));
-        ArrayList<Respuesta> respuestas = new ArrayList<Respuesta>();
+        ArrayList<Respuesta> respuestas = new ArrayList<>();
         respuestas.add(respuestaJugador1);
         respuestas.add(respuestaJugador2);
         jugador1.activarExclusividad(respuestaJugador1);
@@ -553,7 +548,7 @@ public class PreguntaExclusividadTest {
         respuestaJugador1.agregarOpcion(pregunta.obtenerOpcion(1));
         respuestaJugador2.agregarOpcion(pregunta.obtenerOpcion(0));
         respuestaJugador2.agregarOpcion(pregunta.obtenerOpcion(1));
-        respuestas = new ArrayList<Respuesta>();
+        respuestas = new ArrayList<>();
         respuestas.add(respuestaJugador1);
         respuestas.add(respuestaJugador2);
         jugador1.activarExclusividad(respuestaJugador1);
@@ -572,7 +567,7 @@ public class PreguntaExclusividadTest {
         respuestaJugador1.agregarOpcion(pregunta.obtenerOpcion(3));
         respuestaJugador2.agregarOpcion(pregunta.obtenerOpcion(0));
         respuestaJugador2.agregarOpcion(pregunta.obtenerOpcion(1));
-        respuestas = new ArrayList<Respuesta>();
+        respuestas = new ArrayList<>();
         respuestas.add(respuestaJugador1);
         respuestas.add(respuestaJugador2);
         jugador1.activarExclusividad(respuestaJugador1);
@@ -599,7 +594,7 @@ public class PreguntaExclusividadTest {
         respuestaJugador1.agregarOpcion(pregunta.obtenerOpcion(1));
         respuestaJugador2.agregarOpcion(pregunta.obtenerOpcion(0));
         respuestaJugador2.agregarOpcion(pregunta.obtenerOpcion(1));
-        ArrayList<Respuesta> respuestas = new ArrayList<Respuesta>();
+        ArrayList<Respuesta> respuestas = new ArrayList<>();
         respuestas.add(respuestaJugador1);
         respuestas.add(respuestaJugador2);
         jugador1.activarExclusividad(respuestaJugador1);
@@ -618,7 +613,7 @@ public class PreguntaExclusividadTest {
         respuestaJugador1.agregarOpcion(pregunta.obtenerOpcion(1));
         respuestaJugador2.agregarOpcion(pregunta.obtenerOpcion(0));
         respuestaJugador2.agregarOpcion(pregunta.obtenerOpcion(1));
-        respuestas = new ArrayList<Respuesta>();
+        respuestas = new ArrayList<>();
         respuestas.add(respuestaJugador1);
         respuestas.add(respuestaJugador2);
         jugador1.activarExclusividad(respuestaJugador1);
@@ -637,7 +632,7 @@ public class PreguntaExclusividadTest {
         respuestaJugador1.agregarOpcion(pregunta.obtenerOpcion(3));
         respuestaJugador2.agregarOpcion(pregunta.obtenerOpcion(0));
         respuestaJugador2.agregarOpcion(pregunta.obtenerOpcion(1));
-        respuestas = new ArrayList<Respuesta>();
+        respuestas = new ArrayList<>();
         respuestas.add(respuestaJugador1);
         respuestas.add(respuestaJugador2);
         jugador1.activarExclusividad(respuestaJugador1);

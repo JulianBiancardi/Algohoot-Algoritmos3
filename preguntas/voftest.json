@@ -6,6 +6,11 @@
             "Modo": "Clasico"
         },
         {
+            "Enunciado": "¿2 + 2 = 5?",
+            "Valor": false,
+            "Modo": "Clasico"
+        },
+        {
             "Enunciado": "¿Julian se sacó un 9 en un TP?",
             "Valor": false,
             "Modo": "PuntajeParcial"
