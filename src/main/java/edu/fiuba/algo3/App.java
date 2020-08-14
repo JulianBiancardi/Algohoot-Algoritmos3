@@ -2,6 +2,7 @@ package edu.fiuba.algo3;
 
 import edu.fiuba.algo3.modelo.Entidades.Juego;
 import edu.fiuba.algo3.vista.VistaCargaJugadores;
+import edu.fiuba.algo3.vista.VistaIntro;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -13,10 +14,11 @@ public class App extends Application{
 
     @Override
     public void start(Stage stagePrincipal) throws Exception{
+
         stagePrincipal.setTitle("AlgoHoot");
 
         VistaCargaJugadores introVista = new VistaCargaJugadores(stagePrincipal,juego);
-
+        //VistaIntro introVista = new VistaIntro();
         stagePrincipal.setScene(new Scene(introVista));
         stagePrincipal.show();
     }

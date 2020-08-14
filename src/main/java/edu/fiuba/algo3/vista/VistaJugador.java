@@ -1,6 +1,5 @@
 package edu.fiuba.algo3.vista;
 
-import edu.fiuba.algo3.controlador.ControladorJugador;
 import edu.fiuba.algo3.modelo.Entidades.Jugador;
 import edu.fiuba.algo3.modelo.Observador;
 import javafx.geometry.Pos;
@@ -16,12 +15,12 @@ public class VistaJugador implements Observador{
     VBox layoutPrincipal = new VBox();
     Scene sceneJugador = new Scene(layoutPrincipal);
 
-    public VistaJugador(Jugador unJugador){
+    public VistaJugador(Jugador unJugador) {
         jugador = unJugador;
         nombreJugador = new Label("Nombre");
         puntosJugador = new Label("Puntos");
         Button botonSumarPuntos = new Button("SUMAR PUNTOS");
-        botonSumarPuntos.setOnAction(new ControladorJugador(this,jugador));
+        //botonSumarPuntos.setOnAction(new ControladorJugador(this,jugador));
 
         layoutPrincipal.getChildren().add(nombreJugador);
         layoutPrincipal.getChildren().add(puntosJugador);

@@ -12,7 +12,7 @@ public class VoF extends Pregunta {
 
     private VoF(String unEnunciado, ModoPregunta unModo, boolean esCorrecta)  {
         super(unEnunciado, unModo);
-        agregarOpcion(new OpcionBinaria("Verdaero", esCorrecta));
+        agregarOpcion(new OpcionBinaria("Verdadero", esCorrecta));
         agregarOpcion(new OpcionBinaria("Falso", !esCorrecta));
     }
 

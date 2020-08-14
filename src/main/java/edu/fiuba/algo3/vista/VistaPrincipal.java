@@ -75,7 +75,7 @@ public class VistaPrincipal extends BorderPane{
         stackPane.setPrefHeight(150);
 
         Label enunciadoPregunta = new Label(enunciado);
-        enunciadoPregunta.setFont(Font.font("Core Mellow", FontWeight.BOLD,40));
+        enunciadoPregunta.setFont(Font.font("Core Mellow", FontWeight.BOLD,55));
         enunciadoPregunta.setWrapText(true);
 
         stackPane.getChildren().addAll(fondoPregunta,enunciadoPregunta);
@@ -84,21 +84,27 @@ public class VistaPrincipal extends BorderPane{
 
     private void mostrarContador(HBox hBox){
         StackPane stackPane = new StackPane();
-        Circle circle = new Circle(50,50,70,Color.valueOf("#844cbe"));
+        Circle circle = new Circle(100,Color.valueOf("#844cbe"));
         contador.setTextFill(Color.WHITE);
-        contador.setFont(Font.font("Core Mellow", FontWeight.BOLD,55));
+        contador.setFont(Font.font("Core Mellow", FontWeight.BOLD,80));
         stackPane.getChildren().addAll(circle,contador);
 
         tiempo = new Timeline(new KeyFrame(Duration.seconds(1),e -> contar()));
         tiempo.setCycleCount(Timeline.INDEFINITE);
         tiempo.play();
 
-        Label nombreJugador = new Label(juego.turnoDe().nombre());
-        nombreJugador.setFont(Font.font("Core Mellow", FontWeight.BOLD,30));
+        Label nombreJugador1 = new Label(juego.turnoDe().nombre());
+        nombreJugador1.setFont(Font.font("Core Mellow", FontWeight.BOLD,30));
 
-        hBox.getChildren().addAll(stackPane,nombreJugador);
+        Label nombreJugador2 = new Label(juego.turnoDe().nombre());
+        nombreJugador2.setText("Prueba");
+        nombreJugador2.setTextFill(Color.GRAY);
+        nombreJugador2.setFont(Font.font("Core Mellow", FontWeight.BOLD,30));
+
+
+        hBox.getChildren().addAll(nombreJugador1,stackPane,nombreJugador2);
         hBox.setAlignment(Pos.CENTER);
-        hBox.setSpacing(600);
+        hBox.setSpacing(100);
         hBox.maxWidthProperty().bind(this.widthProperty());
         this.setCenter(hBox);
     }
