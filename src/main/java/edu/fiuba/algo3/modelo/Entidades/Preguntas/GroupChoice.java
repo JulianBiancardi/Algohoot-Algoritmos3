@@ -3,6 +3,8 @@ package edu.fiuba.algo3.modelo.Entidades.Preguntas;
 import edu.fiuba.algo3.modelo.Entidades.Opciones.OpcionGrupal;
 import edu.fiuba.algo3.modelo.Entidades.Opciones.OpcionOrdenada;
 import edu.fiuba.algo3.modelo.Entidades.Preguntas.ModosPreguntas.Clasico;
+import edu.fiuba.algo3.vista.VistaPrincipal;
+import javafx.stage.Stage;
 
 import java.util.ArrayList;
 
@@ -39,5 +41,9 @@ public class GroupChoice extends Pregunta{
 
     public int cantidadOpciones(){
         return opcionesPregunta.size();
+    }
+
+    public void crearVista(Stage stage, VistaPrincipal vistaPrincipal){
+        //vistaPrincipal.crearVistaMultipleChoice(stage,this);
     }
 }

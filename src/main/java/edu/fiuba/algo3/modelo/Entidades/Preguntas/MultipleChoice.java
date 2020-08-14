@@ -10,6 +10,8 @@ import edu.fiuba.algo3.modelo.Entidades.Preguntas.ModosPreguntas.Clasico;
 import edu.fiuba.algo3.modelo.Entidades.Preguntas.ModosPreguntas.ModoPregunta;
 import edu.fiuba.algo3.modelo.Entidades.Preguntas.ModosPreguntas.Penalidad;
 import edu.fiuba.algo3.modelo.Entidades.Preguntas.ModosPreguntas.PuntajeParcial;
+import edu.fiuba.algo3.vista.VistaPrincipal;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -44,6 +46,7 @@ public class MultipleChoice extends Pregunta {
     }
 
     public int calcularCantidadOpcionesCorrectas(){ return (int) opcionesPregunta.stream().filter(Opcion::esCorrecta).count(); }
+
 
     //JSON
 
@@ -103,5 +106,9 @@ public class MultipleChoice extends Pregunta {
         JsonObject jsonObject = JsonParser.parseString(texto).getAsJsonObject();
 
         return recuperar(jsonObject);
+
+    public void crearVista(Stage stage, VistaPrincipal vistaPrincipal){
+        vistaPrincipal.crearVistaMultipleChoice(stage,this);
+
     }
 }

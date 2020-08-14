@@ -16,6 +16,7 @@ public class OpcionBinaria implements Opcion{
         return valor;
     }
 
+
     public static OpcionBinaria recuperar(JsonObject jsonObjectNota) {
         String enunciado = jsonObjectNota.get("Descripcion").getAsString();
         boolean valor = jsonObjectNota.get("Valor").getAsBoolean();
@@ -23,5 +24,10 @@ public class OpcionBinaria implements Opcion{
         OpcionBinaria opcion = new OpcionBinaria(enunciado, valor);
 
         return opcion;
+
+    @Override
+    public String getDescripcion() {
+        return descripcion;
+
     }
 }

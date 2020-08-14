@@ -20,4 +20,9 @@ public class OpcionOrdenada implements Opcion {
     public boolean esCorrecta() {
         return (posicionEsperada == posicionActual);
     }
+
+    @Override
+    public String getDescripcion() {
+        return descripcion;
+    }
 }

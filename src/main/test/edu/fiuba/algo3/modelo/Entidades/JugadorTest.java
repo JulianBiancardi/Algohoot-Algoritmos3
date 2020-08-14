@@ -145,6 +145,7 @@ public class JugadorTest {
         jugador.activarMultiplicadorTriple(respuestaJugador);
         pregunta.evaluarRespuestas(respuestas);
 
+        // Assert
         assertEquals(3, jugador.puntos());
     }
 
@@ -164,6 +165,7 @@ public class JugadorTest {
         jugador.activarMultiplicadorTriple(respuestaJugador);
         pregunta.evaluarRespuestas(respuestas);
 
+        // Assert
         assertEquals(3, jugador.puntos());
     }
 
