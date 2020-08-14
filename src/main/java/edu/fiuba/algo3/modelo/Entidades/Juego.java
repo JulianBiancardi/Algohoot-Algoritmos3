@@ -29,14 +29,6 @@ public class Juego {
 
         VoF vof = VoF.conModoClasico("La guitarra tiene 6 cuerdas",true);
         agregarRonda(vof);
-
-        pregunta = MultipleChoice.conModoPuntajeParcial("Cual fue la mejor frase del Pache?");
-        pregunta.agregarOpcion("Aplicar Beneficio", true);
-        pregunta.agregarOpcion("Correctamente Estricta", true);
-        pregunta.agregarOpcion("Messi", true);
-        pregunta.agregarOpcion("Exclusividad esta Potente", true);
-        pregunta.agregarOpcion("Me voy a tomar algo..",true);
-        agregarRonda(pregunta);
     }
 
     public void agregarJugador(Jugador jugador){
