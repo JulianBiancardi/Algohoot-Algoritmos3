@@ -1,5 +1,9 @@
 package edu.fiuba.algo3.modelo.Entidades.Preguntas;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import edu.fiuba.algo3.modelo.Entidades.Opciones.OpcionBinaria;
 import edu.fiuba.algo3.modelo.Excepciones.ChoiceTieneMaxCincoOpcionesError;
 import edu.fiuba.algo3.modelo.Entidades.Opciones.OpcionOrdenada;
@@ -8,6 +12,9 @@ import edu.fiuba.algo3.modelo.Excepciones.OrderedTieneMaxCincoOpcionesError;
 import edu.fiuba.algo3.vista.VistaPrincipal;
 import javafx.stage.Stage;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 
 public class OrderedChoice extends Pregunta{
@@ -37,11 +44,31 @@ public class OrderedChoice extends Pregunta{
         return opcionesPregunta.size();
     }
 
-    //public OpcionOrdenada obtenerOpcion(int posicion){ return (OpcionOrdenada) super.obtenerOpcion(posicion); }
+    //JSON
+    public static OrderedChoice recuperar(JsonObject jsonObjectMC) {
+
+        String enunciadoPregunta = jsonObjectMC.get("Enunciado").getAsString();
+        OrderedChoice pregunta = new OrderedChoice(enunciadoPregunta);
+
+        JsonArray arrayOpciones = jsonObjectMC.getAsJsonArray("Opciones");
+        for (JsonElement jsonOpcion : arrayOpciones) {
+            OpcionOrdenada opcion = OpcionOrdenada.recuperar(jsonOpcion.getAsJsonObject());
+            pregunta.agregarOpcion(opcion);
+        }
+
+        return pregunta;
+    }
+
+    public static OrderedChoice recuperar(String archivo) throws IOException {
+        String texto = Files.readString(Path.of(archivo));
+
+        JsonObject jsonObject = JsonParser.parseString(texto).getAsJsonObject();
+
+        return recuperar(jsonObject);
+    }
 
     public void crearVista(Stage stage, VistaPrincipal vistaPrincipal){
         //vistaPrincipal.crearVistaMultipleChoice(stage,this);
-
     }
 }
 

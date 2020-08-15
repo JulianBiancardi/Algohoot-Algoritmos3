@@ -1,5 +1,7 @@
 package edu.fiuba.algo3.modelo.Entidades.Opciones;
 
+import com.google.gson.JsonObject;
+
 public class OpcionOrdenada implements Opcion {
     private String descripcion;
     private int posicionActual;
@@ -19,6 +21,15 @@ public class OpcionOrdenada implements Opcion {
     @Override
     public boolean esCorrecta() {
         return (posicionEsperada == posicionActual);
+    }
+
+    public static OpcionOrdenada recuperar(JsonObject jsonObjectOpcion) {
+        String enunciado = jsonObjectOpcion.get("Descripcion").getAsString();
+        int posicionEsperada = jsonObjectOpcion.get("PosicionCorrecta").getAsInt();
+
+        OpcionOrdenada opcion = new OpcionOrdenada(enunciado, posicionEsperada);
+
+        return opcion;
     }
 
     @Override

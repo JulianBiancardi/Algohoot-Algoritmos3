@@ -46,54 +46,26 @@ public class VoF extends Pregunta {
         return opcionesPregunta.size();
     }
 
-    //-----JSON-----
-
-    public JsonObject guardar() {
-        JsonObject jsonObjectVoF = new JsonObject();
-
-        /*
-        JsonArray jsonArrayNotas = new JsonArray();
-        for (Nota nota : this.notas) {
-            jsonArrayNotas.add(nota.guardar());
-        }
-        */
-        jsonObjectVoF.addProperty("Enunciado", enunciado);
-        jsonObjectVoF.addProperty("Valor", valor);
-        jsonObjectVoF.addProperty("Modo", modo.nombre());
-
-        return jsonObjectVoF;
-    }
-
-    public void guardar(String archivo) throws IOException{
-        Gson gson = new Gson();
-
-        String json = gson.toJson(this.guardar());
-
-        FileWriter writer = new FileWriter(archivo);
-        writer.write(json);
-        writer.close();
-    }
-
+    //JSON
     public static VoF recuperar(JsonObject jsonObjectVoF) {
-        VoF pregunta;
+        VoF pregunta = null;
 
         String enunciadoPregunta = jsonObjectVoF.get("Enunciado").getAsString();
         boolean valorPregunta = jsonObjectVoF.get("Valor").getAsBoolean();
         String modoPregunta = jsonObjectVoF.get("Modo").getAsString();
 
-        if(modoPregunta.equals("Clasico")){
-            pregunta = VoF.conModoClasico(enunciadoPregunta, valorPregunta);
-        } else {
-            pregunta = VoF.conModoPenalidad(enunciadoPregunta, valorPregunta);
+        switch (modoPregunta){
+            case "Clasico":
+                pregunta = VoF.conModoClasico(enunciadoPregunta, valorPregunta);
+                break;
+            case "Penalidad":
+                pregunta = VoF.conModoPenalidad(enunciadoPregunta, valorPregunta);
+                break;
+            default:
+                //Excepcion o elegir un caso como default
+                break;
         }
-        /*
-        JsonArray arrayNotas = jsonObjectAnotador.getAsJsonArray("notas");
-        for (JsonElement jsonNota : arrayNotas) {
-            JsonElement jsonObjectNota = jsonNota;
-            Nota nota = Nota.recuperar(jsonObjectNota.getAsJsonObject());
-            anotador.addNota(nota);
-        }
-        */
+
         return pregunta;
     }
 
@@ -107,6 +79,5 @@ public class VoF extends Pregunta {
 
     public void crearVista(Stage stage, VistaPrincipal vistaPrincipal){
         vistaPrincipal.crearVistaVoF(stage,this);
-
     }
 }

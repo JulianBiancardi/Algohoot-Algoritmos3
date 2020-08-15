@@ -54,11 +54,10 @@ public class MultipleChoice extends Pregunta {
 
 
     //JSON
-
     public static MultipleChoice recuperar(JsonObject jsonObjectMC) {
         MultipleChoice pregunta = null;
 
-        String enunciadoPregunta = jsonObjectMC.get("Descripcion").getAsString();
+        String enunciadoPregunta = jsonObjectMC.get("Enunciado").getAsString();
         String modoPregunta = jsonObjectMC.get("Modo").getAsString();
 
         switch (modoPregunta){
@@ -76,32 +75,12 @@ public class MultipleChoice extends Pregunta {
                 break;
         }
 
-
         JsonArray arrayOpciones = jsonObjectMC.getAsJsonArray("Opciones");
         for (JsonElement jsonOpcion : arrayOpciones) {
-            JsonElement jsonObjectOpcion = jsonOpcion;
-            //JsonElement jsonObjectNota = jsonNota;
-            //Nota nota = Nota.recuperar(jsonObjectNota.getAsJsonObject());
-            OpcionBinaria opcion = OpcionBinaria.recuperar(jsonObjectOpcion.getAsJsonObject());
+            OpcionBinaria opcion = OpcionBinaria.recuperar(jsonOpcion.getAsJsonObject());
             pregunta.agregarOpcion(opcion);
         }
 
-        /*
-        if(modoPregunta.equals("Clasico")){
-            pregunta = VoF.conModoClasico(enunciadoPregunta, valorPregunta);
-        } else {
-            pregunta = VoF.conModoPenalidad(enunciadoPregunta, valorPregunta);
-        }
-        */
-
-        /*
-        JsonArray arrayNotas = jsonObjectAnotador.getAsJsonArray("notas");
-        for (JsonElement jsonNota : arrayNotas) {
-            JsonElement jsonObjectNota = jsonNota;
-            Nota nota = Nota.recuperar(jsonObjectNota.getAsJsonObject());
-            anotador.addNota(nota);
-        }
-        */
         return pregunta;
     }
 

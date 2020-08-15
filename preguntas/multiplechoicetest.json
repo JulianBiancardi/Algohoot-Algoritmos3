@@ -1,7 +1,7 @@
 {
     "MultipleChoice": [
         {
-            "Descripcion": "Capitales de Provincias Argentinas",
+            "Enunciado": "Capitales de Provincias Argentinas",
             "Modo": "PuntajeParcial",
             "Opciones": [
                 {
@@ -23,7 +23,7 @@
             ]
         },
         {
-            "Descripcion": "Provincias Argentinas",
+            "Enunciado": "Provincias Argentinas",
             "Modo": "Penalidad",
             "Opciones": [
                 {
@@ -45,7 +45,7 @@
             ]
         },
         {
-            "Descripcion": "Ciudades Argentinas",
+            "Enunciado": "Ciudades Argentinas",
             "Modo": "Clasico",
             "Opciones": [
                 {
@@ -67,7 +67,7 @@
             ]
         },
         {
-            "Descripcion": "Equipos Argentinos",
+            "Enunciado": "Equipos Argentinos",
             "Modo": "Clasico",
             "Opciones": [
                 {

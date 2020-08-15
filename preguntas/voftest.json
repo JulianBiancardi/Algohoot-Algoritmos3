@@ -13,12 +13,12 @@
         {
             "Enunciado": "¿Julian se sacó un 9 en un TP?",
             "Valor": false,
-            "Modo": "PuntajeParcial"
+            "Modo": "Penalidad"
         },
         {
             "Enunciado": "¿Julian ha puteado a Leo alguna vez?",
             "Valor": true,
-            "Modo": "PuntajeParcial"
+            "Modo": "Penalidad"
         }
     ]
 }
