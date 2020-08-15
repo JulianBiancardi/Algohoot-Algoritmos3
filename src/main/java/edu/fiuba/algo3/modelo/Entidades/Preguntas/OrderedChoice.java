@@ -65,9 +65,5 @@ public class OrderedChoice extends Pregunta{
 
         return recuperar(jsonObject);
     }
-
-    public void crearVista(Stage stage, VistaPrincipal vistaPrincipal){
-        //vistaPrincipal.crearVistaMultipleChoice(stage,this);
-    }
 }
 

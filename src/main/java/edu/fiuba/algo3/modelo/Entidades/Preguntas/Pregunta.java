@@ -40,7 +40,5 @@ public abstract class Pregunta {
         return enunciado;
     }
 
-    public abstract void crearVista(Stage stage, VistaPrincipal vistaPrincipal);
-
     public abstract int cantidadOpciones();
 }

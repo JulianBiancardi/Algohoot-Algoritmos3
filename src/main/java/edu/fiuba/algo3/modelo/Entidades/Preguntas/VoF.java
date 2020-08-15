@@ -21,8 +21,8 @@ public class VoF extends Pregunta {
 
     private VoF(String unEnunciado, ModoPregunta unModo, boolean esCorrecta)  {
         super(unEnunciado, unModo);
-        agregarOpcion(new OpcionBinaria("Verdadero", esCorrecta));
-        agregarOpcion(new OpcionBinaria("Falso", !esCorrecta));
+        opcionesPregunta.add(new OpcionBinaria("Verdadero", esCorrecta));
+        opcionesPregunta.add(new OpcionBinaria("Falso", !esCorrecta));
     }
 
     public static VoF conModoClasico(String unEnunciado, boolean esCorrecta){
@@ -74,7 +74,4 @@ public class VoF extends Pregunta {
         return recuperar(jsonObject);
     }
 
-    public void crearVista(Stage stage, VistaPrincipal vistaPrincipal){
-        vistaPrincipal.crearVistaVoF(stage,this);
-    }
 }
