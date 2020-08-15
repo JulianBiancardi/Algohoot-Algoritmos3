@@ -1,9 +1,12 @@
 package edu.fiuba.algo3.controlador;
 
 import edu.fiuba.algo3.modelo.Entidades.Juego;
+import edu.fiuba.algo3.modelo.Entidades.Jugador;
 import edu.fiuba.algo3.modelo.Entidades.Opciones.Opcion;
+import edu.fiuba.algo3.modelo.Entidades.Respuestas.Respuesta;
 import edu.fiuba.algo3.vista.FabricaVistaPreguntas;
 import edu.fiuba.algo3.vista.VistaPrincipal;
+import edu.fiuba.algo3.vista.VistaPuntos;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -26,21 +29,44 @@ public class ControladorEnviar implements EventHandler<ActionEvent> {
     public void handle(ActionEvent actionEvent){
         System.out.println("Enviando respuesta");
         opcionesElegidas.forEach(opcion -> System.out.println(opcion.getDescripcion()));
-        //Actualizar el juego
-        //Crear una nueva vista con este juego actualizado.
+
+        //Creo la respuesta del jugador
+        Jugador jugador = juego.turnoDe();
+        Respuesta respuesta = new Respuesta(jugador, juego.obtenerRondaActual().obtenerPregunta());
+        opcionesElegidas.forEach(opcion -> respuesta.agregarOpcion(opcion));
+        //Le envio la respuesta
+        juego.obtenerRondaActual().agregarRespuesta(respuesta);
 
         juego.siguienteTurno();
 
-        if(juego.hayRondaSiguiente()){
-            if(juego.terminoRonda())
+        if(juego.terminoRonda()){
+            juego.evaluarRespuestas();
+            if(juego.hayRondaSiguiente()) {
                 juego.siguienteRonda();
-
+                VistaPrincipal vistaPregunta = new VistaPrincipal(juego);
+                FabricaVistaPreguntas.crearVista(juego.obtenerRondaActual().obtenerPregunta(), vistaPregunta, stage);
+                Scene nuevaPregunta = new Scene(vistaPregunta);
+                stage.setScene(nuevaPregunta);
+            }
+            else{
+                VistaPuntos vistaPuntos = new VistaPuntos(juego.obtenerJugadores());
+                stage.setScene(new Scene (vistaPuntos));
+            }
+        }
+        else{
             VistaPrincipal vistaPregunta = new VistaPrincipal(juego);
-            //juego.obtenerRondaActual().mostrarRonda(stage,vistaPregunta);
             FabricaVistaPreguntas.crearVista(juego.obtenerRondaActual().obtenerPregunta(), vistaPregunta, stage);
             Scene nuevaPregunta = new Scene(vistaPregunta);
             stage.setScene(nuevaPregunta);
-        } else
-            System.exit(0);
+        }
+
     }
 }
+
+
+/*
+*Agregar multiplicadores y exclusividad a la vista, con sus controladores
+*Agregar vistas ordered y groupe choice
+*Solucionar problema al agregar respuestas grupales en el controlador enviar (este)
+*
+ */

@@ -11,8 +11,6 @@ public class FabricaVistaPreguntas {
             vistaPrincipal.crearVistaVoF(stage,(VoF)pregunta);
         else if (pregunta instanceof MultipleChoice)
             vistaPrincipal.crearVistaMultipleChoice(stage,(MultipleChoice) pregunta);
-//        else if (pregunta instanceof OrderedChoice)
-          //  vistaPrincipal.crearVistaOrderedChoice(stage,(OrderedChoice) pregunta);
 
   /*    else if(paraPreguntaEnJuego instanceof OrderedChoice)
             return new VistaOrderedChoice(paraPreguntaEnJuego);

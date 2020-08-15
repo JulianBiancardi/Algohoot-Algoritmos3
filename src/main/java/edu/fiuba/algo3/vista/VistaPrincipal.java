@@ -2,6 +2,7 @@ package edu.fiuba.algo3.vista;
 
 import edu.fiuba.algo3.modelo.Entidades.Juego;
 import edu.fiuba.algo3.modelo.Entidades.Preguntas.MultipleChoice;
+import edu.fiuba.algo3.modelo.Entidades.Preguntas.OrderedChoice;
 import edu.fiuba.algo3.modelo.Entidades.Preguntas.VoF;
 import edu.fiuba.algo3.vista.Opciones.VistaPregunta;
 import javafx.animation.KeyFrame;

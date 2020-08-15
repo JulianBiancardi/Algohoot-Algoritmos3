@@ -24,25 +24,23 @@ public class Juego {
     public Juego (){
 
         //Creo un par de preguntas para testear el sistema de turnos del juego
-        MultipleChoice pregunta = MultipleChoice.conModoPuntajeParcial("Paises de América Latina");
+        MultipleChoice pregunta = MultipleChoice.conModoPenalidad("Paises de América Latina");
         pregunta.nuevaOpcion("Argentina", true);
         pregunta.nuevaOpcion("China", false);
         pregunta.nuevaOpcion("Egipto", false);
         pregunta.nuevaOpcion("Rusia", false);
         agregarRonda(pregunta);
 
-        VoF vof = VoF.conModoClasico("La guitarra tiene 6 cuerdas",true);
+        VoF vof = VoF.conModoPenalidad("La guitarra tiene 6 cuerdas",true);
         agregarRonda(vof);
 
-        pregunta = MultipleChoice.conModoPuntajeParcial("Cuantos mundiales de futbol tiene Argentina");
-        pregunta.nuevaOpcion("1", false);
-        pregunta.nuevaOpcion("2", true);
-        pregunta.nuevaOpcion("3", false);
-        pregunta.nuevaOpcion("4", false);
-        agregarRonda(pregunta);
-      
-        vof = VoF.conModoClasico("Vamos a aprobar?",false);
-        agregarRonda(vof);
+        /*
+        OrderedChoice orderedChoice = new OrderedChoice("Ordenar de menor a mayor");
+        orderedChoice.nuevaOpcion("1");
+        orderedChoice.nuevaOpcion("2");
+        orderedChoice.nuevaOpcion("3");
+        orderedChoice.nuevaOpcion("4");
+        agregarRonda(orderedChoice);*/
 
         iteradorRonda = 0 ;
 
@@ -90,5 +88,13 @@ public class Juego {
 
     public Ronda obtenerRondaActual() {
         return rondas.get(iteradorRonda);
+    }
+
+    public void evaluarRespuestas() {
+        obtenerRondaActual().evaluarPregunta();
+    }
+
+    public ArrayList<Jugador> obtenerJugadores() {
+        return jugadores;
     }
 }
