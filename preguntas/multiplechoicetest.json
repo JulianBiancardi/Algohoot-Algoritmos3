@@ -1,0 +1,92 @@
+{
+    "MultipleChoice": [
+        {
+            "Enunciado": "Capitales de Provincias Argentinas",
+            "Modo": "PuntajeParcial",
+            "Opciones": [
+                {
+                    "Descripcion": "Santa Rosa",
+                    "Valor": true
+                },
+                {
+                    "Descripcion": "Santa Fe",
+                    "Valor": true
+                },
+                {
+                    "Descripcion": "Mendoza",
+                    "Valor": true
+                },
+                {
+                    "Descripcion": "San LeoProgramador del Valle de Catamarca",
+                    "Valor": false
+                }
+            ]
+        },
+        {
+            "Enunciado": "Provincias Argentinas",
+            "Modo": "Penalidad",
+            "Opciones": [
+                {
+                    "Descripcion": "La Pampa",
+                    "Valor": true
+                },
+                {
+                    "Descripcion": "Santa Fe",
+                    "Valor": true
+                },
+                {
+                    "Descripcion": "Ushuaia",
+                    "Valor": false
+                },
+                {
+                    "Descripcion": "Bariloche",
+                    "Valor": false
+                }
+            ]
+        },
+        {
+            "Enunciado": "Ciudades Argentinas",
+            "Modo": "Clasico",
+            "Opciones": [
+                {
+                    "Descripcion": "Trenel",
+                    "Valor": true
+                },
+                {
+                    "Descripcion": "El Interior",
+                    "Valor": false
+                },
+                {
+                    "Descripcion": "El Sur",
+                    "Valor": false
+                },
+                {
+                    "Descripcion": "El Norte",
+                    "Valor": false
+                }
+            ]
+        },
+        {
+            "Enunciado": "Equipos Argentinos",
+            "Modo": "Clasico",
+            "Opciones": [
+                {
+                    "Descripcion": "Estudiantes",
+                    "Valor": true
+                },
+                {
+                    "Descripcion": "Barcelona",
+                    "Valor": false
+                },
+                {
+                    "Descripcion": "Sao Pablo",
+                    "Valor": false
+                },
+                {
+                    "Descripcion": "Boca",
+                    "Valor": true
+                }
+            ]
+        }
+    ]
+}

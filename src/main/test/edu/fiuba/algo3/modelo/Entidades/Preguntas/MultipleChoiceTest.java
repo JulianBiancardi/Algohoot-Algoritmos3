@@ -1,49 +1,48 @@
 package edu.fiuba.algo3.modelo.Entidades.Preguntas;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import edu.fiuba.algo3.modelo.Entidades.Jugador;
 import edu.fiuba.algo3.modelo.Excepciones.ChoiceTieneMaxCincoOpcionesError;
 import edu.fiuba.algo3.modelo.Entidades.Respuestas.Respuesta;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class MultipleChoiceTest {
+    ArrayList<MultipleChoice> preguntasMC = new ArrayList<>();
 
-    @Test
-    public void test00() {
-        MultipleChoice pregunta = MultipleChoice.conModoClasico("Paises de América Latina");
-        pregunta.agregarOpcion("Argentina", true);
-        pregunta.agregarOpcion("Corea", false);
-        pregunta.agregarOpcion("Uruguay", true);
-        pregunta.agregarOpcion("Colombia", true);
-        Jugador jugador = new Jugador("LeoProgramador");
-        Respuesta respuesta = new Respuesta(jugador, pregunta);
-        respuesta.agregarOpcion(pregunta.obtenerOpcion(0));
-        respuesta.agregarOpcion(pregunta.obtenerOpcion(2));
-        respuesta.agregarOpcion(pregunta.obtenerOpcion(3));
-        ArrayList<Respuesta> respuestas = new ArrayList<Respuesta>();
-        respuestas.add(respuesta);
+    @BeforeEach
+    public void setUp() throws IOException {
+        String texto = Files.readString(Path.of("preguntas/multiplechoicetest.json"));
+        JsonObject jsonObject = JsonParser.parseString(texto).getAsJsonObject();
 
-        pregunta.evaluarRespuestas(respuestas);
-        assertEquals(1, jugador.puntos());
+        JsonArray preguntas = jsonObject.getAsJsonArray("MultipleChoice");
+
+        for (JsonElement jsonPregunta : preguntas) {
+            MultipleChoice pregunta = MultipleChoice.recuperar(jsonPregunta.getAsJsonObject());
+            preguntasMC.add(pregunta);
+        }
     }
 
-
     @Test
-    public void test01SeCreaUnaPreguntaChoiceConPuntajeParcialConUnaRespuestaCorrectaYErra() {
-        MultipleChoice pregunta = MultipleChoice.conModoPuntajeParcial("Paises de América Latina");
-        pregunta.agregarOpcion("Argentina", true);
-        pregunta.agregarOpcion("China", false);
-        pregunta.agregarOpcion("Egipto", false);
-        pregunta.agregarOpcion("Rusia", false);
+    public void test01PreguntaChoiceConPuntajeParcialJugadorRespondeMal() {
+        MultipleChoice pregunta = preguntasMC.get(0);
         Jugador jugador = new Jugador("LeoProgramador");
         Respuesta respuesta = new Respuesta(jugador, pregunta);
 
-        respuesta.agregarOpcion(pregunta.obtenerOpcion(2)); //elijo una incorrecta
-        ArrayList<Respuesta> respuestas = new ArrayList<Respuesta>();
+        // Elijo una incorrecta
+        respuesta.agregarOpcion(pregunta.obtenerOpcion(3));
+        ArrayList<Respuesta> respuestas = new ArrayList<>();
         respuestas.add(respuesta);
 
         pregunta.evaluarRespuestas(respuestas);
@@ -52,17 +51,14 @@ public class MultipleChoiceTest {
 
 
     @Test
-    public void test02SeCreaUnaPreguntaChoiceConPuntajeParcialConUnRespuestaCorrectaYAcierta() {
-        MultipleChoice pregunta = MultipleChoice.conModoPuntajeParcial("Paises de América Latina");
-        pregunta.agregarOpcion("Argentina", true);
-        pregunta.agregarOpcion("China", false);
-        pregunta.agregarOpcion("Egipto", false);
-        pregunta.agregarOpcion("Rusia", false);
+    public void test02PreguntaChoiceConPuntajeParcialJugadorRespondeUnaBien() {
+        MultipleChoice pregunta = preguntasMC.get(0);
         Jugador jugador = new Jugador("LeoProgramador");
         Respuesta respuesta = new Respuesta(jugador, pregunta);
 
-        respuesta.agregarOpcion(pregunta.obtenerOpcion(0)); //elijo la única correcta
-        ArrayList<Respuesta> respuestas = new ArrayList<Respuesta>();
+        // Elijo una correcta
+        respuesta.agregarOpcion(pregunta.obtenerOpcion(0));
+        ArrayList<Respuesta> respuestas = new ArrayList<>();
         respuestas.add(respuesta);
 
         pregunta.evaluarRespuestas(respuestas);
@@ -70,18 +66,15 @@ public class MultipleChoiceTest {
     }
 
     @Test
-    public void test03SeCreaUnaPreguntaChoiceConPuntajeParcialConMasDeUnaRespuestaCorrectaYAciertaDos() {
-        MultipleChoice pregunta = MultipleChoice.conModoPuntajeParcial("Paises de América Latina");
-        pregunta.agregarOpcion("Argentina", true);
-        pregunta.agregarOpcion("Alemania", false);
-        pregunta.agregarOpcion("Brasil", true);
-        pregunta.agregarOpcion("Chile", true);
+    public void test03PreguntaChoiceConPuntajeParcialJugadorRespondeDosBien() {
+        MultipleChoice pregunta = preguntasMC.get(0);
         Jugador jugador = new Jugador("LeoProgramador");
         Respuesta respuesta = new Respuesta(jugador, pregunta);
 
+        // Elijo dos correcta
         respuesta.agregarOpcion(pregunta.obtenerOpcion(0));
-        respuesta.agregarOpcion(pregunta.obtenerOpcion(2));
-        ArrayList<Respuesta> respuestas = new ArrayList<Respuesta>();
+        respuesta.agregarOpcion(pregunta.obtenerOpcion(1));
+        ArrayList<Respuesta> respuestas = new ArrayList<>();
         respuestas.add(respuesta);
 
         pregunta.evaluarRespuestas(respuestas);
@@ -90,19 +83,16 @@ public class MultipleChoiceTest {
 
 
     @Test
-    public void test04SeCreaUnaPreguntaChoiceConPuntajeParcialConMasDeUnaRespuestaCorrectaYAciertaTres() {
-        MultipleChoice pregunta = MultipleChoice.conModoPuntajeParcial("Paises de América Latina");
-        pregunta.agregarOpcion("Argentina", true);
-        pregunta.agregarOpcion("Alemania", false);
-        pregunta.agregarOpcion( "Brasil", true);
-        pregunta.agregarOpcion( "Chile", true);
+    public void test04PreguntaChoiceConPuntajeParcialJugadorRespondeTresBien() {
+        MultipleChoice pregunta = preguntasMC.get(0);
         Jugador jugador = new Jugador("LeoProgramador");
         Respuesta respuesta = new Respuesta(jugador, pregunta);
 
+        // Elijo tres correcta
         respuesta.agregarOpcion(pregunta.obtenerOpcion(0));
+        respuesta.agregarOpcion(pregunta.obtenerOpcion(1));
         respuesta.agregarOpcion(pregunta.obtenerOpcion(2));
-        respuesta.agregarOpcion(pregunta.obtenerOpcion(3));
-        ArrayList<Respuesta> respuestas = new ArrayList<Respuesta>();
+        ArrayList<Respuesta> respuestas = new ArrayList<>();
         respuestas.add(respuesta);
 
         pregunta.evaluarRespuestas(respuestas);
@@ -110,22 +100,16 @@ public class MultipleChoiceTest {
     }
 
     @Test
-    public void test05PuntajeParcialRecibeUnaListaDeRespuestasTodasIncorrectasYNingunoSumaPuntos(){
-        MultipleChoice pregunta = MultipleChoice.conModoPuntajeParcial("Paises de América Latina");
-        pregunta.agregarOpcion("Argentina", true);
-        pregunta.agregarOpcion("China", false);
-        pregunta.agregarOpcion("Egipto", false);
-        pregunta.agregarOpcion("Rusia", false);
+    public void test05PuntajeParcialRecibeUnaListaDeRespuestasIncorrectasYNingunoSumaPuntos(){
+        MultipleChoice pregunta = preguntasMC.get(0);
         Jugador jugador1 = new Jugador("LeoProgramador");
         Jugador jugador2 = new Jugador("Joaco");
         Respuesta respuestaJugador1 = new Respuesta(jugador1, pregunta);
         Respuesta respuestaJugador2 = new Respuesta(jugador2, pregunta);
 
-        respuestaJugador1.agregarOpcion(pregunta.obtenerOpcion(1));
         respuestaJugador1.agregarOpcion(pregunta.obtenerOpcion(3));
-        respuestaJugador2.agregarOpcion(pregunta.obtenerOpcion(1));
         respuestaJugador2.agregarOpcion(pregunta.obtenerOpcion(3));
-        ArrayList<Respuesta> respuestas = new ArrayList<Respuesta>();
+        ArrayList<Respuesta> respuestas = new ArrayList<>();
         respuestas.add(respuestaJugador1);
         respuestas.add(respuestaJugador2);
 
@@ -135,83 +119,70 @@ public class MultipleChoiceTest {
     }
 
     @Test
-    public void test06PuntajeParcialRecibeUnaListaDeRespuestasTodasCorrectasYAmbosSumanPuntos(){
-        MultipleChoice pregunta = MultipleChoice.conModoPuntajeParcial("Paises de América Latina");
-        pregunta.agregarOpcion("China", false);
-        pregunta.agregarOpcion("Argentina", true);
-        pregunta.agregarOpcion("Egipto", false);
-        pregunta.agregarOpcion("Rusia", false);
+    public void test06PuntajeParcialRecibeUnaListaDeRespuestasConCorrectasYAmbosSumanPuntos(){
+        MultipleChoice pregunta = preguntasMC.get(0);
         Jugador jugador1 = new Jugador("LeoProgramador");
         Jugador jugador2 = new Jugador("Joaco");
         Respuesta respuestaJugador1 = new Respuesta(jugador1, pregunta);
         Respuesta respuestaJugador2 = new Respuesta(jugador2, pregunta);
 
-        respuestaJugador1.agregarOpcion(pregunta.obtenerOpcion(1));
+        respuestaJugador1.agregarOpcion(pregunta.obtenerOpcion(0));
+        respuestaJugador2.agregarOpcion(pregunta.obtenerOpcion(0));
         respuestaJugador2.agregarOpcion(pregunta.obtenerOpcion(1));
-        ArrayList<Respuesta> respuestas = new ArrayList<Respuesta>();
+        ArrayList<Respuesta> respuestas = new ArrayList<>();
         respuestas.add(respuestaJugador1);
         respuestas.add(respuestaJugador2);
 
         pregunta.evaluarRespuestas(respuestas);
         assertEquals(1, jugador1.puntos());
-        assertEquals(1, jugador2.puntos());
+        assertEquals(2, jugador2.puntos());
     }
 
     @Test
-    public void test07PuntajeParcailRecibeUnaListaDeRespuestasDistintasYSoloElQueRespondioBienSumaPuntos(){
-        MultipleChoice pregunta = MultipleChoice.conModoPuntajeParcial("Paises de América Latina");
-        pregunta.agregarOpcion("Japon", false);
-        pregunta.agregarOpcion("España", false);
-        pregunta.agregarOpcion("Colombia", true);
-        pregunta.agregarOpcion("Rusia", false);
+    public void test07PuntajeParcialRecibeUnaListaDeRespuestasYSoloElQueRespondioBienSumaPuntos(){
+        MultipleChoice pregunta = preguntasMC.get(0);
         Jugador jugador1 = new Jugador("LeoProgramador");
         Jugador jugador2 = new Jugador("Joaco");
         Respuesta respuestaJugador1 = new Respuesta(jugador1, pregunta);
         Respuesta respuestaJugador2 = new Respuesta(jugador2, pregunta);
 
-        respuestaJugador1.agregarOpcion(pregunta.obtenerOpcion(2));
+        respuestaJugador1.agregarOpcion(pregunta.obtenerOpcion(3));
+        respuestaJugador2.agregarOpcion(pregunta.obtenerOpcion(0));
         respuestaJugador2.agregarOpcion(pregunta.obtenerOpcion(1));
-        ArrayList<Respuesta> respuestas = new ArrayList<Respuesta>();
+        respuestaJugador2.agregarOpcion(pregunta.obtenerOpcion(2));
+        ArrayList<Respuesta> respuestas = new ArrayList<>();
         respuestas.add(respuestaJugador1);
         respuestas.add(respuestaJugador2);
 
         pregunta.evaluarRespuestas(respuestas);
-        assertEquals(1, jugador1.puntos());
-        assertEquals(0, jugador2.puntos());
+        assertEquals(0, jugador1.puntos());
+        assertEquals(3, jugador2.puntos());
     }
 
     @Test
-    public void test08SeCreaUnaPreguntaChoiceConPenalidadConUnaRespuestaCorrectaYFalla() {
-        MultipleChoice pregunta = MultipleChoice.conModoPenalidad("Paises de América Latina");
-        pregunta.agregarOpcion("Japon", false);
-        pregunta.agregarOpcion("España", false);
-        pregunta.agregarOpcion("Colombia", true);
-        pregunta.agregarOpcion("Rusia", false);
-
+    public void test08PreguntaChoiceConPenalidadJugadorRespondeUnaMal() {
+        MultipleChoice pregunta = preguntasMC.get(1);
         Jugador jugador = new Jugador("LeoProgramador");
         Respuesta respuestaJugador = new Respuesta(jugador, pregunta);
 
-        respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(1));
-        ArrayList<Respuesta> respuestas = new ArrayList<Respuesta>();
+        // Elijo una incorrecta
+        respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(2));
+        ArrayList<Respuesta> respuestas = new ArrayList<>();
         respuestas.add(respuestaJugador);
 
         pregunta.evaluarRespuestas(respuestas);
         assertEquals(-1, jugador.puntos());
-
     }
 
     @Test
-    public void test09SeCreaUnaPreguntaChoiceConPenalidadConUnaRespuestaCorrectaYAcierta() {
-        MultipleChoice pregunta = MultipleChoice.conModoPenalidad("Paises de América Latina");
-        pregunta.agregarOpcion("China", false);
-        pregunta.agregarOpcion("Argentina", true);
-        pregunta.agregarOpcion("Egipto", false);
-        pregunta.agregarOpcion("Rusia", false);
+    public void test09PreguntaChoiceConPenalidadJugadorRespondeUnaBien() {
+        MultipleChoice pregunta = preguntasMC.get(1);
         Jugador jugador = new Jugador("LeoProgramador");
         Respuesta respuestaJugador = new Respuesta(jugador, pregunta);
 
+        // Elijo una correcta
         respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(1));
-        ArrayList<Respuesta> respuestas = new ArrayList<Respuesta>();
+        ArrayList<Respuesta> respuestas = new ArrayList<>();
         respuestas.add(respuestaJugador);
 
         pregunta.evaluarRespuestas(respuestas);
@@ -219,18 +190,15 @@ public class MultipleChoiceTest {
     }
 
     @Test
-    public void test10SeCreaUnaPreguntaChoiceConPenalidadConMasDeUnaRespuestaCorrectaYAciertaDos() {
-        MultipleChoice pregunta = MultipleChoice.conModoPenalidad("Paises de América Latina");
-        pregunta.agregarOpcion("Japon", false);
-        pregunta.agregarOpcion("Uruguay", true);
-        pregunta.agregarOpcion("Egipto", false);
-        pregunta.agregarOpcion("Venezuela", true);
+    public void test10PreguntaChoiceConPenalidadJugadorRespondeDosBien() {
+        MultipleChoice pregunta = preguntasMC.get(1);
         Jugador jugador = new Jugador("LeoProgramador");
         Respuesta respuestaJugador = new Respuesta(jugador, pregunta);
 
+        // Elijo dos correctas
+        respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(0));
         respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(1));
-        respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(3));
-        ArrayList<Respuesta> respuestas = new ArrayList<Respuesta>();
+        ArrayList<Respuesta> respuestas = new ArrayList<>();
         respuestas.add(respuestaJugador);
 
         pregunta.evaluarRespuestas(respuestas);
@@ -238,18 +206,15 @@ public class MultipleChoiceTest {
     }
 
     @Test
-    public void test11SeCreaUnaPreguntaChoiceConPenalidadConMasDeUnaRespuestaCorrectaYFallaDos() {
-        MultipleChoice pregunta = MultipleChoice.conModoPenalidad("Paises de América Latina");
-        pregunta.agregarOpcion("Japon", false);
-        pregunta.agregarOpcion("Uruguay", true);
-        pregunta.agregarOpcion("Egipto", false);
-        pregunta.agregarOpcion("Venezuela", true);
+    public void test11PreguntaChoiceConPenalidadJugadorRespondeDosMal() {
+        MultipleChoice pregunta = preguntasMC.get(1);
         Jugador jugador = new Jugador("LeoProgramador");
         Respuesta respuestaJugador = new Respuesta(jugador, pregunta);
 
-        respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(0));
+        // Elijo dos incorrectas
         respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(2));
-        ArrayList<Respuesta> respuestas = new ArrayList<Respuesta>();
+        respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(3));
+        ArrayList<Respuesta> respuestas = new ArrayList<>();
         respuestas.add(respuestaJugador);
 
         pregunta.evaluarRespuestas(respuestas);
@@ -257,96 +222,28 @@ public class MultipleChoiceTest {
     }
 
     @Test
-    public void test12SeCreaUnaPreguntaChoiceConPenalidadConMasDeUnaRespuestaCorrectaYAciertaTres() {
-        MultipleChoice pregunta = MultipleChoice.conModoPenalidad("Paises de América Latina");
-        pregunta.agregarOpcion("Japon", false);
-        pregunta.agregarOpcion("Uruguay", true);
-        pregunta.agregarOpcion("Peru", true);
-        pregunta.agregarOpcion("Venezuela", true);
-        Jugador jugador = new Jugador("LeoProgramador");
-        Respuesta respuestaJugador = new Respuesta(jugador, pregunta);
-        respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(1));
-        respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(2));
-        respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(3));
-        ArrayList<Respuesta> respuestas = new ArrayList<Respuesta>();
-        respuestas.add(respuestaJugador);
-
-        pregunta.evaluarRespuestas(respuestas);
-        assertEquals(3, jugador.puntos());
-    }
-
-    @Test
-    public void test13SeCreaUnaPreguntaChoiceConPenalidadConMasDeUnaRespuestaCorrectaYFallaTres() {
-        MultipleChoice pregunta = MultipleChoice.conModoPenalidad("Paises de América Latina");
-        pregunta.agregarOpcion("Japon", false);
-        pregunta.agregarOpcion("Uruguay", true);
-        pregunta.agregarOpcion("Peru", true);
-        pregunta.agregarOpcion("Alemania", false);
-        pregunta.agregarOpcion("Australia", false);
-        Jugador jugador = new Jugador("LeoProgramador");
-        Respuesta respuestaJugador = new Respuesta(jugador, pregunta);
-
-        respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(0));
-        respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(3));
-        respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(4));
-        ArrayList<Respuesta> respuestas = new ArrayList<Respuesta>();
-        respuestas.add(respuestaJugador);
-
-        pregunta.evaluarRespuestas(respuestas);
-        assertEquals(-3, jugador.puntos());
-    }
-
-    @Test
-    public void test14SeCreaUnaPreguntaChoiceConPenalidadConMasDeUnaRespuestaCorrectaAciertaYFallaUnaVez() {
-        MultipleChoice pregunta = MultipleChoice.conModoPenalidad("Paises de América Latina");
-        pregunta.agregarOpcion("Japon", false);
-        pregunta.agregarOpcion("Uruguay", true);
-        pregunta.agregarOpcion("Peru", true);
-        pregunta.agregarOpcion("Venezuela", true);
-        Jugador jugador = new Jugador("LeoProgramador");
-        Respuesta respuestaJugador = new Respuesta(jugador, pregunta);
-
-        respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(0));
-        respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(3));
-        ArrayList<Respuesta> respuestas = new ArrayList<Respuesta>();
-        respuestas.add(respuestaJugador);
-
-        pregunta.evaluarRespuestas(respuestas);
-        assertEquals(0, jugador.puntos());
-    }
-
-    @Test
-    public void test15ConPenalidadRecibeUnaListaDeRespuestasTodasIncorrectasYAmbosPierdenPuntos() {
-        MultipleChoice pregunta = MultipleChoice.conModoPenalidad("Paises de América Latina");
-        pregunta.agregarOpcion("Portugal", false);
-        pregunta.agregarOpcion("Bolivia", true);
-        pregunta.agregarOpcion("Egipto", false);
-        pregunta.agregarOpcion("Rusia", false);
+    public void test12PenalidadRecibeUnaListaDeRespuestasIncorrectasYAmbosPierdenPuntos() {
+        MultipleChoice pregunta = preguntasMC.get(1);
         Jugador jugador1 = new Jugador("LeoProgramador");
         Jugador jugador2 = new Jugador("Joaco");
         Respuesta respuestaJugador1 = new Respuesta(jugador1, pregunta);
         Respuesta respuestaJugador2 = new Respuesta(jugador2, pregunta);
 
-        respuestaJugador1.agregarOpcion(pregunta.obtenerOpcion(0));
         respuestaJugador1.agregarOpcion(pregunta.obtenerOpcion(2));
         respuestaJugador2.agregarOpcion(pregunta.obtenerOpcion(2));
         respuestaJugador2.agregarOpcion(pregunta.obtenerOpcion(3));
-        ArrayList<Respuesta> respuestas = new ArrayList<Respuesta>();
+        ArrayList<Respuesta> respuestas = new ArrayList<>();
         respuestas.add(respuestaJugador1);
         respuestas.add(respuestaJugador2);
 
         pregunta.evaluarRespuestas(respuestas);
-        assertEquals(-2, jugador1.puntos());
+        assertEquals(-1, jugador1.puntos());
         assertEquals(-2, jugador2.puntos());
     }
 
     @Test
-    public void test16ConPenalidadRecibeUnaListaDeRespuestasTodasCorrectasYAmbosSumanPuntos(){
-        MultipleChoice pregunta = MultipleChoice.conModoPenalidad("Paises de América Latina");
-        pregunta.agregarOpcion("Paraguay", true);
-        pregunta.agregarOpcion("Dinamarca", false);
-        pregunta.agregarOpcion("Perú", true);
-        pregunta.agregarOpcion("Venezuela", true);
+    public void test13PenalidadRecibeUnaListaDeRespuestasCorrectasYAmbosSumanPuntos() {
+        MultipleChoice pregunta = preguntasMC.get(1);
         Jugador jugador1 = new Jugador("LeoProgramador");
         Jugador jugador2 = new Jugador("Joaco");
         Respuesta respuestaJugador1 = new Respuesta(jugador1, pregunta);
@@ -354,8 +251,8 @@ public class MultipleChoiceTest {
 
         respuestaJugador1.agregarOpcion(pregunta.obtenerOpcion(0));
         respuestaJugador2.agregarOpcion(pregunta.obtenerOpcion(0));
-        respuestaJugador2.agregarOpcion(pregunta.obtenerOpcion(3));
-        ArrayList<Respuesta> respuestas = new ArrayList<Respuesta>();
+        respuestaJugador2.agregarOpcion(pregunta.obtenerOpcion(1));
+        ArrayList<Respuesta> respuestas = new ArrayList<>();
         respuestas.add(respuestaJugador1);
         respuestas.add(respuestaJugador2);
 
@@ -365,22 +262,18 @@ public class MultipleChoiceTest {
     }
 
     @Test
-    public void test17ConPenalidadRecibeUnaListaDeRespuestasDistintasYElQueRespondioBienSumaPuntos(){
-        MultipleChoice pregunta = MultipleChoice.conModoPenalidad("Paises de América Latina");
-        pregunta.agregarOpcion("Uruguay", true);
-        pregunta.agregarOpcion("Japon", false);
-        pregunta.agregarOpcion("Venezuela", true);
-        pregunta.agregarOpcion("Egipto", false);
+    public void test14PenalidadRecibeUnaListaDeRespuestasYSumaPuntosElQueAcertoPierdeElQueRespondioMal() {
+        MultipleChoice pregunta = preguntasMC.get(1);
         Jugador jugador1 = new Jugador("LeoProgramador");
         Jugador jugador2 = new Jugador("Joaco");
         Respuesta respuestaJugador1 = new Respuesta(jugador1, pregunta);
         Respuesta respuestaJugador2 = new Respuesta(jugador2, pregunta);
 
-        respuestaJugador1.agregarOpcion(pregunta.obtenerOpcion(1));
+        respuestaJugador1.agregarOpcion(pregunta.obtenerOpcion(2));
         respuestaJugador1.agregarOpcion(pregunta.obtenerOpcion(3));
         respuestaJugador2.agregarOpcion(pregunta.obtenerOpcion(0));
-        respuestaJugador2.agregarOpcion(pregunta.obtenerOpcion(2));
-        ArrayList<Respuesta> respuestas = new ArrayList<Respuesta>();
+        respuestaJugador2.agregarOpcion(pregunta.obtenerOpcion(1));
+        ArrayList<Respuesta> respuestas = new ArrayList<>();
         respuestas.add(respuestaJugador1);
         respuestas.add(respuestaJugador2);
 
@@ -390,17 +283,14 @@ public class MultipleChoiceTest {
     }
 
     @Test
-    public void test18SeCreaUnaPreguntaChoiceClasicoConUnaRespuestaCorrectaYFalla() {
-        MultipleChoice pregunta = MultipleChoice.conModoClasico("Paises de América Latina");
-        pregunta.agregarOpcion("Portugal", false);
-        pregunta.agregarOpcion("Bolivia", true);
-        pregunta.agregarOpcion("Egipto", false);
-        pregunta.agregarOpcion("Rusia", false);
+    public void test15PreguntaChoiceClasicoJugadorRespondeMal() {
+        MultipleChoice pregunta = preguntasMC.get(2);
         Jugador jugador = new Jugador("LeoProgramador");
         Respuesta respuestaJugador = new Respuesta(jugador, pregunta);
 
-        respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(0));
-        ArrayList<Respuesta> respuestas = new ArrayList<Respuesta>();
+        // Elijo incorrecta
+        respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(1));
+        ArrayList<Respuesta> respuestas = new ArrayList<>();
         respuestas.add(respuestaJugador);
 
         pregunta.evaluarRespuestas(respuestas);
@@ -408,17 +298,14 @@ public class MultipleChoiceTest {
     }
 
     @Test
-    public void test19SeCreaUnaPreguntaChoiceClasicoConUnaRespuestaCorrectaYAcierta() {
-        MultipleChoice pregunta = MultipleChoice.conModoClasico("Paises de América Latina");
-        pregunta.agregarOpcion("Sudafrica", false);
-        pregunta.agregarOpcion("Egipto", false);
-        pregunta.agregarOpcion("Suiza", false);
-        pregunta.agregarOpcion("Bolivia", true);
+    public void test16PreguntaChoiceClasicoJugadorRespondeBien() {
+        MultipleChoice pregunta = preguntasMC.get(2);
         Jugador jugador = new Jugador("LeoProgramador");
         Respuesta respuestaJugador = new Respuesta(jugador, pregunta);
 
-        respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(3));
-        ArrayList<Respuesta> respuestas = new ArrayList<Respuesta>();
+        // Elijo correcta
+        respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(0));
+        ArrayList<Respuesta> respuestas = new ArrayList<>();
         respuestas.add(respuestaJugador);
 
         pregunta.evaluarRespuestas(respuestas);
@@ -426,18 +313,15 @@ public class MultipleChoiceTest {
     }
 
     @Test
-    public void test20SeCreaUnaPreguntaChoiceChoiceClasicoConUnaRespuestaCorrectaYAciertaPeroFallaUna() {
-        MultipleChoice pregunta = MultipleChoice.conModoClasico("Paises de América Latina");
-        pregunta.agregarOpcion("Sudafrica", false);
-        pregunta.agregarOpcion("Egipto", false);
-        pregunta.agregarOpcion("Suiza", false);
-        pregunta.agregarOpcion("Bolivia", true);
+    public void test17PreguntaChoiceClasicoJugadorRespondeUnaBienYUnaMal() {
+        MultipleChoice pregunta = preguntasMC.get(2);
         Jugador jugador = new Jugador("LeoProgramador");
         Respuesta respuestaJugador = new Respuesta(jugador, pregunta);
 
+        // Elijo una correcta y una incorrecta
         respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(0));
-        respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(3));
-        ArrayList<Respuesta> respuestas = new ArrayList<Respuesta>();
+        respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(1));
+        ArrayList<Respuesta> respuestas = new ArrayList<>();
         respuestas.add(respuestaJugador);
 
         pregunta.evaluarRespuestas(respuestas);
@@ -445,19 +329,16 @@ public class MultipleChoiceTest {
     }
 
     @Test
-    public void test21SeCreaUnaPreguntaChoiceChoiceClasicoConUnaRespuestaCorrectaYAciertaPeroFallaDos() {
-        MultipleChoice pregunta = MultipleChoice.conModoClasico("Paises de América Latina");
-        pregunta.agregarOpcion("Sudafrica", false);
-        pregunta.agregarOpcion("Egipto", false);
-        pregunta.agregarOpcion("Suiza", false);
-        pregunta.agregarOpcion("Bolivia", true);
+    public void test18PreguntaChoiceClasicoJugadorRespondeUnaBienYDosMal() {
+        MultipleChoice pregunta = preguntasMC.get(2);
         Jugador jugador = new Jugador("LeoProgramador");
         Respuesta respuestaJugador = new Respuesta(jugador, pregunta);
 
+        // Elijo una correcta y dos incorrectas
+        respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(0));
         respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(1));
         respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(2));
-        respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(3));
-        ArrayList<Respuesta> respuestas = new ArrayList<Respuesta>();
+        ArrayList<Respuesta> respuestas = new ArrayList<>();
         respuestas.add(respuestaJugador);
 
         pregunta.evaluarRespuestas(respuestas);
@@ -465,18 +346,15 @@ public class MultipleChoiceTest {
     }
 
     @Test
-    public void test22SeCreaUnaPreguntaChoiceChoiceClasicoConDosRespuestaCorrectaYAciertaLasDos() {
-        MultipleChoice pregunta = MultipleChoice.conModoClasico("Paises de América Latina");
-        pregunta.agregarOpcion("Ecuador", true);
-        pregunta.agregarOpcion("China", false);
-        pregunta.agregarOpcion("Malasia", false);
-        pregunta.agregarOpcion("Costa Rica", true);
+    public void test19PreguntaChoiceChoiceClasicoConDosRespuestaCorrectaYAciertaLasDos() {
+        MultipleChoice pregunta = preguntasMC.get(3);
         Jugador jugador = new Jugador("LeoProgramador");
         Respuesta respuestaJugador = new Respuesta(jugador, pregunta);
 
+        // Elije las dos correctas
         respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(0));
         respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(3));
-        ArrayList<Respuesta> respuestas = new ArrayList<Respuesta>();
+        ArrayList<Respuesta> respuestas = new ArrayList<>();
         respuestas.add(respuestaJugador);
 
         pregunta.evaluarRespuestas(respuestas);
@@ -484,17 +362,14 @@ public class MultipleChoiceTest {
     }
 
     @Test
-    public void test23SeCreaUnaPreguntaChoiceClasicoConDosRespuestaCorrectaYAciertaUnaPeroNoSumaPuntos() {
-        MultipleChoice pregunta = MultipleChoice.conModoClasico("Paises de América Latina");
-        pregunta.agregarOpcion("Ecuador", true);
-        pregunta.agregarOpcion("China", false);
-        pregunta.agregarOpcion("Malasia", false);
-        pregunta.agregarOpcion("Costa Rica", true);
+    public void test20PreguntaChoiceClasicoConDosRespuestaCorrectaYAciertaUnaPeroNoSumaPuntos() {
+        MultipleChoice pregunta = preguntasMC.get(3);
         Jugador jugador = new Jugador("LeoProgramador");
         Respuesta respuestaJugador = new Respuesta(jugador, pregunta);
 
+        // Elije solo una correctas
         respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(0));
-        ArrayList<Respuesta> respuestas = new ArrayList<Respuesta>();
+        ArrayList<Respuesta> respuestas = new ArrayList<>();
         respuestas.add(respuestaJugador);
 
         pregunta.evaluarRespuestas(respuestas);
@@ -502,19 +377,16 @@ public class MultipleChoiceTest {
     }
 
     @Test
-    public void test24SeCreaUnaPreguntaChoiceClasicoConDosRespuestaCorrectaYAciertaDosPeroFallaUna() {
-        MultipleChoice pregunta = MultipleChoice.conModoClasico("Paises de América Latina");
-        pregunta.agregarOpcion("Ecuador", true);
-        pregunta.agregarOpcion("China", false);
-        pregunta.agregarOpcion("Malasia", false);
-        pregunta.agregarOpcion("Costa Rica", true);
+    public void test21PreguntaChoiceClasicoConDosRespuestaCorrectaYAciertaDosPeroFallaUna() {
+        MultipleChoice pregunta = preguntasMC.get(3);
         Jugador jugador = new Jugador("LeoProgramador");
         Respuesta respuestaJugador = new Respuesta(jugador, pregunta);
 
+        // Elije las dos correctas pero una incorrecta
         respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(0));
         respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(2));
         respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(3));
-        ArrayList<Respuesta> respuestas = new ArrayList<Respuesta>();
+        ArrayList<Respuesta> respuestas = new ArrayList<>();
         respuestas.add(respuestaJugador);
 
         pregunta.evaluarRespuestas(respuestas);
@@ -522,90 +394,8 @@ public class MultipleChoiceTest {
     }
 
     @Test
-    public void test25SeCreaUnaPreguntaChoiceClasicoConTresRespuestaCorrectaYAcierta() {
-        MultipleChoice pregunta = MultipleChoice.conModoClasico("Paises de América Latina");
-        pregunta.agregarOpcion("EEUU", false);
-        pregunta.agregarOpcion("Argentina", true);
-        pregunta.agregarOpcion("Brasil", true);
-        pregunta.agregarOpcion("Costa Rica", true);
-        Jugador jugador = new Jugador("LeoProgramador");
-        Respuesta respuestaJugador = new Respuesta(jugador, pregunta);
-
-        respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(1));
-        respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(2));
-        respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(3));
-        ArrayList<Respuesta> respuestas = new ArrayList<Respuesta>();
-        respuestas.add(respuestaJugador);
-
-        pregunta.evaluarRespuestas(respuestas);
-        assertEquals(1, jugador.puntos());
-    }
-
-    @Test
-    public void test26SeCreaUnaPreguntaChoiceClasicoConTresRespuestaCorrectaYAciertaUnaYNoSumaPuntos() {
-        MultipleChoice pregunta = MultipleChoice.conModoClasico("Paises de América Latina");
-        pregunta.agregarOpcion("EEUU", false);
-        pregunta.agregarOpcion("Argentina", true);
-        pregunta.agregarOpcion("Brasil", true);
-        pregunta.agregarOpcion("Costa Rica", true);
-        Jugador jugador = new Jugador("LeoProgramador");
-        Respuesta respuestaJugador = new Respuesta(jugador, pregunta);
-
-        respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(2));
-        ArrayList<Respuesta> respuestas = new ArrayList<Respuesta>();
-        respuestas.add(respuestaJugador);
-
-        pregunta.evaluarRespuestas(respuestas);
-        assertEquals(0, jugador.puntos());
-    }
-
-    @Test
-    public void test27SeCreaUnaPreguntaChoiceClasicoConTresRespuestaCorrectaYAciertaTresPeroFallaUna() {
-        MultipleChoice pregunta = MultipleChoice.conModoClasico("Paises de América Latina");
-        pregunta.agregarOpcion("EEUU", false);
-        pregunta.agregarOpcion("Argentina", true);
-        pregunta.agregarOpcion("Brasil", true);
-        pregunta.agregarOpcion("Costa Rica", true);
-        Jugador jugador = new Jugador("LeoProgramador");
-        Respuesta respuestaJugador = new Respuesta(jugador, pregunta);
-
-        respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(0));
-        respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(1));
-        respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(2));
-        respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(3));
-        ArrayList<Respuesta> respuestas = new ArrayList<Respuesta>();
-        respuestas.add(respuestaJugador);
-
-        pregunta.evaluarRespuestas(respuestas);
-        assertEquals(0, jugador.puntos());
-    }
-
-    @Test
-    public void test28SeCreaUnaPreguntaChoiceClasicoConTresRespuestaCorrectaYAciertaDosPeroNoSumaPuntos() {
-        MultipleChoice pregunta = MultipleChoice.conModoClasico("Paises de América Latina");
-        pregunta.agregarOpcion("EEUU", false);
-        pregunta.agregarOpcion("Argentina", true);
-        pregunta.agregarOpcion("Brasil", true);
-        pregunta.agregarOpcion("Costa Rica", true);
-        Jugador jugador = new Jugador("LeoProgramador");
-        Respuesta respuestaJugador = new Respuesta(jugador, pregunta);
-
-        respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(1));
-        respuestaJugador.agregarOpcion(pregunta.obtenerOpcion(3));
-        ArrayList<Respuesta> respuestas = new ArrayList<Respuesta>();
-        respuestas.add(respuestaJugador);
-
-        pregunta.evaluarRespuestas(respuestas);
-        assertEquals(0, jugador.puntos());
-    }
-
-    @Test
-    public void test29ClasicoRecibeUnaListaDeRespuestasTodasIncorrectasYAmbosFallan(){
-        MultipleChoice pregunta = MultipleChoice.conModoClasico("Paises de América Latina");
-        pregunta.agregarOpcion("China", false);
-        pregunta.agregarOpcion("Argentina", true);
-        pregunta.agregarOpcion("Egipto", false);
-        pregunta.agregarOpcion("Rusia", false);
+    public void test22ClasicoRecibeUnaListaDeRespuestasIncorrectasYAmbosNosSumanPuntos(){
+        MultipleChoice pregunta = preguntasMC.get(3);
         Jugador jugador1 = new Jugador("LeoProgramador");
         Jugador jugador2 = new Jugador("Joaco");
         Respuesta respuestaJugador1 = new Respuesta(jugador1, pregunta);
@@ -615,7 +405,7 @@ public class MultipleChoiceTest {
         respuestaJugador2.agregarOpcion(pregunta.obtenerOpcion(2));
         respuestaJugador2.agregarOpcion(pregunta.obtenerOpcion(2));
         respuestaJugador2.agregarOpcion(pregunta.obtenerOpcion(3));
-        ArrayList<Respuesta> respuestas = new ArrayList<Respuesta>();
+        ArrayList<Respuesta> respuestas = new ArrayList<>();
         respuestas.add(respuestaJugador1);
         respuestas.add(respuestaJugador2);
 
@@ -625,24 +415,18 @@ public class MultipleChoiceTest {
     }
 
     @Test
-    public void test30ClasicaRecibeUnaListaDeRespuestasTodasCorrectasYAmbosAciertan(){
-        MultipleChoice pregunta = MultipleChoice.conModoClasico("Paises de América Latina");
-        pregunta.agregarOpcion("Paraguay", true);
-        pregunta.agregarOpcion("Dinamarca", false);
-        pregunta.agregarOpcion("Perú", true);
-        pregunta.agregarOpcion("Venezuela", true);
+    public void test23ClasicaRecibeUnaListaDeRespuestasCorrectasYAmbosSumanPuntos(){
+        MultipleChoice pregunta = preguntasMC.get(3);
         Jugador jugador1 = new Jugador("LeoProgramador");
         Jugador jugador2 = new Jugador("Joaco");
         Respuesta respuestaJugador1 = new Respuesta(jugador1, pregunta);
         Respuesta respuestaJugador2 = new Respuesta(jugador2, pregunta);
 
         respuestaJugador1.agregarOpcion(pregunta.obtenerOpcion(0));
-        respuestaJugador1.agregarOpcion(pregunta.obtenerOpcion(2));
         respuestaJugador1.agregarOpcion(pregunta.obtenerOpcion(3));
         respuestaJugador2.agregarOpcion(pregunta.obtenerOpcion(0));
-        respuestaJugador2.agregarOpcion(pregunta.obtenerOpcion(2));
         respuestaJugador2.agregarOpcion(pregunta.obtenerOpcion(3));
-        ArrayList<Respuesta> respuestas = new ArrayList<Respuesta>();
+        ArrayList<Respuesta> respuestas = new ArrayList<>();
         respuestas.add(respuestaJugador1);
         respuestas.add(respuestaJugador2);
 
@@ -652,22 +436,17 @@ public class MultipleChoiceTest {
     }
 
     @Test
-    public void test31ClasicaRecibeUnaListaDeRespuestasDistintasYElQueRespondioBienSumaPuntos(){
-        MultipleChoice pregunta = MultipleChoice.conModoClasico("Paises de América Latina");
-        pregunta.agregarOpcion("Argentina", true);
-        pregunta.agregarOpcion("Japon", false);
-        pregunta.agregarOpcion("Perú", true);
-        pregunta.agregarOpcion("Venezuela", false);
+    public void test24ClasicaRecibeUnaListaDeRespuestasYElQueRespondioBienSumaPuntos(){
+        MultipleChoice pregunta = preguntasMC.get(3);
         Jugador jugador1 = new Jugador("LeoProgramador");
         Jugador jugador2 = new Jugador("Joaco");
         Respuesta respuestaJugador1 = new Respuesta(jugador1, pregunta);
         Respuesta respuestaJugador2 = new Respuesta(jugador2, pregunta);
 
         respuestaJugador1.agregarOpcion(pregunta.obtenerOpcion(0));
-        respuestaJugador1.agregarOpcion(pregunta.obtenerOpcion(2));
-        respuestaJugador2.agregarOpcion(pregunta.obtenerOpcion(0));
-        respuestaJugador2.agregarOpcion(pregunta.obtenerOpcion(1));
-        ArrayList<Respuesta> respuestas = new ArrayList<Respuesta>();
+        respuestaJugador1.agregarOpcion(pregunta.obtenerOpcion(3));
+        respuestaJugador2.agregarOpcion(pregunta.obtenerOpcion(3));
+        ArrayList<Respuesta> respuestas = new ArrayList<>();
         respuestas.add(respuestaJugador1);
         respuestas.add(respuestaJugador2);
 
@@ -677,17 +456,60 @@ public class MultipleChoiceTest {
     }
 
     @Test
-    public void test32SeCreaUnaPreguntaChoiceConPenalidadConSeisOpcionesYLanzaExcepcion() {
+    public void test25JugadorRespondeVariasPreguntas(){
+        Jugador jugador = new Jugador("LeoProgramador");
+
+        MultipleChoice pregunta = preguntasMC.get(0);
+        Respuesta respuesta = new Respuesta(jugador, pregunta);
+        respuesta.agregarOpcion(pregunta.obtenerOpcion(0));
+        respuesta.agregarOpcion(pregunta.obtenerOpcion(1));
+        ArrayList<Respuesta> respuestas = new ArrayList<>();
+        respuestas.add(respuesta);
+        // Respondio dos bien
+        pregunta.evaluarRespuestas(respuestas);
+        assertEquals(2, jugador.puntos());
+
+        pregunta = preguntasMC.get(1);
+        respuesta = new Respuesta(jugador, pregunta);
+        respuesta.agregarOpcion(pregunta.obtenerOpcion(2));
+        respuesta.agregarOpcion(pregunta.obtenerOpcion(1));
+        respuestas = new ArrayList<>();
+        respuestas.add(respuesta);
+        // Respondio una bien y una mal
+        pregunta.evaluarRespuestas(respuestas);
+        assertEquals(2, jugador.puntos());
+
+        pregunta = preguntasMC.get(2);
+        respuesta = new Respuesta(jugador, pregunta);
+        respuesta.agregarOpcion(pregunta.obtenerOpcion(1));
+        respuesta.agregarOpcion(pregunta.obtenerOpcion(3));
+        respuestas = new ArrayList<>();
+        respuestas.add(respuesta);
+        // Respondio una bien y una mal
+        pregunta.evaluarRespuestas(respuestas);
+        assertEquals(2, jugador.puntos());
+
+        pregunta = preguntasMC.get(3);
+        respuesta = new Respuesta(jugador, pregunta);
+        respuesta.agregarOpcion(pregunta.obtenerOpcion(0));
+        respuesta.agregarOpcion(pregunta.obtenerOpcion(3));
+        respuestas = new ArrayList<>();
+        respuestas.add(respuesta);
+        // Respondio correcto
+        pregunta.evaluarRespuestas(respuestas);
+        assertEquals(3, jugador.puntos());
+    }
+
+    @Test
+    public void test26SeCreaUnaPreguntaChoiceConPenalidadConSeisOpcionesYLanzaExcepcion() {
         MultipleChoice pregunta = MultipleChoice.conModoClasico("Paises de América Latina");
-        pregunta.agregarOpcion("Argentina", true);
-        pregunta.agregarOpcion("Japon", false);
-        pregunta.agregarOpcion("Perú", true);
-        pregunta.agregarOpcion("Venezuela", true);
-        pregunta.agregarOpcion("Italia", false);
+        pregunta.nuevaOpcion("Argentina", true);
+        pregunta.nuevaOpcion("Japon", false);
+        pregunta.nuevaOpcion("Perú", true);
+        pregunta.nuevaOpcion("Venezuela", true);
+        pregunta.nuevaOpcion("Italia", false);
 
         assertThrows(ChoiceTieneMaxCincoOpcionesError.class,
-                () -> {
-                    pregunta.agregarOpcion("Francia", false);
-                });
+                () -> pregunta.nuevaOpcion("Francia", false));
     }
 }

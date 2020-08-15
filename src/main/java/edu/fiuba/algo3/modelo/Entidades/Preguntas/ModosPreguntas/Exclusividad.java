@@ -45,4 +45,8 @@ public class Exclusividad extends ModoPregunta {
     public boolean aceptaExclusividad() {
         return modoOriginal.aceptaExclusividad();
     }
+
+    public String nombre(){
+        return modoOriginal.nombre();
+    }
 }

@@ -5,6 +5,7 @@ import edu.fiuba.algo3.modelo.Entidades.Respuestas.Respuesta;
 import java.util.ArrayList;
 
 public abstract class ModoPregunta {
+    protected String nombre;
 
     public void evaluarRespuestas(ArrayList<Respuesta> respuestas, int cantidadOpcionesCorrectaPregunta){
         for (Respuesta respuesta : respuestas) {
@@ -18,4 +19,6 @@ public abstract class ModoPregunta {
     public abstract boolean aceptaMultiplicador();
 
     public abstract boolean aceptaExclusividad();
+
+    public abstract String nombre();
 }

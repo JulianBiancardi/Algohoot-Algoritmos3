@@ -12,7 +12,6 @@ import java.util.ArrayList;
 
 public abstract class Pregunta {
     protected String enunciado;
-    protected ArrayList<Opcion> opcionesPregunta = new ArrayList<>();
     public ModoPregunta modo;
 
     public Pregunta(String unEnunciado, ModoPregunta unModo) {
@@ -27,8 +26,6 @@ public abstract class Pregunta {
         modo.evaluarRespuestas(respuestas, calcularCantidadOpcionesCorrectas());
     }
 
-    public void agregarOpcion(Opcion opcion) { opcionesPregunta.add(opcion); }
-
     public boolean aceptaMultiplicador(){ return modo.aceptaMultiplicador(); }
 
     public void activarExclusividad() {
@@ -39,15 +36,11 @@ public abstract class Pregunta {
 
     public abstract int calcularCantidadOpcionesCorrectas();
 
-    public Opcion obtenerOpcion(int posicion){
-        return opcionesPregunta.get(posicion);
-    }
-
-    public int cantidadOpciones(){
-        return opcionesPregunta.size();
-    }
-
     public String getEnunciado(){
         return enunciado;
     }
+
+    public abstract void crearVista(Stage stage, VistaPrincipal vistaPrincipal);
+
+    public abstract int cantidadOpciones();
 }

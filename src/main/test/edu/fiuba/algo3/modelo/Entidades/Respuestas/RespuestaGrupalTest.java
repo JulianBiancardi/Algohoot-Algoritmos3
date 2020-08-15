@@ -1,7 +1,6 @@
 package edu.fiuba.algo3.modelo.Entidades.Respuestas;
 
 import edu.fiuba.algo3.modelo.Entidades.Jugador;
-import edu.fiuba.algo3.modelo.Entidades.Opciones.OpcionGrupal;
 import edu.fiuba.algo3.modelo.Entidades.Preguntas.GroupChoice;
 import org.junit.jupiter.api.Test;
 
@@ -14,12 +13,12 @@ public class RespuestaGrupalTest {
         String nombreGrupo1 = "Jugadores Argentinos";
         String nombreGrupo2 = "Jugadores Brasileros";
         GroupChoice pregunta = new GroupChoice("Separar en argentinos y brasileros",nombreGrupo1, nombreGrupo2);
-        pregunta.agregarOpcionGrupo1(new OpcionGrupal("Roman"));
-        pregunta.agregarOpcionGrupo2(new OpcionGrupal("Ronaldo"));
-        pregunta.agregarOpcionGrupo1(new OpcionGrupal("Messi"));
-        pregunta.agregarOpcionGrupo2(new OpcionGrupal("Cafu"));
+        pregunta.nuevaOpcionGrupo1("Roman");
+        pregunta.nuevaOpcionGrupo2("Ronaldo");
+        pregunta.nuevaOpcionGrupo1("Messi");
+        pregunta.nuevaOpcionGrupo2("Cafu");
         Jugador jugador = new Jugador("LeoProgramador");
-        RespuestaGrupal respuestaJugador = new RespuestaGrupal(jugador, pregunta, nombreGrupo1, nombreGrupo2);
+        RespuestaGrupal respuestaJugador = new RespuestaGrupal(jugador, pregunta);
 
         respuestaJugador.agregarOpcionGrupo1(pregunta.obtenerOpcion(0));
         respuestaJugador.agregarOpcionGrupo1(pregunta.obtenerOpcion(2));
@@ -34,12 +33,12 @@ public class RespuestaGrupalTest {
         String nombreGrupo1 = "Jugadores Argentinos";
         String nombreGrupo2 = "Jugadores Brasileros";
         GroupChoice pregunta = new GroupChoice("Separar en argentinos y brasileros",nombreGrupo1, nombreGrupo2);
-        pregunta.agregarOpcionGrupo1(new OpcionGrupal("Roman"));
-        pregunta.agregarOpcionGrupo2(new OpcionGrupal("Ronaldo"));
-        pregunta.agregarOpcionGrupo1(new OpcionGrupal("Messi"));
-        pregunta.agregarOpcionGrupo2(new OpcionGrupal("Cafu"));
+        pregunta.nuevaOpcionGrupo1("Roman");
+        pregunta.nuevaOpcionGrupo2("Ronaldo");
+        pregunta.nuevaOpcionGrupo1("Messi");
+        pregunta.nuevaOpcionGrupo2("Cafu");
         Jugador jugador = new Jugador("LeoProgramador");
-        RespuestaGrupal respuestaJugador = new RespuestaGrupal(jugador, pregunta, nombreGrupo1, nombreGrupo2);
+        RespuestaGrupal respuestaJugador = new RespuestaGrupal(jugador, pregunta);
 
         respuestaJugador.agregarOpcionGrupo1(pregunta.obtenerOpcion(0));
         respuestaJugador.agregarOpcionGrupo2(pregunta.obtenerOpcion(2));
@@ -54,12 +53,12 @@ public class RespuestaGrupalTest {
         String nombreGrupo1 = "Jugadores Argentinos";
         String nombreGrupo2 = "Jugadores Brasileros";
         GroupChoice pregunta = new GroupChoice("Separar en argentinos y brasileros",nombreGrupo1, nombreGrupo2);
-        pregunta.agregarOpcionGrupo1(new OpcionGrupal("Roman"));
-        pregunta.agregarOpcionGrupo2(new OpcionGrupal("Ronaldo"));
-        pregunta.agregarOpcionGrupo1(new OpcionGrupal("Messi"));
-        pregunta.agregarOpcionGrupo2(new OpcionGrupal("Cafu"));
+        pregunta.nuevaOpcionGrupo1("Roman");
+        pregunta.nuevaOpcionGrupo2("Ronaldo");
+        pregunta.nuevaOpcionGrupo1("Messi");
+        pregunta.nuevaOpcionGrupo2("Cafu");
         Jugador jugador = new Jugador("LeoProgramador");
-        RespuestaGrupal respuestaJugador = new RespuestaGrupal(jugador, pregunta, nombreGrupo1, nombreGrupo2);
+        RespuestaGrupal respuestaJugador = new RespuestaGrupal(jugador, pregunta);
 
         respuestaJugador.agregarOpcionGrupo1(pregunta.obtenerOpcion(0));
         respuestaJugador.agregarOpcionGrupo2(pregunta.obtenerOpcion(2));
@@ -74,12 +73,12 @@ public class RespuestaGrupalTest {
         String nombreGrupo1 = "Jugadores Argentinos";
         String nombreGrupo2 = "Jugadores Brasileros";
         GroupChoice pregunta = new GroupChoice("Separar en argentinos y brasileros",nombreGrupo1, nombreGrupo2);
-        pregunta.agregarOpcionGrupo1(new OpcionGrupal("Roman"));
-        pregunta.agregarOpcionGrupo2(new OpcionGrupal("Ronaldo"));
-        pregunta.agregarOpcionGrupo1(new OpcionGrupal("Messi"));
-        pregunta.agregarOpcionGrupo2(new OpcionGrupal("Cafu"));
+        pregunta.nuevaOpcionGrupo1("Roman");
+        pregunta.nuevaOpcionGrupo2("Ronaldo");
+        pregunta.nuevaOpcionGrupo1("Messi");
+        pregunta.nuevaOpcionGrupo2("Cafu");
         Jugador jugador = new Jugador("LeoProgramador");
-        RespuestaGrupal respuestaJugador = new RespuestaGrupal(jugador, pregunta, nombreGrupo1, nombreGrupo2);
+        RespuestaGrupal respuestaJugador = new RespuestaGrupal(jugador, pregunta);
 
         respuestaJugador.agregarOpcionGrupo1(pregunta.obtenerOpcion(0));
         respuestaJugador.agregarOpcionGrupo2(pregunta.obtenerOpcion(2));
@@ -94,12 +93,12 @@ public class RespuestaGrupalTest {
         String nombreGrupo1 = "Jugadores Argentinos";
         String nombreGrupo2 = "Jugadores Brasileros";
         GroupChoice pregunta = new GroupChoice("Separar en argentinos y brasileros",nombreGrupo1, nombreGrupo2);
-        pregunta.agregarOpcionGrupo1(new OpcionGrupal("Roman"));
-        pregunta.agregarOpcionGrupo2(new OpcionGrupal("Ronaldo"));
-        pregunta.agregarOpcionGrupo1(new OpcionGrupal("Messi"));
-        pregunta.agregarOpcionGrupo2(new OpcionGrupal("Cafu"));
+        pregunta.nuevaOpcionGrupo1("Roman");
+        pregunta.nuevaOpcionGrupo2("Ronaldo");
+        pregunta.nuevaOpcionGrupo1("Messi");
+        pregunta.nuevaOpcionGrupo2("Cafu");
         Jugador jugador = new Jugador("LeoProgramador");
-        RespuestaGrupal respuestaJugador = new RespuestaGrupal(jugador, pregunta, nombreGrupo1, nombreGrupo2);
+        RespuestaGrupal respuestaJugador = new RespuestaGrupal(jugador, pregunta);
 
         respuestaJugador.agregarOpcionGrupo2(pregunta.obtenerOpcion(0));
         respuestaJugador.agregarOpcionGrupo2(pregunta.obtenerOpcion(2));

@@ -1,14 +1,15 @@
 package edu.fiuba.algo3.modelo.Entidades.Opciones;
 
-import edu.fiuba.algo3.modelo.Entidades.Opciones.Opcion;
+import com.google.gson.JsonObject;
 
 public class OpcionGrupal implements Opcion {
-    private String descripcion;
-    private String grupoEsperado;
+    private final String descripcion;
+    private final String grupoEsperado;
     private String grupoActual;
 
-    public OpcionGrupal(String unaDescripcion){
+    public OpcionGrupal(String unaDescripcion, String nombreGrupo){
         descripcion = unaDescripcion;
+        grupoEsperado = nombreGrupo;
     }
 
     public boolean esCorrecta(){ return grupoActual.equals(grupoEsperado); }
@@ -18,9 +19,15 @@ public class OpcionGrupal implements Opcion {
         return descripcion;
     }
 
-    public void setGrupoEsperado(String nombre){ grupoEsperado = nombre; }
-
     public void setGrupoActual(String nombre){
         grupoActual = nombre;
+    }
+
+    public static OpcionGrupal recuperar(JsonObject jsonObjectOpcion, String grupo) {
+        String enunciado = jsonObjectOpcion.get("Descripcion").getAsString();
+
+        OpcionGrupal opcion = new OpcionGrupal(enunciado, grupo);
+
+        return opcion;
     }
 }

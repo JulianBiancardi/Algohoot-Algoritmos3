@@ -1,0 +1,43 @@
+{
+    "GroupChoice": [
+        {
+            "Enunciado": "Separar",
+            "Grupo 1": "El mejor del mundo",
+            "Grupo 2": "El resto",
+            "Opciones Grupo 1": [
+                {
+                    "Descripcion": "Julian (Lo dice él, preguntale sino)"
+                }
+            ],
+            "Opciones Grupo 2": [
+                {
+                    "Descripcion": "Literalmente todos los demás"
+                }
+            ]
+        },
+        {
+            "Enunciado": "Separar en Numeros primos y no primos",
+            "Grupo 1": "Numeros Primos",
+            "Grupo 2": "Numeros No Primos",
+            "Opciones Grupo 1": [
+                {
+                    "Descripcion": "269"
+                },
+                {
+                    "Descripcion": "227"
+                },
+                {
+                    "Descripcion": "109"
+                }
+            ],
+            "Opciones Grupo 2": [
+                {
+                    "Descripcion": "153"
+                },
+                {
+                    "Descripcion": "284"
+                }
+            ]
+        }
+    ]
+}

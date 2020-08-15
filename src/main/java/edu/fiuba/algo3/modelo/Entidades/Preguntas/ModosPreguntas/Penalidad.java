@@ -4,6 +4,7 @@ import edu.fiuba.algo3.modelo.Entidades.Respuestas.Respuesta;
 
 public class Penalidad extends ModoPregunta  {
     static final int PUNTAJE = 1;
+    static final String nombre = "Penalidad";
 
     @Override
     public int calcularPuntos(Respuesta respuesta, int cantidadOpcionesCorrectaPregunta){
@@ -20,4 +21,8 @@ public class Penalidad extends ModoPregunta  {
 
     @Override
     public boolean aceptaExclusividad(){ return false; }
+
+    public String nombre(){
+        return nombre;
+    }
 }

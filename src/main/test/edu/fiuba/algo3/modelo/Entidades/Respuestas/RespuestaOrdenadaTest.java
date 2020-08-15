@@ -11,10 +11,10 @@ public class RespuestaOrdenadaTest {
     @Test
     public void test01CreoUnaRespuestaOrdenadaConCincoOpcionesYNoAciertaNinguna() {
         OrderedChoice pregunta = new OrderedChoice("Ordenar por edad de mayor a menor");
-        pregunta.agregarOpcion("Cafu");
-        pregunta.agregarOpcion("Ronaldo");
-        pregunta.agregarOpcion("Roman");
-        pregunta.agregarOpcion("Messi");
+        pregunta.nuevaOpcion("Cafu");
+        pregunta.nuevaOpcion("Ronaldo");
+        pregunta.nuevaOpcion("Roman");
+        pregunta.nuevaOpcion("Messi");
         Jugador jugador = new Jugador("LeoProgramador");
         RespuestaOrdenada respuestaJugador = new RespuestaOrdenada(jugador, pregunta);
 
@@ -29,10 +29,10 @@ public class RespuestaOrdenadaTest {
     @Test
     public void test02CreoUnaRespuestaOrdenadaConCincoOpcionesYAciertaUna() {
         OrderedChoice pregunta = new OrderedChoice("Ordenar por edad de mayor a menor");
-        pregunta.agregarOpcion("Cafu");
-        pregunta.agregarOpcion("Ronaldo");
-        pregunta.agregarOpcion("Roman");
-        pregunta.agregarOpcion("Messi");
+        pregunta.nuevaOpcion("Cafu");
+        pregunta.nuevaOpcion("Ronaldo");
+        pregunta.nuevaOpcion("Roman");
+        pregunta.nuevaOpcion("Messi");
         Jugador jugador = new Jugador("LeoProgramador");
         RespuestaOrdenada respuestaJugador = new RespuestaOrdenada(jugador, pregunta);
 
@@ -47,10 +47,10 @@ public class RespuestaOrdenadaTest {
     @Test
     public void test03CreoUnaRespuestaOrdenadaConCincoOpcionesYAciertaDos() {
         OrderedChoice pregunta = new OrderedChoice("Ordenar por edad de mayor a menor");
-        pregunta.agregarOpcion("Cafu");
-        pregunta.agregarOpcion("Ronaldo");
-        pregunta.agregarOpcion("Roman");
-        pregunta.agregarOpcion("Messi");
+        pregunta.nuevaOpcion("Cafu");
+        pregunta.nuevaOpcion("Ronaldo");
+        pregunta.nuevaOpcion("Roman");
+        pregunta.nuevaOpcion("Messi");
         Jugador jugador = new Jugador("LeoProgramador");
         RespuestaOrdenada respuestaJugador = new RespuestaOrdenada(jugador, pregunta);
 
@@ -65,10 +65,10 @@ public class RespuestaOrdenadaTest {
     @Test
     public void test04CreoUnaRespuestaOrdenadaConCincoOpcionesYAciertaTodas() {
         OrderedChoice pregunta = new OrderedChoice("Ordenar por edad de mayor a menor");
-        pregunta.agregarOpcion("Cafu");
-        pregunta.agregarOpcion("Ronaldo");
-        pregunta.agregarOpcion("Roman");
-        pregunta.agregarOpcion("Messi");
+        pregunta.nuevaOpcion("Cafu");
+        pregunta.nuevaOpcion("Ronaldo");
+        pregunta.nuevaOpcion("Roman");
+        pregunta.nuevaOpcion("Messi");
         Jugador jugador = new Jugador("LeoProgramador");
         RespuestaOrdenada respuestaJugador = new RespuestaOrdenada(jugador, pregunta);
 
