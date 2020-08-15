@@ -6,10 +6,12 @@ import edu.fiuba.algo3.modelo.Entidades.Juego;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.stage.Stage;
+
+
 
 public class VistaCargaJugadores extends StackPane{
 
@@ -17,10 +19,11 @@ public class VistaCargaJugadores extends StackPane{
 
     public VistaCargaJugadores(Stage stagePrincipal, Juego juego){
         this.juego = juego;
-
         this.setPrefSize(600, 600);
 
-        ImageView logoView = new ImageView("File:src\\main\\java\\edu\\fiuba\\algo3\\vista\\imagenes\\KahootLogo.png");
+        Image botonImagen = new Image("File:src\\resources\\imagenes\\IMG_BotonGeneral.png",true);
+
+        ImageView logoView = new ImageView("File:src\\resources\\imagenes\\KahootLogo.png");
         logoView.setFitHeight(100);
         logoView.setFitWidth(200);
 
@@ -35,20 +38,27 @@ public class VistaCargaJugadores extends StackPane{
         NombreJugador2.setAlignment(Pos.CENTER);
 
         Button botonEntrar = new Button("Entrar");
-        botonEntrar.setMaxWidth(Double.MAX_VALUE);
         botonEntrar.setOnAction(new ControladorJugar(stagePrincipal,NombreJugador,NombreJugador2,juego));
 
         Button botonSalir = new Button("Salir");
-        botonSalir.setMaxWidth(Double.MAX_VALUE);
         botonSalir.setOnAction(new ControladorSalir());
 
         VBox opcionesMenu = new VBox(5,logoView,NombreJugador,NombreJugador2,botonEntrar,botonSalir);
-        opcionesMenu.setMaxSize(20,20);
-        opcionesMenu.setAlignment(Pos.TOP_CENTER);
+        opcionesMenu.setMaxSize(200,200);
+        opcionesMenu.setAlignment(Pos.CENTER);
+        botonEntrar.prefWidthProperty().bind(opcionesMenu.widthProperty());
+        botonSalir.prefWidthProperty().bind(opcionesMenu.widthProperty());
 
-        ImageView fondoView = new ImageView("File:src\\main\\java\\edu\\fiuba\\algo3\\vista\\imagenes\\BackGround.png");
+        Image fondoImagen = new Image("File:src\\resources\\imagenes\\BackGround.png");
+        this.setBackground(new Background(new BackgroundImage(
+                fondoImagen,
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundPosition.CENTER,
+                new BackgroundSize(100,100,true,true,true,true)
+        )));
 
-        this.getChildren().addAll(fondoView,opcionesMenu);
+        this.getChildren().addAll(opcionesMenu);
     }
 
     public void mostarErrorNombre(){

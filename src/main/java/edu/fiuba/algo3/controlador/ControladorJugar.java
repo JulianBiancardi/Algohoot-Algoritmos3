@@ -3,8 +3,11 @@ package edu.fiuba.algo3.controlador;
 import edu.fiuba.algo3.modelo.Entidades.Juego;
 import edu.fiuba.algo3.modelo.Entidades.Jugador;
 import edu.fiuba.algo3.modelo.Excepciones.NombreVacioError;
+import edu.fiuba.algo3.vista.FabricaVistaPreguntas;
+import edu.fiuba.algo3.vista.VistaPrincipal;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -25,7 +28,7 @@ public class ControladorJugar implements EventHandler<ActionEvent> {
     public void handle(ActionEvent actionEvent) throws NombreVacioError{
 
         try{
-            if(nombreJugador.getText().trim().isEmpty() || nombreJugador.getText().trim() == null)
+            if(nombreJugador.getText().trim().isEmpty() || nombreJugador2.getText().trim().isEmpty())
                 throw new NombreVacioError("El nombre no es correcto");
 
             Jugador jugador = new Jugador(nombreJugador.getText());
@@ -34,8 +37,10 @@ public class ControladorJugar implements EventHandler<ActionEvent> {
             jugador = new Jugador(nombreJugador2.getText());
             juego.agregarJugador(jugador);
 
-
-            juego.crearVistaRonda(stage);
+            VistaPrincipal vistaPregunta = new VistaPrincipal(juego);
+            FabricaVistaPreguntas.crearVista(juego.obtenerRondaActual().obtenerPregunta(),vistaPregunta,stage);
+            Scene nuevaPregunta = new Scene(vistaPregunta);
+            stage.setScene(nuevaPregunta);
 
         }catch (NombreVacioError error){
 

@@ -6,8 +6,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import edu.fiuba.algo3.modelo.Entidades.Opciones.OpcionGrupal;
 import edu.fiuba.algo3.modelo.Entidades.Preguntas.ModosPreguntas.Clasico;
-import edu.fiuba.algo3.vista.VistaPrincipal;
-import javafx.stage.Stage;
+
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -86,9 +85,5 @@ public class GroupChoice extends Pregunta{
         JsonObject jsonObject = JsonParser.parseString(texto).getAsJsonObject();
 
         return recuperar(jsonObject);
-    }
-
-    public void crearVista(Stage stage, VistaPrincipal vistaPrincipal){
-        //vistaPrincipal.crearVistaMultipleChoice(stage,this);
     }
 }

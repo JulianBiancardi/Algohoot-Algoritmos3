@@ -4,7 +4,7 @@ import edu.fiuba.algo3.controlador.ControladorEnviar;
 import edu.fiuba.algo3.modelo.Entidades.Juego;
 import edu.fiuba.algo3.modelo.Entidades.Opciones.Opcion;
 import edu.fiuba.algo3.modelo.Entidades.Preguntas.MultipleChoice;
-import edu.fiuba.algo3.vista.Opciones.VistaOpcion;
+import edu.fiuba.algo3.vista.Opciones.VistaOpcionBinaria;
 import edu.fiuba.algo3.vista.Opciones.VistaOpcionData;
 import edu.fiuba.algo3.vista.Opciones.VistaPregunta;
 import javafx.geometry.Pos;
@@ -18,12 +18,15 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class VistaMultipleChoice extends VBox implements VistaPregunta {
     Button botonEnviar = new Button();
     GridPane opcionesPregunta = new GridPane();
     HashMap<Integer, VistaOpcionData> opcionesInfo = new HashMap<Integer,VistaOpcionData>();
+
+    ArrayList<Opcion> opcionesElegidas = new ArrayList<>();
 
     public VistaMultipleChoice(Stage stage, MultipleChoice pregunta, Juego juego){
 
@@ -51,7 +54,7 @@ public class VistaMultipleChoice extends VBox implements VistaPregunta {
         label.setTextFill(Color.WHITE);
         botonEnviar.setGraphic(label);
 
-        ControladorEnviar enviarRespuesta = new ControladorEnviar(stage,juego);
+        ControladorEnviar enviarRespuesta = new ControladorEnviar(stage,juego,opcionesElegidas);
         botonEnviar.setOnAction(enviarRespuesta);
     }
 
@@ -67,7 +70,7 @@ public class VistaMultipleChoice extends VBox implements VistaPregunta {
         for(int i = 0; (i < pregunta.cantidadOpciones()); i++){
             Opcion opcionActual = pregunta.obtenerOpcion(i);
             VistaOpcionData dataActual = opcionesInfo.get(i);
-            VistaOpcion vistaActual = new VistaOpcion(opcionActual,dataActual.getColor());
+            VistaOpcionBinaria vistaActual = new VistaOpcionBinaria(opcionActual,dataActual.getColor(),opcionesElegidas);
 
             opcionesPregunta.add(vistaActual,dataActual.getColumna(),dataActual.getFila());
             vistaActual.prefWidthProperty().bind(opcionesPregunta.widthProperty());

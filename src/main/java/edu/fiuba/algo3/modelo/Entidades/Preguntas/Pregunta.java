@@ -6,8 +6,7 @@ import edu.fiuba.algo3.modelo.Entidades.Opciones.Opcion;
 import edu.fiuba.algo3.modelo.Entidades.Preguntas.ModosPreguntas.Exclusividad;
 import edu.fiuba.algo3.modelo.Entidades.Preguntas.ModosPreguntas.ModoPregunta;
 import edu.fiuba.algo3.modelo.Entidades.Respuestas.Respuesta;
-import edu.fiuba.algo3.vista.VistaPrincipal;
-import javafx.stage.Stage;
+
 
 import java.util.ArrayList;
 

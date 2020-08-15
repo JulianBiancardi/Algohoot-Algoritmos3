@@ -8,6 +8,6 @@ public class ControladorSalir implements EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent actionEvent) {
-        Platform.exit();
+        System.exit(0);
     }
 }

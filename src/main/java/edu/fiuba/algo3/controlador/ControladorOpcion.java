@@ -3,6 +3,8 @@ package edu.fiuba.algo3.controlador;
 import edu.fiuba.algo3.modelo.Entidades.Opciones.Opcion;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.control.Button;
+import javafx.scene.control.ToggleButton;
 
 public class ControladorOpcion implements EventHandler<ActionEvent> {
 

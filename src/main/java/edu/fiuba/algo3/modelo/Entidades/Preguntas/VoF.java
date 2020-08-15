@@ -5,8 +5,7 @@ import edu.fiuba.algo3.modelo.Entidades.Opciones.OpcionBinaria;
 import edu.fiuba.algo3.modelo.Entidades.Preguntas.ModosPreguntas.Clasico;
 import edu.fiuba.algo3.modelo.Entidades.Preguntas.ModosPreguntas.Penalidad;
 import edu.fiuba.algo3.modelo.Entidades.Preguntas.ModosPreguntas.ModoPregunta;
-import edu.fiuba.algo3.vista.VistaPrincipal;
-import javafx.stage.Stage;
+
 
 import com.google.gson.*;
 import com.google.gson.stream.JsonReader;
@@ -19,13 +18,11 @@ import java.util.ArrayList;
 
 public class VoF extends Pregunta {
     private final ArrayList<OpcionBinaria> opcionesPregunta = new ArrayList<>();
-    boolean valor;
 
     private VoF(String unEnunciado, ModoPregunta unModo, boolean esCorrecta)  {
         super(unEnunciado, unModo);
-        valor = esCorrecta;
-        opcionesPregunta.add(new OpcionBinaria("Verdaero", esCorrecta));
-        opcionesPregunta.add(new OpcionBinaria("Falso", !esCorrecta));
+        agregarOpcion(new OpcionBinaria("Verdadero", esCorrecta));
+        agregarOpcion(new OpcionBinaria("Falso", !esCorrecta));
     }
 
     public static VoF conModoClasico(String unEnunciado, boolean esCorrecta){
