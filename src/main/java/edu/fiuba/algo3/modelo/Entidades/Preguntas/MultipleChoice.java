@@ -6,8 +6,7 @@ import edu.fiuba.algo3.modelo.Entidades.Preguntas.ModosPreguntas.Clasico;
 import edu.fiuba.algo3.modelo.Entidades.Preguntas.ModosPreguntas.ModoPregunta;
 import edu.fiuba.algo3.modelo.Entidades.Preguntas.ModosPreguntas.Penalidad;
 import edu.fiuba.algo3.modelo.Entidades.Preguntas.ModosPreguntas.PuntajeParcial;
-import edu.fiuba.algo3.vista.VistaPrincipal;
-import javafx.stage.Stage;
+
 
 public class MultipleChoice extends Pregunta {
 
@@ -31,8 +30,4 @@ public class MultipleChoice extends Pregunta {
     public OpcionBinaria obtenerOpcion(int posicion){ return (OpcionBinaria) super.obtenerOpcion(posicion); }
 
     public int calcularCantidadOpcionesCorrectas(){ return (int) opcionesPregunta.stream().filter(Opcion::esCorrecta).count(); }
-
-    public void crearVista(Stage stage, VistaPrincipal vistaPrincipal){
-        vistaPrincipal.crearVistaMultipleChoice(stage,this);
-    }
 }

@@ -2,8 +2,7 @@ package edu.fiuba.algo3.modelo.Entidades.Preguntas;
 
 import edu.fiuba.algo3.modelo.Entidades.Opciones.OpcionGrupal;
 import edu.fiuba.algo3.modelo.Entidades.Preguntas.ModosPreguntas.Clasico;
-import edu.fiuba.algo3.vista.VistaPrincipal;
-import javafx.stage.Stage;
+
 
 public class GroupChoice extends Pregunta{
     private final String nombreGrupo1;
@@ -34,9 +33,5 @@ public class GroupChoice extends Pregunta{
 
     public OpcionGrupal obtenerOpcion(int posicion){
         return (OpcionGrupal) super.obtenerOpcion(posicion);
-    }
-
-    public void crearVista(Stage stage, VistaPrincipal vistaPrincipal){
-        //vistaPrincipal.crearVistaMultipleChoice(stage,this);
     }
 }

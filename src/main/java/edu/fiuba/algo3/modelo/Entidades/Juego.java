@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo.Entidades;
 
 import edu.fiuba.algo3.modelo.Entidades.Preguntas.MultipleChoice;
+import edu.fiuba.algo3.modelo.Entidades.Preguntas.OrderedChoice;
 import edu.fiuba.algo3.modelo.Entidades.Preguntas.Pregunta;
 import edu.fiuba.algo3.modelo.Entidades.Preguntas.VoF;
 import edu.fiuba.algo3.vista.VistaPrincipal;
@@ -10,12 +11,15 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class Juego {
 
     private ArrayList<Jugador> jugadores = new ArrayList<>();
     private ArrayList<Ronda> rondas = new ArrayList<>();
     private SistemaTurnos sistemaTurnos = new SistemaTurnos();
+    //private Iterator<Ronda> iteradorRonda;
+    private int iteradorRonda;
 
     public Juego (){
 
@@ -29,6 +33,20 @@ public class Juego {
 
         VoF vof = VoF.conModoClasico("La guitarra tiene 6 cuerdas",true);
         agregarRonda(vof);
+
+        vof = VoF.conModoClasico("Vamos a aprobar?",false);
+        agregarRonda(vof);
+/*
+        OrderedChoice ordered = new OrderedChoice("Cual fue la mejor frase del Pache?");
+        ordered.agregarOpcion("Aplicar Beneficio");
+        ordered.agregarOpcion("Correctamente Estricta");
+        ordered.agregarOpcion("Messi");
+        ordered.agregarOpcion("Exclusividad esta Potente");
+        ordered.agregarOpcion("Me voy a tomar algo..");
+        agregarRonda(ordered);
+*/
+        iteradorRonda = 0 ;
+
     }
 
     public void agregarJugador(Jugador jugador){
@@ -42,64 +60,36 @@ public class Juego {
 
     public void agregarRonda(Pregunta pregunta) {
         rondas.add(new Ronda(pregunta));
+        //iteradorRonda = rondas.iterator();
     }
 
     public int cantidadRondas(){
         return rondas.size();
     }
 
-    public Ronda obtenerRonda (){
-        Ronda ronda = rondas.get(rondas.size() - 1);
-        return ronda;
+    public void siguienteRonda(){
+
+        //rondaActual = iteradorRonda.next();
+        iteradorRonda++;
     }
 
-    public void eliminarRonda(){
-        rondas.remove(rondas.size() - 1);
+    public boolean hayRondaSiguiente(){
+        return (iteradorRonda != rondas.size()-1);
     }
 
-    public boolean hayRondasDisponibles(){
-        return (rondas.size() != 0);
+    public boolean terminoRonda(){
+        return (sistemaTurnos.terminoRonda());
     }
 
-    public void siguienteTurno(Stage stage){
+    public void siguienteTurno(){
         sistemaTurnos.siguienteTurno();
-        if(sistemaTurnos.terminoRonda())
-            siguienteRonda(stage);
-        else{
-            crearVistaRonda(stage);
-        }
-    }
-
-    public void crearVistaRonda(Stage stage){
-        VistaPrincipal vistaPregunta = new VistaPrincipal(this);
-        obtenerRonda().mostrarRonda(stage,vistaPregunta);
-        Scene nuevaPregunta = new Scene(vistaPregunta);
-        stage.setScene(nuevaPregunta);
-    }
-
-    public void siguienteRonda(Stage stage){
-        eliminarRonda();
-        if(hayRondasDisponibles()){
-            crearVistaRonda(stage);
-        }
-        else{
-            Scene scenePuntos = new Scene(new VistaPuntos(jugadores),600,600);
-            stage.setScene(scenePuntos);
-        }
     }
 
     public Jugador turnoDe(){
         return sistemaTurnos.obtenerTurno();
     }
 
-    //No contemplo caso empate
-    public Jugador obtenerGanador(){
-        Jugador jugadorAux = jugadores.get(0);
-        for (Jugador jugador : jugadores) {
-            if(jugador.puntos() > jugadorAux.puntos())
-                jugadorAux = jugador;
-        }
-        return jugadorAux;
+    public Ronda obtenerRondaActual() {
+        return rondas.get(iteradorRonda);
     }
-
 }

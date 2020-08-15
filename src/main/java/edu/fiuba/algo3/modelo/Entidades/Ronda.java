@@ -13,9 +13,4 @@ public class Ronda {
     public Pregunta obtenerPregunta (){
         return pregunta;
     }
-
-    public void mostrarRonda(Stage stage,VistaPrincipal vistaPrincipal){
-        pregunta.crearVista(stage,vistaPrincipal);
-    }
-
 }
