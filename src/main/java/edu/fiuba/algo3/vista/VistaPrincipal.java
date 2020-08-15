@@ -20,7 +20,6 @@ import javafx.util.Duration;
 
 
 public class VistaPrincipal extends BorderPane{
-    private StackPane stackPane1 = new StackPane();
     private HBox hBox = new HBox();
     private VistaPregunta vistaOpciones;
 
@@ -48,7 +47,8 @@ public class VistaPrincipal extends BorderPane{
     }
 
     public void crearVistaVoF(Stage stage, VoF pregunta){
-        mostrarPregunta(stackPane1,pregunta.getEnunciado());
+        mostrarPregunta(pregunta.getEnunciado());
+
         mostrarContador(hBox);
 
         vistaOpciones = new VistaVoF(stage,pregunta,juego);
@@ -59,7 +59,7 @@ public class VistaPrincipal extends BorderPane{
     }
 
     public void crearVistaMultipleChoice(Stage stage, MultipleChoice pregunta) {
-        mostrarPregunta(stackPane1,pregunta.getEnunciado());
+        mostrarPregunta(pregunta.getEnunciado());
         mostrarContador(hBox);
 
         vistaOpciones = new VistaMultipleChoice(stage,pregunta,juego);
@@ -69,17 +69,28 @@ public class VistaPrincipal extends BorderPane{
         this.setBottom(vistaOpciones.getLayout());
     }
 
-    private void mostrarPregunta(StackPane stackPane,String enunciado) {
-        ImageView fondoPregunta = new ImageView("File:src\\main\\java\\edu\\fiuba\\algo3\\vista\\imagenes\\fondoPregunta.png");
-        fondoPregunta.fitWidthProperty().bind(stackPane.widthProperty());
-        stackPane.setPrefHeight(150);
+    private void mostrarPregunta(String enunciado) {
+        StackPane stackPane = new StackPane();
+
+        ImageView fondoPregunta = new ImageView("File:src\\resources\\imagenes\\fondoPregunta.png");
+        fondoPregunta.fitWidthProperty().bind(this.widthProperty());
 
         Label enunciadoPregunta = new Label(enunciado);
         enunciadoPregunta.setFont(Font.font("Core Mellow", FontWeight.BOLD,55));
-        enunciadoPregunta.setWrapText(true);
 
         stackPane.getChildren().addAll(fondoPregunta,enunciadoPregunta);
-        this.setTop(stackPane);
+
+        Label jugadorResponde = new Label(juego.turnoDe().nombre());
+        jugadorResponde.setAlignment(Pos.CENTER);
+        jugadorResponde.setFont(Font.font("Core Mellow", FontWeight.BOLD,30));
+        jugadorResponde.setTextFill(Color.WHITE);
+        jugadorResponde.setStyle("-fx-background-color: #575757");
+        jugadorResponde.setPrefSize(300,50);
+
+        VBox vBox = new VBox(stackPane,jugadorResponde);
+        vBox.setAlignment(Pos.CENTER);
+
+        this.setTop(vBox);
     }
 
     private void mostrarContador(HBox hBox){
@@ -93,19 +104,6 @@ public class VistaPrincipal extends BorderPane{
         tiempo.setCycleCount(Timeline.INDEFINITE);
         tiempo.play();
 
-        Label nombreJugador1 = new Label(juego.turnoDe().nombre());
-        nombreJugador1.setFont(Font.font("Core Mellow", FontWeight.BOLD,30));
-
-        Label nombreJugador2 = new Label(juego.turnoDe().nombre());
-        nombreJugador2.setText("Prueba");
-        nombreJugador2.setTextFill(Color.GRAY);
-        nombreJugador2.setFont(Font.font("Core Mellow", FontWeight.BOLD,30));
-
-
-        hBox.getChildren().addAll(nombreJugador1,stackPane,nombreJugador2);
-        hBox.setAlignment(Pos.CENTER);
-        hBox.setSpacing(100);
-        hBox.maxWidthProperty().bind(this.widthProperty());
-        this.setCenter(hBox);
+        this.setCenter(stackPane);
     }
 }

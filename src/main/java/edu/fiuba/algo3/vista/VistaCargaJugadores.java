@@ -12,16 +12,18 @@ import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
 
+
 public class VistaCargaJugadores extends StackPane{
 
     private Juego juego;
 
     public VistaCargaJugadores(Stage stagePrincipal, Juego juego){
         this.juego = juego;
-
         this.setPrefSize(600, 600);
 
-        ImageView logoView = new ImageView("File:src\\main\\java\\edu\\fiuba\\algo3\\vista\\imagenes\\KahootLogo.png");
+        Image botonImagen = new Image("File:src\\resources\\imagenes\\IMG_BotonGeneral.png",true);
+
+        ImageView logoView = new ImageView("File:src\\resources\\imagenes\\KahootLogo.png");
         logoView.setFitHeight(100);
         logoView.setFitWidth(200);
 
@@ -47,7 +49,7 @@ public class VistaCargaJugadores extends StackPane{
         botonEntrar.prefWidthProperty().bind(opcionesMenu.widthProperty());
         botonSalir.prefWidthProperty().bind(opcionesMenu.widthProperty());
 
-        Image fondoImagen = new Image("File:src\\main\\java\\edu\\fiuba\\algo3\\vista\\imagenes\\BackGround.png");
+        Image fondoImagen = new Image("File:src\\resources\\imagenes\\BackGround.png");
         this.setBackground(new Background(new BackgroundImage(
                 fondoImagen,
                 BackgroundRepeat.NO_REPEAT,
