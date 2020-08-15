@@ -7,6 +7,7 @@ import edu.fiuba.algo3.modelo.Entidades.Preguntas.MultipleChoice;
 import edu.fiuba.algo3.vista.Opciones.VistaOpcionBinaria;
 import edu.fiuba.algo3.vista.Opciones.VistaOpcionData;
 import edu.fiuba.algo3.vista.Opciones.VistaPregunta;
+import javafx.animation.Timeline;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -28,7 +29,7 @@ public class VistaMultipleChoice extends VBox implements VistaPregunta {
 
     ArrayList<Opcion> opcionesElegidas = new ArrayList<>();
 
-    public VistaMultipleChoice(Stage stage, MultipleChoice pregunta, Juego juego){
+    public VistaMultipleChoice(Stage stage, MultipleChoice pregunta, Juego juego, Timeline tiempo){
 
         opcionesInfo.put(0,new VistaOpcionData(0,0, Color.valueOf("#e21b3c")));
         opcionesInfo.put(1,new VistaOpcionData(0,1, Color.valueOf("#1368ce")));
@@ -36,7 +37,7 @@ public class VistaMultipleChoice extends VBox implements VistaPregunta {
         opcionesInfo.put(3,new VistaOpcionData(1,1, Color.valueOf("#26890c")));
         opcionesInfo.put(4,new VistaOpcionData(2,0, Color.valueOf("#864cbf")));
 
-        inicializarBotonEnviar(stage,juego);
+        inicializarBotonEnviar(stage,juego,tiempo);
         inicializarOpciones(pregunta);
 
         this.getChildren().addAll(botonEnviar,opcionesPregunta);
@@ -45,7 +46,7 @@ public class VistaMultipleChoice extends VBox implements VistaPregunta {
         opcionesPregunta.maxWidthProperty().bind(this.widthProperty());
     }
 
-    private void inicializarBotonEnviar(Stage stage, Juego juego){
+    private void inicializarBotonEnviar(Stage stage, Juego juego, Timeline tiempo){
         botonEnviar.setPrefSize(150,80);
         botonEnviar.setStyle("-fx-background-color: #26890c");
 
@@ -54,7 +55,7 @@ public class VistaMultipleChoice extends VBox implements VistaPregunta {
         label.setTextFill(Color.WHITE);
         botonEnviar.setGraphic(label);
 
-        ControladorEnviar enviarRespuesta = new ControladorEnviar(stage,juego,opcionesElegidas);
+        ControladorEnviar enviarRespuesta = new ControladorEnviar(stage,juego,opcionesElegidas,tiempo);
         botonEnviar.setOnAction(enviarRespuesta);
     }
 

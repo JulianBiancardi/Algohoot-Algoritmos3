@@ -24,7 +24,7 @@ public class VistaPrincipal extends BorderPane{
     private HBox hBox = new HBox();
     private VistaPregunta vistaOpciones;
 
-    private final Integer startTime = 100;
+    private final Integer startTime = 10;
     private Integer secondsPassed = startTime;
     private Timeline tiempo;
     Label contador = new Label(String.valueOf(startTime));
@@ -52,7 +52,7 @@ public class VistaPrincipal extends BorderPane{
 
         mostrarContador(hBox);
 
-        vistaOpciones = new VistaVoF(stage,pregunta,juego);
+        vistaOpciones = new VistaVoF(stage,pregunta,juego,tiempo);
         vistaOpciones.getLayout().maxWidthProperty().bind(this.widthProperty());
         vistaOpciones.getLayout().setPadding(new Insets(10,10,10,10));
 
@@ -63,7 +63,7 @@ public class VistaPrincipal extends BorderPane{
         mostrarPregunta(pregunta.getEnunciado());
         mostrarContador(hBox);
 
-        vistaOpciones = new VistaMultipleChoice(stage,pregunta,juego);
+        vistaOpciones = new VistaMultipleChoice(stage,pregunta,juego,tiempo);
         vistaOpciones.getLayout().maxWidthProperty().bind(this.widthProperty());
         vistaOpciones.getLayout().setPadding(new Insets(10,10,10,10));
 

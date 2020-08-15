@@ -7,28 +7,31 @@ import edu.fiuba.algo3.modelo.Entidades.Respuestas.Respuesta;
 import edu.fiuba.algo3.vista.FabricaVistaPreguntas;
 import edu.fiuba.algo3.vista.VistaPrincipal;
 import edu.fiuba.algo3.vista.VistaPuntos;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.sql.Time;
 import java.util.ArrayList;
 
 public class ControladorEnviar implements EventHandler<ActionEvent> {
     Stage stage;
     Juego juego;
     ArrayList<Opcion> opcionesElegidas;
+    Timeline tiempo;
 
-    public ControladorEnviar(Stage stagePrincipal, Juego juego, ArrayList<Opcion> opcionesElegidas){
+    public ControladorEnviar(Stage stagePrincipal, Juego juego, ArrayList<Opcion> opcionesElegidas, Timeline tiempo){
         this.stage = stagePrincipal;
         this.juego = juego;
         this.opcionesElegidas = opcionesElegidas;
+        this.tiempo = tiempo;
     }
 
     @Override
     public void handle(ActionEvent actionEvent){
-        System.out.println("Enviando respuesta");
-        opcionesElegidas.forEach(opcion -> System.out.println(opcion.getDescripcion()));
+        tiempo.pause();
 
         //Creo la respuesta del jugador
         Jugador jugador = juego.turnoDe();
@@ -41,17 +44,8 @@ public class ControladorEnviar implements EventHandler<ActionEvent> {
 
         if(juego.terminoRonda()){
             juego.evaluarRespuestas();
-            if(juego.hayRondaSiguiente()) {
-                juego.siguienteRonda();
-                VistaPrincipal vistaPregunta = new VistaPrincipal(juego);
-                FabricaVistaPreguntas.crearVista(juego.obtenerRondaActual().obtenerPregunta(), vistaPregunta, stage);
-                Scene nuevaPregunta = new Scene(vistaPregunta);
-                stage.setScene(nuevaPregunta);
-            }
-            else{
-                VistaPuntos vistaPuntos = new VistaPuntos(juego.obtenerJugadores());
-                stage.setScene(new Scene (vistaPuntos));
-            }
+            VistaPuntos vistaPuntos = new VistaPuntos(juego,stage);
+            stage.setScene(new Scene (vistaPuntos));
         }
         else{
             VistaPrincipal vistaPregunta = new VistaPrincipal(juego);
