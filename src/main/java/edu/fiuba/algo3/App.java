@@ -13,10 +13,11 @@ public class App extends Application{
 
     @Override
     public void start(Stage stagePrincipal) throws Exception{
+
         stagePrincipal.setTitle("AlgoHoot");
 
         VistaCargaJugadores introVista = new VistaCargaJugadores(stagePrincipal,juego);
-
+        //VistaOpcionBinaria introVista = new VistaOpcionBinaria(new OpcionBinaria("hola",true), Color.AQUA);
         stagePrincipal.setScene(new Scene(introVista));
         stagePrincipal.show();
     }

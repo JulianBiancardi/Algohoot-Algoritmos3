@@ -20,11 +20,10 @@ import javafx.util.Duration;
 
 
 public class VistaPrincipal extends BorderPane{
-    private StackPane stackPane1 = new StackPane();
     private HBox hBox = new HBox();
     private VistaPregunta vistaOpciones;
 
-    private final Integer startTime = 20;
+    private final Integer startTime = 100;
     private Integer secondsPassed = startTime;
     private Timeline tiempo;
     Label contador = new Label(String.valueOf(startTime));
@@ -48,7 +47,8 @@ public class VistaPrincipal extends BorderPane{
     }
 
     public void crearVistaVoF(Stage stage, VoF pregunta){
-        mostrarPregunta(stackPane1,pregunta.getEnunciado());
+        mostrarPregunta(pregunta.getEnunciado());
+
         mostrarContador(hBox);
 
         vistaOpciones = new VistaVoF(stage,pregunta,juego);
@@ -59,7 +59,7 @@ public class VistaPrincipal extends BorderPane{
     }
 
     public void crearVistaMultipleChoice(Stage stage, MultipleChoice pregunta) {
-        mostrarPregunta(stackPane1,pregunta.getEnunciado());
+        mostrarPregunta(pregunta.getEnunciado());
         mostrarContador(hBox);
 
         vistaOpciones = new VistaMultipleChoice(stage,pregunta,juego);
@@ -69,37 +69,41 @@ public class VistaPrincipal extends BorderPane{
         this.setBottom(vistaOpciones.getLayout());
     }
 
-    private void mostrarPregunta(StackPane stackPane,String enunciado) {
-        ImageView fondoPregunta = new ImageView("File:src\\main\\java\\edu\\fiuba\\algo3\\vista\\imagenes\\fondoPregunta.png");
-        fondoPregunta.fitWidthProperty().bind(stackPane.widthProperty());
-        stackPane.setPrefHeight(150);
+    private void mostrarPregunta(String enunciado) {
+        StackPane stackPane = new StackPane();
+
+        ImageView fondoPregunta = new ImageView("File:src\\resources\\imagenes\\fondoPregunta.png");
+        fondoPregunta.fitWidthProperty().bind(this.widthProperty());
 
         Label enunciadoPregunta = new Label(enunciado);
-        enunciadoPregunta.setFont(Font.font("Core Mellow", FontWeight.BOLD,40));
-        enunciadoPregunta.setWrapText(true);
+        enunciadoPregunta.setFont(Font.font("Core Mellow", FontWeight.BOLD,55));
 
         stackPane.getChildren().addAll(fondoPregunta,enunciadoPregunta);
-        this.setTop(stackPane);
+
+        Label jugadorResponde = new Label(juego.turnoDe().nombre());
+        jugadorResponde.setAlignment(Pos.CENTER);
+        jugadorResponde.setFont(Font.font("Core Mellow", FontWeight.BOLD,30));
+        jugadorResponde.setTextFill(Color.WHITE);
+        jugadorResponde.setStyle("-fx-background-color: #575757");
+        jugadorResponde.setPrefSize(300,50);
+
+        VBox vBox = new VBox(stackPane,jugadorResponde);
+        vBox.setAlignment(Pos.CENTER);
+
+        this.setTop(vBox);
     }
 
     private void mostrarContador(HBox hBox){
         StackPane stackPane = new StackPane();
-        Circle circle = new Circle(50,50,70,Color.valueOf("#844cbe"));
+        Circle circle = new Circle(100,Color.valueOf("#844cbe"));
         contador.setTextFill(Color.WHITE);
-        contador.setFont(Font.font("Core Mellow", FontWeight.BOLD,55));
+        contador.setFont(Font.font("Core Mellow", FontWeight.BOLD,80));
         stackPane.getChildren().addAll(circle,contador);
 
         tiempo = new Timeline(new KeyFrame(Duration.seconds(1),e -> contar()));
         tiempo.setCycleCount(Timeline.INDEFINITE);
         tiempo.play();
 
-        Label nombreJugador = new Label(juego.turnoDe().nombre());
-        nombreJugador.setFont(Font.font("Core Mellow", FontWeight.BOLD,30));
-
-        hBox.getChildren().addAll(stackPane,nombreJugador);
-        hBox.setAlignment(Pos.CENTER);
-        hBox.setSpacing(600);
-        hBox.maxWidthProperty().bind(this.widthProperty());
-        this.setCenter(hBox);
+        this.setCenter(stackPane);
     }
 }

@@ -4,7 +4,7 @@ import edu.fiuba.algo3.controlador.ControladorEnviar;
 import edu.fiuba.algo3.modelo.Entidades.Juego;
 import edu.fiuba.algo3.modelo.Entidades.Opciones.Opcion;
 import edu.fiuba.algo3.modelo.Entidades.Preguntas.VoF;
-import edu.fiuba.algo3.vista.Opciones.VistaOpcion;
+import edu.fiuba.algo3.vista.Opciones.VistaOpcionBinaria;
 import edu.fiuba.algo3.vista.Opciones.VistaOpcionData;
 import edu.fiuba.algo3.vista.Opciones.VistaPregunta;
 import javafx.geometry.Pos;
@@ -18,6 +18,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 
@@ -26,6 +27,8 @@ public class VistaVoF extends VBox implements VistaPregunta {
     Button botonEnviar = new Button();
     GridPane opcionesPregunta = new GridPane();
     HashMap<Integer, VistaOpcionData> opcionesInfo = new HashMap<Integer,VistaOpcionData>();
+
+    ArrayList<Opcion> opcionesElegidas = new ArrayList<>();
 
     public VistaVoF(Stage stage, VoF pregunta, Juego juego){
         opcionesInfo.put(0,new VistaOpcionData(0,0, Color.valueOf("#e21b3c")));
@@ -42,14 +45,14 @@ public class VistaVoF extends VBox implements VistaPregunta {
 
     public void inicializarBotonEnviar(Stage stage, Juego juego){
         botonEnviar.setPrefSize(150,80);
-        botonEnviar.setStyle("-fx-background-color: #e21b3c");
+        botonEnviar.setStyle("-fx-background-color: #26890c");
 
         Label label = new Label("Enviar");
         label.setFont(Font.font("Montserrat", FontWeight.BOLD,25));
         label.setTextFill(Color.WHITE);
         botonEnviar.setGraphic(label);
 
-        ControladorEnviar enviarRespuesta = new ControladorEnviar(stage,juego);
+        ControladorEnviar enviarRespuesta = new ControladorEnviar(stage,juego,opcionesElegidas);
         botonEnviar.setOnAction(enviarRespuesta);
     }
 
@@ -63,7 +66,7 @@ public class VistaVoF extends VBox implements VistaPregunta {
         for(int i = 0; i < pregunta.cantidadOpciones(); i++){
             Opcion opcionActual = pregunta.obtenerOpcion(i);
             VistaOpcionData dataActual = opcionesInfo.get(i);
-            VistaOpcion vistaActual = new VistaOpcion(opcionActual,dataActual.getColor());
+            VistaOpcionBinaria vistaActual = new VistaOpcionBinaria(opcionActual,dataActual.getColor(),opcionesElegidas);
 
             opcionesPregunta.add(vistaActual,dataActual.getColumna(),dataActual.getFila());
             vistaActual.prefWidthProperty().bind(opcionesPregunta.widthProperty());
