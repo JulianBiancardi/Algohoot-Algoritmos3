@@ -51,7 +51,4 @@ public class ControladorEnviar implements EventHandler<ActionEvent> {
 
 /*
 *Agregar multiplicadores y exclusividad a la vista, con sus controladores
-*Agregar vistas ordered y groupe choice
-*Solucionar problema al agregar respuestas grupales en el controlador enviar (este)
-*
  */

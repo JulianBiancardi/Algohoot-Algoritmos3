@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.vista.Opciones;
 
+import edu.fiuba.algo3.controlador.ControladorOpcionGrupal;
 import edu.fiuba.algo3.modelo.Entidades.Opciones.OpcionGrupal;
 import edu.fiuba.algo3.modelo.Entidades.Opciones.OpcionOrdenada;
 import javafx.geometry.Insets;
@@ -23,7 +24,7 @@ public class VistaOpcionGrupal extends AnchorPane {
     private Label descripcionLabel = new Label();
     private Button botonEstado = new Button();
 
-    public VistaOpcionGrupal(OpcionGrupal unaOpcion, Color colorBoton, ArrayList<OpcionGrupal> opcionesElegidas){
+    public VistaOpcionGrupal(OpcionGrupal unaOpcion, Color colorBoton, ArrayList<OpcionGrupal> opcionesGrupoA, ArrayList<OpcionGrupal> opcionesGrupoB){
         opcionAsociada = unaOpcion;
         descripcionLabel.setText(unaOpcion.getDescripcion());
         descripcionLabel.setFont(Font.font("Montserrat", FontWeight.BOLD,30));
@@ -37,7 +38,9 @@ public class VistaOpcionGrupal extends AnchorPane {
         estadoImagenView.setFitHeight(80);
         botonEstado.setGraphic(estadoImagenView);
         botonEstado.setBackground(new Background(new BackgroundFill(Color.TRANSPARENT,null, Insets.EMPTY)));
-        botonEstado.setOnAction(e -> botonPulsado(opcionesElegidas));
+
+        botonEstado.setOnAction(new ControladorOpcionGrupal(opcionesGrupoA,opcionesGrupoB,opcionAsociada,grupoActualLabel));
+
         grupoActualLabel.setFont(Font.font("Montserrat", FontWeight.BOLD,30));
         grupoActualLabel.setTextFill(Color.WHITE);
         stackPane1.getChildren().addAll(botonEstado,grupoActualLabel);
@@ -53,11 +56,4 @@ public class VistaOpcionGrupal extends AnchorPane {
         this.getChildren().addAll(descripcionLabel,stackPane1);
     }
 
-    private void botonPulsado(ArrayList<OpcionGrupal> opcionesElegidas){
-        if(grupoActualLabel.getText() == "" || grupoActualLabel.getText() == "B"){
-            grupoActualLabel.setText("A");
-        }
-        else
-            grupoActualLabel.setText("B");
-    }
 }

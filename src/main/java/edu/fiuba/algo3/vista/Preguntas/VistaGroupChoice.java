@@ -19,7 +19,8 @@ import java.util.HashMap;
 
 public class VistaGroupChoice extends VistaPregunta{
     private HashMap<Integer, VistaOpcionData> opcionesInfo = new HashMap<Integer,VistaOpcionData>();
-    private ArrayList<OpcionGrupal> opcionesElegidas = new ArrayList<>();
+    private ArrayList<OpcionGrupal> opcionesGrupoA = new ArrayList<>();
+    private ArrayList<OpcionGrupal> opcionesGrupoB = new ArrayList<>();
 
     public VistaGroupChoice(GroupChoice pregunta){
         super(pregunta);
@@ -31,7 +32,7 @@ public class VistaGroupChoice extends VistaPregunta{
         opcionesInfo.put(4,new VistaOpcionData(3,0, Color.valueOf("#864cbf")));
 
         mostrarGrupos(pregunta);
-        inicializarOpciones(pregunta,opcionesElegidas);
+        inicializarOpciones(pregunta);
     }
 
     private void mostrarGrupos(GroupChoice pregunta){
@@ -52,14 +53,13 @@ public class VistaGroupChoice extends VistaPregunta{
         this.addRow(0,Grupo1,Grupo2);
     }
 
-    private void inicializarOpciones(GroupChoice pregunta, ArrayList<OpcionGrupal> opcionesElegidas){
+    private void inicializarOpciones(GroupChoice pregunta){
         if (pregunta.cantidadOpciones() > opcionesInfo.size()) // lanzar exepcion, cantidad de opciones incorrectas
             return;
 
         for(int i = 0; (i < pregunta.cantidadOpciones() ); i++){
-            Opcion opcionActual = pregunta.obtenerOpcion(i);
             VistaOpcionData dataActual = opcionesInfo.get(i);
-            VistaOpcionGrupal vistaActual = new VistaOpcionGrupal((OpcionGrupal) opcionActual,dataActual.getColor(),opcionesElegidas);
+            VistaOpcionGrupal vistaActual = new VistaOpcionGrupal(pregunta.obtenerOpcion(i),dataActual.getColor(),opcionesGrupoA,opcionesGrupoB);
 
             this.add(vistaActual,dataActual.getColumna(),dataActual.getFila());
             vistaActual.prefWidthProperty().bind(this.widthProperty());
@@ -70,11 +70,8 @@ public class VistaGroupChoice extends VistaPregunta{
     @Override
     public Respuesta obtenerRespuesta(Jugador jugador) {
         RespuestaGrupal respuesta = new RespuestaGrupal(jugador,(GroupChoice) preguntaAsociada);
-/*
-        if(opcionesElegidas.get(0).getGrupo() == "A")
-            respuesta.agregarOpcionGrupo1(opcion);
-        else
-            respuesta.agregarOpcionGrupo2(opcion);*/
+        opcionesGrupoA.forEach(opcionGrupal -> respuesta.agregarOpcionGrupo1(opcionGrupal));
+        opcionesGrupoB.forEach(opcionGrupal -> respuesta.agregarOpcionGrupo2(opcionGrupal));
 
         return respuesta;
     }

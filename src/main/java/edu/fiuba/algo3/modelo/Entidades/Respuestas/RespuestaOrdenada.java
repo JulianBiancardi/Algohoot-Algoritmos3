@@ -11,10 +11,10 @@ public class RespuestaOrdenada extends Respuesta {
         super(jugador, pregunta);
     }
 
-    /*
+
     @Override
     public int cantidadOpcionesCorrectas() {
-        /*
+
         int posicionActual = 0;
         for(Opcion opcion: opcionesElegidas){
             ((OpcionOrdenada) opcion).setPosicionActual(posicionActual);
@@ -23,5 +23,5 @@ public class RespuestaOrdenada extends Respuesta {
         return super.cantidadOpcionesCorrectas();
 
     }
-    */
+
 }

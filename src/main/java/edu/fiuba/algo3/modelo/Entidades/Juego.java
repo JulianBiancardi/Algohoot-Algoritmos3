@@ -19,7 +19,6 @@ public class Juego {
     private int iteradorRonda;
 
     public Juego (){
-        /*
         String nombreGrupo1 = "Numeros Pares";
         String nombreGrupo2 = "Numeros Impares";
         GroupChoice pregunta = new GroupChoice("Separar en Pares e Impares", nombreGrupo1, nombreGrupo2);
@@ -28,25 +27,6 @@ public class Juego {
         pregunta.nuevaOpcionGrupo1("4");
         pregunta.nuevaOpcionGrupo2("5");
         agregarRonda(pregunta);
-
-        OrderedChoice pregunta = new OrderedChoice("Ordenar de mayor a menor");
-        pregunta.nuevaOpcion("Primero");
-        pregunta.nuevaOpcion("Segundo");
-        pregunta.nuevaOpcion("Tercero");
-        pregunta.nuevaOpcion("Cuarto");
-        agregarRonda(pregunta);
-*/
-
-        //Creo un par de preguntas para testear el sistema de turnos del juego
-        MultipleChoice pregunta = MultipleChoice.conModoClasico("Paises de América Latina");
-        pregunta.nuevaOpcion("Argentina", true);
-        pregunta.nuevaOpcion("Chile", true);
-        pregunta.nuevaOpcion("Egipto", false);
-        pregunta.nuevaOpcion("Rusia", false);
-        agregarRonda(pregunta);
-
-        VoF vof = VoF.conModoPenalidad("La guitarra tiene 6 cuerdas",true);
-        agregarRonda(vof);
 
         iteradorRonda = 0 ;
 

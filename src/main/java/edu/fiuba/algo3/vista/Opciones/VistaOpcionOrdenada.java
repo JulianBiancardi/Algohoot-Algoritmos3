@@ -1,5 +1,7 @@
 package edu.fiuba.algo3.vista.Opciones;
 
+import edu.fiuba.algo3.controlador.ControladorOpcionOrdenada;
+import edu.fiuba.algo3.controlador.ControladorSiguiente;
 import edu.fiuba.algo3.modelo.Entidades.Opciones.OpcionOrdenada;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
@@ -17,14 +19,11 @@ import javafx.scene.text.FontWeight;
 import java.util.ArrayList;
 
 public class VistaOpcionOrdenada extends AnchorPane{
-    OpcionOrdenada opcionAsociada;
-    private Integer posicionActual = 1;
-    private Label ordenActualLabel = new Label();
+    private Label posicionActual = new Label();
     private Label descripcionLabel = new Label();
     private Button botonEstado = new Button();
 
     public VistaOpcionOrdenada(OpcionOrdenada unaOpcion, Color colorBoton, ArrayList<OpcionOrdenada> opcionesElegidas,int cantidadOpciones){
-        opcionAsociada = unaOpcion;
         descripcionLabel.setText(unaOpcion.getDescripcion());
         descripcionLabel.setFont(Font.font("Montserrat", FontWeight.BOLD,30));
         descripcionLabel.setStyle("-fx-effect: dropshadow( one-pass-box , black , 5 , 0.0 , 1 , 0 )");
@@ -37,10 +36,12 @@ public class VistaOpcionOrdenada extends AnchorPane{
         estadoImagenView.setFitHeight(80);
         botonEstado.setGraphic(estadoImagenView);
         botonEstado.setBackground(new Background(new BackgroundFill(Color.TRANSPARENT,null, Insets.EMPTY)));
-        botonEstado.setOnAction(e -> botonPulsado(opcionesElegidas,cantidadOpciones));
-        ordenActualLabel.setFont(Font.font("Montserrat", FontWeight.BOLD,30));
-        ordenActualLabel.setTextFill(Color.WHITE);
-        stackPane1.getChildren().addAll(botonEstado,ordenActualLabel);
+
+        botonEstado.setOnAction(new ControladorOpcionOrdenada(opcionesElegidas, unaOpcion, posicionActual));
+
+        posicionActual.setFont(Font.font("Montserrat", FontWeight.BOLD,30));
+        posicionActual.setTextFill(Color.WHITE);
+        stackPane1.getChildren().addAll(botonEstado,posicionActual);
 
         this.setBackground(new Background(new BackgroundFill(colorBoton,null, Insets.EMPTY)));
 
@@ -53,15 +54,7 @@ public class VistaOpcionOrdenada extends AnchorPane{
         this.getChildren().addAll(descripcionLabel,stackPane1);
     }
 
-    private void botonPulsado(ArrayList<OpcionOrdenada> opcionesElegidas,int cantidadOpciones){
-        ordenActualLabel.setText(String.valueOf(posicionActual));
-        opcionesElegidas.remove(opcionAsociada);
-
-        opcionAsociada.setPosicionActual(posicionActual - 1);
-        opcionesElegidas.add(opcionAsociada);
-
-        posicionActual++;
-        if(posicionActual > cantidadOpciones)
-            posicionActual = 1;
+    public void resetLabel() {
+        posicionActual.setText("");
     }
 }

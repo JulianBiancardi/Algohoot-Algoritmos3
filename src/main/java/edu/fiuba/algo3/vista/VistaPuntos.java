@@ -30,14 +30,13 @@ public class VistaPuntos extends VBox {
         inicializarTitulo();
         inicializarBotonSiguiente(stage,juego);
         ArrayList <Jugador> jugadores = juego.obtenerJugadores();
-        jugadores.forEach(jugador -> mostrarJugador(jugador));
-        /*
+
         jugadores.stream()
                 .sorted(Comparator.comparingInt(Jugador::puntos)
                 .reversed()) // Ordeno para mostrar los de mayor puntaje primero!
                 .collect(Collectors.toList())
                 .forEach(this::mostrarJugador);
-                */
+
 
 
         this.setPrefSize(600,600);
