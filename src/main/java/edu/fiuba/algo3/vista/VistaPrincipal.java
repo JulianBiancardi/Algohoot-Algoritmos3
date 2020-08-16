@@ -5,8 +5,11 @@ import edu.fiuba.algo3.controlador.ControladorMultiplicadorDoble;
 import edu.fiuba.algo3.controlador.ControladorMultiplicadorTriple;
 import edu.fiuba.algo3.controlador.ControladorOpcionGrupal;
 import edu.fiuba.algo3.modelo.Entidades.Juego;
-import edu.fiuba.algo3.modelo.Entidades.Preguntas.*;
-import edu.fiuba.algo3.vista.Preguntas.*;
+import edu.fiuba.algo3.modelo.Entidades.Preguntas.MultipleChoice;
+import edu.fiuba.algo3.modelo.Entidades.Preguntas.Pregunta;
+import edu.fiuba.algo3.modelo.Entidades.Preguntas.VoF;
+import edu.fiuba.algo3.vista.Opciones.VistaPregunta;
+
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.geometry.Pos;
@@ -61,7 +64,9 @@ public class VistaPrincipal extends BorderPane{
         }
     }
 
+
     private void mostrarEnunciadoPregunta(Pregunta pregunta) {
+
         StackPane stackPane = new StackPane();
 
         ImageView fondoPregunta = new ImageView("File:src\\resources\\imagenes\\fondoPregunta.png");

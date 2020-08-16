@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo.Entidades.Preguntas;
 
+import com.google.gson.JsonObject;
 import edu.fiuba.algo3.modelo.Excepciones.PreguntaNoAceptaExclusividadError;
 import edu.fiuba.algo3.modelo.Excepciones.RespuestasInsuficientesError;
 import edu.fiuba.algo3.modelo.Entidades.Opciones.Opcion;

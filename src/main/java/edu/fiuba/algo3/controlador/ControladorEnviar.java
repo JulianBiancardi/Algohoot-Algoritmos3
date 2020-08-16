@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.controlador;
 
 import edu.fiuba.algo3.modelo.Entidades.Juego;
+import edu.fiuba.algo3.modelo.Entidades.Opciones.Opcion;
 import edu.fiuba.algo3.modelo.Entidades.Jugador;
 import edu.fiuba.algo3.vista.Preguntas.VistaPregunta;
 import edu.fiuba.algo3.vista.VistaPrincipal;

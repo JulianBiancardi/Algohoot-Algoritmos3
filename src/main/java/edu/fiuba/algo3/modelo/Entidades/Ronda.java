@@ -1,5 +1,7 @@
 package edu.fiuba.algo3.modelo.Entidades;
+
 import edu.fiuba.algo3.modelo.Entidades.Preguntas.Pregunta;
+import java.util.ArrayList;
 import edu.fiuba.algo3.modelo.Entidades.Respuestas.Respuesta;
 import edu.fiuba.algo3.vista.VistaPrincipal;
 import javafx.stage.Stage;
@@ -10,7 +12,7 @@ public class Ronda {
     private Pregunta pregunta;
     private ArrayList<Respuesta> respuestas = new ArrayList<>();
 
-    public Ronda (Pregunta pregunta){
+    public Ronda(Pregunta pregunta){
         this.pregunta = pregunta;
     }
 

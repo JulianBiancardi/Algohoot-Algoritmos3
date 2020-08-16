@@ -1,5 +1,11 @@
 package edu.fiuba.algo3.modelo.Entidades;
 
+
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+
 import edu.fiuba.algo3.modelo.Entidades.Preguntas.*;
 import edu.fiuba.algo3.vista.VistaPrincipal;
 import edu.fiuba.algo3.vista.VistaPuntos;
@@ -7,10 +13,16 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Iterator;
 
 public class Juego {
+
 
     private ArrayList<Jugador> jugadores = new ArrayList<>();
     private ArrayList<Ronda> rondas = new ArrayList<>();
@@ -18,21 +30,20 @@ public class Juego {
     //private Iterator<Ronda> iteradorRonda;
     private int iteradorRonda;
 
-    public Juego (){
-        /*
-        String nombreGrupo1 = "Numeros Pares";
-        String nombreGrupo2 = "Numeros Impares";
-        GroupChoice pregunta = new GroupChoice("Separar en Pares e Impares", nombreGrupo1, nombreGrupo2);
-        pregunta.nuevaOpcionGrupo1("2");
-        pregunta.nuevaOpcionGrupo2("3");
-        pregunta.nuevaOpcionGrupo1("4");
-        pregunta.nuevaOpcionGrupo2("5");
-        agregarRonda(pregunta);*/
-        VoF pregunta = VoF.conModoClasico("2+2 = 4",true);
-        agregarRonda(pregunta);
 
-        iteradorRonda = 0 ;
+    private final int cantidadRondas = 3;
+    private final LectorPreguntas lectorPreguntas = new LectorPreguntas();
 
+    ArrayList<Pregunta> preguntas = new ArrayList<>();
+
+    public Juego () throws IOException {
+
+        ArrayList<Pregunta> preguntas = lectorPreguntas.leerPreguntas();
+        Collections.shuffle(preguntas);
+
+        for(int i = 0; i < cantidadRondas; i++){
+            rondas.add(new Ronda(preguntas.get(i)));
+        }
     }
 
     public void agregarJugador(Jugador jugador){
@@ -45,7 +56,7 @@ public class Juego {
     }
 
     public void agregarRonda(Pregunta pregunta) {
-        rondas.add(new Ronda(pregunta));
+        //rondas.add(new Ronda(pregunta));
         //iteradorRonda = rondas.iterator();
     }
 
