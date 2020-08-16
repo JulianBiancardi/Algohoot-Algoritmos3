@@ -2,9 +2,7 @@ package edu.fiuba.algo3.controlador;
 
 import edu.fiuba.algo3.modelo.Entidades.Juego;
 import edu.fiuba.algo3.modelo.Entidades.Jugador;
-import edu.fiuba.algo3.modelo.Entidades.Opciones.Opcion;
-import edu.fiuba.algo3.modelo.Entidades.Respuestas.Respuesta;
-import edu.fiuba.algo3.vista.FabricaVistaPreguntas;
+import edu.fiuba.algo3.vista.Preguntas.VistaPregunta;
 import edu.fiuba.algo3.vista.VistaPrincipal;
 import edu.fiuba.algo3.vista.VistaPuntos;
 import javafx.animation.Timeline;
@@ -13,19 +11,17 @@ import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.sql.Time;
-import java.util.ArrayList;
 
 public class ControladorEnviar implements EventHandler<ActionEvent> {
     Stage stage;
     Juego juego;
-    ArrayList<Opcion> opcionesElegidas;
     Timeline tiempo;
+    VistaPregunta vistaPregunta;
 
-    public ControladorEnviar(Stage stagePrincipal, Juego juego, ArrayList<Opcion> opcionesElegidas, Timeline tiempo){
+    public ControladorEnviar(Stage stagePrincipal, Juego juego, Timeline tiempo, VistaPregunta vistaPregunta){
         this.stage = stagePrincipal;
         this.juego = juego;
-        this.opcionesElegidas = opcionesElegidas;
+        this.vistaPregunta = vistaPregunta;
         this.tiempo = tiempo;
     }
 
@@ -33,12 +29,8 @@ public class ControladorEnviar implements EventHandler<ActionEvent> {
     public void handle(ActionEvent actionEvent){
         tiempo.pause();
 
-        //Creo la respuesta del jugador
         Jugador jugador = juego.turnoDe();
-        Respuesta respuesta = new Respuesta(jugador, juego.obtenerRondaActual().obtenerPregunta());
-        opcionesElegidas.forEach(opcion -> respuesta.agregarOpcion(opcion));
-        //Le envio la respuesta
-        juego.obtenerRondaActual().agregarRespuesta(respuesta);
+        juego.obtenerRondaActual().agregarRespuesta(vistaPregunta.obtenerRespuesta(jugador));
 
         juego.siguienteTurno();
 
@@ -48,9 +40,8 @@ public class ControladorEnviar implements EventHandler<ActionEvent> {
             stage.setScene(new Scene (vistaPuntos));
         }
         else{
-            VistaPrincipal vistaPregunta = new VistaPrincipal(juego);
-            FabricaVistaPreguntas.crearVista(juego.obtenerRondaActual().obtenerPregunta(), vistaPregunta, stage);
-            Scene nuevaPregunta = new Scene(vistaPregunta);
+            VistaPrincipal vistaPrincipal = new VistaPrincipal(stage,juego,juego.obtenerRondaActual().obtenerPregunta());
+            Scene nuevaPregunta = new Scene(vistaPrincipal);
             stage.setScene(nuevaPregunta);
         }
 
