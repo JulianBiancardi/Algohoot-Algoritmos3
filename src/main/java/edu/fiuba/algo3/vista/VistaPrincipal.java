@@ -1,6 +1,9 @@
 package edu.fiuba.algo3.vista;
 
 import edu.fiuba.algo3.controlador.ControladorEnviar;
+import edu.fiuba.algo3.controlador.ControladorMultiplicadorDoble;
+import edu.fiuba.algo3.controlador.ControladorMultiplicadorTriple;
+import edu.fiuba.algo3.controlador.ControladorOpcionGrupal;
 import edu.fiuba.algo3.modelo.Entidades.Juego;
 import edu.fiuba.algo3.modelo.Entidades.Preguntas.*;
 import edu.fiuba.algo3.vista.Preguntas.*;
@@ -92,7 +95,17 @@ public class VistaPrincipal extends BorderPane{
         tiempo = new Timeline(new KeyFrame(Duration.seconds(1),e -> contar()));
         tiempo.setCycleCount(Timeline.INDEFINITE);
         tiempo.play();
+        /*
+        Button multiplicadorDoble = new Button("Multiplicador Doble");
+        multiplicadorDoble.setOnAction(new ControladorMultiplicadorDoble(juego.turnoDe()));
 
+        Button multiplicadorTriple = new Button("Multiplicador Triple");
+        multiplicadorTriple.setOnAction(new ControladorMultiplicadorTriple(juego.turnoDe()));
+
+        HBox hBox = new HBox();
+        hBox.getChildren().addAll(stackPane,multiplicadorDoble,multiplicadorTriple);
+        hBox.setAlignment(Pos.CENTER);
+        */
         this.setCenter(stackPane);
     }
 

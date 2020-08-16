@@ -16,6 +16,7 @@ import java.util.HashMap;
 public class VistaVoF extends VistaPregunta {
     HashMap<Integer, VistaOpcionData> opcionesInfo = new HashMap<Integer,VistaOpcionData>();
     ArrayList<Opcion> opcionesElegidas = new ArrayList<>();
+    //Respuesta respuesta = new Respuesta();
 
     public VistaVoF(VoF pregunta){
         super(pregunta);
