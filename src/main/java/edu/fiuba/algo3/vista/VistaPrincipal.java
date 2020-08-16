@@ -2,6 +2,7 @@ package edu.fiuba.algo3.vista;
 
 import edu.fiuba.algo3.modelo.Entidades.Juego;
 import edu.fiuba.algo3.modelo.Entidades.Preguntas.MultipleChoice;
+import edu.fiuba.algo3.modelo.Entidades.Preguntas.Pregunta;
 import edu.fiuba.algo3.modelo.Entidades.Preguntas.VoF;
 import edu.fiuba.algo3.vista.Opciones.VistaPregunta;
 import javafx.animation.KeyFrame;
@@ -46,25 +47,18 @@ public class VistaPrincipal extends BorderPane{
         }
     }
 
-    public void crearVistaVoF(Stage stage, VoF pregunta){
-        mostrarPregunta(pregunta.getEnunciado());
-
-        mostrarContador(hBox);
-
-        vistaOpciones = new VistaVoF(stage,pregunta,juego);
-        vistaOpciones.getLayout().maxWidthProperty().bind(this.widthProperty());
-        vistaOpciones.getLayout().setPadding(new Insets(10,10,10,10));
-
-        this.setBottom(vistaOpciones.getLayout());
-    }
-
-    public void crearVistaMultipleChoice(Stage stage, MultipleChoice pregunta) {
+    public void crearVista(Stage stage, Pregunta pregunta){
         mostrarPregunta(pregunta.getEnunciado());
         mostrarContador(hBox);
 
-        vistaOpciones = new VistaMultipleChoice(stage,pregunta,juego);
+        if(pregunta instanceof VoF){
+            vistaOpciones = new VistaVoF(stage, (VoF) pregunta, juego);
+        } else if(pregunta instanceof MultipleChoice){
+            vistaOpciones = new VistaMultipleChoice(stage, (MultipleChoice) pregunta, juego);
+        }
+
         vistaOpciones.getLayout().maxWidthProperty().bind(this.widthProperty());
-        vistaOpciones.getLayout().setPadding(new Insets(10,10,10,10));
+        vistaOpciones.getLayout().setPadding(new Insets(10, 10, 10, 10));
 
         this.setBottom(vistaOpciones.getLayout());
     }

@@ -6,18 +6,19 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 
-public class App extends Application{
 
-    private Juego juego = new Juego();
+public class App extends Application {
+    private Juego juego;
 
     @Override
     public void start(Stage stagePrincipal) throws Exception{
+        juego = new Juego();
 
         stagePrincipal.setTitle("AlgoHoot");
 
-        VistaCargaJugadores introVista = new VistaCargaJugadores(stagePrincipal,juego);
-        //VistaOpcionBinaria introVista = new VistaOpcionBinaria(new OpcionBinaria("hola",true), Color.AQUA);
+        VistaCargaJugadores introVista = new VistaCargaJugadores(stagePrincipal, juego);
         stagePrincipal.setScene(new Scene(introVista));
         stagePrincipal.show();
     }

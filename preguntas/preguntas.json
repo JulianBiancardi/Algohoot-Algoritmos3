@@ -1,0 +1,102 @@
+{
+    "Preguntas": [
+        {
+            "Tipo": "VoF",
+            "PreguntasVoF": [
+                {
+                    "Enunciado": "¿2 + 2 = 4?",
+                    "Valor": true,
+                    "Modo": "Clasico"
+                },
+                {
+                    "Enunciado": "¿2 + 2 = 5?",
+                    "Valor": false,
+                    "Modo": "Clasico"
+                },
+                {
+                    "Enunciado": "¿Julian se sacó un 9 en un TP?",
+                    "Valor": false,
+                    "Modo": "Penalidad"
+                },
+                {
+                    "Enunciado": "¿Julian ha puteado a Leo alguna vez?",
+                    "Valor": true,
+                    "Modo": "Penalidad"
+                }
+            ]
+        },
+        {
+            "Tipo": "MultipleChoice",
+            "PreguntasMC": [
+                {
+                    "Enunciado": "Capitales de Provincias Argentinas",
+                    "Modo": "PuntajeParcial",
+                    "Opciones": [
+                        {
+                            "Descripcion": "Santa Rosa",
+                            "Valor": true
+                        },
+                        {
+                            "Descripcion": "Santa Fe",
+                            "Valor": true
+                        },
+                        {
+                            "Descripcion": "Mendoza",
+                            "Valor": true
+                        },
+                        {
+                            "Descripcion": "San LeoProgramador del Valle de Catamarca",
+                            "Valor": false
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "Tipo": "OrderedChoice",
+            "PreguntasOC": [
+                {
+                    "Enunciado": "Ordenar de menor a mayor",
+                    "Opciones": [
+                        {
+                            "Descripcion": "1",
+                            "PosicionCorrecta": 0
+                        },
+                        {
+                            "Descripcion": "3",
+                            "PosicionCorrecta": 1
+                        },
+                        {
+                            "Descripcion": "5",
+                            "PosicionCorrecta": 2
+                        },
+                        {
+                            "Descripcion": "7",
+                            "PosicionCorrecta": 3
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "Tipo": "GroupChoice",
+            "PreguntasGC": [
+                {
+                    "Enunciado": "Separar",
+                    "Grupo 1": "El mejor del mundo",
+                    "Grupo 2": "El resto",
+                    "Opciones Grupo 1": [
+                        {
+                            "Descripcion": "Julian (Lo dice él, preguntale sino)"
+                        }
+                    ],
+                    "Opciones Grupo 2": [
+                        {
+                            "Descripcion": "Literalmente todos los demás"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

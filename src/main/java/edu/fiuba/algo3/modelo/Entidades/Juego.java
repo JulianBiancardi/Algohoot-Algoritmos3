@@ -1,19 +1,26 @@
 package edu.fiuba.algo3.modelo.Entidades;
 
-import edu.fiuba.algo3.modelo.Entidades.Preguntas.MultipleChoice;
-import edu.fiuba.algo3.modelo.Entidades.Preguntas.OrderedChoice;
-import edu.fiuba.algo3.modelo.Entidades.Preguntas.Pregunta;
-import edu.fiuba.algo3.modelo.Entidades.Preguntas.VoF;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import edu.fiuba.algo3.modelo.Entidades.Preguntas.*;
 import edu.fiuba.algo3.vista.VistaPrincipal;
 import edu.fiuba.algo3.vista.VistaPuntos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Iterator;
 
 public class Juego {
+
 
     private ArrayList<Jugador> jugadores = new ArrayList<>();
     private ArrayList<Ronda> rondas = new ArrayList<>();
@@ -21,31 +28,19 @@ public class Juego {
     //private Iterator<Ronda> iteradorRonda;
     private int iteradorRonda;
 
-    public Juego (){
+    private final int cantidadRondas = 3;
+    private final LectorPreguntas lectorPreguntas = new LectorPreguntas();
 
-        //Creo un par de preguntas para testear el sistema de turnos del juego
-        MultipleChoice pregunta = MultipleChoice.conModoPuntajeParcial("Paises de América Latina");
-        pregunta.nuevaOpcion("Argentina", true);
-        pregunta.nuevaOpcion("China", false);
-        pregunta.nuevaOpcion("Egipto", false);
-        pregunta.nuevaOpcion("Rusia", false);
-        agregarRonda(pregunta);
+    ArrayList<Pregunta> preguntas = new ArrayList<>();
 
-        VoF vof = VoF.conModoClasico("La guitarra tiene 6 cuerdas",true);
-        agregarRonda(vof);
+    public Juego () throws IOException {
 
-        pregunta = MultipleChoice.conModoPuntajeParcial("Cuantos mundiales de futbol tiene Argentina");
-        pregunta.nuevaOpcion("1", false);
-        pregunta.nuevaOpcion("2", true);
-        pregunta.nuevaOpcion("3", false);
-        pregunta.nuevaOpcion("4", false);
-        agregarRonda(pregunta);
-      
-        vof = VoF.conModoClasico("Vamos a aprobar?",false);
-        agregarRonda(vof);
+        ArrayList<Pregunta> preguntas = lectorPreguntas.leerPreguntas();
+        Collections.shuffle(preguntas);
 
-        iteradorRonda = 0 ;
-
+        for(int i = 0; i < cantidadRondas; i++){
+            rondas.add(new Ronda(preguntas.get(i)));
+        }
     }
 
     public void agregarJugador(Jugador jugador){
@@ -58,7 +53,7 @@ public class Juego {
     }
 
     public void agregarRonda(Pregunta pregunta) {
-        rondas.add(new Ronda(pregunta));
+        //rondas.add(new Ronda(pregunta));
         //iteradorRonda = rondas.iterator();
     }
 
