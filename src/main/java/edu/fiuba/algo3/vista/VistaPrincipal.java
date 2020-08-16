@@ -1,14 +1,19 @@
 package edu.fiuba.algo3.vista;
 
+import edu.fiuba.algo3.controlador.ControladorEnviar;
+import edu.fiuba.algo3.controlador.ControladorMultiplicadorDoble;
+import edu.fiuba.algo3.controlador.ControladorMultiplicadorTriple;
+import edu.fiuba.algo3.controlador.ControladorOpcionGrupal;
 import edu.fiuba.algo3.modelo.Entidades.Juego;
 import edu.fiuba.algo3.modelo.Entidades.Preguntas.MultipleChoice;
 import edu.fiuba.algo3.modelo.Entidades.Preguntas.Pregunta;
 import edu.fiuba.algo3.modelo.Entidades.Preguntas.VoF;
 import edu.fiuba.algo3.vista.Opciones.VistaPregunta;
+
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
@@ -21,20 +26,32 @@ import javafx.util.Duration;
 
 
 public class VistaPrincipal extends BorderPane{
-    private HBox hBox = new HBox();
-    private VistaPregunta vistaOpciones;
+    private Juego juego;
+    VistaPregunta vistaPregunta;
+    //ArrayList<Opcion> opcionesElegidas = new ArrayList<>();
 
-    private final Integer startTime = 100;
+    private final Integer startTime = 50;
     private Integer secondsPassed = startTime;
     private Timeline tiempo;
     Label contador = new Label(String.valueOf(startTime));
 
-    private Juego juego;
+    Button botonEnviar = new Button();
+    VBox vBox = new VBox();
 
-    public VistaPrincipal(Juego juego){
+    public VistaPrincipal(Stage stage, Juego juego, Pregunta pregunta){
         this.juego = juego;
-    }
 
+        crearVistaPregunta(pregunta);
+        mostrarEnunciadoPregunta(pregunta);
+        mostrarContador();
+        inicializarBotonEnviar(stage,juego,tiempo);
+
+        vBox.getChildren().addAll(botonEnviar,vistaPregunta);
+
+        vBox.setAlignment(Pos.CENTER);
+        vBox.setSpacing(5);
+        this.setBottom(vBox);
+    }
 
     public void contar(){
         if(secondsPassed > 0){
@@ -43,33 +60,19 @@ public class VistaPrincipal extends BorderPane{
         }
         else {
             tiempo.pause();
-            vistaOpciones.responder();
+            botonEnviar.fire();
         }
     }
 
-    public void crearVista(Stage stage, Pregunta pregunta){
-        mostrarPregunta(pregunta.getEnunciado());
-        mostrarContador(hBox);
 
-        if(pregunta instanceof VoF){
-            vistaOpciones = new VistaVoF(stage, (VoF) pregunta, juego);
-        } else if(pregunta instanceof MultipleChoice){
-            vistaOpciones = new VistaMultipleChoice(stage, (MultipleChoice) pregunta, juego);
-        }
+    private void mostrarEnunciadoPregunta(Pregunta pregunta) {
 
-        vistaOpciones.getLayout().maxWidthProperty().bind(this.widthProperty());
-        vistaOpciones.getLayout().setPadding(new Insets(10, 10, 10, 10));
-
-        this.setBottom(vistaOpciones.getLayout());
-    }
-
-    private void mostrarPregunta(String enunciado) {
         StackPane stackPane = new StackPane();
 
         ImageView fondoPregunta = new ImageView("File:src\\resources\\imagenes\\fondoPregunta.png");
         fondoPregunta.fitWidthProperty().bind(this.widthProperty());
 
-        Label enunciadoPregunta = new Label(enunciado);
+        Label enunciadoPregunta = new Label(pregunta.getEnunciado());
         enunciadoPregunta.setFont(Font.font("Core Mellow", FontWeight.BOLD,55));
 
         stackPane.getChildren().addAll(fondoPregunta,enunciadoPregunta);
@@ -87,7 +90,7 @@ public class VistaPrincipal extends BorderPane{
         this.setTop(vBox);
     }
 
-    private void mostrarContador(HBox hBox){
+    private void mostrarContador(){
         StackPane stackPane = new StackPane();
         Circle circle = new Circle(100,Color.valueOf("#844cbe"));
         contador.setTextFill(Color.WHITE);
@@ -97,7 +100,43 @@ public class VistaPrincipal extends BorderPane{
         tiempo = new Timeline(new KeyFrame(Duration.seconds(1),e -> contar()));
         tiempo.setCycleCount(Timeline.INDEFINITE);
         tiempo.play();
+        /*
+        Button multiplicadorDoble = new Button("Multiplicador Doble");
+        multiplicadorDoble.setOnAction(new ControladorMultiplicadorDoble(juego.turnoDe()));
 
+        Button multiplicadorTriple = new Button("Multiplicador Triple");
+        multiplicadorTriple.setOnAction(new ControladorMultiplicadorTriple(juego.turnoDe()));
+
+        HBox hBox = new HBox();
+        hBox.getChildren().addAll(stackPane,multiplicadorDoble,multiplicadorTriple);
+        hBox.setAlignment(Pos.CENTER);
+        */
         this.setCenter(stackPane);
+    }
+
+    public void inicializarBotonEnviar(Stage stage, Juego juego, Timeline tiempo){
+        botonEnviar.setPrefSize(150,80);
+        botonEnviar.setStyle("-fx-background-color: #26890c");
+
+        Label label = new Label("Enviar");
+        label.setFont(Font.font("Montserrat", FontWeight.BOLD,25));
+        label.setTextFill(Color.WHITE);
+        botonEnviar.setGraphic(label);
+
+        ControladorEnviar enviarRespuesta = new ControladorEnviar(stage,juego,tiempo,vistaPregunta);
+        botonEnviar.setOnAction(enviarRespuesta);
+    }
+
+    public void crearVistaPregunta(Pregunta pregunta){
+        if(pregunta instanceof VoF){
+            vistaPregunta = new VistaVoF((VoF) pregunta);
+        } else if(pregunta instanceof MultipleChoice){
+            vistaPregunta = new VistaMultipleChoice((MultipleChoice) pregunta);
+        } else if(pregunta instanceof OrderedChoice) {
+            vistaPregunta = new VistaOrderedChoice((OrderedChoice) pregunta);
+        } else if(pregunta instanceof GroupChoice){
+            vistaPregunta = new VistaGroupChoice((GroupChoice) pregunta);
+        }
+        else return; //Agregar exepcion de pregunta no reconocida
     }
 }

@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.vista.Opciones;
 
-import edu.fiuba.algo3.modelo.Entidades.Opciones.Opcion;
+import edu.fiuba.algo3.controlador.ControladorOpcionBinaria;
+import edu.fiuba.algo3.modelo.Entidades.Opciones.OpcionBinaria;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
@@ -16,10 +17,8 @@ import java.util.ArrayList;
 
 public class VistaOpcionBinaria extends AnchorPane {
     ToggleButton botonEstado = new ToggleButton();
-    Opcion opcionAsociada;
 
-    public VistaOpcionBinaria(Opcion unaOpcion, Color colorBoton, ArrayList<Opcion> opcionesElegidas){
-        opcionAsociada = unaOpcion;
+    public VistaOpcionBinaria(OpcionBinaria unaOpcion, Color colorBoton, ArrayList<OpcionBinaria> opcionesElegidas){
 
         Label descripcionLabel = new Label();
         descripcionLabel.setText(unaOpcion.getDescripcion());
@@ -34,7 +33,7 @@ public class VistaOpcionBinaria extends AnchorPane {
         estadoImagenView.setFitHeight(80);
         botonEstado.setGraphic(estadoImagenView);
         botonEstado.setBackground(new Background(new BackgroundFill(Color.TRANSPARENT,null,Insets.EMPTY)));
-        botonEstado.setOnAction(e -> botonPulsado(opcionesElegidas));
+        botonEstado.setOnAction(new ControladorOpcionBinaria(opcionesElegidas,unaOpcion,estadoImagenView));
 
         this.setBackground(new Background(new BackgroundFill(colorBoton,null, Insets.EMPTY)));
 
@@ -46,22 +45,5 @@ public class VistaOpcionBinaria extends AnchorPane {
         AnchorPane.setRightAnchor(botonEstado,10.0);
         AnchorPane.setTopAnchor(botonEstado,10.0);
         AnchorPane.setBottomAnchor(botonEstado,10.0);
-    }
-
-    private void botonPulsado(ArrayList<Opcion> opcionesElegidas){
-        Image estadoImagen;
-        if(botonEstado.isSelected()){
-            estadoImagen = new Image("File:src\\resources\\imagenes\\IMG_OpcionBinariaSeleccionada.png");
-            opcionesElegidas.add(opcionAsociada);
-        }
-        else{
-            estadoImagen = new Image("File:src\\resources\\imagenes\\IMG_OpcionBinariaNoSeleccionada.png");
-            opcionesElegidas.remove(opcionAsociada);
-        }
-
-        ImageView estadoImagenView = new ImageView(estadoImagen);
-        estadoImagenView.setFitWidth(80);
-        estadoImagenView.setFitHeight(80);
-        botonEstado.setGraphic(estadoImagenView);
     }
 }

@@ -1,9 +1,11 @@
 package edu.fiuba.algo3.modelo.Entidades;
 
+
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+
 import edu.fiuba.algo3.modelo.Entidades.Preguntas.*;
 import edu.fiuba.algo3.vista.VistaPrincipal;
 import edu.fiuba.algo3.vista.VistaPuntos;
@@ -27,6 +29,7 @@ public class Juego {
     private SistemaTurnos sistemaTurnos = new SistemaTurnos();
     //private Iterator<Ronda> iteradorRonda;
     private int iteradorRonda;
+
 
     private final int cantidadRondas = 3;
     private final LectorPreguntas lectorPreguntas = new LectorPreguntas();
@@ -85,5 +88,13 @@ public class Juego {
 
     public Ronda obtenerRondaActual() {
         return rondas.get(iteradorRonda);
+    }
+
+    public void evaluarRespuestas() {
+        obtenerRondaActual().evaluarPregunta();
+    }
+
+    public ArrayList<Jugador> obtenerJugadores() {
+        return jugadores;
     }
 }

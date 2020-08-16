@@ -12,10 +12,6 @@ public class OpcionOrdenada implements Opcion {
         this.posicionEsperada = posicionEsperada;
     }
 
-    public void setPosicionEsperada (int posicionEsperada){
-        this.posicionEsperada = posicionEsperada;
-    }
-
     public void setPosicionActual(int posicion){ posicionActual = posicion; }
 
     @Override
@@ -36,4 +32,13 @@ public class OpcionOrdenada implements Opcion {
     public String getDescripcion() {
         return descripcion;
     }
+
+    public int getPosicion() {
+        return posicionActual;
+    }
+
+    public int getPosicionEsperada() {
+        return posicionEsperada;
+    }
+
 }

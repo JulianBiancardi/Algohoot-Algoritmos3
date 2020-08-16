@@ -36,9 +36,9 @@ public class ControladorJugar implements EventHandler<ActionEvent> {
             jugador = new Jugador(nombreJugador2.getText());
             juego.agregarJugador(jugador);
 
-            VistaPrincipal vistaPregunta = new VistaPrincipal(juego);
-            vistaPregunta.crearVista(stage, juego.obtenerRondaActual().obtenerPregunta());
-            Scene nuevaPregunta = new Scene(vistaPregunta);
+
+            VistaPrincipal vistaPrincipal = new VistaPrincipal(stage,juego,juego.obtenerRondaActual().obtenerPregunta());
+            Scene nuevaPregunta = new Scene(vistaPrincipal);
             stage.setScene(nuevaPregunta);
 
         }catch (NombreVacioError error){
