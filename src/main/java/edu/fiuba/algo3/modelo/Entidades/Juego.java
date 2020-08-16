@@ -1,9 +1,6 @@
 package edu.fiuba.algo3.modelo.Entidades;
 
-import edu.fiuba.algo3.modelo.Entidades.Preguntas.MultipleChoice;
-import edu.fiuba.algo3.modelo.Entidades.Preguntas.OrderedChoice;
-import edu.fiuba.algo3.modelo.Entidades.Preguntas.Pregunta;
-import edu.fiuba.algo3.modelo.Entidades.Preguntas.VoF;
+import edu.fiuba.algo3.modelo.Entidades.Preguntas.*;
 import edu.fiuba.algo3.vista.VistaPrincipal;
 import edu.fiuba.algo3.vista.VistaPuntos;
 import javafx.scene.Parent;
@@ -22,27 +19,17 @@ public class Juego {
     private int iteradorRonda;
 
     public Juego (){
-
-        //Creo un par de preguntas para testear el sistema de turnos del juego
-        MultipleChoice pregunta = MultipleChoice.conModoPuntajeParcial("Paises de América Latina");
-        pregunta.nuevaOpcion("Argentina", true);
-        pregunta.nuevaOpcion("China", false);
-        pregunta.nuevaOpcion("Egipto", false);
-        pregunta.nuevaOpcion("Rusia", false);
+        /*
+        String nombreGrupo1 = "Numeros Pares";
+        String nombreGrupo2 = "Numeros Impares";
+        GroupChoice pregunta = new GroupChoice("Separar en Pares e Impares", nombreGrupo1, nombreGrupo2);
+        pregunta.nuevaOpcionGrupo1("2");
+        pregunta.nuevaOpcionGrupo2("3");
+        pregunta.nuevaOpcionGrupo1("4");
+        pregunta.nuevaOpcionGrupo2("5");
+        agregarRonda(pregunta);*/
+        VoF pregunta = VoF.conModoClasico("2+2 = 4",true);
         agregarRonda(pregunta);
-
-        VoF vof = VoF.conModoClasico("La guitarra tiene 6 cuerdas",true);
-        agregarRonda(vof);
-
-        pregunta = MultipleChoice.conModoPuntajeParcial("Cuantos mundiales de futbol tiene Argentina");
-        pregunta.nuevaOpcion("1", false);
-        pregunta.nuevaOpcion("2", true);
-        pregunta.nuevaOpcion("3", false);
-        pregunta.nuevaOpcion("4", false);
-        agregarRonda(pregunta);
-      
-        vof = VoF.conModoClasico("Vamos a aprobar?",false);
-        agregarRonda(vof);
 
         iteradorRonda = 0 ;
 
@@ -90,5 +77,13 @@ public class Juego {
 
     public Ronda obtenerRondaActual() {
         return rondas.get(iteradorRonda);
+    }
+
+    public void evaluarRespuestas() {
+        obtenerRondaActual().evaluarPregunta();
+    }
+
+    public ArrayList<Jugador> obtenerJugadores() {
+        return jugadores;
     }
 }

@@ -1,46 +1,54 @@
 package edu.fiuba.algo3.controlador;
 
 import edu.fiuba.algo3.modelo.Entidades.Juego;
-import edu.fiuba.algo3.modelo.Entidades.Opciones.Opcion;
-import edu.fiuba.algo3.vista.FabricaVistaPreguntas;
+import edu.fiuba.algo3.modelo.Entidades.Jugador;
+import edu.fiuba.algo3.vista.Preguntas.VistaPregunta;
 import edu.fiuba.algo3.vista.VistaPrincipal;
+import edu.fiuba.algo3.vista.VistaPuntos;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.util.ArrayList;
 
 public class ControladorEnviar implements EventHandler<ActionEvent> {
     Stage stage;
     Juego juego;
-    ArrayList<Opcion> opcionesElegidas;
+    Timeline tiempo;
+    VistaPregunta vistaPregunta;
 
-    public ControladorEnviar(Stage stagePrincipal, Juego juego, ArrayList<Opcion> opcionesElegidas){
+    public ControladorEnviar(Stage stagePrincipal, Juego juego, Timeline tiempo, VistaPregunta vistaPregunta){
         this.stage = stagePrincipal;
         this.juego = juego;
-        this.opcionesElegidas = opcionesElegidas;
+        this.vistaPregunta = vistaPregunta;
+        this.tiempo = tiempo;
     }
 
     @Override
     public void handle(ActionEvent actionEvent){
-        System.out.println("Enviando respuesta");
-        opcionesElegidas.forEach(opcion -> System.out.println(opcion.getDescripcion()));
-        //Actualizar el juego
-        //Crear una nueva vista con este juego actualizado.
+        tiempo.pause();
+
+        Jugador jugador = juego.turnoDe();
+        juego.obtenerRondaActual().agregarRespuesta(vistaPregunta.obtenerRespuesta(jugador));
 
         juego.siguienteTurno();
 
-        if(juego.hayRondaSiguiente()){
-            if(juego.terminoRonda())
-                juego.siguienteRonda();
-
-            VistaPrincipal vistaPregunta = new VistaPrincipal(juego);
-            //juego.obtenerRondaActual().mostrarRonda(stage,vistaPregunta);
-            FabricaVistaPreguntas.crearVista(juego.obtenerRondaActual().obtenerPregunta(), vistaPregunta, stage);
-            Scene nuevaPregunta = new Scene(vistaPregunta);
+        if(juego.terminoRonda()){
+            juego.evaluarRespuestas();
+            VistaPuntos vistaPuntos = new VistaPuntos(juego,stage);
+            stage.setScene(new Scene (vistaPuntos));
+        }
+        else{
+            VistaPrincipal vistaPrincipal = new VistaPrincipal(stage,juego,juego.obtenerRondaActual().obtenerPregunta());
+            Scene nuevaPregunta = new Scene(vistaPrincipal);
             stage.setScene(nuevaPregunta);
-        } else
-            System.exit(0);
+        }
+
     }
 }
+
+
+/*
+*Agregar multiplicadores y exclusividad a la vista, con sus controladores
+ */

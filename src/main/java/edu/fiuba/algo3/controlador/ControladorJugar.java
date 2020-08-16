@@ -3,7 +3,6 @@ package edu.fiuba.algo3.controlador;
 import edu.fiuba.algo3.modelo.Entidades.Juego;
 import edu.fiuba.algo3.modelo.Entidades.Jugador;
 import edu.fiuba.algo3.modelo.Excepciones.NombreVacioError;
-import edu.fiuba.algo3.vista.FabricaVistaPreguntas;
 import edu.fiuba.algo3.vista.VistaPrincipal;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -37,9 +36,8 @@ public class ControladorJugar implements EventHandler<ActionEvent> {
             jugador = new Jugador(nombreJugador2.getText());
             juego.agregarJugador(jugador);
 
-            VistaPrincipal vistaPregunta = new VistaPrincipal(juego);
-            FabricaVistaPreguntas.crearVista(juego.obtenerRondaActual().obtenerPregunta(),vistaPregunta,stage);
-            Scene nuevaPregunta = new Scene(vistaPregunta);
+            VistaPrincipal vistaPrincipal = new VistaPrincipal(stage,juego,juego.obtenerRondaActual().obtenerPregunta());
+            Scene nuevaPregunta = new Scene(vistaPrincipal);
             stage.setScene(nuevaPregunta);
 
         }catch (NombreVacioError error){
