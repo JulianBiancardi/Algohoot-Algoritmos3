@@ -19,6 +19,7 @@ public class Juego {
     private int iteradorRonda;
 
     public Juego (){
+        /*
         String nombreGrupo1 = "Numeros Pares";
         String nombreGrupo2 = "Numeros Impares";
         GroupChoice pregunta = new GroupChoice("Separar en Pares e Impares", nombreGrupo1, nombreGrupo2);
@@ -26,6 +27,8 @@ public class Juego {
         pregunta.nuevaOpcionGrupo2("3");
         pregunta.nuevaOpcionGrupo1("4");
         pregunta.nuevaOpcionGrupo2("5");
+        agregarRonda(pregunta);*/
+        VoF pregunta = VoF.conModoClasico("2+2 = 4",true);
         agregarRonda(pregunta);
 
         iteradorRonda = 0 ;

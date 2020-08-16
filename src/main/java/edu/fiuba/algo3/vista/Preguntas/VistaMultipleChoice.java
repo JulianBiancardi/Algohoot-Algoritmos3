@@ -1,7 +1,7 @@
 package edu.fiuba.algo3.vista.Preguntas;
 
 import edu.fiuba.algo3.modelo.Entidades.Jugador;
-import edu.fiuba.algo3.modelo.Entidades.Opciones.Opcion;
+import edu.fiuba.algo3.modelo.Entidades.Opciones.OpcionBinaria;
 import edu.fiuba.algo3.modelo.Entidades.Preguntas.MultipleChoice;
 import edu.fiuba.algo3.modelo.Entidades.Respuestas.Respuesta;
 import edu.fiuba.algo3.vista.Opciones.VistaOpcionBinaria;
@@ -13,7 +13,7 @@ import java.util.HashMap;
 
 public class VistaMultipleChoice extends VistaPregunta {
     HashMap<Integer, VistaOpcionData> opcionesInfo = new HashMap<Integer,VistaOpcionData>();
-    ArrayList<Opcion> opcionesElegidas = new ArrayList<>();
+    ArrayList<OpcionBinaria> opcionesElegidas = new ArrayList<>();
 
     public VistaMultipleChoice(MultipleChoice pregunta){
         super(pregunta);
@@ -27,14 +27,13 @@ public class VistaMultipleChoice extends VistaPregunta {
         inicializarOpciones(pregunta,opcionesElegidas);
     }
 
-    private void inicializarOpciones(MultipleChoice pregunta, ArrayList<Opcion> opcionesElegidas){
+    private void inicializarOpciones(MultipleChoice pregunta, ArrayList<OpcionBinaria> opcionesElegidas){
         if (pregunta.cantidadOpciones() > opcionesInfo.size()) // lanzar exepcion, cantidad de opciones incorrectas
             return;
 
         for(int i = 0; (i < pregunta.cantidadOpciones()); i++){
-            Opcion opcionActual = pregunta.obtenerOpcion(i);
             VistaOpcionData dataActual = opcionesInfo.get(i);
-            VistaOpcionBinaria vistaActual = new VistaOpcionBinaria(opcionActual,dataActual.getColor(),opcionesElegidas);
+            VistaOpcionBinaria vistaActual = new VistaOpcionBinaria(pregunta.obtenerOpcion(i),dataActual.getColor(),opcionesElegidas);
 
             this.add(vistaActual,dataActual.getColumna(),dataActual.getFila());
             vistaActual.prefWidthProperty().bind(this.widthProperty());
