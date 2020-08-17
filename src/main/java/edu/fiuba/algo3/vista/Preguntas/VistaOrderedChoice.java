@@ -22,14 +22,17 @@ public class VistaOrderedChoice extends VistaPregunta{
     private ArrayList<OpcionOrdenada> opcionesElegidas = new ArrayList<>();
     private ArrayList<VistaOpcionOrdenada> vistasOpcionesOrdenadas = new ArrayList<>();
 
-    public VistaOrderedChoice(OrderedChoice pregunta){
+    RespuestaOrdenada respuesta;
+    public VistaOrderedChoice(OrderedChoice pregunta, Jugador jugador){
         super(pregunta);
 
-        opcionesInfo.put(0,new VistaOpcionData(1,0, Color.valueOf("#e21b3c")));
-        opcionesInfo.put(1,new VistaOpcionData(1,1, Color.valueOf("#1368ce")));
-        opcionesInfo.put(2,new VistaOpcionData(2,0, Color.valueOf("#d89e00")));
-        opcionesInfo.put(3,new VistaOpcionData(2,1, Color.valueOf("#26890c")));
-        opcionesInfo.put(4,new VistaOpcionData(3,0, Color.valueOf("#864cbf")));
+        respuesta = new RespuestaOrdenada(jugador,pregunta);
+
+        opcionesInfo.put(0,new VistaOpcionData(1,0, "File:src\\resources\\imagenes\\IMG_Botones\\IMG_BotonAzul.png"));
+        opcionesInfo.put(1,new VistaOpcionData(1,1, "File:src\\resources\\imagenes\\IMG_Botones\\IMG_BotonRojo.png"));
+        opcionesInfo.put(2,new VistaOpcionData(2,0, "File:src\\resources\\imagenes\\IMG_Botones\\IMG_BotonAmarillo.png"));
+        opcionesInfo.put(3,new VistaOpcionData(2,1, "File:src\\resources\\imagenes\\IMG_Botones\\IMG_BotonVerde.png"));
+        opcionesInfo.put(4,new VistaOpcionData(3,0, "File:src\\resources\\imagenes\\IMG_Botones\\IMG_BotonVioleta.png"));
 
         inicializarBotonReset();
 
@@ -49,7 +52,7 @@ public class VistaOrderedChoice extends VistaPregunta{
         for(int i = 0; i < pregunta.cantidadOpciones(); i++){
             Opcion opcionActual = pregunta.obtenerOpcion(i);
             VistaOpcionData dataActual = opcionesInfo.get(i);
-            VistaOpcionOrdenada vistaActual = new VistaOpcionOrdenada((OpcionOrdenada) opcionActual,dataActual.getColor(),opcionesElegidas,pregunta.cantidadOpciones() );
+            VistaOpcionOrdenada vistaActual = new VistaOpcionOrdenada((OpcionOrdenada) opcionActual,dataActual.getImagen(),opcionesElegidas,pregunta.cantidadOpciones() );
 
             vistasOpcionesOrdenadas.add(vistaActual);
 
@@ -59,9 +62,13 @@ public class VistaOrderedChoice extends VistaPregunta{
         }
     }
 
+
+    public Respuesta getRespuesta(){
+        return respuesta;
+    }
+
     @Override
-    public Respuesta obtenerRespuesta(Jugador jugador) {
-        RespuestaOrdenada respuesta = new RespuestaOrdenada(jugador,preguntaAsociada);
+    public Respuesta completarRespuesta() {
         opcionesElegidas.forEach(opcion -> respuesta.agregarOpcion(opcion));
         return respuesta;
     }

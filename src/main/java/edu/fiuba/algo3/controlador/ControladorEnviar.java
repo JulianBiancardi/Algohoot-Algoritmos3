@@ -31,7 +31,7 @@ public class ControladorEnviar implements EventHandler<ActionEvent> {
         tiempo.pause();
 
         Jugador jugador = juego.turnoDe();
-        juego.obtenerRondaActual().agregarRespuesta(vistaPregunta.obtenerRespuesta(jugador));
+        juego.obtenerRondaActual().agregarRespuesta(vistaPregunta.completarRespuesta());
 
         juego.siguienteTurno();
 
@@ -42,14 +42,8 @@ public class ControladorEnviar implements EventHandler<ActionEvent> {
         }
         else{
             VistaPrincipal vistaPrincipal = new VistaPrincipal(stage,juego,juego.obtenerRondaActual().obtenerPregunta());
-            Scene nuevaPregunta = new Scene(vistaPrincipal);
-            stage.setScene(nuevaPregunta);
+            stage.setScene(new Scene(vistaPrincipal));
         }
-
+        stage.setFullScreen(true);
     }
 }
-
-
-/*
-*Agregar multiplicadores y exclusividad a la vista, con sus controladores
- */

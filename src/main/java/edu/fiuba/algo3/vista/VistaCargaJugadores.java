@@ -27,12 +27,12 @@ public class VistaCargaJugadores extends StackPane{
         logoView.setFitHeight(100);
         logoView.setFitWidth(200);
 
-        TextField NombreJugador = new TextField();
+        TextField NombreJugador = new TextField("");
         NombreJugador.setPromptText("Nombre Jugador 1");
         NombreJugador.setFocusTraversable(false);
         NombreJugador.setAlignment(Pos.CENTER);
 
-        TextField NombreJugador2 = new TextField();
+        TextField NombreJugador2 = new TextField("");
         NombreJugador2.setPromptText("Nombre Jugador 2");
         NombreJugador2.setFocusTraversable(false);
         NombreJugador2.setAlignment(Pos.CENTER);

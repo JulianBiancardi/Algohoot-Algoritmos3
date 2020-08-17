@@ -1,17 +1,16 @@
 package edu.fiuba.algo3.vista;
 
 import edu.fiuba.algo3.controlador.ControladorEnviar;
+
+import edu.fiuba.algo3.controlador.ControladorExclusividad;
 import edu.fiuba.algo3.controlador.ControladorMultiplicadorDoble;
 import edu.fiuba.algo3.controlador.ControladorMultiplicadorTriple;
-import edu.fiuba.algo3.controlador.ControladorOpcionGrupal;
 import edu.fiuba.algo3.modelo.Entidades.Juego;
-import edu.fiuba.algo3.modelo.Entidades.Preguntas.MultipleChoice;
-import edu.fiuba.algo3.modelo.Entidades.Preguntas.Pregunta;
-import edu.fiuba.algo3.modelo.Entidades.Preguntas.VoF;
-import edu.fiuba.algo3.vista.Opciones.VistaPregunta;
-
+import edu.fiuba.algo3.modelo.Entidades.Preguntas.*;
+import edu.fiuba.algo3.vista.Preguntas.*;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -28,7 +27,6 @@ import javafx.util.Duration;
 public class VistaPrincipal extends BorderPane{
     private Juego juego;
     VistaPregunta vistaPregunta;
-    //ArrayList<Opcion> opcionesElegidas = new ArrayList<>();
 
     private final Integer startTime = 50;
     private Integer secondsPassed = startTime;
@@ -100,18 +98,41 @@ public class VistaPrincipal extends BorderPane{
         tiempo = new Timeline(new KeyFrame(Duration.seconds(1),e -> contar()));
         tiempo.setCycleCount(Timeline.INDEFINITE);
         tiempo.play();
-        /*
-        Button multiplicadorDoble = new Button("Multiplicador Doble");
-        multiplicadorDoble.setOnAction(new ControladorMultiplicadorDoble(juego.turnoDe()));
 
-        Button multiplicadorTriple = new Button("Multiplicador Triple");
-        multiplicadorTriple.setOnAction(new ControladorMultiplicadorTriple(juego.turnoDe()));
+        VBox bonificacions = new VBox();
+        bonificacions.setAlignment(Pos.CENTER);
+
+        if(juego.obtenerRondaActual().obtenerPregunta().aceptaMultiplicador()) {
+            if(juego.turnoDe().tieneMultiplicadorDoble()) {
+                Button multiplicadorDoble = new Button("Usar multiplicador doble");
+                multiplicadorDoble.setOnAction(new ControladorMultiplicadorDoble(juego.turnoDe(), vistaPregunta, multiplicadorDoble));
+                multiplicadorDoble.setPrefSize(150, 50);
+                multiplicadorDoble.setBackground(new Background(new BackgroundFill(Color.valueOf("#D5D5D5"), null, Insets.EMPTY)));
+
+                bonificacions.getChildren().addAll(multiplicadorDoble);
+            }
+            if(juego.turnoDe().tieneMultiplicadorTriple()) {
+                Button multiplicadorTriple = new Button("Usar multiplicador triple");
+                multiplicadorTriple.setOnAction(new ControladorMultiplicadorTriple(juego.turnoDe(), vistaPregunta, multiplicadorTriple));
+                multiplicadorTriple.setPrefSize(150, 50);
+                multiplicadorTriple.setBackground(new Background(new BackgroundFill(Color.valueOf("#D5D5D5"), null, Insets.EMPTY)));
+                bonificacions.getChildren().addAll(multiplicadorTriple);
+            }
+        }
+        else if (juego.turnoDe().tieneExclusividad()){
+            Button exclusivad = new Button("Usar exclusividad");
+            exclusivad.setOnAction(new ControladorExclusividad(juego.turnoDe(), vistaPregunta, exclusivad));
+            exclusivad.setPrefSize(150, 50);
+            exclusivad.setBackground(new Background(new BackgroundFill(Color.valueOf("#D5D5D5"), null, Insets.EMPTY)));
+
+            bonificacions.getChildren().addAll(exclusivad);
+        }
 
         HBox hBox = new HBox();
-        hBox.getChildren().addAll(stackPane,multiplicadorDoble,multiplicadorTriple);
+        hBox.getChildren().addAll(stackPane,bonificacions);
         hBox.setAlignment(Pos.CENTER);
-        */
-        this.setCenter(stackPane);
+
+        this.setCenter(hBox);
     }
 
     public void inicializarBotonEnviar(Stage stage, Juego juego, Timeline tiempo){
@@ -129,13 +150,13 @@ public class VistaPrincipal extends BorderPane{
 
     public void crearVistaPregunta(Pregunta pregunta){
         if(pregunta instanceof VoF){
-            vistaPregunta = new VistaVoF((VoF) pregunta);
+            vistaPregunta = new VistaVoF((VoF) pregunta,juego.turnoDe());
         } else if(pregunta instanceof MultipleChoice){
-            vistaPregunta = new VistaMultipleChoice((MultipleChoice) pregunta);
+            vistaPregunta = new VistaMultipleChoice((MultipleChoice) pregunta,juego.turnoDe());
         } else if(pregunta instanceof OrderedChoice) {
-            vistaPregunta = new VistaOrderedChoice((OrderedChoice) pregunta);
+            vistaPregunta = new VistaOrderedChoice((OrderedChoice) pregunta,juego.turnoDe());
         } else if(pregunta instanceof GroupChoice){
-            vistaPregunta = new VistaGroupChoice((GroupChoice) pregunta);
+            vistaPregunta = new VistaGroupChoice((GroupChoice) pregunta,juego.turnoDe());
         }
         else return; //Agregar exepcion de pregunta no reconocida
     }

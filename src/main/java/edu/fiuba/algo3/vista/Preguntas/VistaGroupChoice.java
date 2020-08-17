@@ -22,14 +22,18 @@ public class VistaGroupChoice extends VistaPregunta{
     private ArrayList<OpcionGrupal> opcionesGrupoA = new ArrayList<>();
     private ArrayList<OpcionGrupal> opcionesGrupoB = new ArrayList<>();
 
-    public VistaGroupChoice(GroupChoice pregunta){
+    RespuestaGrupal respuesta;
+
+    public VistaGroupChoice(GroupChoice pregunta, Jugador jugador){
         super(pregunta);
 
-        opcionesInfo.put(0,new VistaOpcionData(1,0, Color.valueOf("#e21b3c")));
-        opcionesInfo.put(1,new VistaOpcionData(1,1, Color.valueOf("#1368ce")));
-        opcionesInfo.put(2,new VistaOpcionData(2,0, Color.valueOf("#d89e00")));
-        opcionesInfo.put(3,new VistaOpcionData(2,1, Color.valueOf("#26890c")));
-        opcionesInfo.put(4,new VistaOpcionData(3,0, Color.valueOf("#864cbf")));
+        respuesta = new RespuestaGrupal(jugador,pregunta);
+
+        opcionesInfo.put(0,new VistaOpcionData(1,0, "File:src\\resources\\imagenes\\IMG_Botones\\IMG_BotonAzul.png"));
+        opcionesInfo.put(1,new VistaOpcionData(1,1, "File:src\\resources\\imagenes\\IMG_Botones\\IMG_BotonRojo.png"));
+        opcionesInfo.put(2,new VistaOpcionData(2,0, "File:src\\resources\\imagenes\\IMG_Botones\\IMG_BotonAmarillo.png"));
+        opcionesInfo.put(3,new VistaOpcionData(2,1, "File:src\\resources\\imagenes\\IMG_Botones\\IMG_BotonVerde.png"));
+        opcionesInfo.put(4,new VistaOpcionData(3,0, "File:src\\resources\\imagenes\\IMG_Botones\\IMG_BotonVioleta.png"));
 
         mostrarGrupos(pregunta);
         inicializarOpciones(pregunta);
@@ -59,7 +63,7 @@ public class VistaGroupChoice extends VistaPregunta{
 
         for(int i = 0; (i < pregunta.cantidadOpciones() ); i++){
             VistaOpcionData dataActual = opcionesInfo.get(i);
-            VistaOpcionGrupal vistaActual = new VistaOpcionGrupal(pregunta.obtenerOpcion(i),dataActual.getColor(),opcionesGrupoA,opcionesGrupoB);
+            VistaOpcionGrupal vistaActual = new VistaOpcionGrupal(pregunta.obtenerOpcion(i),dataActual.getImagen(),opcionesGrupoA,opcionesGrupoB);
 
             this.add(vistaActual,dataActual.getColumna(),dataActual.getFila());
             vistaActual.prefWidthProperty().bind(this.widthProperty());
@@ -67,9 +71,12 @@ public class VistaGroupChoice extends VistaPregunta{
         }
     }
 
+    public Respuesta getRespuesta(){
+        return respuesta;
+    }
+
     @Override
-    public Respuesta obtenerRespuesta(Jugador jugador) {
-        RespuestaGrupal respuesta = new RespuestaGrupal(jugador,(GroupChoice) preguntaAsociada);
+    public Respuesta completarRespuesta() {
         opcionesGrupoA.forEach(opcionGrupal -> respuesta.agregarOpcionGrupo1(opcionGrupal));
         opcionesGrupoB.forEach(opcionGrupal -> respuesta.agregarOpcionGrupo2(opcionGrupal));
 

@@ -15,11 +15,16 @@ import javafx.scene.text.FontWeight;
 
 import java.util.ArrayList;
 
-public class VistaOpcionBinaria extends AnchorPane {
+public class VistaOpcionBinaria extends StackPane {
     ToggleButton botonEstado = new ToggleButton();
 
-    public VistaOpcionBinaria(OpcionBinaria unaOpcion, Color colorBoton, ArrayList<OpcionBinaria> opcionesElegidas){
+    public VistaOpcionBinaria(OpcionBinaria unaOpcion, Image imagen, ArrayList<OpcionBinaria> opcionesElegidas){
 
+        ImageView imageView = new ImageView(imagen);
+        imageView.fitHeightProperty().bind(this.heightProperty());
+        imageView.fitWidthProperty().bind(this.widthProperty());
+
+        HBox hBox = new HBox();
         Label descripcionLabel = new Label();
         descripcionLabel.setText(unaOpcion.getDescripcion());
         descripcionLabel.setFont(Font.font("Montserrat", FontWeight.BOLD,30));
@@ -32,12 +37,13 @@ public class VistaOpcionBinaria extends AnchorPane {
         estadoImagenView.setFitWidth(80);
         estadoImagenView.setFitHeight(80);
         botonEstado.setGraphic(estadoImagenView);
+
         botonEstado.setBackground(new Background(new BackgroundFill(Color.TRANSPARENT,null,Insets.EMPTY)));
         botonEstado.setOnAction(new ControladorOpcionBinaria(opcionesElegidas,unaOpcion,estadoImagenView));
 
-        this.setBackground(new Background(new BackgroundFill(colorBoton,null, Insets.EMPTY)));
+        hBox.getChildren().addAll(descripcionLabel,botonEstado);
 
-        this.getChildren().addAll(descripcionLabel,botonEstado);
+        /*
         AnchorPane.setLeftAnchor(descripcionLabel,10.0);
         AnchorPane.setTopAnchor(descripcionLabel,10.0);
         AnchorPane.setBottomAnchor(descripcionLabel,10.0);
@@ -45,5 +51,9 @@ public class VistaOpcionBinaria extends AnchorPane {
         AnchorPane.setRightAnchor(botonEstado,10.0);
         AnchorPane.setTopAnchor(botonEstado,10.0);
         AnchorPane.setBottomAnchor(botonEstado,10.0);
+         */
+
+        this.setMaxHeight(80);
+        this.getChildren().addAll(imageView,hBox);
     }
 }

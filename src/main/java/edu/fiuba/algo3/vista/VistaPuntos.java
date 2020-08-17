@@ -3,18 +3,14 @@ package edu.fiuba.algo3.vista;
 import edu.fiuba.algo3.controlador.ControladorSiguiente;
 import edu.fiuba.algo3.modelo.Entidades.Juego;
 import edu.fiuba.algo3.modelo.Entidades.Jugador;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -26,6 +22,7 @@ public class VistaPuntos extends VBox {
     public VistaPuntos(Juego juego, Stage stage){
         this.setBackground(new Background(new BackgroundFill(Color.valueOf("#864cbf"),null, Insets.EMPTY)));
         this.setSpacing(10);
+        this.setPrefSize(600,600);
 
         inicializarTitulo();
         inicializarBotonSiguiente(stage,juego);
@@ -33,13 +30,9 @@ public class VistaPuntos extends VBox {
 
         jugadores.stream()
                 .sorted(Comparator.comparingInt(Jugador::puntos)
-                .reversed()) // Ordeno para mostrar los de mayor puntaje primero!
+                        .reversed()) // Ordeno para mostrar los de mayor puntaje primero!
                 .collect(Collectors.toList())
                 .forEach(this::mostrarJugador);
-
-
-
-        this.setPrefSize(600,600);
     }
 
     private void inicializarTitulo(){
@@ -92,3 +85,4 @@ public class VistaPuntos extends VBox {
         puesto++;
     }
 }
+
