@@ -18,7 +18,7 @@ import java.util.ArrayList;
 public class VistaOpcionBinaria extends AnchorPane {
     ToggleButton botonEstado = new ToggleButton();
 
-    public VistaOpcionBinaria(OpcionBinaria unaOpcion, Color colorBoton, ArrayList<OpcionBinaria> opcionesElegidas){
+    public VistaOpcionBinaria(OpcionBinaria unaOpcion, Image imagen, ArrayList<OpcionBinaria> opcionesElegidas){
 
         Label descripcionLabel = new Label();
         descripcionLabel.setText(unaOpcion.getDescripcion());
@@ -27,15 +27,20 @@ public class VistaOpcionBinaria extends AnchorPane {
         descripcionLabel.setTextFill(Color.WHITE);
         descripcionLabel.setAlignment(Pos.CENTER_LEFT);
 
+
+
         Image estadoImagen = new Image("File:src\\resources\\imagenes\\IMG_OpcionBinariaNoSeleccionada.png");
         ImageView estadoImagenView = new ImageView(estadoImagen);
         estadoImagenView.setFitWidth(80);
         estadoImagenView.setFitHeight(80);
         botonEstado.setGraphic(estadoImagenView);
+
         botonEstado.setBackground(new Background(new BackgroundFill(Color.TRANSPARENT,null,Insets.EMPTY)));
         botonEstado.setOnAction(new ControladorOpcionBinaria(opcionesElegidas,unaOpcion,estadoImagenView));
 
-        this.setBackground(new Background(new BackgroundFill(colorBoton,null, Insets.EMPTY)));
+        this.setBackground(new Background(new BackgroundImage(imagen, BackgroundRepeat.NO_REPEAT,
+                BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,
+                new BackgroundSize(100,100,true,true,true,true))));
 
         this.getChildren().addAll(descripcionLabel,botonEstado);
         AnchorPane.setLeftAnchor(descripcionLabel,10.0);

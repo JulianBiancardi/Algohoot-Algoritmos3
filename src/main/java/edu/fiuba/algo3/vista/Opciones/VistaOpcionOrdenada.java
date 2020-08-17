@@ -8,10 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.StackPane;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -23,7 +20,7 @@ public class VistaOpcionOrdenada extends AnchorPane{
     private Label descripcionLabel = new Label();
     private Button botonEstado = new Button();
 
-    public VistaOpcionOrdenada(OpcionOrdenada unaOpcion, Color colorBoton, ArrayList<OpcionOrdenada> opcionesElegidas,int cantidadOpciones){
+    public VistaOpcionOrdenada(OpcionOrdenada unaOpcion, Image imagen, ArrayList<OpcionOrdenada> opcionesElegidas,int cantidadOpciones){
         descripcionLabel.setText(unaOpcion.getDescripcion());
         descripcionLabel.setFont(Font.font("Montserrat", FontWeight.BOLD,30));
         descripcionLabel.setStyle("-fx-effect: dropshadow( one-pass-box , black , 5 , 0.0 , 1 , 0 )");
@@ -43,7 +40,11 @@ public class VistaOpcionOrdenada extends AnchorPane{
         posicionActual.setTextFill(Color.WHITE);
         stackPane1.getChildren().addAll(botonEstado,posicionActual);
 
-        this.setBackground(new Background(new BackgroundFill(colorBoton,null, Insets.EMPTY)));
+        //this.setBackground(new Background(new BackgroundFill(colorBoton,null, Insets.EMPTY)));
+        this.setBackground(new Background(new BackgroundImage(imagen, BackgroundRepeat.NO_REPEAT,
+                BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,
+                new BackgroundSize(100,100,true,true,true,true))));
+
 
         AnchorPane.setLeftAnchor(descripcionLabel,20.0);
         AnchorPane.setTopAnchor(descripcionLabel,20.0);

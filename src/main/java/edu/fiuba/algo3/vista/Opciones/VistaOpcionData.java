@@ -1,21 +1,23 @@
 package edu.fiuba.algo3.vista.Opciones;
 
 
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 
 public class VistaOpcionData {
-    private Color colorBoton;
+    private String urlImagen;
     private int fila;
     private int columna;
 
-    public VistaOpcionData(int fila,int columna, Color colorBotono){
+    public VistaOpcionData(int fila,int columna, String url){
         this.fila = fila;
         this.columna = columna;
-        this.colorBoton = colorBotono;
+        urlImagen = url;
     }
 
-    public Color getColor() {
-        return colorBoton;
+    public Image getImagen(){
+        return new Image(urlImagen);
     }
 
     public int getFila() {
