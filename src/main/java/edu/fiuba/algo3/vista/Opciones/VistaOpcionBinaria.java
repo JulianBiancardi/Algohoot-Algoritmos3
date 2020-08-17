@@ -15,19 +15,22 @@ import javafx.scene.text.FontWeight;
 
 import java.util.ArrayList;
 
-public class VistaOpcionBinaria extends AnchorPane {
+public class VistaOpcionBinaria extends StackPane {
     ToggleButton botonEstado = new ToggleButton();
 
     public VistaOpcionBinaria(OpcionBinaria unaOpcion, Image imagen, ArrayList<OpcionBinaria> opcionesElegidas){
 
+        ImageView imageView = new ImageView(imagen);
+        imageView.fitHeightProperty().bind(this.heightProperty());
+        imageView.fitWidthProperty().bind(this.widthProperty());
+
+        HBox hBox = new HBox();
         Label descripcionLabel = new Label();
         descripcionLabel.setText(unaOpcion.getDescripcion());
         descripcionLabel.setFont(Font.font("Montserrat", FontWeight.BOLD,30));
         descripcionLabel.setStyle("-fx-effect: dropshadow( one-pass-box , black , 5 , 0.0 , 1 , 0 )");
         descripcionLabel.setTextFill(Color.WHITE);
         descripcionLabel.setAlignment(Pos.CENTER_LEFT);
-
-
 
         Image estadoImagen = new Image("File:src\\resources\\imagenes\\IMG_OpcionBinariaNoSeleccionada.png");
         ImageView estadoImagenView = new ImageView(estadoImagen);
@@ -38,11 +41,9 @@ public class VistaOpcionBinaria extends AnchorPane {
         botonEstado.setBackground(new Background(new BackgroundFill(Color.TRANSPARENT,null,Insets.EMPTY)));
         botonEstado.setOnAction(new ControladorOpcionBinaria(opcionesElegidas,unaOpcion,estadoImagenView));
 
-        this.setBackground(new Background(new BackgroundImage(imagen, BackgroundRepeat.NO_REPEAT,
-                BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,
-                new BackgroundSize(100,100,true,true,true,true))));
+        hBox.getChildren().addAll(descripcionLabel,botonEstado);
 
-        this.getChildren().addAll(descripcionLabel,botonEstado);
+        /*
         AnchorPane.setLeftAnchor(descripcionLabel,10.0);
         AnchorPane.setTopAnchor(descripcionLabel,10.0);
         AnchorPane.setBottomAnchor(descripcionLabel,10.0);
@@ -50,5 +51,9 @@ public class VistaOpcionBinaria extends AnchorPane {
         AnchorPane.setRightAnchor(botonEstado,10.0);
         AnchorPane.setTopAnchor(botonEstado,10.0);
         AnchorPane.setBottomAnchor(botonEstado,10.0);
+         */
+
+        this.setMaxHeight(80);
+        this.getChildren().addAll(imageView,hBox);
     }
 }

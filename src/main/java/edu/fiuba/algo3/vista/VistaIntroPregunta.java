@@ -19,7 +19,7 @@ public class VistaIntroPregunta extends BorderPane {
     ProgressBar progressBar = new ProgressBar(0);
 
     private Float seccondsPassed = 0.F;
-    private final Float MaxTime = 5000F; //15 segundos = 15mil milisegundos
+    private final Float MaxTime = 2500F;
     private Timeline tiempo;
 
     public VistaIntroPregunta(Stage stage, Juego juego){
@@ -28,7 +28,7 @@ public class VistaIntroPregunta extends BorderPane {
         this.setPrefSize(600,600);
         this.setStyle("-fx-background-color: #5133a5");
 
-        Label enunciadoPregunta = new Label("Enunciado de la pregunta");
+        Label enunciadoPregunta = new Label(juego.obtenerRondaActual().obtenerPregunta().getEnunciado());
         enunciadoPregunta.setFont(Font.font("Core Mellow", FontWeight.BOLD,55));
         enunciadoPregunta.setTextFill(Color.WHITE);
 

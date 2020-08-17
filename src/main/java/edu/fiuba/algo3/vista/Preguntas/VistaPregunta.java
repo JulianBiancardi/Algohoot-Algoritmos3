@@ -14,9 +14,8 @@ public abstract class VistaPregunta extends GridPane{
         preguntaAsociada = pregunta;
 
         this.setAlignment(Pos.CENTER);
-        this.setPrefSize(1200,200);
-        this.setHgap(5);
-        this.setVgap(5);
+        this.setHgap(10);
+        this.setVgap(10);
         this.setPadding(new Insets(10, 10 , 10 , 10));
     }
 

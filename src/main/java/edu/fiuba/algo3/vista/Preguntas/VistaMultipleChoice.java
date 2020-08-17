@@ -18,8 +18,8 @@ public class VistaMultipleChoice extends VistaPregunta {
     public VistaMultipleChoice(MultipleChoice pregunta){
         super(pregunta);
 
-        opcionesInfo.put(0,new VistaOpcionData(0,0, "File:src\\resources\\imagenes\\IMG_Botones\\IMG_BotonAzul.png"));
-        opcionesInfo.put(1,new VistaOpcionData(0,1, "File:src\\resources\\imagenes\\IMG_Botones\\IMG_BotonRojo.png"));
+        opcionesInfo.put(0,new VistaOpcionData(0,0, "File:src\\resources\\imagenes\\IMG_Botones\\IMG_BotonRojo.png"));
+        opcionesInfo.put(1,new VistaOpcionData(0,1, "File:src\\resources\\imagenes\\IMG_Botones\\IMG_BotonAzul.png"));
         opcionesInfo.put(2,new VistaOpcionData(1,0, "File:src\\resources\\imagenes\\IMG_Botones\\IMG_BotonAmarillo.png"));
         opcionesInfo.put(3,new VistaOpcionData(1,1, "File:src\\resources\\imagenes\\IMG_Botones\\IMG_BotonVerde.png"));
         opcionesInfo.put(4,new VistaOpcionData(2,0, "File:src\\resources\\imagenes\\IMG_Botones\\IMG_BotonVioleta.png"));

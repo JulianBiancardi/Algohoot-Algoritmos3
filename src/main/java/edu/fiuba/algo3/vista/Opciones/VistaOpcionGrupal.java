@@ -2,7 +2,6 @@ package edu.fiuba.algo3.vista.Opciones;
 
 import edu.fiuba.algo3.controlador.ControladorOpcionGrupal;
 import edu.fiuba.algo3.modelo.Entidades.Opciones.OpcionGrupal;
-import edu.fiuba.algo3.modelo.Entidades.Opciones.OpcionOrdenada;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -54,6 +53,8 @@ public class VistaOpcionGrupal extends AnchorPane {
         AnchorPane.setRightAnchor(stackPane1,0.0);
         AnchorPane.setBottomAnchor(stackPane1,20.0);
         this.getChildren().addAll(descripcionLabel,stackPane1);
+
+        this.setMaxHeight(80);
     }
 
 }

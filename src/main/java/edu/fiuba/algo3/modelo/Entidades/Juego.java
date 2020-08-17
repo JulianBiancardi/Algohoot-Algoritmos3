@@ -31,7 +31,7 @@ public class Juego {
     private int iteradorRonda;
 
 
-    private final int cantidadRondas = 3;
+    private final int cantidadRondas = 6;
     private final LectorPreguntas lectorPreguntas = new LectorPreguntas();
 
     ArrayList<Pregunta> preguntas = new ArrayList<>();

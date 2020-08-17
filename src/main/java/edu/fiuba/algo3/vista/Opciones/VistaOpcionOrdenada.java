@@ -1,7 +1,6 @@
 package edu.fiuba.algo3.vista.Opciones;
 
 import edu.fiuba.algo3.controlador.ControladorOpcionOrdenada;
-import edu.fiuba.algo3.controlador.ControladorSiguiente;
 import edu.fiuba.algo3.modelo.Entidades.Opciones.OpcionOrdenada;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
@@ -53,6 +52,8 @@ public class VistaOpcionOrdenada extends AnchorPane{
         AnchorPane.setRightAnchor(stackPane1,0.0);
         AnchorPane.setBottomAnchor(stackPane1,20.0);
         this.getChildren().addAll(descripcionLabel,stackPane1);
+
+        this.setMaxHeight(80);
     }
 
     public void resetLabel() {

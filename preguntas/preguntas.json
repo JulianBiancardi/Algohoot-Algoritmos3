@@ -47,6 +47,10 @@
                         {
                             "Descripcion": "San LeoProgramador del Valle de Catamarca",
                             "Valor": false
+                        },
+                        {
+                            "Descripcion": "Ninguna de las anteriores",
+                            "Valor": false
                         }
                     ]
                 }
