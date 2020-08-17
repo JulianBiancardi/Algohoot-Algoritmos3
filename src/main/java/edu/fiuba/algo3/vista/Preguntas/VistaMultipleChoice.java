@@ -15,8 +15,11 @@ public class VistaMultipleChoice extends VistaPregunta {
     HashMap<Integer, VistaOpcionData> opcionesInfo = new HashMap<Integer,VistaOpcionData>();
     ArrayList<OpcionBinaria> opcionesElegidas = new ArrayList<>();
 
-    public VistaMultipleChoice(MultipleChoice pregunta){
+    Respuesta respuesta;
+    public VistaMultipleChoice(MultipleChoice pregunta, Jugador jugador){
         super(pregunta);
+
+        respuesta = new Respuesta(jugador,pregunta);
 
         opcionesInfo.put(0,new VistaOpcionData(0,0, "File:src\\resources\\imagenes\\IMG_Botones\\IMG_BotonRojo.png"));
         opcionesInfo.put(1,new VistaOpcionData(0,1, "File:src\\resources\\imagenes\\IMG_Botones\\IMG_BotonAzul.png"));
@@ -42,9 +45,12 @@ public class VistaMultipleChoice extends VistaPregunta {
         }
     }
 
+    public Respuesta getRespuesta(){
+        return respuesta;
+    }
+
     @Override
-    public Respuesta obtenerRespuesta(Jugador jugador) {
-        Respuesta respuesta = new Respuesta(jugador,preguntaAsociada);
+    public Respuesta completarRespuesta() {
         opcionesElegidas.forEach(respuesta::agregarOpcion);
         return respuesta;
     }

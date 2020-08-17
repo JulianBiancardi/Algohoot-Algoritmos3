@@ -18,9 +18,12 @@ import java.util.HashMap;
 public class VistaVoF extends VistaPregunta {
     HashMap<Integer, VistaOpcionData> opcionesInfo = new HashMap<Integer,VistaOpcionData>();
     ArrayList<OpcionBinaria> opcionesElegidas = new ArrayList<>();
+    Respuesta respuesta;
 
-    public VistaVoF(VoF pregunta){
+    public VistaVoF(VoF pregunta,Jugador jugador){
         super(pregunta);
+
+        respuesta = new Respuesta(jugador,pregunta);
 
         opcionesInfo.put(0,new VistaOpcionData(0,0, "File:src\\resources\\imagenes\\IMG_Botones\\IMG_BotonAzul.png"));
         opcionesInfo.put(1,new VistaOpcionData(0,1, "File:src\\resources\\imagenes\\IMG_Botones\\IMG_BotonRojo.png"));
@@ -39,9 +42,12 @@ public class VistaVoF extends VistaPregunta {
         }
     }
 
+    public Respuesta getRespuesta(){
+        return respuesta;
+    }
+
     @Override
-    public Respuesta obtenerRespuesta(Jugador jugador) {
-        Respuesta respuesta = new Respuesta(jugador,preguntaAsociada);
+    public Respuesta completarRespuesta(){
         opcionesElegidas.forEach(respuesta::agregarOpcion);
         return respuesta;
     }

@@ -2,27 +2,37 @@ package edu.fiuba.algo3.controlador;
 
 import edu.fiuba.algo3.modelo.Entidades.Jugador;
 import edu.fiuba.algo3.modelo.Entidades.Respuestas.Respuesta;
+import edu.fiuba.algo3.vista.Preguntas.VistaPregunta;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
+import javafx.scene.control.Button;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.paint.Color;
 
 
 public class ControladorMultiplicadorDoble implements EventHandler<ActionEvent> {
 
     Jugador jugador;
+    VistaPregunta vistaPregunta;
+    Button boton;
     boolean activado;
-    Respuesta respuesta;
 
-    public ControladorMultiplicadorDoble (Jugador jugador, Respuesta respuesta){
+    public ControladorMultiplicadorDoble (Jugador jugador, VistaPregunta vistaPregunta,Button boton){
         this.jugador = jugador;
+        this.vistaPregunta = vistaPregunta;
+        this.boton = boton;
+
         activado = false;
-        this.respuesta = respuesta;
     }
 
     @Override
     public void handle(ActionEvent actionEvent) {
         if (!activado) {
-            jugador.activarMultiplicadorDoble(respuesta);
+            jugador.activarMultiplicadorDoble(vistaPregunta.getRespuesta());
             activado = true;
+            boton.setBackground(new Background(new BackgroundFill(Color.valueOf("#ADFF2F"),null, Insets.EMPTY)));
         }
     }
 }

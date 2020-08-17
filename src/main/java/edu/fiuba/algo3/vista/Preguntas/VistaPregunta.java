@@ -19,7 +19,9 @@ public abstract class VistaPregunta extends GridPane{
         this.setPadding(new Insets(10, 10 , 10 , 10));
     }
 
-    public abstract Respuesta obtenerRespuesta(Jugador jugador);
+    public abstract Respuesta getRespuesta();
+
+    public abstract Respuesta completarRespuesta();
 
     // public abstract void inicializarOpciones();
 }

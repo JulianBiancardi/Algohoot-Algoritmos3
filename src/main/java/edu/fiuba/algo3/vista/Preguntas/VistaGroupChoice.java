@@ -22,8 +22,12 @@ public class VistaGroupChoice extends VistaPregunta{
     private ArrayList<OpcionGrupal> opcionesGrupoA = new ArrayList<>();
     private ArrayList<OpcionGrupal> opcionesGrupoB = new ArrayList<>();
 
-    public VistaGroupChoice(GroupChoice pregunta){
+    RespuestaGrupal respuesta;
+
+    public VistaGroupChoice(GroupChoice pregunta, Jugador jugador){
         super(pregunta);
+
+        respuesta = new RespuestaGrupal(jugador,pregunta);
 
         opcionesInfo.put(0,new VistaOpcionData(1,0, "File:src\\resources\\imagenes\\IMG_Botones\\IMG_BotonAzul.png"));
         opcionesInfo.put(1,new VistaOpcionData(1,1, "File:src\\resources\\imagenes\\IMG_Botones\\IMG_BotonRojo.png"));
@@ -67,9 +71,12 @@ public class VistaGroupChoice extends VistaPregunta{
         }
     }
 
+    public Respuesta getRespuesta(){
+        return respuesta;
+    }
+
     @Override
-    public Respuesta obtenerRespuesta(Jugador jugador) {
-        RespuestaGrupal respuesta = new RespuestaGrupal(jugador,(GroupChoice) preguntaAsociada);
+    public Respuesta completarRespuesta() {
         opcionesGrupoA.forEach(opcionGrupal -> respuesta.agregarOpcionGrupo1(opcionGrupal));
         opcionesGrupoB.forEach(opcionGrupal -> respuesta.agregarOpcionGrupo2(opcionGrupal));
 

@@ -31,7 +31,7 @@ public class ControladorEnviar implements EventHandler<ActionEvent> {
         tiempo.pause();
 
         Jugador jugador = juego.turnoDe();
-        juego.obtenerRondaActual().agregarRespuesta(vistaPregunta.obtenerRespuesta(jugador));
+        juego.obtenerRondaActual().agregarRespuesta(vistaPregunta.completarRespuesta());
 
         juego.siguienteTurno();
 

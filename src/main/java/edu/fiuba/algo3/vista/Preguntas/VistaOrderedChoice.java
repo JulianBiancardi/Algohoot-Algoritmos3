@@ -22,8 +22,11 @@ public class VistaOrderedChoice extends VistaPregunta{
     private ArrayList<OpcionOrdenada> opcionesElegidas = new ArrayList<>();
     private ArrayList<VistaOpcionOrdenada> vistasOpcionesOrdenadas = new ArrayList<>();
 
-    public VistaOrderedChoice(OrderedChoice pregunta){
+    RespuestaOrdenada respuesta;
+    public VistaOrderedChoice(OrderedChoice pregunta, Jugador jugador){
         super(pregunta);
+
+        respuesta = new RespuestaOrdenada(jugador,pregunta);
 
         opcionesInfo.put(0,new VistaOpcionData(1,0, "File:src\\resources\\imagenes\\IMG_Botones\\IMG_BotonAzul.png"));
         opcionesInfo.put(1,new VistaOpcionData(1,1, "File:src\\resources\\imagenes\\IMG_Botones\\IMG_BotonRojo.png"));
@@ -59,9 +62,13 @@ public class VistaOrderedChoice extends VistaPregunta{
         }
     }
 
+
+    public Respuesta getRespuesta(){
+        return respuesta;
+    }
+
     @Override
-    public Respuesta obtenerRespuesta(Jugador jugador) {
-        RespuestaOrdenada respuesta = new RespuestaOrdenada(jugador,preguntaAsociada);
+    public Respuesta completarRespuesta() {
         opcionesElegidas.forEach(opcion -> respuesta.agregarOpcion(opcion));
         return respuesta;
     }

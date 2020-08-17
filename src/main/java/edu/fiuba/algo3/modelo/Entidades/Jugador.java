@@ -39,6 +39,18 @@ public class Jugador  {
         multiplicadoresRestantes.remove(multiplicador);
     }
 
+    public boolean tieneMultiplicadorDoble(){
+        return (multiplicadoresRestantes.contains(multiplicadorDoble));
+    }
+
+    public boolean tieneMultiplicadorTriple(){
+        return (multiplicadoresRestantes.contains(multiplicadorTriple));
+    }
+
+    public boolean tieneExclusividad(){
+        return (exclusividadesRestantes != 0);
+    }
+
     public void activarExclusividad(Respuesta respuesta){
         if(exclusividadesRestantes > 0){
             exclusividadesRestantes--;
