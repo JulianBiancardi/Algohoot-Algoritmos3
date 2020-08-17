@@ -1,15 +1,10 @@
 package edu.fiuba.algo3.vista;
 
 import edu.fiuba.algo3.controlador.ControladorEnviar;
-import edu.fiuba.algo3.controlador.ControladorMultiplicadorDoble;
-import edu.fiuba.algo3.controlador.ControladorMultiplicadorTriple;
-import edu.fiuba.algo3.controlador.ControladorOpcionGrupal;
-import edu.fiuba.algo3.modelo.Entidades.Juego;
-import edu.fiuba.algo3.modelo.Entidades.Preguntas.MultipleChoice;
-import edu.fiuba.algo3.modelo.Entidades.Preguntas.Pregunta;
-import edu.fiuba.algo3.modelo.Entidades.Preguntas.VoF;
-import edu.fiuba.algo3.vista.Opciones.VistaPregunta;
 
+import edu.fiuba.algo3.modelo.Entidades.Juego;
+import edu.fiuba.algo3.modelo.Entidades.Preguntas.*;
+import edu.fiuba.algo3.vista.Preguntas.*;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.geometry.Pos;
@@ -28,7 +23,6 @@ import javafx.util.Duration;
 public class VistaPrincipal extends BorderPane{
     private Juego juego;
     VistaPregunta vistaPregunta;
-    //ArrayList<Opcion> opcionesElegidas = new ArrayList<>();
 
     private final Integer startTime = 50;
     private Integer secondsPassed = startTime;
