@@ -1,5 +1,5 @@
 .fondoLogin {
-    -fx-background-image: url(/imagenes/GIF_fondoDinamico.gif);
+    -fx-background-image: url(../imagenes/GIF_fondoDinamico.gif);
     -fx-pref-height: 600;
     -fx-pref-width: 600;
 }
