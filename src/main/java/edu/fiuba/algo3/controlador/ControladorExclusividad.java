@@ -18,7 +18,7 @@ public class ControladorExclusividad implements EventHandler<ActionEvent> {
     boolean activado;
 
 
-    public ControladorExclusividad (Jugador jugador, VistaPregunta vistaPregunta, Button boton){
+    public ControladorExclusividad(Jugador jugador, VistaPregunta vistaPregunta, Button boton){
         this.jugador = jugador;
         this.vistaPregunta = vistaPregunta;
         this.boton = boton;
@@ -26,11 +26,11 @@ public class ControladorExclusividad implements EventHandler<ActionEvent> {
     }
 
     @Override
-    public void handle(ActionEvent actionEvent) {
-        if (!activado) {
+    public void handle(ActionEvent actionEvent){
+        if(!activado){
             jugador.activarExclusividad(vistaPregunta.getRespuesta());
             activado = true;
-            boton.setBackground(new Background(new BackgroundFill(Color.valueOf("#ADFF2F"),null, Insets.EMPTY)));
+            boton.setBackground(new Background(new BackgroundFill(Color.valueOf("#ADFF2F"), null, Insets.EMPTY)));
         }
     }
 

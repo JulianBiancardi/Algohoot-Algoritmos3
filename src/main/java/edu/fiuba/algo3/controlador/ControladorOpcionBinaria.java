@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.controlador;
 
 import edu.fiuba.algo3.modelo.Entidades.Opciones.OpcionBinaria;
+import edu.fiuba.algo3.vista.ResourcesConstantsAlgohoot;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.image.Image;
@@ -15,22 +16,22 @@ public class ControladorOpcionBinaria implements EventHandler<ActionEvent> {
     ImageView imageView;
     private boolean estaSeleccionado = false;
 
-    public ControladorOpcionBinaria (ArrayList<OpcionBinaria> opciones, OpcionBinaria opcionAsociada, ImageView imageView){
+    public ControladorOpcionBinaria(ArrayList<OpcionBinaria> opciones, OpcionBinaria opcionAsociada, ImageView imageView){
         this.opciones = opciones;
         this.opcionAsociada = opcionAsociada;
         this.imageView = imageView;
     }
+
     @Override
     public void handle(ActionEvent actionEvent){
         Image estadoImagen;
         if(estaSeleccionado){
             opciones.remove(opcionAsociada);
-            estadoImagen = new Image("File:src\\resources\\imagenes\\IMG_OpcionBinariaNoSeleccionada.png");
+            estadoImagen = new Image(ResourcesConstantsAlgohoot.PREGUNTA_NO_SELECCIONADA);
             estaSeleccionado = false;
-        }
-        else {
+        } else {
             opciones.add(opcionAsociada);
-            estadoImagen = new Image("File:src\\resources\\imagenes\\IMG_OpcionBinariaSeleccionada.png");
+            estadoImagen = new Image(ResourcesConstantsAlgohoot.PREGUNTA_SELECCIONADA);
             estaSeleccionado = true;
         }
 

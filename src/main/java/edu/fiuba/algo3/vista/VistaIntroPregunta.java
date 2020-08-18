@@ -25,11 +25,11 @@ public class VistaIntroPregunta extends BorderPane {
     public VistaIntroPregunta(Stage stage, Juego juego){
         this.stage = stage;
         this.juego = juego;
-        this.setPrefSize(600,600);
+        this.setPrefSize(600, 600);
         this.setStyle("-fx-background-color: #5133a5");
 
         Label enunciadoPregunta = new Label(juego.obtenerRondaActual().obtenerPregunta().getEnunciado());
-        enunciadoPregunta.setFont(Font.font("Core Mellow", FontWeight.BOLD,55));
+        enunciadoPregunta.setFont(Font.font("Core Mellow", FontWeight.BOLD, 55));
         enunciadoPregunta.setTextFill(Color.WHITE);
 
         progressBar.prefWidthProperty().bind(this.widthProperty());
@@ -51,10 +51,9 @@ public class VistaIntroPregunta extends BorderPane {
         if(seccondsPassed < MaxTime){
             seccondsPassed++;
             progressBar.setProgress(seccondsPassed / MaxTime);
-        }
-        else {
+        } else {
             tiempo.pause();
-            VistaPrincipal vistaPrincipal = new VistaPrincipal(stage,juego,juego.obtenerRondaActual().obtenerPregunta());
+            VistaPrincipal vistaPrincipal = new VistaPrincipal(stage, juego, juego.obtenerRondaActual().obtenerPregunta());
             stage.setScene(new Scene(vistaPrincipal));
             stage.setFullScreen(true);
         }

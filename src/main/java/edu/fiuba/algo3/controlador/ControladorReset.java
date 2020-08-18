@@ -6,10 +6,8 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 
-public class ControladorReset implements EventHandler<ActionEvent>{
+public class ControladorReset implements EventHandler<ActionEvent> {
 
     private ArrayList<OpcionOrdenada> opcionesElegidas;
     private ArrayList<VistaOpcionOrdenada> vistaOpcionOrdenadas;
@@ -20,7 +18,7 @@ public class ControladorReset implements EventHandler<ActionEvent>{
     }
 
     @Override
-    public void handle(ActionEvent actionEvent) {
+    public void handle(ActionEvent actionEvent){
         opcionesElegidas.clear();
         //opcionesElegidas.forEach(opcion -> respuesta.agregarOpcion(opcion));
         vistaOpcionOrdenadas.forEach(vistaOpcionOrdenada -> vistaOpcionOrdenada.resetLabel());
