@@ -24,4 +24,7 @@ public class RespuestaOrdenada extends Respuesta {
 
     }
 
+    @Override
+    public int cantidadOpcionesIncorrectas() { return 0; }
+
 }

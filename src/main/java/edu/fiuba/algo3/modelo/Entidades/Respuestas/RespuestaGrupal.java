@@ -28,4 +28,7 @@ public class RespuestaGrupal extends Respuesta{
 
     @Override
     public int cantidadOpcionesCorrectas() { return (grupo1.cantidadOpcionesCorrectas() + grupo2.cantidadOpcionesCorrectas()); }
+
+    @Override
+    public int cantidadOpcionesIncorrectas() { return 0; }
 }

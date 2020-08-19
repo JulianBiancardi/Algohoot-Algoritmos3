@@ -77,7 +77,6 @@ public class OrderedChoiceTest {
         assertEquals(0, jugador.puntos());
     }
 
-
     @Test
     public void test03SeCreaUnaPreguntaOrderedChoiceConTodasMenosUnaRespuestaBienOrdenadaYEvalua() {
         OrderedChoice pregunta = new OrderedChoice("Ordenar de mayor a menor los numeros");
