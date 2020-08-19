@@ -12,21 +12,32 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.util.List;
-
 
 public class VistaCargaJugadores extends StackPane {
 
     public VistaCargaJugadores(Stage stagePrincipal, Juego juego){
-        this.getStylesheets().add(ResourcesConstantsAlgohoot.HOJA_CARGA_JUGADORES);
-
+        this.getStylesheets().add(ConstantesAlgohoot.HOJA_CARGA_JUGADORES);
         this.getStyleClass().add("fondoLogin");
-        ImageView logoView = new ImageView(ResourcesConstantsAlgohoot.LOGO_ALGOHOOT);
+
+        ImageView logoView = new ImageView(ConstantesAlgohoot.LOGO_ALGOHOOT);
         logoView.setFitHeight(100);
         logoView.setFitWidth(350);
         this.getChildren().addAll(logoView);
+
+        Media sound = new Media(ConstantesAlgohoot.URL_SOUND_START);
+        MediaPlayer soundPlayer = new MediaPlayer(sound);
+        soundPlayer.setOnEndOfMedia(new Runnable() {
+            public void run(){
+                soundPlayer.seek(Duration.ZERO);
+            }
+        });
+        soundPlayer.play();
 
         // Menú superior: ingreso nombre jugadores, notificación y botones (entrar y salir)
         Label notificacionMensaje = new Label();
@@ -42,9 +53,13 @@ public class VistaCargaJugadores extends StackPane {
 
         Button botonEntrar = new Button("Comenzar");
         botonEntrar.getStyleClass().addAll("botonesLogin");
-        botonEntrar.setOnAction(new ControladorJugar(stagePrincipal, List.of(NombreJugador, NombreJugador2), juego, notificacionMensaje));
+        botonEntrar.setOnAction(event -> {
+            soundPlayer.stop();
+            new ControladorJugar(stagePrincipal, List.of(NombreJugador, NombreJugador2), juego, notificacionMensaje).handle(event);
+        });
 
         Button botonSalir = new Button("Salir");
+
         botonSalir.getStyleClass().add("botonesLogin");
         botonSalir.setOnAction(new ControladorSalir());
 

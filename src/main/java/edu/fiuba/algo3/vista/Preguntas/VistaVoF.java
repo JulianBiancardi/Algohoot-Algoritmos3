@@ -4,9 +4,10 @@ import edu.fiuba.algo3.modelo.Entidades.Jugador;
 import edu.fiuba.algo3.modelo.Entidades.Opciones.OpcionBinaria;
 import edu.fiuba.algo3.modelo.Entidades.Preguntas.VoF;
 import edu.fiuba.algo3.modelo.Entidades.Respuestas.Respuesta;
+import edu.fiuba.algo3.vista.ConstantesAlgohoot;
 import edu.fiuba.algo3.vista.Opciones.VistaOpcionBinaria;
 import edu.fiuba.algo3.vista.Opciones.VistaOpcionData;
-import edu.fiuba.algo3.vista.ResourcesConstantsAlgohoot;
+import javafx.scene.image.Image;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -18,11 +19,10 @@ public class VistaVoF extends VistaPregunta {
 
     public VistaVoF(VoF pregunta, Jugador jugador){
         super(pregunta);
-
         respuesta = new Respuesta(jugador, pregunta);
 
-        opcionesInfo.put(0, new VistaOpcionData(0, 0, ResourcesConstantsAlgohoot.BOTON_AZUL));
-        opcionesInfo.put(1, new VistaOpcionData(0, 1, ResourcesConstantsAlgohoot.BOTON_ROJO));
+        opcionesInfo.put(0, new VistaOpcionData(0, 0, ConstantesAlgohoot.BOTON_AZUL));
+        opcionesInfo.put(1, new VistaOpcionData(0, 1, ConstantesAlgohoot.BOTON_ROJO));
 
         inicializarOpciones(pregunta, opcionesElegidas);
     }
@@ -30,11 +30,11 @@ public class VistaVoF extends VistaPregunta {
     public void inicializarOpciones(VoF pregunta, ArrayList<OpcionBinaria> opcionesElegidas){
         for (int i = 0; i < pregunta.cantidadOpciones(); i++) {
             VistaOpcionData dataActual = opcionesInfo.get(i);
-            VistaOpcionBinaria vistaActual = new VistaOpcionBinaria(pregunta.obtenerOpcion(i), dataActual.getImagen(), opcionesElegidas);
 
+            Image img = this.obtenerImagenPara2Opciones(dataActual.getImagen().getUrl());
+
+            VistaOpcionBinaria vistaActual = new VistaOpcionBinaria(pregunta.obtenerOpcion(i), img, opcionesElegidas);
             this.add(vistaActual, dataActual.getColumna(), dataActual.getFila());
-            vistaActual.prefWidthProperty().bind(this.widthProperty());
-            vistaActual.prefHeightProperty().bind(this.heightProperty());
         }
     }
 

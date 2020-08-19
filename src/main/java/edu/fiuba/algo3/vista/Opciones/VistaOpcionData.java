@@ -3,9 +3,9 @@ package edu.fiuba.algo3.vista.Opciones;
 import javafx.scene.image.Image;
 
 public class VistaOpcionData {
-    private String urlImagen;
-    private int fila;
-    private int columna;
+    private final String urlImagen;
+    private final int fila;
+    private final int columna;
 
     public VistaOpcionData(int fila, int columna, String url){
         this.fila = fila;

@@ -30,20 +30,28 @@ public class VistaFinJuego extends BorderPane {
         this.setStyle("-fx-background-color: #5133a5");
         this.setPadding(new Insets(30, 30, 30, 30));
 
-        podioInfo.add(new PodioData(500, new Image(ResourcesConstantsAlgohoot.ICON_PRIMER_PUESTO)));
-        podioInfo.add(new PodioData(200, new Image(ResourcesConstantsAlgohoot.ICON_SEGUNDO_PUESTO)));
+        podioInfo.add(new PodioData(500, new Image(ConstantesAlgohoot.ICON_PRIMER_PUESTO)));
+        podioInfo.add(new PodioData(200, new Image(ConstantesAlgohoot.ICON_SEGUNDO_PUESTO)));
 
         crearEncabezado();
         ordenarJugadores(jugadores);
         generarPodios(jugadores);
 
-        Button botonSalir = new Button("Salir");
-        botonSalir.setPrefSize(200, 80);
+        Button botonSalir = new Button("     Salir     ");
+        botonSalir.setStyle("-fx-background-radius: 0px;"
+                            + "-fx-background-color: #25076b;"
+                            + "-fx-text-fill: #ffffff;"
+                            + "-fx-font-size: 16;"
+                            + "-fx-padding: 5px;");
         botonSalir.setOnAction(new ControladorSalir());
-        this.setCenter(botonSalir);
+        HBox hbox = new HBox(botonSalir);
+        hbox.setPadding(new Insets(10, 10, 15, 10));
+        hbox.setAlignment(Pos.CENTER);
+        this.setCenter(hbox);
 
         podios.setAlignment(Pos.CENTER);
         this.setBottom(podios);
+        this.setPrefSize(ConstantesAlgohoot.MIN_WIDTH, ConstantesAlgohoot.MIN_HEIGHT);
     }
 
     private void crearEncabezado(){

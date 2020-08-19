@@ -2,6 +2,7 @@ package edu.fiuba.algo3.controlador;
 
 import edu.fiuba.algo3.modelo.Entidades.Juego;
 import edu.fiuba.algo3.modelo.Entidades.Jugador;
+import edu.fiuba.algo3.vista.ConstantesAlgohoot;
 import edu.fiuba.algo3.vista.Preguntas.VistaPregunta;
 import edu.fiuba.algo3.vista.VistaPrincipal;
 import edu.fiuba.algo3.vista.VistaPuntos;
@@ -36,11 +37,15 @@ public class ControladorEnviar implements EventHandler<ActionEvent> {
         if(juego.terminoRonda()){
             juego.evaluarRespuestas();
             VistaPuntos vistaPuntos = new VistaPuntos(juego, stage);
-            stage.setScene(new Scene(vistaPuntos));
+            stage.setScene(new Scene(vistaPuntos, ConstantesAlgohoot.MIN_WIDTH, ConstantesAlgohoot.MIN_HEIGHT));
+            stage.setResizable(false);
+
         } else {
             VistaPrincipal vistaPrincipal = new VistaPrincipal(stage, juego, juego.obtenerRondaActual().obtenerPregunta());
-            stage.setScene(new Scene(vistaPrincipal));
+            stage.setScene(new Scene(vistaPrincipal, ConstantesAlgohoot.MIN_WIDTH, ConstantesAlgohoot.MIN_HEIGHT));
+            stage.setResizable(false);
+
         }
-        stage.setFullScreen(true);
+        // stage.setFullScreen(true);
     }
 }

@@ -35,6 +35,7 @@
     -fx-font-family: "Arial Black";
     -fx-font-weight: bold;
     -fx-font-size: 14;
+    -fx-cursor: pointer;
     -fx-alignment: CENTER;
 }
 

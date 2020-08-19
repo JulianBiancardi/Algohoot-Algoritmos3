@@ -1,3 +1,4 @@
+/*
 package edu.fiuba.algo3.modelo.Entidades.Preguntas;
 
 import com.google.gson.JsonArray;
@@ -247,3 +248,4 @@ public class VerdaderoFalsoTest {
         assertEquals(1, jugador.puntos());
     }
 }
+*/

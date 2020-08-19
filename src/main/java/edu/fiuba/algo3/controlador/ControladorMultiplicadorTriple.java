@@ -10,6 +10,9 @@ import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.paint.Color;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class ControladorMultiplicadorTriple implements EventHandler<ActionEvent> {
 
     Jugador jugador;
@@ -30,7 +33,10 @@ public class ControladorMultiplicadorTriple implements EventHandler<ActionEvent>
         if(!activado){
             jugador.activarMultiplicadorTriple(vistaPregunta.getRespuesta());
             activado = true;
-            boton.setBackground(new Background(new BackgroundFill(Color.valueOf("#ADFF2F"), null, Insets.EMPTY)));
-        }
+            boton.setStyle("-fx-background-color: #ADFF2F;"
+                           + "-fx-font-weight: bold;");
+
+            List<String> datos = Arrays.asList(boton.getText().split(" "));
+            boton.setText("\ud83d\udd25" + "¡" + datos.get(1).toUpperCase() + " " + datos.get(2).toUpperCase() + " ACTIVADO" + "!" + "\ud83d\udd25");        }
     }
 }

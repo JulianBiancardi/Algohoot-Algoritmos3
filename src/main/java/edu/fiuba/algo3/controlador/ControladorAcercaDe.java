@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.controlador;
 
-import edu.fiuba.algo3.vista.ResourcesConstantsAlgohoot;
+import edu.fiuba.algo3.vista.ConstantesAlgohoot;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
@@ -16,8 +16,8 @@ public class ControladorAcercaDe implements EventHandler<ActionEvent> {
 
         Alert alert = new Alert(Alert.AlertType.NONE);
         Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
-        stage.getIcons().add(new Image(ResourcesConstantsAlgohoot.ICONO_ALGOHOOT));
-        ImageView imagen = new ImageView(ResourcesConstantsAlgohoot.ICONO_ALGOHOOT);
+        stage.getIcons().add(new Image(ConstantesAlgohoot.ICONO_ALGOHOOT));
+        ImageView imagen = new ImageView(ConstantesAlgohoot.ICONO_ALGOHOOT);
         imagen.setFitHeight(50);
         imagen.setFitWidth(50);
         alert.setGraphic(imagen);

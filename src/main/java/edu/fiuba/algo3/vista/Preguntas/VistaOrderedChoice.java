@@ -7,10 +7,14 @@ import edu.fiuba.algo3.modelo.Entidades.Opciones.OpcionOrdenada;
 import edu.fiuba.algo3.modelo.Entidades.Preguntas.OrderedChoice;
 import edu.fiuba.algo3.modelo.Entidades.Respuestas.Respuesta;
 import edu.fiuba.algo3.modelo.Entidades.Respuestas.RespuestaOrdenada;
+import edu.fiuba.algo3.vista.ConstantesAlgohoot;
 import edu.fiuba.algo3.vista.Opciones.VistaOpcionData;
 import edu.fiuba.algo3.vista.Opciones.VistaOpcionOrdenada;
-import edu.fiuba.algo3.vista.ResourcesConstantsAlgohoot;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.layout.HBox;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -28,40 +32,53 @@ public class VistaOrderedChoice extends VistaPregunta {
 
         respuesta = new RespuestaOrdenada(jugador, pregunta);
 
-        opcionesInfo.put(0, new VistaOpcionData(1, 0, ResourcesConstantsAlgohoot.BOTON_AZUL));
-        opcionesInfo.put(1, new VistaOpcionData(1, 1, ResourcesConstantsAlgohoot.BOTON_ROJO));
-        opcionesInfo.put(2, new VistaOpcionData(2, 0, ResourcesConstantsAlgohoot.BOTON_AMARILLO));
-        opcionesInfo.put(3, new VistaOpcionData(2, 1, ResourcesConstantsAlgohoot.BOTON_VERDE));
-        opcionesInfo.put(4, new VistaOpcionData(3, 0, ResourcesConstantsAlgohoot.BOTON_VIOLETA));
+        opcionesInfo.put(0, new VistaOpcionData(1, 0, ConstantesAlgohoot.BOTON_AZUL));
+        opcionesInfo.put(1, new VistaOpcionData(1, 1, ConstantesAlgohoot.BOTON_ROJO));
+        opcionesInfo.put(2, new VistaOpcionData(2, 0, ConstantesAlgohoot.BOTON_AMARILLO));
+        opcionesInfo.put(3, new VistaOpcionData(2, 1, ConstantesAlgohoot.BOTON_VERDE));
+        opcionesInfo.put(4, new VistaOpcionData(3, 0, ConstantesAlgohoot.BOTON_VIOLETA));
 
         inicializarBotonReset();
 
         inicializarOpciones(pregunta, opcionesElegidas);
     }
 
+
     private void inicializarBotonReset(){
-        Button botonReset = new Button("Reset");
+        Button botonReset = new Button("Reiniciar selección");
+        botonReset.getStylesheets().add(ConstantesAlgohoot.HOJA_BOTONES_GENERALES);
+        botonReset.getStyleClass().add("botonResetOrderedChoise");
         botonReset.setOnAction(new ControladorReset(opcionesElegidas, vistasOpcionesOrdenadas));
-        this.addRow(0, botonReset);
+
+        HBox seccionA = new HBox(botonReset);
+        seccionA.setAlignment(Pos.CENTER_RIGHT);
+        seccionA.setPadding(new Insets(7, -34, 0, 10));
+        if(preguntaAsociada.cantidadOpciones() == 2)
+            this.add(seccionA, 0, 2);
+        else if(preguntaAsociada.cantidadOpciones() == 3 || preguntaAsociada.cantidadOpciones() == 4)
+            this.add(seccionA, 0, 3);
+        else
+            this.add(seccionA, 0, 4);
+
     }
 
     private void inicializarOpciones(OrderedChoice pregunta, ArrayList<OpcionOrdenada> opcionesElegidas){
-        if(pregunta.cantidadOpciones() > opcionesInfo.size()) // lanzar exepcion, cantidad de opciones incorrectas
-            return;
-
         for (int i = 0; i < pregunta.cantidadOpciones(); i++) {
             Opcion opcionActual = pregunta.obtenerOpcion(i);
             VistaOpcionData dataActual = opcionesInfo.get(i);
-            VistaOpcionOrdenada vistaActual = new VistaOpcionOrdenada((OpcionOrdenada) opcionActual, dataActual.getImagen(), opcionesElegidas, pregunta.cantidadOpciones());
 
+            Image img = this.obtenerImagenPara2Opciones(dataActual.getImagen().getUrl());
+
+            if(pregunta.cantidadOpciones() > 2 && pregunta.cantidadOpciones() < 5)
+                img = this.obtenerImagenPara3o4Opciones(dataActual.getImagen().getUrl());
+            else if(pregunta.cantidadOpciones() > 4)
+                img = this.obtenerImagenPara5o6Opciones(dataActual.getImagen().getUrl());
+
+            VistaOpcionOrdenada vistaActual = new VistaOpcionOrdenada((OpcionOrdenada) opcionActual, img, opcionesElegidas, pregunta.cantidadOpciones());
             vistasOpcionesOrdenadas.add(vistaActual);
-
             this.add(vistaActual, dataActual.getColumna(), dataActual.getFila());
-            vistaActual.prefWidthProperty().bind(this.widthProperty());
-            vistaActual.prefHeightProperty().bind(this.heightProperty());
         }
     }
-
 
     public Respuesta getRespuesta(){
         return respuesta;

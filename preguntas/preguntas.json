@@ -4,24 +4,14 @@
             "Tipo": "VoF",
             "PreguntasVoF": [
                 {
-                    "Enunciado": "¿2 + 2 = 4?",
-                    "Valor": true,
-                    "Modo": "Clasico"
-                },
-                {
-                    "Enunciado": "¿2 + 2 = 5?",
-                    "Valor": false,
-                    "Modo": "Clasico"
-                },
-                {
-                    "Enunciado": "¿Julian se sacó un 9 en un TP?",
+                    "Enunciado": "¿Soooooooy un enunciado muy largo, cieeeeeerto? jakskjas",
                     "Valor": false,
                     "Modo": "Penalidad"
                 },
                 {
-                    "Enunciado": "¿Julian ha puteado a Leo alguna vez?",
+                    "Enunciado": "YO si que NOOOOOOOOOOOOOOOOO soy un enunciado muy largo, mi hermano sí we report xd xd",
                     "Valor": true,
-                    "Modo": "Penalidad"
+                    "Modo": "Clasico"
                 }
             ]
         },
@@ -37,19 +27,15 @@
                             "Valor": true
                         },
                         {
-                            "Descripcion": "Santa Fe",
+                            "Descripcion": "Santa fe",
                             "Valor": true
                         },
                         {
-                            "Descripcion": "Mendoza",
+                            "Descripcion": "Mendoza vino sin vino xdd",
                             "Valor": true
                         },
                         {
                             "Descripcion": "San LeoProgramador del Valle de Catamarca",
-                            "Valor": false
-                        },
-                        {
-                            "Descripcion": "Ninguna de las anteriores",
                             "Valor": false
                         }
                     ]
@@ -64,19 +50,15 @@
                     "Opciones": [
                         {
                             "Descripcion": "1",
-                            "PosicionCorrecta": 0
-                        },
-                        {
-                            "Descripcion": "3",
                             "PosicionCorrecta": 1
                         },
                         {
-                            "Descripcion": "5",
+                            "Descripcion": "3",
                             "PosicionCorrecta": 2
                         },
                         {
-                            "Descripcion": "7",
-                            "PosicionCorrecta": 3
+                            "Descripcion": "-10+3+1+7+1-7-13-5-5+1 +2+6+9+0-3+2+4+7",
+                            "PosicionCorrecta": 0
                         }
                     ]
                 }
@@ -86,17 +68,30 @@
             "Tipo": "GroupChoice",
             "PreguntasGC": [
                 {
-                    "Enunciado": "Separar",
-                    "Grupo 1": "El mejor del mundo",
-                    "Grupo 2": "El resto",
+                    "Enunciado": "Separar en...",
+                    "Grupo 1": "Números pares",
+                    "Grupo 2": "Números impares",
                     "Opciones Grupo 1": [
                         {
-                            "Descripcion": "Julian (Lo dice él, preguntale sino)"
+                            "Descripcion": "2"
+                        },
+                        {
+                            "Descripcion": "4"
+                        },
+                        {
+                            "Descripcion": "6"
                         }
+
                     ],
                     "Opciones Grupo 2": [
                         {
-                            "Descripcion": "Literalmente todos los demás"
+                            "Descripcion": "1"
+                        },
+                        {
+                            "Descripcion": "3"
+                        },
+                        {
+                            "Descripcion": "9"
                         }
                     ]
                 }

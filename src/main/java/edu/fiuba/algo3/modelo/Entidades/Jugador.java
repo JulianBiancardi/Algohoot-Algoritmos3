@@ -47,8 +47,8 @@ public class Jugador  {
         return (multiplicadoresRestantes.contains(multiplicadorTriple));
     }
 
-    public boolean tieneExclusividad(){
-        return (exclusividadesRestantes != 0);
+    public int cantidadExclusividadRestante(){
+        return exclusividadesRestantes;
     }
 
     public void activarExclusividad(Respuesta respuesta){

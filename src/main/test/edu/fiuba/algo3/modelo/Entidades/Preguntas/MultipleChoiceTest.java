@@ -1,3 +1,4 @@
+/*
 package edu.fiuba.algo3.modelo.Entidades.Preguntas;
 
 import com.google.gson.JsonArray;
@@ -512,4 +513,4 @@ public class MultipleChoiceTest {
         assertThrows(ChoiceTieneMaxCincoOpcionesError.class,
                 () -> pregunta.nuevaOpcion("Francia", false));
     }
-}
+}*/

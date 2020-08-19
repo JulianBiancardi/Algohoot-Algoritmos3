@@ -25,11 +25,11 @@ public class ControladorOpcionGrupal implements EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent actionEvent){
-        if(grupoActual.getText() == "" || grupoActual.getText() == "B"){
+        if(grupoActual.getText().equals("") || grupoActual.getText().equals("B")){
             grupoActual.setText("A");
             opcionesGrupoB.remove(opcionGrupal);
             opcionesGrupoA.add(opcionGrupal);
-        } else {
+        } else{
             grupoActual.setText("B");
             opcionesGrupoA.remove(opcionGrupal);
             opcionesGrupoB.add(opcionGrupal);

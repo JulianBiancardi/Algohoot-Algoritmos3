@@ -4,19 +4,17 @@ import edu.fiuba.algo3.modelo.Entidades.Jugador;
 import edu.fiuba.algo3.vista.Preguntas.VistaPregunta;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.geometry.Insets;
 import javafx.scene.control.Button;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
-import javafx.scene.paint.Color;
+import javafx.scene.control.Label;
+
+import java.util.Arrays;
+import java.util.List;
 
 public class ControladorExclusividad implements EventHandler<ActionEvent> {
-
     Jugador jugador;
     VistaPregunta vistaPregunta;
     Button boton;
     boolean activado;
-
 
     public ControladorExclusividad(Jugador jugador, VistaPregunta vistaPregunta, Button boton){
         this.jugador = jugador;
@@ -30,7 +28,11 @@ public class ControladorExclusividad implements EventHandler<ActionEvent> {
         if(!activado){
             jugador.activarExclusividad(vistaPregunta.getRespuesta());
             activado = true;
-            boton.setBackground(new Background(new BackgroundFill(Color.valueOf("#ADFF2F"), null, Insets.EMPTY)));
+            boton.setStyle("-fx-background-color: #ADFF2F;"
+                           + "-fx-font-weight: bold;");
+
+            List<String> datos = Arrays.asList(boton.getText().split(" "));
+            boton.setText("\ud83d\udd25" + "¡" + datos.get(1).toUpperCase() + " ACTIVADA" + "!" + "\ud83d\udd25");
         }
     }
 
