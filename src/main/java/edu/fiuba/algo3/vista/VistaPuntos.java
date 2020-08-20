@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.vista;
 
+import edu.fiuba.algo3.App;
 import edu.fiuba.algo3.controlador.ControladorSiguiente;
 import edu.fiuba.algo3.modelo.Entidades.Juego;
 import edu.fiuba.algo3.modelo.Entidades.Jugador;
@@ -7,6 +8,7 @@ import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.*;
+import javafx.scene.media.AudioClip;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -17,12 +19,16 @@ import java.util.Comparator;
 import java.util.stream.Collectors;
 
 public class VistaPuntos extends VBox {
+        private AudioClip sonido = new AudioClip(App.class.getResource("/KahootPoints.mp3").toExternalForm());
+
     private int puesto = 1;
 
     public VistaPuntos(Juego juego, Stage stage){
         this.setBackground(new Background(new BackgroundFill(Color.valueOf("#864cbf"),null, Insets.EMPTY)));
         this.setSpacing(10);
         this.setPrefSize(600,600);
+
+        sonido.play();
 
         inicializarTitulo();
         inicializarBotonSiguiente(stage,juego);
@@ -53,7 +59,7 @@ public class VistaPuntos extends VBox {
         label.setTextFill(Color.BLACK);
 
         Button botonSiguiente = new Button();
-        botonSiguiente.setOnAction(new ControladorSiguiente(stage,juego));
+        botonSiguiente.setOnAction(new ControladorSiguiente(stage,juego, sonido));
         botonSiguiente.setPrefSize(150,50);
         botonSiguiente.setGraphic(label);
         botonSiguiente.setBackground(new Background(new BackgroundFill(Color.valueOf("#D5D5D5"),null, Insets.EMPTY)));

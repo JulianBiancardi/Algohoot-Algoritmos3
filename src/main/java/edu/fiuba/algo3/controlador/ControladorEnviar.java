@@ -10,6 +10,7 @@ import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
+import javafx.scene.media.AudioClip;
 import javafx.stage.Stage;
 
 
@@ -17,18 +18,21 @@ public class ControladorEnviar implements EventHandler<ActionEvent> {
     Stage stage;
     Juego juego;
     Timeline tiempo;
+    private AudioClip sonido;
     VistaPregunta vistaPregunta;
 
-    public ControladorEnviar(Stage stagePrincipal, Juego juego, Timeline tiempo, VistaPregunta vistaPregunta){
+    public ControladorEnviar(Stage stagePrincipal, Juego juego, Timeline tiempo, AudioClip sonido, VistaPregunta vistaPregunta){
         this.stage = stagePrincipal;
         this.juego = juego;
+        this.sonido = sonido;
         this.vistaPregunta = vistaPregunta;
         this.tiempo = tiempo;
     }
 
     @Override
     public void handle(ActionEvent actionEvent){
-        tiempo.pause();
+        tiempo.stop();
+        sonido.stop();
 
         juego.obtenerRondaActual().agregarRespuesta(vistaPregunta.completarRespuesta());
 

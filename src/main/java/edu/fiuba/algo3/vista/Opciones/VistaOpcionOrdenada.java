@@ -22,8 +22,9 @@ public class VistaOpcionOrdenada extends StackPane{
 
     public VistaOpcionOrdenada(OpcionOrdenada unaOpcion, Image imagen, ArrayList<OpcionOrdenada> opcionesElegidas,int cantidadOpciones){
         ImageView fondoView = new ImageView(imagen);
-        fondoView.fitHeightProperty().bind(this.heightProperty());
+      //  fondoView.fitHeightProperty().bind(this.heightProperty());
         fondoView.fitWidthProperty().bind(this.widthProperty());
+        fondoView.setFitHeight(125);
 
         descripcionLabel.setText(unaOpcion.getDescripcion());
         descripcionLabel.setFont(Font.font("Montserrat", FontWeight.BOLD,30));
@@ -46,9 +47,10 @@ public class VistaOpcionOrdenada extends StackPane{
 
         HBox hBox = new HBox();
         hBox.getChildren().addAll(descripcionLabel,stackPane1);
+
         hBox.setAlignment(Pos.CENTER_RIGHT);
 
-        this.setMaxHeight(80);
+        this.setMaxHeight(50);
         this.getChildren().addAll(fondoView,hBox);
     }
 

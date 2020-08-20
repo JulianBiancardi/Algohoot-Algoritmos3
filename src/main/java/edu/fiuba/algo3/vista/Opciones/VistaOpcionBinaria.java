@@ -21,8 +21,9 @@ public class VistaOpcionBinaria extends StackPane {
     public VistaOpcionBinaria(OpcionBinaria unaOpcion, Image imagen, ArrayList<OpcionBinaria> opcionesElegidas){
 
         ImageView imageView = new ImageView(imagen);
-        imageView.fitHeightProperty().bind(this.heightProperty());
+        //imageView.fitHeightProperty().bind(this.heightProperty());
         imageView.fitWidthProperty().bind(this.widthProperty());
+        imageView.setFitHeight(125);
 
         HBox hBox = new HBox();
         Label descripcionLabel = new Label();
@@ -42,9 +43,10 @@ public class VistaOpcionBinaria extends StackPane {
         botonEstado.setOnAction(new ControladorOpcionBinaria(opcionesElegidas,unaOpcion,estadoImagenView));
 
         hBox.getChildren().addAll(descripcionLabel,botonEstado);
+        hBox.setPrefHeight(70);
         hBox.setAlignment(Pos.CENTER_RIGHT);
 
-        this.setMaxHeight(80);
+        this.setMaxHeight(50);
         this.getChildren().addAll(imageView,hBox);
     }
 }

@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.vista;
 
+import edu.fiuba.algo3.App;
 import edu.fiuba.algo3.controlador.ControladorSalir;
 import edu.fiuba.algo3.modelo.Entidades.Juego;
 import edu.fiuba.algo3.modelo.Entidades.Jugador;
@@ -10,6 +11,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
+import javafx.scene.media.AudioClip;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
@@ -27,6 +29,9 @@ public class VistaFinJuego extends BorderPane {
     public VistaFinJuego(ArrayList <Jugador> jugadores){
         this.setStyle("-fx-background-color: #5133a5");
         this.setPadding(new Insets(30,30,30,30));
+
+        AudioClip sonido = new AudioClip(App.class.getResource("/SND_KahootPodium.mp3").toExternalForm());
+        sonido.play();
 
         podioInfo.add(new PodioData(500, new Image("File:src\\resources\\imagenes\\IMG_PrimerPuesto.png")));
         podioInfo.add(new PodioData(200, new Image("File:src\\resources\\imagenes\\IMG_SegundoPuesto.png")));

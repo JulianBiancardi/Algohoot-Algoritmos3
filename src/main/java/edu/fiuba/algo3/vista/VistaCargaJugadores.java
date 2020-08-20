@@ -12,6 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.AudioClip;
 import javafx.stage.Stage;
 
 public class VistaCargaJugadores extends StackPane {
@@ -19,6 +20,9 @@ public class VistaCargaJugadores extends StackPane {
     public VistaCargaJugadores(Stage stagePrincipal, Juego juego){
         this.getStylesheets().add(App.class.getResource("/cargaJugadores.css").toExternalForm());
         this.getStyleClass().add("fondoLogin");
+
+        AudioClip sonido = new AudioClip(App.class.getResource("/SND_KahootLobby.mp3").toExternalForm());
+        sonido.play();
 
         ImageView logoView = new ImageView("/IMG_algohoot_logo.png");
         logoView.setFitHeight(170);
@@ -28,17 +32,17 @@ public class VistaCargaJugadores extends StackPane {
         Label notificacionMensaje = new Label();
         notificacionMensaje.getStyleClass().add("notificacionMensaje");
 
-        TextField NombreJugador = new TextField();
+        TextField NombreJugador = new TextField("xd");
         NombreJugador.setPromptText("Nombre jugador 1");
         NombreJugador.getStyleClass().add("ingresoNombreJugadores");
 
-        TextField NombreJugador2 = new TextField();
+        TextField NombreJugador2 = new TextField("a");
         NombreJugador2.setPromptText("Nombre jugador 2");
         NombreJugador2.getStyleClass().add("ingresoNombreJugadores");
 
         Button botonEntrar = new Button("Comenzar");
         botonEntrar.getStyleClass().addAll("botonesLogin");
-        botonEntrar.setOnAction(new ControladorJugar(stagePrincipal,NombreJugador, NombreJugador2, juego, notificacionMensaje));
+        botonEntrar.setOnAction(new ControladorJugar(stagePrincipal,NombreJugador, NombreJugador2, juego, notificacionMensaje, sonido));
 
         Button botonSalir = new Button("Salir");
 

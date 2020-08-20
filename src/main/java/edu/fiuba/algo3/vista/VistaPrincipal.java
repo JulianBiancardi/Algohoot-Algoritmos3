@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.vista;
 
+import edu.fiuba.algo3.App;
 import edu.fiuba.algo3.controlador.ControladorEnviar;
 
 import edu.fiuba.algo3.controlador.ControladorExclusividad;
@@ -10,12 +11,14 @@ import edu.fiuba.algo3.modelo.Entidades.Preguntas.*;
 import edu.fiuba.algo3.vista.Preguntas.*;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.beans.property.Property;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
+import javafx.scene.media.AudioClip;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Font;
@@ -23,10 +26,15 @@ import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import java.util.ArrayList;
+import java.util.Random;
+import java.util.function.BinaryOperator;
+
 
 public class VistaPrincipal extends BorderPane{
     private Juego juego;
     VistaPregunta vistaPregunta;
+    private AudioClip sonido;
 
     private final Integer startTime = 50;
     private Integer secondsPassed = startTime;
@@ -39,12 +47,24 @@ public class VistaPrincipal extends BorderPane{
     public VistaPrincipal(Stage stage, Juego juego, Pregunta pregunta){
         this.juego = juego;
 
+        ArrayList<String> arrayList = new ArrayList<String>();
+        arrayList.add(App.class.getResource("/SND_KahootCountDown1.mp3").toExternalForm());
+        arrayList.add(App.class.getResource("/SND_KahootCountDown2.mp3").toExternalForm());
+        arrayList.add(App.class.getResource("/SND_KahootCountDown3.mp3").toExternalForm());
+        arrayList.add(App.class.getResource("/SND_KahootCountDown4.mp3").toExternalForm());
+
+        Random rand = new Random();
+        sonido = new AudioClip(arrayList.get(rand.nextInt(arrayList.size())));
+        sonido.play();
+
         crearVistaPregunta(pregunta);
         mostrarEnunciadoPregunta(pregunta);
         mostrarContador();
         inicializarBotonEnviar(stage,juego,tiempo);
 
-        vBox.getChildren().addAll(botonEnviar,vistaPregunta);
+        botonEnviar.setAlignment(Pos.CENTER);
+
+        vBox.getChildren().addAll(botonEnviar, vistaPregunta);
 
         vBox.setAlignment(Pos.CENTER);
         vBox.setSpacing(5);
@@ -90,9 +110,10 @@ public class VistaPrincipal extends BorderPane{
 
     private void mostrarContador(){
         StackPane stackPane = new StackPane();
-        Circle circle = new Circle(100,Color.valueOf("#844cbe"));
+        Circle circle = new Circle(50,Color.valueOf("#844cbe"));
         contador.setTextFill(Color.WHITE);
-        contador.setFont(Font.font("Core Mellow", FontWeight.BOLD,80));
+        contador.setFont(Font.font("Core Mellow", FontWeight.BOLD,60));
+
         stackPane.getChildren().addAll(circle,contador);
 
         tiempo = new Timeline(new KeyFrame(Duration.seconds(1),e -> contar()));
@@ -106,7 +127,7 @@ public class VistaPrincipal extends BorderPane{
             if(juego.turnoDe().tieneMultiplicadorDoble()) {
                 Button multiplicadorDoble = new Button("Usar multiplicador doble");
                 multiplicadorDoble.setOnAction(new ControladorMultiplicadorDoble(juego.turnoDe(), vistaPregunta, multiplicadorDoble));
-                multiplicadorDoble.setPrefSize(150, 50);
+                multiplicadorDoble.setPrefSize(150, 30);
                 multiplicadorDoble.setBackground(new Background(new BackgroundFill(Color.valueOf("#D5D5D5"), null, Insets.EMPTY)));
 
                 bonificacions.getChildren().addAll(multiplicadorDoble);
@@ -114,25 +135,24 @@ public class VistaPrincipal extends BorderPane{
             if(juego.turnoDe().tieneMultiplicadorTriple()) {
                 Button multiplicadorTriple = new Button("Usar multiplicador triple");
                 multiplicadorTriple.setOnAction(new ControladorMultiplicadorTriple(juego.turnoDe(), vistaPregunta, multiplicadorTriple));
-                multiplicadorTriple.setPrefSize(150, 50);
+                multiplicadorTriple.setPrefSize(150, 30);
                 multiplicadorTriple.setBackground(new Background(new BackgroundFill(Color.valueOf("#D5D5D5"), null, Insets.EMPTY)));
                 bonificacions.getChildren().addAll(multiplicadorTriple);
+                bonificacions.setSpacing(5);
             }
         }
         else if (juego.turnoDe().tieneExclusividad()){
             Button exclusivad = new Button("Usar exclusividad");
             exclusivad.setOnAction(new ControladorExclusividad(juego.turnoDe(), vistaPregunta, exclusivad));
-            exclusivad.setPrefSize(150, 50);
+            exclusivad.setPrefSize(150, 30);
             exclusivad.setBackground(new Background(new BackgroundFill(Color.valueOf("#D5D5D5"), null, Insets.EMPTY)));
-
             bonificacions.getChildren().addAll(exclusivad);
         }
 
-        HBox hBox = new HBox();
-        hBox.getChildren().addAll(stackPane,bonificacions);
-        hBox.setAlignment(Pos.CENTER);
-
-        this.setCenter(hBox);
+        bonificacions.setPadding(new Insets(0,20,0,0));
+        stackPane.setPadding(new Insets(0,0,0,20));
+        this.setRight(bonificacions);
+        this.setLeft(stackPane);
     }
 
     public void inicializarBotonEnviar(Stage stage, Juego juego, Timeline tiempo){
@@ -144,7 +164,7 @@ public class VistaPrincipal extends BorderPane{
         label.setTextFill(Color.WHITE);
         botonEnviar.setGraphic(label);
 
-        ControladorEnviar enviarRespuesta = new ControladorEnviar(stage,juego,tiempo,vistaPregunta);
+        ControladorEnviar enviarRespuesta = new ControladorEnviar(stage,juego,tiempo,sonido,vistaPregunta);
         botonEnviar.setOnAction(enviarRespuesta);
     }
 

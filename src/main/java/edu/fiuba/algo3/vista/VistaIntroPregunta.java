@@ -22,7 +22,7 @@ public class VistaIntroPregunta extends BorderPane {
     ProgressBar progressBar = new ProgressBar(0);
 
     private Float seccondsPassed = 0.F;
-    private final Float MaxTime = 2500F;
+    private final Float MaxTime =200F;
     private Timeline tiempo;
 
     public VistaIntroPregunta(Stage stage, Juego juego){

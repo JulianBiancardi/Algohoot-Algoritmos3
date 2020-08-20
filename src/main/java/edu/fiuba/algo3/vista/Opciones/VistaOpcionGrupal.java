@@ -22,8 +22,9 @@ public class VistaOpcionGrupal extends StackPane {
 
     public VistaOpcionGrupal(OpcionGrupal unaOpcion, Image imagen, ArrayList<OpcionGrupal> opcionesGrupoA, ArrayList<OpcionGrupal> opcionesGrupoB){
         ImageView fondoView = new ImageView(imagen);
-        fondoView.fitHeightProperty().bind(this.heightProperty());
+       // fondoView.fitHeightProperty().bind(this.heightProperty());
         fondoView.fitWidthProperty().bind(this.widthProperty());
+        fondoView.setFitHeight(125);
 
         descripcionLabel.setText(unaOpcion.getDescripcion());
         descripcionLabel.setFont(Font.font("Montserrat", FontWeight.BOLD,30));
@@ -42,13 +43,15 @@ public class VistaOpcionGrupal extends StackPane {
 
         grupoActualLabel.setFont(Font.font("Montserrat", FontWeight.BOLD,30));
         grupoActualLabel.setTextFill(Color.WHITE);
+
         stackPane1.getChildren().addAll(botonEstado,grupoActualLabel);
 
         HBox hBox = new HBox();
         hBox.getChildren().addAll(descripcionLabel,stackPane1);
+
         hBox.setAlignment(Pos.CENTER_RIGHT);
 
-        this.setMaxHeight(80);
+        this.setMaxHeight(50);
         this.getChildren().addAll(fondoView,hBox);
     }
 

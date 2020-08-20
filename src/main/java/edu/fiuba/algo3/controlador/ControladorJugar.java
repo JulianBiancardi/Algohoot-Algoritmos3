@@ -11,6 +11,7 @@ import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.media.AudioClip;
 import javafx.stage.Stage;
 
 public class ControladorJugar implements EventHandler<ActionEvent> {
@@ -19,13 +20,15 @@ public class ControladorJugar implements EventHandler<ActionEvent> {
     TextField nombreJugador2;
     Juego juego;
     private Label notificacionMensaje;
+    private AudioClip sonido;
 
-    public ControladorJugar(Stage stagePrincipal, TextField nombreJugador, TextField nombreJugador2, Juego juego, Label notificacionMensaje) {
+    public ControladorJugar(Stage stagePrincipal, TextField nombreJugador, TextField nombreJugador2, Juego juego, Label notificacionMensaje, AudioClip sonido) {
         this.stage = stagePrincipal;
         this.nombreJugador = nombreJugador;
         this.nombreJugador2 = nombreJugador2;
         this.juego = juego;
         this.notificacionMensaje = notificacionMensaje;
+        this.sonido = sonido;
     }
 
     @Override
@@ -34,6 +37,9 @@ public class ControladorJugar implements EventHandler<ActionEvent> {
         try{
             if(nombreJugador.getText().trim().isEmpty() || nombreJugador2.getText().trim().isEmpty())
                 throw new NombreVacioError("El nombre no es correcto");
+
+
+            sonido.stop();
 
             Jugador jugador = new Jugador(nombreJugador.getText());
             juego.agregarJugador(jugador);
