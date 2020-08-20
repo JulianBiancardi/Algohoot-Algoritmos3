@@ -27,7 +27,7 @@ Nombre | Padrón | Email
      
 Corrector: **[PICCO, Martín Alejandro](https://github.com/M-Picco)**
 
-### Ver el informe completo [aquí](https://www.overleaf.com/project/5ec9bbccf2e82500011f7ab7)
+### Ver el informe completo [aquí](https://github.com/JulianBiancardi/Algoritmos3---TP2/blob/G9BackUp/docs/Grupo9-tp2s.pdf)
 
 ### Pre-requisitos
 
