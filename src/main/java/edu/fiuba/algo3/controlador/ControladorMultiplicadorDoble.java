@@ -32,7 +32,6 @@ public class ControladorMultiplicadorDoble implements EventHandler<ActionEvent> 
         if (!activado) {
             jugador.activarMultiplicadorDoble(vistaPregunta.getRespuesta());
             activado = true;
-            boton.setBackground(new Background(new BackgroundFill(Color.valueOf("#ADFF2F"),null, Insets.EMPTY)));
         }
     }
 }

@@ -5,6 +5,7 @@ import edu.fiuba.algo3.controlador.ControladorSiguiente;
 import edu.fiuba.algo3.modelo.Entidades.Juego;
 import edu.fiuba.algo3.modelo.Entidades.Jugador;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.*;
@@ -18,16 +19,13 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.stream.Collectors;
 
-public class VistaPuntos extends VBox {
-        private AudioClip sonido = new AudioClip(App.class.getResource("/KahootPoints.mp3").toExternalForm());
-
+public class VistaPuntos extends BorderPane {
+    private AudioClip sonido = new AudioClip("File:src/resources/sonidos/SND_KahootPoints.mp3");
+    private VBox puestosJugadores = new VBox(10);
     private int puesto = 1;
 
     public VistaPuntos(Juego juego, Stage stage){
-        this.setBackground(new Background(new BackgroundFill(Color.valueOf("#864cbf"),null, Insets.EMPTY)));
-        this.setSpacing(10);
-        this.setPrefSize(600,600);
-
+        this.setStyle("-fx-background-color: #5133a5");
         sonido.play();
 
         inicializarTitulo();
@@ -39,55 +37,61 @@ public class VistaPuntos extends VBox {
                         .reversed()) // Ordeno para mostrar los de mayor puntaje primero!
                 .collect(Collectors.toList())
                 .forEach(this::mostrarJugador);
+
+        puestosJugadores.setAlignment(Pos.TOP_CENTER);
+        puestosJugadores.setMaxSize(1200,600);
+        this.setCenter(puestosJugadores);
     }
 
     private void inicializarTitulo(){
-        StackPane stackPane = new StackPane();
-        stackPane.setPrefHeight(100);
-        stackPane.setBackground(new Background(new BackgroundFill(Color.WHITE,null,Insets.EMPTY)));
-
         Label enunciadoPregunta = new Label("Puestos");
-        enunciadoPregunta.setFont(Font.font("Core Mellow", FontWeight.BOLD,40));
+        enunciadoPregunta.setFont(Font.font("Core Mellow", FontWeight.BOLD,80));
+        enunciadoPregunta.setAlignment(Pos.CENTER);
+        enunciadoPregunta.setStyle("-fx-background-color: white");
+        enunciadoPregunta.prefWidthProperty().bind(this.widthProperty());
 
-        stackPane.getChildren().add(enunciadoPregunta);
-        this.getChildren().add(stackPane);
+        this.setTop(enunciadoPregunta);
     }
 
     private void inicializarBotonSiguiente(Stage stage, Juego juego){
-        Label label = new Label("Siguiente");
-        label.setFont(Font.font("Montserrat", FontWeight.BOLD,25));
-        label.setTextFill(Color.BLACK);
-
-        Button botonSiguiente = new Button();
+        Button botonSiguiente = new Button("Siguiente");
+        botonSiguiente.setStyle("-fx-background-radius: 5px;"
+                + "-fx-background-color: #D5D5D5;"
+                + "-fx-text-fill: black;"
+                + "-fx-font-size: 30;"
+                + "-fx-font-weight: bold;"
+                );
         botonSiguiente.setOnAction(new ControladorSiguiente(stage,juego, sonido));
-        botonSiguiente.setPrefSize(150,50);
-        botonSiguiente.setGraphic(label);
-        botonSiguiente.setBackground(new Background(new BackgroundFill(Color.valueOf("#D5D5D5"),null, Insets.EMPTY)));
+        botonSiguiente.setPrefSize(250,80);
+        Pane pane = new Pane(botonSiguiente);
+        pane.setPadding(new Insets(10,10,10,10));
 
-        AnchorPane anchorPane = new AnchorPane();
-        anchorPane.getChildren().add(botonSiguiente);
-        AnchorPane.setRightAnchor(botonSiguiente,10.0);
-
-        this.getChildren().add(anchorPane);
+        this.setRight(pane);
     }
 
     private void mostrarJugador(Jugador unJugador){
 
-        Label nombreJugador = new Label(String.valueOf(puesto) + "  " + unJugador.nombre());
-        nombreJugador.setFont(Font.font("Montserrat", FontWeight.BOLD,50));
+        Label nombreJugador = new Label(puesto + "   " + unJugador.nombre());
+        nombreJugador.setFont(Font.font("Montserrat", FontWeight.BOLD,40));
         nombreJugador.setTextFill(Color.WHITE);
 
         Label puntosJugador = new Label(String.valueOf(unJugador.puntos()));
-        puntosJugador.setFont(Font.font("Montserrat", FontWeight.BOLD,50));
+        puntosJugador.setFont(Font.font("Montserrat", FontWeight.BOLD,40));
         puntosJugador.setTextFill(Color.WHITE);
 
         AnchorPane anchorPane = new AnchorPane();
-        anchorPane.setPadding(new Insets(0,50,0,50));
         anchorPane.getChildren().addAll(nombreJugador,puntosJugador);
-        AnchorPane.setLeftAnchor(nombreJugador,10.0);
-        AnchorPane.setRightAnchor(puntosJugador,10.0);
+        anchorPane.setStyle("-fx-background-color: #25076b");
 
-        this.getChildren().add(anchorPane);
+        AnchorPane.setTopAnchor(nombreJugador,20.0);
+        AnchorPane.setLeftAnchor(nombreJugador,20.0);
+        AnchorPane.setBottomAnchor(nombreJugador,20.0);
+
+        AnchorPane.setTopAnchor(puntosJugador,20.0);
+        AnchorPane.setRightAnchor(puntosJugador,20.0);
+        AnchorPane.setBottomAnchor(puntosJugador,20.0);
+
+        puestosJugadores.getChildren().add(anchorPane);
         puesto++;
     }
 }

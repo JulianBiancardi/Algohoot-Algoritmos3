@@ -16,18 +16,13 @@ public class App extends Application {
     public void start(Stage stagePrincipal) throws Exception{
         juego = new Juego();
         stagePrincipal.setTitle("algohoot!");
-        stagePrincipal.getIcons().add(new Image("/IMG_algohoot_icono.png"));
+        stagePrincipal.getIcons().add(new Image("File:src\\resources\\imagenes\\IMG_algohoot_icono.png"));
         VistaCargaJugadores introVista = new VistaCargaJugadores(stagePrincipal, juego);
         stagePrincipal.setScene(new Scene(introVista));
         stagePrincipal.setFullScreen(true);
         stagePrincipal.setFullScreenExitHint("");
         stagePrincipal.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
         stagePrincipal.show();
-
-        /*
-        * Poner musica
-        * Cambiar botones reset multiplicadores y exclusividad
-         */
     }
 
     public static void main(String[] args) {

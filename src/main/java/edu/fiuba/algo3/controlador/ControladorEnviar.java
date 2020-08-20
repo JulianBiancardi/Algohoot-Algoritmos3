@@ -37,7 +37,6 @@ public class ControladorEnviar implements EventHandler<ActionEvent> {
         sonido.stop();
 
         juego.obtenerRondaActual().agregarRespuesta(vistaPregunta.completarRespuesta());
-
         juego.siguienteTurno();
 
         if(juego.terminoRonda()){

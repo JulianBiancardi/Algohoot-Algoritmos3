@@ -30,12 +30,12 @@ public class ControladorOpcionBinaria implements EventHandler<ActionEvent> {
         Image estadoImagen;
         if(estaSeleccionado){
             opciones.remove(opcionAsociada);
-            estadoImagen = new Image("File:src\\resources\\imagenes\\IMG_OpcionBinariaNoSeleccionada.png");
+            estadoImagen = new Image("File:src/resources/imagenes/IMG_Botones/IMG_OpcionBinariaNoSeleccionada.png");
             estaSeleccionado = false;
         }
         else {
             opciones.add(opcionAsociada);
-            estadoImagen = new Image("File:src\\resources\\imagenes\\IMG_OpcionBinariaSeleccionada.png");
+            estadoImagen = new Image("File:src/resources/imagenes/IMG_Botones/IMG_OpcionBinariaSeleccionada.png");
             estaSeleccionado = true;
         }
 

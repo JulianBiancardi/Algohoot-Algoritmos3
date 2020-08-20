@@ -2,7 +2,6 @@ package edu.fiuba.algo3.vista;
 
 import edu.fiuba.algo3.App;
 import edu.fiuba.algo3.controlador.ControladorSalir;
-import edu.fiuba.algo3.modelo.Entidades.Juego;
 import edu.fiuba.algo3.modelo.Entidades.Jugador;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -31,7 +30,7 @@ public class VistaFinJuego extends BorderPane {
         this.setStyle("-fx-background-color: #5133a5");
         this.setPadding(new Insets(30,30,30,30));
 
-        AudioClip sonido = new AudioClip(App.class.getResource("/SND_KahootPodium.mp3").toExternalForm());
+        AudioClip sonido = new AudioClip("File:src/resources/sonidos/SND_KahootPodium.mp3");
         sonido.play();
 
         podioInfo.add(new PodioData(500, new Image("File:src\\resources\\imagenes\\IMG_PrimerPuesto.png")));
@@ -41,19 +40,18 @@ public class VistaFinJuego extends BorderPane {
         List<Jugador> listaJugadores = ordenarJugadores(jugadores);
         generarPodios(listaJugadores);
 
-        Button botonSalir = new Button("   Salir   ");
-        botonSalir.setStyle("-fx-background-radius: 0px;"
+        Button botonSalir = new Button("Salir");
+        botonSalir.setStyle("-fx-background-radius: 5px;"
                 + "-fx-background-color: #25076b;"
                 + "-fx-text-fill: #ffffff;"
-                + "-fx-font-size: 58;"
+                + "-fx-font-size: 30;"
+                + "-fx-font-weight: bold;"
                 + "-fx-padding: 5px;");
+        botonSalir.setPrefSize(150,80);
         botonSalir.setOnAction(new ControladorSalir());
-        HBox hbox = new HBox(botonSalir);
-        hbox.setPadding(new Insets(10, 10, 15, 10));
-        hbox.setAlignment(Pos.CENTER);
-        this.setCenter(hbox);
 
         podios.setAlignment(Pos.CENTER);
+        this.setCenter(botonSalir);
         this.setBottom(podios);
     }
 

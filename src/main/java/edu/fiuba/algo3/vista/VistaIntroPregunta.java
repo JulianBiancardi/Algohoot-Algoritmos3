@@ -22,7 +22,7 @@ public class VistaIntroPregunta extends BorderPane {
     ProgressBar progressBar = new ProgressBar(0);
 
     private Float seccondsPassed = 0.F;
-    private final Float MaxTime = 2000F;
+    private final Float MaxTime = 2500F;
     private Timeline tiempo;
 
     public VistaIntroPregunta(Stage stage, Juego juego){
@@ -31,19 +31,31 @@ public class VistaIntroPregunta extends BorderPane {
         this.setPrefSize(600,600);
         this.setStyle("-fx-background-color: #5133a5");
 
+        mostrarPregunta();
+
+        progressBar.setStyle("-fx-progress-color: white");
+        progressBar.prefWidthProperty().bind(this.widthProperty());
+
+        inicializarContador();
+
+
+        this.setBottom(progressBar);
+    }
+
+    private void mostrarPregunta() {
         Label enunciadoPregunta = new Label(juego.obtenerRondaActual().obtenerPregunta().getEnunciado());
         enunciadoPregunta.setFont(Font.font("Core Mellow", FontWeight.BOLD,80));
         enunciadoPregunta.setTextFill(Color.WHITE);
 
-        Label tipoPregunta = new Label(juego.obtenerRondaActual().obtenerPregunta().getTipo() + ":");
-        tipoPregunta.setFont(Font.font("Core Mellow", FontWeight.LIGHT,40));
+        Label tipoPregunta = new Label(juego.obtenerRondaActual().obtenerPregunta().getTipo() + ": ");
+        tipoPregunta.setFont(Font.font("Core Mellow", FontWeight.LIGHT,30));
         tipoPregunta.setTextFill(Color.WHITE);
 
         Label modoPregunta = new Label(juego.obtenerRondaActual().obtenerPregunta().getModo());
-        modoPregunta.setFont(Font.font("Core Mellow", FontWeight.LIGHT,40));
+        modoPregunta.setFont(Font.font("Core Mellow", FontWeight.LIGHT,30));
         modoPregunta.setTextFill(Color.WHITE);
 
-        HBox hBox = new HBox(20);
+        HBox hBox = new HBox(30);
         hBox.getChildren().addAll(tipoPregunta,modoPregunta);
         hBox.setAlignment(Pos.CENTER);
 
@@ -51,13 +63,9 @@ public class VistaIntroPregunta extends BorderPane {
         vBox.getChildren().addAll(enunciadoPregunta,hBox);
         vBox.setAlignment(Pos.CENTER);
 
-        progressBar.prefWidthProperty().bind(this.widthProperty());
-
-        inicializarContador();
-
         this.setCenter(vBox);
-        this.setBottom(progressBar);
     }
+
 
     private void inicializarContador(){
         tiempo = new Timeline(new KeyFrame(Duration.seconds(0.001), e -> contar()));

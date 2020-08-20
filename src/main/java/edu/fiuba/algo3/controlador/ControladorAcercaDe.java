@@ -15,8 +15,8 @@ public class ControladorAcercaDe implements EventHandler<ActionEvent> {
 
         Alert alert = new Alert(Alert.AlertType.NONE);
         Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
-        stage.getIcons().add(new Image("/IMG_algohoot_icono.png"));
-        ImageView imagen = new ImageView("/IMG_algohoot_icono.png");
+        stage.getIcons().add(new Image("File:src/resources/imagenes/IMG_algohoot_icono.png"));
+        ImageView imagen = new ImageView("File:src/resources/imagenes/IMG_algohoot_icono.png");
         imagen.setFitHeight(50);
         imagen.setFitWidth(50);
         alert.setGraphic(imagen);

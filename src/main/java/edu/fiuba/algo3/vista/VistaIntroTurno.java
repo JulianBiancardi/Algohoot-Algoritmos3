@@ -3,6 +3,7 @@ package edu.fiuba.algo3.vista;
 import edu.fiuba.algo3.modelo.Entidades.Juego;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
@@ -18,10 +19,9 @@ import javafx.util.Duration;
 public class VistaIntroTurno extends BorderPane {
     Stage stage;
     Juego juego;
-    ProgressBar progressBar = new ProgressBar(0);
 
     private Float seccondsPassed = 0.F;
-    private final Float MaxTime = 2000F;
+    private final Float MaxTime = 2500F;
     private Timeline tiempo;
 
     public VistaIntroTurno(Stage stage, Juego juego){
@@ -30,16 +30,23 @@ public class VistaIntroTurno extends BorderPane {
         this.setPrefSize(600,600);
         this.setStyle("-fx-background-color: #5133a5");
 
-        Label jugador = new Label("Turno de:  " + juego.turnoDe().nombre());
-        jugador.setFont(Font.font("Core Mellow", FontWeight.BOLD,80));
-        jugador.setTextFill(Color.WHITE);
+        Label label = new Label("Turno de:  ");
+        label.setFont(Font.font("Core Mellow", FontWeight.BOLD,50));
+        label.setTextFill(Color.WHITE);
 
-        progressBar.prefWidthProperty().bind(this.widthProperty());
+        Label jugadorResponde = new Label(juego.turnoDe().nombre());
+        jugadorResponde.setStyle("-fx-background-color: #25076b;"
+                                + "-fx-background-radius: 5px");
+        jugadorResponde.setFont(Font.font("Core Mellow", FontWeight.BOLD,50));
+        jugadorResponde.setTextFill(Color.WHITE);
+        jugadorResponde.setPadding(new Insets(5,30,5,30));
+
+        HBox hBox = new HBox(10);
+        hBox.setAlignment(Pos.CENTER);
+        hBox.getChildren().addAll(label,jugadorResponde);
 
         inicializarContador();
-
-        this.setCenter(jugador);
-        this.setBottom(progressBar);
+        this.setCenter(hBox);
     }
 
     private void inicializarContador(){
@@ -49,10 +56,8 @@ public class VistaIntroTurno extends BorderPane {
     }
 
     public void contar(){
-        if(seccondsPassed < MaxTime){
+        if(seccondsPassed < MaxTime)
             seccondsPassed++;
-            progressBar.setProgress(seccondsPassed / MaxTime);
-        }
         else {
             tiempo.pause();
             VistaPrincipal vistaPrincipal = new VistaPrincipal(stage,juego,juego.obtenerRondaActual().obtenerPregunta());

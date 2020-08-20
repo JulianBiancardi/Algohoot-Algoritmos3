@@ -11,7 +11,6 @@ import edu.fiuba.algo3.modelo.Entidades.Preguntas.*;
 import edu.fiuba.algo3.vista.Preguntas.*;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.beans.property.Property;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -28,33 +27,29 @@ import javafx.util.Duration;
 
 import java.util.ArrayList;
 import java.util.Random;
-import java.util.function.BinaryOperator;
-
 
 public class VistaPrincipal extends BorderPane{
     private Juego juego;
     VistaPregunta vistaPregunta;
     private AudioClip sonido;
 
-    private final Integer startTime = 50;
+    private final Integer startTime = 20;
     private Integer secondsPassed = startTime;
     private Timeline tiempo;
     Label contador = new Label(String.valueOf(startTime));
 
     Button botonEnviar = new Button();
-    VBox vBox = new VBox();
 
     public VistaPrincipal(Stage stage, Juego juego, Pregunta pregunta){
         this.juego = juego;
 
-        ArrayList<String> arrayList = new ArrayList<String>();
-        arrayList.add(App.class.getResource("/SND_KahootCountDown1.mp3").toExternalForm());
-        arrayList.add(App.class.getResource("/SND_KahootCountDown2.mp3").toExternalForm());
-        arrayList.add(App.class.getResource("/SND_KahootCountDown3.mp3").toExternalForm());
-        arrayList.add(App.class.getResource("/SND_KahootCountDown4.mp3").toExternalForm());
-
+        ArrayList<String> canciones = new ArrayList<String>();
+        canciones.add("File:src/resources/sonidos/CountDown/SND_KahootCountDown1.mp3");
+        canciones.add("File:src/resources/sonidos/CountDown/SND_KahootCountDown2.mp3");
+        canciones.add("File:src/resources/sonidos/CountDown/SND_KahootCountDown3.mp3");
+        canciones.add("File:src/resources/sonidos/CountDown/SND_KahootCountDown4.mp3");
         Random rand = new Random();
-        sonido = new AudioClip(arrayList.get(rand.nextInt(arrayList.size())));
+        sonido = new AudioClip(canciones.get(rand.nextInt(canciones.size())));
         sonido.play();
 
         crearVistaPregunta(pregunta);
@@ -62,12 +57,9 @@ public class VistaPrincipal extends BorderPane{
         mostrarContador();
         inicializarBotonEnviar(stage,juego,tiempo);
 
-        botonEnviar.setAlignment(Pos.CENTER);
-
+        VBox vBox = new VBox(5);
         vBox.getChildren().addAll(botonEnviar, vistaPregunta);
-
         vBox.setAlignment(Pos.CENTER);
-        vBox.setSpacing(5);
         this.setBottom(vBox);
     }
 
@@ -82,9 +74,7 @@ public class VistaPrincipal extends BorderPane{
         }
     }
 
-
     private void mostrarEnunciadoPregunta(Pregunta pregunta) {
-
         StackPane stackPane = new StackPane();
 
         ImageView fondoPregunta = new ImageView("File:src\\resources\\imagenes\\fondoPregunta.png");
@@ -96,13 +86,14 @@ public class VistaPrincipal extends BorderPane{
         stackPane.getChildren().addAll(fondoPregunta,enunciadoPregunta);
 
         Label jugadorResponde = new Label(juego.turnoDe().nombre());
+        jugadorResponde.setStyle("-fx-background-color: #575757;"
+                                + "-fx-background-radius: 5px;");
         jugadorResponde.setAlignment(Pos.CENTER);
-        jugadorResponde.setFont(Font.font("Core Mellow", FontWeight.BOLD,30));
+        jugadorResponde.setFont(Font.font("Core Mellow", FontWeight.BOLD,40));
         jugadorResponde.setTextFill(Color.WHITE);
-        jugadorResponde.setStyle("-fx-background-color: #575757");
-        jugadorResponde.setPrefSize(300,50);
+        jugadorResponde.setPadding(new Insets(5,30,5,30));
 
-        VBox vBox = new VBox(stackPane,jugadorResponde);
+        VBox vBox = new VBox(5,stackPane,jugadorResponde);
         vBox.setAlignment(Pos.CENTER);
 
         this.setTop(vBox);
@@ -110,7 +101,7 @@ public class VistaPrincipal extends BorderPane{
 
     private void mostrarContador(){
         StackPane stackPane = new StackPane();
-        Circle circle = new Circle(50,Color.valueOf("#844cbe"));
+        Circle circle = new Circle(80,Color.valueOf("#844cbe"));
         contador.setTextFill(Color.WHITE);
         contador.setFont(Font.font("Core Mellow", FontWeight.BOLD,60));
 
@@ -120,27 +111,31 @@ public class VistaPrincipal extends BorderPane{
         tiempo.setCycleCount(Timeline.INDEFINITE);
         tiempo.play();
 
-        VBox bonificacions = new VBox();
-        bonificacions.setAlignment(Pos.CENTER);
+        HBox bonificaciones = new HBox(20);
+        bonificaciones.setAlignment(Pos.CENTER);
 
         if(juego.obtenerRondaActual().obtenerPregunta().aceptaMultiplicador()) {
             if(juego.turnoDe().tieneMultiplicadorDoble()) {
-                Button multiplicadorDoble = new Button("Usar multiplicador doble");
-                multiplicadorDoble.setFont(Font.font("Core Mellow", FontWeight.BOLD,20));
+                Button multiplicadorDoble = new Button("x 2");
+                multiplicadorDoble.setPrefSize(120, 120);
+                multiplicadorDoble.setStyle("-fx-background-color: #d88800;"
+                                            + "-fx-background-radius: 5px");
+                multiplicadorDoble.setFont(Font.font("Core Mellow", FontWeight.BOLD,40));
+                multiplicadorDoble.setTextFill(Color.WHITE);
                 multiplicadorDoble.setOnAction(new ControladorMultiplicadorDoble(juego.turnoDe(), vistaPregunta, multiplicadorDoble));
-                multiplicadorDoble.setPrefSize(300, 30);
-                multiplicadorDoble.setBackground(new Background(new BackgroundFill(Color.valueOf("#D5D5D5"), null, Insets.EMPTY)));
-
-                bonificacions.getChildren().addAll(multiplicadorDoble);
+                multiplicadorDoble.setOnMouseClicked(e -> multiplicadorDoble.setStyle("-fx-background-color: #be6d00"));
+                bonificaciones.getChildren().addAll(multiplicadorDoble);
             }
             if(juego.turnoDe().tieneMultiplicadorTriple()) {
-                Button multiplicadorTriple = new Button("Usar multiplicador triple");
-                multiplicadorTriple.setFont(Font.font("Core Mellow", FontWeight.BOLD,20));
+                Button multiplicadorTriple = new Button("x 3");
+                multiplicadorTriple.setPrefSize(120, 120);
+                multiplicadorTriple.setStyle("-fx-background-color: #d88800;"
+                                            + "-fx-background-radius: 5px");
+                multiplicadorTriple.setFont(Font.font("Core Mellow", FontWeight.BOLD,40));
+                multiplicadorTriple.setTextFill(Color.WHITE);
                 multiplicadorTriple.setOnAction(new ControladorMultiplicadorTriple(juego.turnoDe(), vistaPregunta, multiplicadorTriple));
-                multiplicadorTriple.setPrefSize(300, 30);
-                multiplicadorTriple.setBackground(new Background(new BackgroundFill(Color.valueOf("#D5D5D5"), null, Insets.EMPTY)));
-                bonificacions.getChildren().addAll(multiplicadorTriple);
-                bonificacions.setSpacing(5);
+                multiplicadorTriple.setOnMouseClicked(e -> multiplicadorTriple.setStyle("-fx-background-color: #be6d00"));
+                bonificaciones.getChildren().addAll(multiplicadorTriple);
             }
         } else if (juego.turnoDe().tieneExclusividad()){
             Button exclusivad = new Button("Usar exclusividad");
@@ -149,16 +144,17 @@ public class VistaPrincipal extends BorderPane{
             exclusivad.setPrefSize(200, 30);
             exclusivad.setBackground(new Background(new BackgroundFill(Color.valueOf("#D5D5D5"), null, Insets.EMPTY)));
 
-            bonificacions.getChildren().addAll(exclusivad);
+            bonificaciones.getChildren().addAll(exclusivad);
         }
 
-        bonificacions.setPadding(new Insets(0,20,0,0));
+        bonificaciones.setPadding(new Insets(0,20,0,0));
         stackPane.setPadding(new Insets(0,0,0,20));
-        this.setRight(bonificacions);
+        this.setRight(bonificaciones);
         this.setLeft(stackPane);
     }
 
     public void inicializarBotonEnviar(Stage stage, Juego juego, Timeline tiempo){
+        botonEnviar.setAlignment(Pos.CENTER);
         botonEnviar.setPrefSize(150,80);
         botonEnviar.setStyle("-fx-background-color: #26890c");
 

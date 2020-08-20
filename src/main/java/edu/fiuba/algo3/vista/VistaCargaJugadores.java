@@ -9,6 +9,7 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -18,15 +19,15 @@ import javafx.stage.Stage;
 public class VistaCargaJugadores extends StackPane {
 
     public VistaCargaJugadores(Stage stagePrincipal, Juego juego){
-        this.getStylesheets().add(App.class.getResource("/cargaJugadores.css").toExternalForm());
+        this.getStylesheets().add("File:src/resources/estilo/cargaJugadores.css");
         this.getStyleClass().add("fondoLogin");
 
-        AudioClip sonido = new AudioClip(App.class.getResource("/SND_KahootLobby.mp3").toExternalForm());
+        AudioClip sonido = new AudioClip("File:src/resources/sonidos/SND_KahootLobby.mp3");
         sonido.play();
 
-        ImageView logoView = new ImageView("/IMG_algohoot_logo.png");
-        logoView.setFitHeight(170);
-        logoView.setFitWidth(600);
+        ImageView logoView = new ImageView(new Image("File:src/resources/imagenes/IMG_algohoot_logo.png"));
+        logoView.setFitHeight(100);
+        logoView.setFitWidth(350);
         this.getChildren().addAll(logoView);
 
         Label notificacionMensaje = new Label();
@@ -45,11 +46,10 @@ public class VistaCargaJugadores extends StackPane {
         botonEntrar.setOnAction(new ControladorJugar(stagePrincipal,NombreJugador, NombreJugador2, juego, notificacionMensaje, sonido));
 
         Button botonSalir = new Button("Salir");
-
         botonSalir.getStyleClass().add("botonesLogin");
         botonSalir.setOnAction(new ControladorSalir());
 
-        VBox opcionesMenu = new VBox(5, NombreJugador, NombreJugador2, botonEntrar, botonSalir);
+        VBox opcionesMenu = new VBox(10, NombreJugador, NombreJugador2, botonEntrar, botonSalir);
         opcionesMenu.setMaxSize(300, 300);
         opcionesMenu.setAlignment(Pos.CENTER);
 
@@ -57,7 +57,7 @@ public class VistaCargaJugadores extends StackPane {
         botonAcercaDe.getStyleClass().add("botonesInferiores");
         botonAcercaDe.setOnAction(new ControladorAcercaDe());
 
-        VBox menuLogoYOpciones = new VBox(25, logoView, opcionesMenu);
+        VBox menuLogoYOpciones = new VBox(50, logoView, opcionesMenu);
         menuLogoYOpciones.setAlignment(Pos.CENTER);
 
         VBox menuSuperiorConInferior = new VBox(10, menuLogoYOpciones, botonAcercaDe,notificacionMensaje);
