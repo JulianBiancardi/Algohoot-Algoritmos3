@@ -2,7 +2,6 @@ package edu.fiuba.algo3.controlador;
 
 import edu.fiuba.algo3.App;
 import edu.fiuba.algo3.modelo.Entidades.Opciones.OpcionGrupal;
-import edu.fiuba.algo3.modelo.Entidades.Opciones.OpcionOrdenada;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Label;
@@ -27,7 +26,7 @@ public class ControladorOpcionGrupal implements EventHandler<ActionEvent> {
     }
     @Override
     public void handle(ActionEvent actionEvent) {
-        AudioClip sonido = new AudioClip(App.class.getResource("/KSHMR Percussion Low 06 (C#).wav").toExternalForm());
+        AudioClip sonido = new AudioClip("File:src/resources/sonidos/SND_Boton.wav");
         sonido.play();
 
         if (grupoActual.getText() == "" || grupoActual.getText() == "B") {

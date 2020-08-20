@@ -3,6 +3,7 @@ package edu.fiuba.algo3.vista;
 import edu.fiuba.algo3.modelo.Entidades.Juego;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -59,7 +60,8 @@ public class VistaIntroPregunta extends BorderPane {
         hBox.getChildren().addAll(tipoPregunta,modoPregunta);
         hBox.setAlignment(Pos.CENTER);
 
-        VBox vBox = new VBox();
+        VBox vBox = new VBox(10);
+        vBox.setPadding(new Insets(0,5,0,5));
         vBox.getChildren().addAll(enunciadoPregunta,hBox);
         vBox.setAlignment(Pos.CENTER);
 

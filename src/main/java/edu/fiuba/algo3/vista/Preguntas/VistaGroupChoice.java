@@ -45,15 +45,17 @@ public class VistaGroupChoice extends VistaPregunta{
         Grupo1.setAlignment(Pos.CENTER);
         Grupo1.setFont(Font.font("Core Mellow", FontWeight.BOLD,30));
         Grupo1.setTextFill(Color.WHITE);
-        Grupo1.setStyle("-fx-background-color: #575757");
-        Grupo1.setPadding(new Insets(10));
+        Grupo1.setStyle("-fx-background-color: #575757;"
+                        + "-fx-background-radius: 5px");
+        Grupo1.setPadding(new Insets(10,10,10,10));
 
         Label Grupo2 = new Label("B: " + pregunta.nombreGrupo2());
         Grupo2.setAlignment(Pos.CENTER);
         Grupo2.setFont(Font.font("Core Mellow", FontWeight.BOLD,30));
         Grupo2.setTextFill(Color.WHITE);
-        Grupo2.setStyle("-fx-background-color: #575757");
-        Grupo2.setPadding(new Insets(10));
+        Grupo2.setStyle("-fx-background-color: #575757;"
+                + "-fx-background-radius: 5px");
+        Grupo2.setPadding(new Insets(10,10,10,10));
 
         this.addRow(0,Grupo1,Grupo2);
     }

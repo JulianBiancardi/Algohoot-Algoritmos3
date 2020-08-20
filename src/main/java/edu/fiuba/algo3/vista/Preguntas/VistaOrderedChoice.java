@@ -36,31 +36,23 @@ public class VistaOrderedChoice extends VistaPregunta{
         opcionesInfo.put(4,new VistaOpcionData(3,0, "File:src\\resources\\imagenes\\IMG_Botones\\IMG_BotonVioleta.png"));
 
         inicializarBotonReset();
-
         inicializarOpciones(pregunta,opcionesElegidas);
     }
 
     private void inicializarBotonReset(){
         Button botonReset = new Button("Reiniciar selección");
-        botonReset.setStyle("    -fx-background-radius: 5px;"
-                + "    -fx-padding: 5px;\n"
-                + "    -fx-background-color: rgb(51, 51, 51);"
-                + "    -fx-text-fill: rgb(255, 255, 255);"
-                + "    -fx-font-family: Arial;"
-                + "    -fx-font-weight: bold;"
-                + "    -fx-font-size: 18 ;");
+        botonReset.setStyle("-fx-background-radius: 5px;"
+                + "-fx-background-color: #575757;"
+                + "-fx-text-fill: white;"
+                + "-fx-font-family: 'Monsterrat';"
+                + "-fx-font-weight: bold;"
+                + "-fx-font-size: 30 ;"
+                + "-fx-padding: 10px");
         botonReset.setOnAction(new ControladorReset(opcionesElegidas, vistasOpcionesOrdenadas));
-
-        HBox seccionA = new HBox(botonReset);
-        seccionA.setAlignment(Pos.CENTER_RIGHT);
-        seccionA.setPadding(new Insets(0, -93, 0, 10));
-        this.addRow(0,seccionA);
+        this.addRow(0,botonReset);
     }
 
     private void inicializarOpciones(OrderedChoice pregunta, ArrayList<OpcionOrdenada> opcionesElegidas){
-        if (pregunta.cantidadOpciones() > opcionesInfo.size()) // lanzar exepcion, cantidad de opciones incorrectas
-            return;
-
         for(int i = 0; i < pregunta.cantidadOpciones(); i++){
             OpcionOrdenada opcionActual = pregunta.obtenerOpcion(i);
             VistaOpcionData dataActual = opcionesInfo.get(i);

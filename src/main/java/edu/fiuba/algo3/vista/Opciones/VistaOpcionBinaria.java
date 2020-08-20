@@ -19,12 +19,10 @@ public class VistaOpcionBinaria extends StackPane {
     ToggleButton botonEstado = new ToggleButton();
 
     public VistaOpcionBinaria(OpcionBinaria unaOpcion, Image imagen, ArrayList<OpcionBinaria> opcionesElegidas){
-
         ImageView imageView = new ImageView(imagen);
         imageView.fitHeightProperty().bind(this.heightProperty());
         imageView.fitWidthProperty().bind(this.widthProperty());
 
-        HBox hBox = new HBox();
         Label descripcionLabel = new Label();
         descripcionLabel.setText(unaOpcion.getDescripcion());
         descripcionLabel.setFont(Font.font("Montserrat", FontWeight.BOLD,30));
@@ -37,10 +35,10 @@ public class VistaOpcionBinaria extends StackPane {
         estadoImagenView.setFitWidth(60);
         estadoImagenView.setFitHeight(60);
         botonEstado.setGraphic(estadoImagenView);
-
         botonEstado.setBackground(new Background(new BackgroundFill(Color.TRANSPARENT,null,Insets.EMPTY)));
         botonEstado.setOnAction(new ControladorOpcionBinaria(opcionesElegidas,unaOpcion,estadoImagenView));
 
+        HBox hBox = new HBox();
         hBox.getChildren().addAll(descripcionLabel,botonEstado);
         hBox.setPrefHeight(70);
         hBox.setAlignment(Pos.CENTER_RIGHT);

@@ -30,8 +30,6 @@ public class ControladorExclusividad implements EventHandler<ActionEvent> {
         if (!activado) {
             jugador.activarExclusividad(vistaPregunta.getRespuesta());
             activado = true;
-            boton.setBackground(new Background(new BackgroundFill(Color.valueOf("#ADFF2F"),null, Insets.EMPTY)));
         }
     }
-
 }

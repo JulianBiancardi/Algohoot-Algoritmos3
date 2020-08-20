@@ -138,12 +138,13 @@ public class VistaPrincipal extends BorderPane{
                 bonificaciones.getChildren().addAll(multiplicadorTriple);
             }
         } else if (juego.turnoDe().tieneExclusividad()){
-            Button exclusivad = new Button("Usar exclusividad");
-            exclusivad.setFont(Font.font("Core Mellow", FontWeight.BOLD,20));
+            Button exclusivad = new Button("Exclusividad");
+            exclusivad.setStyle("-fx-background-color: #00a2be;"
+                                 + "-fx-background-radius: 5px");
+            exclusivad.setFont(Font.font("Core Mellow", FontWeight.BOLD,40));
+            exclusivad.setTextFill(Color.WHITE);
             exclusivad.setOnAction(new ControladorExclusividad(juego.turnoDe(), vistaPregunta, exclusivad));
-            exclusivad.setPrefSize(200, 30);
-            exclusivad.setBackground(new Background(new BackgroundFill(Color.valueOf("#D5D5D5"), null, Insets.EMPTY)));
-
+            exclusivad.setOnMouseClicked(e -> exclusivad.setStyle("-fx-background-color: #00809c"));
             bonificaciones.getChildren().addAll(exclusivad);
         }
 

@@ -17,13 +17,13 @@ public class SistemaTurnoTest {
         jugador = new Jugador("Martin");
         turno.agregarJugador(jugador);
 
-        assertEquals("Tomas",turno.obtenerTurno().nombre());
+        assertEquals("Tomas",turno.jugadorActual().nombre());
         turno.siguienteTurno();
-        assertEquals("Martin",turno.obtenerTurno().nombre());
+        assertEquals("Martin",turno.jugadorActual().nombre());
         turno.siguienteTurno();
-        assertEquals("Tomas",turno.obtenerTurno().nombre());
+        assertEquals("Tomas",turno.jugadorActual().nombre());
         turno.siguienteTurno();
-        assertEquals("Martin",turno.obtenerTurno().nombre());
+        assertEquals("Martin",turno.jugadorActual().nombre());
         turno.siguienteTurno();
     }
 
@@ -41,17 +41,17 @@ public class SistemaTurnoTest {
         jugador = new Jugador("Chiki");
         turno.agregarJugador(jugador);
 
-        assertEquals("Tomas",turno.obtenerTurno().nombre());
+        assertEquals("Tomas",turno.jugadorActual().nombre());
         turno.siguienteTurno();
-        assertEquals("Martin",turno.obtenerTurno().nombre());
+        assertEquals("Martin",turno.jugadorActual().nombre());
         turno.siguienteTurno();
-        assertEquals("Chiki",turno.obtenerTurno().nombre());
+        assertEquals("Chiki",turno.jugadorActual().nombre());
         turno.siguienteTurno();
-        assertEquals("Tomas",turno.obtenerTurno().nombre());
+        assertEquals("Tomas",turno.jugadorActual().nombre());
         turno.siguienteTurno();
-        assertEquals("Martin",turno.obtenerTurno().nombre());
+        assertEquals("Martin",turno.jugadorActual().nombre());
         turno.siguienteTurno();
-        assertEquals("Chiki",turno.obtenerTurno().nombre());
+        assertEquals("Chiki",turno.jugadorActual().nombre());
     }
 
 }

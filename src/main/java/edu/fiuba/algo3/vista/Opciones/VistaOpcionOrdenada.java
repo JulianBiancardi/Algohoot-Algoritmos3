@@ -31,10 +31,10 @@ public class VistaOpcionOrdenada extends StackPane{
         descripcionLabel.setTextFill(Color.WHITE);
 
         StackPane stackPane1 = new StackPane();
-        Image estadoImagen = new Image("File:src\\resources\\imagenes\\IMG_OpcionBinariaNoSeleccionada.png");
+        Image estadoImagen = new Image("File:src/resources/imagenes/IMG_Botones/IMG_OpcionBinariaNoSeleccionada.png");
         ImageView estadoImagenView = new ImageView(estadoImagen);
-        estadoImagenView.setFitWidth(80);
-        estadoImagenView.setFitHeight(80);
+        estadoImagenView.setFitWidth(60);
+        estadoImagenView.setFitHeight(60);
         botonEstado.setGraphic(estadoImagenView);
         botonEstado.setBackground(new Background(new BackgroundFill(Color.TRANSPARENT,null, Insets.EMPTY)));
 
