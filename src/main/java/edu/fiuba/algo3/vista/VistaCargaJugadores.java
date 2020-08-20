@@ -1,67 +1,64 @@
 package edu.fiuba.algo3.vista;
 
+import edu.fiuba.algo3.App;
+import edu.fiuba.algo3.controlador.ControladorAcercaDe;
 import edu.fiuba.algo3.controlador.ControladorJugar;
 import edu.fiuba.algo3.controlador.ControladorSalir;
 import edu.fiuba.algo3.modelo.Entidades.Juego;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.*;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-
-
-public class VistaCargaJugadores extends StackPane{
-
-    private Juego juego;
+public class VistaCargaJugadores extends StackPane {
 
     public VistaCargaJugadores(Stage stagePrincipal, Juego juego){
-        this.juego = juego;
-        this.setPrefSize(600, 600);
+        this.getStylesheets().add(App.class.getResource("/cargaJugadores.css").toExternalForm());
+        this.getStyleClass().add("fondoLogin");
 
-        Image botonImagen = new Image("File:src\\resources\\imagenes\\IMG_BotonGeneral.png",true);
+        ImageView logoView = new ImageView("/IMG_algohoot_logo.png");
+        logoView.setFitHeight(170);
+        logoView.setFitWidth(600);
+        this.getChildren().addAll(logoView);
 
-        ImageView logoView = new ImageView("File:src\\resources\\imagenes\\KahootLogo.png");
-        logoView.setFitHeight(100);
-        logoView.setFitWidth(200);
+        Label notificacionMensaje = new Label();
+        notificacionMensaje.getStyleClass().add("notificacionMensaje");
 
-        TextField NombreJugador = new TextField("");
-        NombreJugador.setPromptText("Nombre Jugador 1");
-        NombreJugador.setFocusTraversable(false);
-        NombreJugador.setAlignment(Pos.CENTER);
+        TextField NombreJugador = new TextField();
+        NombreJugador.setPromptText("Nombre jugador 1");
+        NombreJugador.getStyleClass().add("ingresoNombreJugadores");
 
-        TextField NombreJugador2 = new TextField("");
-        NombreJugador2.setPromptText("Nombre Jugador 2");
-        NombreJugador2.setFocusTraversable(false);
-        NombreJugador2.setAlignment(Pos.CENTER);
+        TextField NombreJugador2 = new TextField();
+        NombreJugador2.setPromptText("Nombre jugador 2");
+        NombreJugador2.getStyleClass().add("ingresoNombreJugadores");
 
-        Button botonEntrar = new Button("Entrar");
-        botonEntrar.setOnAction(new ControladorJugar(stagePrincipal,NombreJugador,NombreJugador2,juego));
+        Button botonEntrar = new Button("Comenzar");
+        botonEntrar.getStyleClass().addAll("botonesLogin");
+        botonEntrar.setOnAction(new ControladorJugar(stagePrincipal,NombreJugador, NombreJugador2, juego, notificacionMensaje));
 
         Button botonSalir = new Button("Salir");
+
+        botonSalir.getStyleClass().add("botonesLogin");
         botonSalir.setOnAction(new ControladorSalir());
 
-        VBox opcionesMenu = new VBox(5,logoView,NombreJugador,NombreJugador2,botonEntrar,botonSalir);
-        opcionesMenu.setMaxSize(200,200);
+        VBox opcionesMenu = new VBox(5, NombreJugador, NombreJugador2, botonEntrar, botonSalir);
+        opcionesMenu.setMaxSize(300, 300);
         opcionesMenu.setAlignment(Pos.CENTER);
-        botonEntrar.prefWidthProperty().bind(opcionesMenu.widthProperty());
-        botonSalir.prefWidthProperty().bind(opcionesMenu.widthProperty());
 
-        Image fondoImagen = new Image("File:src\\resources\\imagenes\\BackGround.png");
-        this.setBackground(new Background(new BackgroundImage(
-                fondoImagen,
-                BackgroundRepeat.NO_REPEAT,
-                BackgroundRepeat.NO_REPEAT,
-                BackgroundPosition.CENTER,
-                new BackgroundSize(100,100,true,true,true,true)
-        )));
+        Button botonAcercaDe = new Button("Acerca de");
+        botonAcercaDe.getStyleClass().add("botonesInferiores");
+        botonAcercaDe.setOnAction(new ControladorAcercaDe());
 
-        this.getChildren().addAll(opcionesMenu);
-    }
+        VBox menuLogoYOpciones = new VBox(25, logoView, opcionesMenu);
+        menuLogoYOpciones.setAlignment(Pos.CENTER);
 
-    public void mostarErrorNombre(){
-        System.out.println("error de nombre");
+        VBox menuSuperiorConInferior = new VBox(10, menuLogoYOpciones, botonAcercaDe,notificacionMensaje);
+        menuSuperiorConInferior.setAlignment(Pos.CENTER);
+
+        this.getChildren().addAll(menuSuperiorConInferior);
     }
 }

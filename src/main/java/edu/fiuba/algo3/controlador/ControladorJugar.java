@@ -9,6 +9,7 @@ import edu.fiuba.algo3.vista.VistaPrincipal;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -17,12 +18,14 @@ public class ControladorJugar implements EventHandler<ActionEvent> {
     TextField nombreJugador;
     TextField nombreJugador2;
     Juego juego;
+    private Label notificacionMensaje;
 
-    public ControladorJugar(Stage stagePrincipal, TextField nombreJugador, TextField nombreJugador2, Juego juego) {
+    public ControladorJugar(Stage stagePrincipal, TextField nombreJugador, TextField nombreJugador2, Juego juego, Label notificacionMensaje) {
         this.stage = stagePrincipal;
         this.nombreJugador = nombreJugador;
         this.nombreJugador2 = nombreJugador2;
         this.juego = juego;
+        this.notificacionMensaje = notificacionMensaje;
     }
 
     @Override
@@ -43,7 +46,7 @@ public class ControladorJugar implements EventHandler<ActionEvent> {
             stage.setFullScreen(true);
 
         }catch (NombreVacioError error){
-
+            this.notificacionMensaje.setText("¡Deben ingresar un nombre para comenzar a jugar!");
         }
     }
 }

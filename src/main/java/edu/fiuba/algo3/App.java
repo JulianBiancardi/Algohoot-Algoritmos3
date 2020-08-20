@@ -2,9 +2,10 @@ package edu.fiuba.algo3;
 
 import edu.fiuba.algo3.modelo.Entidades.Juego;
 import edu.fiuba.algo3.vista.VistaCargaJugadores;
-import edu.fiuba.algo3.vista.VistaIntroPregunta;
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.input.KeyCombination;
 import javafx.stage.Stage;
 
 
@@ -14,19 +15,18 @@ public class App extends Application {
     @Override
     public void start(Stage stagePrincipal) throws Exception{
         juego = new Juego();
-
-        stagePrincipal.setTitle("AlgoHoot");
-
+        stagePrincipal.setTitle("algohoot!");
+        stagePrincipal.getIcons().add(new Image("/IMG_algohoot_icono.png"));
         VistaCargaJugadores introVista = new VistaCargaJugadores(stagePrincipal, juego);
         stagePrincipal.setScene(new Scene(introVista));
         stagePrincipal.setFullScreen(true);
         stagePrincipal.setFullScreenExitHint("");
+        stagePrincipal.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
         stagePrincipal.show();
 
         /*
         * Poner musica
         * Cambiar botones reset multiplicadores y exclusividad
-        * Poner el fondo de colores que cambia
          */
     }
 
