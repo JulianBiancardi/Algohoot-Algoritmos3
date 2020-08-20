@@ -4,20 +4,16 @@
             "Enunciado": "Ordenar de menor a mayor",
             "Opciones": [
                 {
-                    "Descripcion": "1",
-                    "PosicionCorrecta": 0
+                    "Descripcion": "1"
                 },
                 {
-                    "Descripcion": "3",
-                    "PosicionCorrecta": 1
+                    "Descripcion": "3"
                 },
                 {
-                    "Descripcion": "5",
-                    "PosicionCorrecta": 2
+                    "Descripcion": "5"
                 },
                 {
-                    "Descripcion": "7",
-                    "PosicionCorrecta": 3
+                    "Descripcion": "7"
                 }
             ]
         },
@@ -25,20 +21,16 @@
             "Enunciado": "Ordenar de mayor a menor",
             "Opciones": [
                 {
-                    "Descripcion": "100",
-                    "PosicionCorrecta": 0
+                    "Descripcion": "100"
                 },
                 {
-                    "Descripcion": "99",
-                    "PosicionCorrecta": 1
+                    "Descripcion": "99"
                 },
                 {
-                    "Descripcion": "73",
-                    "PosicionCorrecta": 2
+                    "Descripcion": "73"
                 },
                 {
-                    "Descripcion": "5",
-                    "PosicionCorrecta": 3
+                    "Descripcion": "5"
                 }
             ]
         },
@@ -46,12 +38,10 @@
             "Enunciado": "Ordenar de mejor a peor",
             "Opciones": [
                 {
-                    "Descripcion": "Julian",
-                    "PosicionCorrecta": 0
+                    "Descripcion": "Julian"
                 },
                 {
-                    "Descripcion": "Todos los demas",
-                    "PosicionCorrecta": 1
+                    "Descripcion": "Todos los demas"
                 }
             ]
         }

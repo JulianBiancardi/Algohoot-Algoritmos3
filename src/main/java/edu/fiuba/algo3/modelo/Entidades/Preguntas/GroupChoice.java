@@ -6,8 +6,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import edu.fiuba.algo3.modelo.Entidades.Opciones.OpcionGrupal;
 import edu.fiuba.algo3.modelo.Entidades.Preguntas.ModosPreguntas.Clasico;
-
-
+import edu.fiuba.algo3.modelo.Excepciones.PreguntaSuperaMaxOpcionesError;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -17,6 +16,7 @@ public class GroupChoice extends Pregunta{
     private final ArrayList<OpcionGrupal> opcionesPregunta = new ArrayList<>();
     private final String nombreGrupo1;
     private final String nombreGrupo2;
+    static final String nombre = "Group Choice";
 
     public GroupChoice(String enunciado, String nombreGrupo1, String nombreGrupo2){
         super(enunciado, new Clasico());
@@ -33,6 +33,8 @@ public class GroupChoice extends Pregunta{
     }
 
     private void agregarOpcionAGrupo(OpcionGrupal opcion){
+        if(cantidadOpciones() == 5)
+            throw new PreguntaSuperaMaxOpcionesError();
         opcionesPregunta.add(opcion);
     }
 
@@ -54,6 +56,11 @@ public class GroupChoice extends Pregunta{
 
     public int cantidadOpciones(){
         return opcionesPregunta.size();
+    }
+
+    @Override
+    public String getTipo(){
+        return nombre;
     }
 
     //JSON
@@ -85,10 +92,5 @@ public class GroupChoice extends Pregunta{
         JsonObject jsonObject = JsonParser.parseString(texto).getAsJsonObject();
 
         return recuperar(jsonObject);
-    }
-
-    @Override
-    public String getTipo(){
-        return "Group Choice";
     }
 }

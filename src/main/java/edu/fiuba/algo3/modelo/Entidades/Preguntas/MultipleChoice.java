@@ -4,12 +4,12 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import edu.fiuba.algo3.modelo.Excepciones.ChoiceTieneMaxCincoOpcionesError;
 import edu.fiuba.algo3.modelo.Entidades.Opciones.*;
 import edu.fiuba.algo3.modelo.Entidades.Preguntas.ModosPreguntas.Clasico;
 import edu.fiuba.algo3.modelo.Entidades.Preguntas.ModosPreguntas.ModoPregunta;
 import edu.fiuba.algo3.modelo.Entidades.Preguntas.ModosPreguntas.Penalidad;
 import edu.fiuba.algo3.modelo.Entidades.Preguntas.ModosPreguntas.PuntajeParcial;
+import edu.fiuba.algo3.modelo.Excepciones.PreguntaSuperaMaxOpcionesError;
 
 
 import java.io.IOException;
@@ -19,6 +19,7 @@ import java.util.ArrayList;
 
 public class MultipleChoice extends Pregunta {
     private final ArrayList<OpcionBinaria> opcionesPregunta = new ArrayList<>();
+    static final String nombre = "Multiple Choice";
 
     private MultipleChoice(String unEnunciado, ModoPregunta unModo) {
         super(unEnunciado, unModo);
@@ -36,7 +37,7 @@ public class MultipleChoice extends Pregunta {
 
     public void nuevaOpcion(String descripcion, boolean esCorrecta){
         if(opcionesPregunta.size() == 5)
-            throw new ChoiceTieneMaxCincoOpcionesError();
+            throw new PreguntaSuperaMaxOpcionesError();
         agregarOpcion(new OpcionBinaria(descripcion, esCorrecta));
     }
 
@@ -51,6 +52,10 @@ public class MultipleChoice extends Pregunta {
         return opcionesPregunta.size();
     }
 
+    @Override
+    public String getTipo(){
+        return nombre;
+    }
 
     //JSON
     public static MultipleChoice recuperar(JsonObject jsonObjectMC) {
@@ -89,10 +94,5 @@ public class MultipleChoice extends Pregunta {
         JsonObject jsonObject = JsonParser.parseString(texto).getAsJsonObject();
 
         return recuperar(jsonObject);
-    }
-
-    @Override
-    public String getTipo(){
-        return "Multiple Choice";
     }
 }

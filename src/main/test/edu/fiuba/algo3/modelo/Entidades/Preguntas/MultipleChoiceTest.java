@@ -5,8 +5,8 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import edu.fiuba.algo3.modelo.Entidades.Jugador;
-import edu.fiuba.algo3.modelo.Excepciones.ChoiceTieneMaxCincoOpcionesError;
 import edu.fiuba.algo3.modelo.Entidades.Respuestas.Respuesta;
+import edu.fiuba.algo3.modelo.Excepciones.PreguntaSuperaMaxOpcionesError;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -509,7 +509,7 @@ public class MultipleChoiceTest {
         pregunta.nuevaOpcion("Venezuela", true);
         pregunta.nuevaOpcion("Italia", false);
 
-        assertThrows(ChoiceTieneMaxCincoOpcionesError.class,
+        assertThrows(PreguntaSuperaMaxOpcionesError.class,
                 () -> pregunta.nuevaOpcion("Francia", false));
     }
 }

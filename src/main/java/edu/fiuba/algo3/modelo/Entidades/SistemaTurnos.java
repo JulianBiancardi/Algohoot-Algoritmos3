@@ -3,7 +3,7 @@ package edu.fiuba.algo3.modelo.Entidades;
 import java.util.ArrayList;
 
 public class SistemaTurnos {
-    private ArrayList<Jugador> jugadores = new ArrayList<>();
+    private final ArrayList<Jugador> jugadores = new ArrayList<>();
     private int index;
 
     public SistemaTurnos (){

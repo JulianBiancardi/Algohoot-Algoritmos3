@@ -26,8 +26,6 @@ public class OpcionGrupal implements Opcion {
     public static OpcionGrupal recuperar(JsonObject jsonObjectOpcion, String grupo) {
         String enunciado = jsonObjectOpcion.get("Descripcion").getAsString();
 
-        OpcionGrupal opcion = new OpcionGrupal(enunciado, grupo);
-
-        return opcion;
+        return new OpcionGrupal(enunciado, grupo);
     }
 }

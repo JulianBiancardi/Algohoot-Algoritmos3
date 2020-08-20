@@ -1,6 +1,5 @@
 package edu.fiuba.algo3.vista.Preguntas;
 
-import edu.fiuba.algo3.modelo.Entidades.Jugador;
 import edu.fiuba.algo3.modelo.Entidades.Preguntas.Pregunta;
 import edu.fiuba.algo3.modelo.Entidades.Respuestas.Respuesta;
 import javafx.geometry.Insets;
@@ -22,6 +21,4 @@ public abstract class VistaPregunta extends GridPane{
     public abstract Respuesta getRespuesta();
 
     public abstract Respuesta completarRespuesta();
-
-    // public abstract void inicializarOpciones();
 }

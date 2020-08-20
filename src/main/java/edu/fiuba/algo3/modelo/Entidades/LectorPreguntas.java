@@ -12,7 +12,7 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 
 public class LectorPreguntas {
-    private JsonArray jsonPreguntas;
+    private final JsonArray jsonPreguntas;
 
     public LectorPreguntas() throws IOException {
         String texto = Files.readString(Path.of("preguntas/preguntas.json"));

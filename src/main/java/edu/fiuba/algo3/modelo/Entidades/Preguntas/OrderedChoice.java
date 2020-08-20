@@ -4,12 +4,9 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import edu.fiuba.algo3.modelo.Entidades.Opciones.OpcionBinaria;
-import edu.fiuba.algo3.modelo.Excepciones.ChoiceTieneMaxCincoOpcionesError;
-
 import edu.fiuba.algo3.modelo.Entidades.Opciones.OpcionOrdenada;
 import edu.fiuba.algo3.modelo.Entidades.Preguntas.ModosPreguntas.Clasico;
-import edu.fiuba.algo3.modelo.Excepciones.OrderedTieneMaxCincoOpcionesError;
+import edu.fiuba.algo3.modelo.Excepciones.PreguntaSuperaMaxOpcionesError;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -18,6 +15,7 @@ import java.util.ArrayList;
 
 public class OrderedChoice extends Pregunta{
     private final ArrayList<OpcionOrdenada> opcionesPregunta = new ArrayList<>();
+    static final String nombre = "Ordered Choice";
 
     public OrderedChoice(String unEnunciado) {
         super(unEnunciado, new Clasico());
@@ -29,18 +27,23 @@ public class OrderedChoice extends Pregunta{
 
     public void nuevaOpcion(String descripcion){
         if(cantidadOpciones() == 5)
-            throw new OrderedTieneMaxCincoOpcionesError();
+            throw new PreguntaSuperaMaxOpcionesError();
         agregarOpcion(new OpcionOrdenada(descripcion, cantidadOpciones()));
     }
 
     public int calcularCantidadOpcionesCorrectas(){ return opcionesPregunta.size(); }
 
     public OpcionOrdenada obtenerOpcion(int posicion){
-        return (OpcionOrdenada) opcionesPregunta.get(posicion);
+        return opcionesPregunta.get(posicion);
     }
 
     public int cantidadOpciones() {
         return opcionesPregunta.size();
+    }
+
+    @Override
+    public String getTipo(){
+        return nombre;
     }
 
     //JSON
@@ -51,7 +54,7 @@ public class OrderedChoice extends Pregunta{
 
         JsonArray arrayOpciones = jsonObjectMC.getAsJsonArray("Opciones");
         for (JsonElement jsonOpcion : arrayOpciones) {
-            OpcionOrdenada opcion = OpcionOrdenada.recuperar(jsonOpcion.getAsJsonObject());
+            OpcionOrdenada opcion = OpcionOrdenada.recuperar(jsonOpcion.getAsJsonObject(), pregunta.cantidadOpciones());
             pregunta.agregarOpcion(opcion);
         }
 
@@ -64,11 +67,6 @@ public class OrderedChoice extends Pregunta{
         JsonObject jsonObject = JsonParser.parseString(texto).getAsJsonObject();
 
         return recuperar(jsonObject);
-    }
-
-    @Override
-    public String getTipo(){
-        return "Ordered Choice";
     }
 }
 
