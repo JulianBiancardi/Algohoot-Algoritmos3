@@ -42,6 +42,7 @@ public class VistaOpcionGrupal extends StackPane {
 
         grupoActualLabel.setFont(Font.font("Montserrat", FontWeight.BOLD,30));
         grupoActualLabel.setTextFill(Color.WHITE);
+        grupoActualLabel.setMouseTransparent(true);
 
         stackPane1.getChildren().addAll(botonEstado,grupoActualLabel);
 

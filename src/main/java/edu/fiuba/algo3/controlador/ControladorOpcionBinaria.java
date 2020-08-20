@@ -1,10 +1,12 @@
 package edu.fiuba.algo3.controlador;
 
+import edu.fiuba.algo3.App;
 import edu.fiuba.algo3.modelo.Entidades.Opciones.OpcionBinaria;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.media.AudioClip;
 
 import java.util.ArrayList;
 
@@ -22,6 +24,9 @@ public class ControladorOpcionBinaria implements EventHandler<ActionEvent> {
     }
     @Override
     public void handle(ActionEvent actionEvent){
+        AudioClip sonido = new AudioClip(App.class.getResource("/KSHMR Percussion Low 06 (C#).wav").toExternalForm());
+        sonido.play();
+
         Image estadoImagen;
         if(estaSeleccionado){
             opciones.remove(opcionAsociada);

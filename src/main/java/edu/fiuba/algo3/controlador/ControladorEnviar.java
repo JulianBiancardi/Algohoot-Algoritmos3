@@ -44,6 +44,7 @@ public class ControladorEnviar implements EventHandler<ActionEvent> {
             stage.getScene().setRoot(vistaPuntos);
         }
         else{
+
             VistaPrincipal vistaPrincipal = new VistaPrincipal(stage,juego,juego.obtenerRondaActual().obtenerPregunta());
             stage.getScene().setRoot(vistaPrincipal);
         }
