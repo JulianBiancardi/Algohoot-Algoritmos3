@@ -1,26 +1,33 @@
 [![Build Status](https://travis-ci.com/JulianBiancardi/Algoritmos3---TP2.svg?token=EKxdtGcYaBFNUkEovYrj&branch=master)](https://travis-ci.com/JulianBiancardi/Algoritmos3---TP2)
-
 [![codecov](https://codecov.io/gh/JulianBiancardi/Algoritmos3---TP2/branch/master/graph/badge.svg?token=HGKUYEBHKW)](https://codecov.io/gh/JulianBiancardi/Algoritmos3---TP2)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Grupo de TP](https://img.shields.io/badge/N%C2%B0%20Grupo-9-blue)](https://github.com/JulianBiancardi/Algoritmos3---TP2)
+[![Materia e Institución](https://img.shields.io/badge/Algoritmos%20y%20Programaci%C3%B3n%20III-FIUBA-red)](https://campus.fi.uba.ar/course/view.php?id=210)
+
+# Trabajo Práctico N°2: Algohoot!
+
+Este juego, inspirado en el original [Kahoot](https://kahoot.com/), es parte del trabajo final y grupal realizado para la materia de **Algoritmos y Programación III** dictada en la **Facultad de Ingeniería de la Universidad 
+de Buenos Aires (FIUBA)** durante el primer cuatrimestre del 2020.
 
 
+Para la parte del modelo se utilizó un lenguaje de tipado estático, **Java**, con un diseño orientado a objetos trabajando con las técnicas de TDD e Integración Continua. 
 
 
+Para la parte de interacción entre el usuario y la aplicación se decidió realizar una interfaz gráfica intuitiva con **JavaFX**.
 
-# TP2 Algoritmos 3: AlgoHoot
+## Integrantes - Grupo 9
 
-Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUBA
+Nombre | Padrón | Email
+------ | ------| -------------
+[BIANCARDI, Julian](https://github.com/JulianBiancardi) | 103945 | jbiancardi@fi.uba.ar
+[HETREA, Joaquín Emanuel](https://github.com/JoaquinHetrea) | 103944 | jhetrea@fi.uba.a
+[TARDITI PELLEGRINO, Leo Damian](https://github.com/leotarditi) | 104521 | ltarditi@fi.uba.ar
+[GALIAN, Tomás Ezequiel](https://github.com/TomiGalian) | 104354 | tgalian@fi.uba.ar
+[PACHECO, Federico Jose](https://github.com/fjpacheco) | 104541 | fpacheco@fi.uba.ar
+     
+Corrector: **[PICCO, Martín Alejandro](https://github.com/M-Picco)**
 
-## Grupo 9
-
-* **Julian Biancardi** - [JulianBiancardi](https://github.com/JulianBiancardi)
-* **Joaquin Hetrea**  - [JoaquinHetrea](https://github.com/JoaquinHetrea)
-* **Leo Tarditi** - [leotarditi](https://github.com/leotarditi)
-* **Tomas Galian** - [TomiGalian](https://github.com/TomiGalian)
-* **Federico Jose Pacheco** - [fjpacheco](https://github.com/fjpacheco)
-
-Corrector: **Martín Picco**
-
-### Informe : https://www.overleaf.com/project/5ec9bbccf2e82500011f7ab7
+### Ver el informe completo [aquí](https://www.overleaf.com/project/5ec9bbccf2e82500011f7ab7)
 
 ### Pre-requisitos
 
@@ -29,13 +36,12 @@ Listado de software/herramientas necesarias para el proyecto
 ```
 java 11
 maven 3.6.0
-...
 ```
 
 ## Ejecutando las pruebas
 
 ```bash
-    mvn test
+    mvn clean test
 ```
 
 Este comando crea el reporte de cobertura para CI y el reporte HTML que pueden abrir de la siguiente manera:
@@ -46,8 +52,11 @@ Este comando crea el reporte de cobertura para CI y el reporte HTML que pueden a
 
 ## Ejecutando la aplicación
 
-Explicación de como ejecutar la aplicación
+Para ejecutar la aplicación se debe ejecutar el siguiente comando:
 
+```bash
+    mvn clean javafx:run
+```
 ## Licencia
 
 Este repositorio está bajo la Licencia MIT
