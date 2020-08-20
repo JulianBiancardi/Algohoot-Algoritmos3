@@ -22,6 +22,7 @@ public class Penalidad extends ModoPregunta  {
     @Override
     public boolean aceptaExclusividad(){ return false; }
 
+    @Override
     public String nombre(){
         return nombre;
     }

@@ -26,6 +26,7 @@ public class PuntajeParcial extends ModoPregunta{
     @Override
     public boolean aceptaExclusividad(){ return true; }
 
+    @Override
     public String nombre(){
         return nombre;
     }

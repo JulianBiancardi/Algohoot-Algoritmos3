@@ -5,7 +5,6 @@ import edu.fiuba.algo3.modelo.Entidades.Multiplicador;
 import edu.fiuba.algo3.modelo.Excepciones.PreguntaNoAceptaMultiplicadorError;
 import edu.fiuba.algo3.modelo.Entidades.Opciones.Opcion;
 import edu.fiuba.algo3.modelo.Entidades.Preguntas.Pregunta;
-
 import java.util.ArrayList;
 
 public class Respuesta {
@@ -39,5 +38,4 @@ public class Respuesta {
     }
 
     public void activarExclusividad() { preguntaReferenciada.activarExclusividad(); }
-
 }

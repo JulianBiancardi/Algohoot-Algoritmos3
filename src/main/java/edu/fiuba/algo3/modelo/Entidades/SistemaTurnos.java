@@ -4,10 +4,10 @@ import java.util.ArrayList;
 
 public class SistemaTurnos {
     private final ArrayList<Jugador> jugadores = new ArrayList<>();
-    private int index;
+    private int turnoActual;
 
     public SistemaTurnos (){
-        index = 0;
+        turnoActual = 0;
     }
 
     public void agregarJugador (Jugador jugador){
@@ -15,16 +15,16 @@ public class SistemaTurnos {
     }
 
     public void siguienteTurno(){
-        index++;
-        if(index == jugadores.size())
-            index = 0;
+        turnoActual++;
+        if(turnoActual == jugadores.size())
+            turnoActual = 0;
     }
 
     public boolean terminoRonda(){
-        return (index == 0);
+        return (turnoActual == 0);
     }
 
-    public Jugador obtenerTurno(){
-        return jugadores.get(index);
+    public Jugador jugadorActual(){
+        return jugadores.get(turnoActual);
     }
 }

@@ -2,9 +2,7 @@ package edu.fiuba.algo3.vista.Preguntas;
 
 import edu.fiuba.algo3.controlador.ControladorReset;
 import edu.fiuba.algo3.modelo.Entidades.Jugador;
-import edu.fiuba.algo3.modelo.Entidades.Opciones.Opcion;
 import edu.fiuba.algo3.modelo.Entidades.Opciones.OpcionOrdenada;
-import edu.fiuba.algo3.modelo.Entidades.Preguntas.MultipleChoice;
 import edu.fiuba.algo3.modelo.Entidades.Preguntas.OrderedChoice;
 import edu.fiuba.algo3.modelo.Entidades.Respuestas.Respuesta;
 import edu.fiuba.algo3.modelo.Entidades.Respuestas.RespuestaOrdenada;
@@ -21,9 +19,9 @@ import java.util.HashMap;
 
 public class VistaOrderedChoice extends VistaPregunta{
 
-    private HashMap<Integer, VistaOpcionData> opcionesInfo = new HashMap<Integer,VistaOpcionData>();
-    private ArrayList<OpcionOrdenada> opcionesElegidas = new ArrayList<>();
-    private ArrayList<VistaOpcionOrdenada> vistasOpcionesOrdenadas = new ArrayList<>();
+    private final HashMap<Integer, VistaOpcionData> opcionesInfo = new HashMap<Integer,VistaOpcionData>();
+    private final ArrayList<OpcionOrdenada> opcionesElegidas = new ArrayList<>();
+    private final ArrayList<VistaOpcionOrdenada> vistasOpcionesOrdenadas = new ArrayList<>();
 
     RespuestaOrdenada respuesta;
     public VistaOrderedChoice(OrderedChoice pregunta, Jugador jugador){

@@ -7,8 +7,8 @@ public abstract class ModoPregunta {
 
     public void evaluarRespuestas(ArrayList<Respuesta> respuestas, int cantidadOpcionesCorrectaPregunta){
         for (Respuesta respuesta : respuestas) {
-            int puntos = calcularPuntos(respuesta, cantidadOpcionesCorrectaPregunta);
-            respuesta.modificarPuntosJugador(puntos);
+            int puntosASumar = calcularPuntos(respuesta, cantidadOpcionesCorrectaPregunta);
+            respuesta.modificarPuntosJugador(puntosASumar);
         }
     }
 

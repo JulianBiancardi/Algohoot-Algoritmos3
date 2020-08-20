@@ -1,15 +1,11 @@
 package edu.fiuba.algo3.vista.Preguntas;
 
 import edu.fiuba.algo3.modelo.Entidades.Jugador;
-import edu.fiuba.algo3.modelo.Entidades.Opciones.Opcion;
 import edu.fiuba.algo3.modelo.Entidades.Opciones.OpcionBinaria;
 import edu.fiuba.algo3.modelo.Entidades.Preguntas.VoF;
 import edu.fiuba.algo3.modelo.Entidades.Respuestas.Respuesta;
 import edu.fiuba.algo3.vista.Opciones.VistaOpcionBinaria;
 import edu.fiuba.algo3.vista.Opciones.VistaOpcionData;
-import edu.fiuba.algo3.vista.Preguntas.VistaPregunta;
-import javafx.scene.image.ImageView;
-import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
 import java.util.HashMap;

@@ -9,9 +9,8 @@ import edu.fiuba.algo3.modelo.Entidades.Preguntas.ModosPreguntas.Clasico;
 import edu.fiuba.algo3.modelo.Entidades.Preguntas.ModosPreguntas.ModoPregunta;
 import edu.fiuba.algo3.modelo.Entidades.Preguntas.ModosPreguntas.Penalidad;
 import edu.fiuba.algo3.modelo.Entidades.Preguntas.ModosPreguntas.PuntajeParcial;
+import edu.fiuba.algo3.modelo.Excepciones.FormatoDesconocidoError;
 import edu.fiuba.algo3.modelo.Excepciones.PreguntaSuperaMaxOpcionesError;
-
-
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -45,21 +44,22 @@ public class MultipleChoice extends Pregunta {
         return opcionesPregunta.get(posicion);
     }
 
-    public int calcularCantidadOpcionesCorrectas(){ return (int) opcionesPregunta.stream().filter(Opcion::esCorrecta).count(); }
-
     @Override
     public int cantidadOpciones() {
         return opcionesPregunta.size();
     }
 
     @Override
-    public String getTipo(){
+    public int calcularCantidadOpcionesCorrectas(){ return (int) opcionesPregunta.stream().filter(Opcion::esCorrecta).count(); }
+
+    @Override
+    public String tipo(){
         return nombre;
     }
 
     //JSON
     public static MultipleChoice recuperar(JsonObject jsonObjectMC) {
-        MultipleChoice pregunta = null;
+        MultipleChoice pregunta;
 
         String enunciadoPregunta = jsonObjectMC.get("Enunciado").getAsString();
         String modoPregunta = jsonObjectMC.get("Modo").getAsString();
@@ -75,8 +75,7 @@ public class MultipleChoice extends Pregunta {
                 pregunta = MultipleChoice.conModoPenalidad(enunciadoPregunta);
                 break;
             default:
-                //Excepcion o elegir un caso como default
-                break;
+                throw new FormatoDesconocidoError();
         }
 
         JsonArray arrayOpciones = jsonObjectMC.getAsJsonArray("Opciones");

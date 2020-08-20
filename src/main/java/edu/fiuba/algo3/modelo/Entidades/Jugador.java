@@ -2,12 +2,11 @@ package edu.fiuba.algo3.modelo.Entidades;
 
 import edu.fiuba.algo3.modelo.Entidades.Respuestas.Respuesta;
 import edu.fiuba.algo3.modelo.Excepciones.MultiplicadorYaUtilizadoError;
-
 import java.util.ArrayList;
 
 public class Jugador  {
     private final String nombre;
-    private int puntajeJugador = 0;
+    private int puntaje = 0;
     private final Multiplicador multiplicadorDoble = Multiplicador.crearMultiplicadorDoble();
     private final Multiplicador multiplicadorTriple = Multiplicador.crearMultiplicadorTriple();
     private final ArrayList<Multiplicador> multiplicadoresRestantes = new ArrayList<>();
@@ -20,9 +19,10 @@ public class Jugador  {
     }
 
     public void modificarPuntos(int puntaje){
-        puntajeJugador = puntajeJugador + puntaje;
+        this.puntaje += puntaje;
     }
 
+    //Bonificaciones
     public void activarMultiplicadorDoble(Respuesta respuesta){
         activarMultiplicador(respuesta, multiplicadorDoble);
     }
@@ -58,11 +58,12 @@ public class Jugador  {
         }
     }
 
+    //Getters
     public String nombre(){
         return nombre;
     }
 
     public int puntos(){
-        return puntajeJugador;
+        return puntaje;
     }
 }

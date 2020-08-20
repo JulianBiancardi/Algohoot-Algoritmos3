@@ -33,7 +33,7 @@ public class GroupChoice extends Pregunta{
     }
 
     private void agregarOpcionAGrupo(OpcionGrupal opcion){
-        if(cantidadOpciones() == 5)
+        if(cantidadOpciones() == 6)
             throw new PreguntaSuperaMaxOpcionesError();
         opcionesPregunta.add(opcion);
     }
@@ -59,7 +59,7 @@ public class GroupChoice extends Pregunta{
     }
 
     @Override
-    public String getTipo(){
+    public String tipo(){
         return nombre;
     }
 

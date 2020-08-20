@@ -1,8 +1,8 @@
 package edu.fiuba.algo3.modelo.Entidades;
 
 import edu.fiuba.algo3.modelo.Entidades.Preguntas.Pregunta;
-import java.util.ArrayList;
 import edu.fiuba.algo3.modelo.Entidades.Respuestas.Respuesta;
+import java.util.ArrayList;
 
 public class Ronda {
     private final Pregunta pregunta;

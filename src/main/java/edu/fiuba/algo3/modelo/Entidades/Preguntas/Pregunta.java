@@ -1,14 +1,9 @@
 package edu.fiuba.algo3.modelo.Entidades.Preguntas;
 
-import com.google.gson.JsonObject;
 import edu.fiuba.algo3.modelo.Excepciones.PreguntaNoAceptaExclusividadError;
-import edu.fiuba.algo3.modelo.Excepciones.RespuestasInsuficientesError;
-import edu.fiuba.algo3.modelo.Entidades.Opciones.Opcion;
 import edu.fiuba.algo3.modelo.Entidades.Preguntas.ModosPreguntas.Exclusividad;
 import edu.fiuba.algo3.modelo.Entidades.Preguntas.ModosPreguntas.ModoPregunta;
 import edu.fiuba.algo3.modelo.Entidades.Respuestas.Respuesta;
-
-
 import java.util.ArrayList;
 
 public abstract class Pregunta {
@@ -21,12 +16,14 @@ public abstract class Pregunta {
     }
 
     public void evaluarRespuestas(ArrayList<Respuesta> respuestas) {
-        if(respuestas.size() == 0){
-            throw new RespuestasInsuficientesError();
-        }
         modo.evaluarRespuestas(respuestas, calcularCantidadOpcionesCorrectas());
     }
 
+    public abstract int cantidadOpciones();
+
+    public abstract int calcularCantidadOpcionesCorrectas();
+
+    //Bonificaciones
     public boolean aceptaMultiplicador(){ return modo.aceptaMultiplicador(); }
 
     public void activarExclusividad() {
@@ -35,17 +32,14 @@ public abstract class Pregunta {
         modo = new Exclusividad(modo);
     }
 
-    public abstract int calcularCantidadOpcionesCorrectas();
-
-    public String getEnunciado(){
+    //Getters
+    public String enunciado(){
         return enunciado;
     }
 
-    public abstract int cantidadOpciones();
-
-    public String getModo() {
+    public String modo() {
         return modo.nombre();
     }
 
-    public abstract String getTipo();
+    public abstract String tipo();
 }

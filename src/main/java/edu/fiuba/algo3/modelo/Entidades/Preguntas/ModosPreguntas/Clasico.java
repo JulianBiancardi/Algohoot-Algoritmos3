@@ -24,6 +24,7 @@ public class Clasico extends ModoPregunta{
     @Override
     public boolean aceptaExclusividad(){ return true; }
 
+    @Override
     public String nombre(){
         return nombre;
     }

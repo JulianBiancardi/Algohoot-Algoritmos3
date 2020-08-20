@@ -1,7 +1,6 @@
 package edu.fiuba.algo3.vista.Preguntas;
 
 import edu.fiuba.algo3.modelo.Entidades.Jugador;
-import edu.fiuba.algo3.modelo.Entidades.Opciones.Opcion;
 import edu.fiuba.algo3.modelo.Entidades.Opciones.OpcionGrupal;
 import edu.fiuba.algo3.modelo.Entidades.Preguntas.GroupChoice;
 import edu.fiuba.algo3.modelo.Entidades.Respuestas.Respuesta;
@@ -19,9 +18,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class VistaGroupChoice extends VistaPregunta{
-    private HashMap<Integer, VistaOpcionData> opcionesInfo = new HashMap<Integer,VistaOpcionData>();
-    private ArrayList<OpcionGrupal> opcionesGrupoA = new ArrayList<>();
-    private ArrayList<OpcionGrupal> opcionesGrupoB = new ArrayList<>();
+    private final HashMap<Integer, VistaOpcionData> opcionesInfo = new HashMap<Integer,VistaOpcionData>();
+    private final ArrayList<OpcionGrupal> opcionesGrupoA = new ArrayList<>();
+    private final ArrayList<OpcionGrupal> opcionesGrupoB = new ArrayList<>();
 
     RespuestaGrupal respuesta;
 
@@ -35,6 +34,7 @@ public class VistaGroupChoice extends VistaPregunta{
         opcionesInfo.put(2,new VistaOpcionData(2,0, "File:src\\resources\\imagenes\\IMG_Botones\\IMG_BotonAmarillo.png"));
         opcionesInfo.put(3,new VistaOpcionData(2,1, "File:src\\resources\\imagenes\\IMG_Botones\\IMG_BotonVerde.png"));
         opcionesInfo.put(4,new VistaOpcionData(3,0, "File:src\\resources\\imagenes\\IMG_Botones\\IMG_BotonVioleta.png"));
+        opcionesInfo.put(5,new VistaOpcionData(3,1, "File:src\\resources\\imagenes\\IMG_Botones\\IMG_BotonRosado.png"));
 
         mostrarGrupos(pregunta);
         inicializarOpciones(pregunta);

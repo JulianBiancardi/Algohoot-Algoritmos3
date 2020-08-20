@@ -7,7 +7,6 @@ import com.google.gson.JsonParser;
 import edu.fiuba.algo3.modelo.Entidades.Opciones.OpcionOrdenada;
 import edu.fiuba.algo3.modelo.Entidades.Preguntas.ModosPreguntas.Clasico;
 import edu.fiuba.algo3.modelo.Excepciones.PreguntaSuperaMaxOpcionesError;
-
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -31,18 +30,20 @@ public class OrderedChoice extends Pregunta{
         agregarOpcion(new OpcionOrdenada(descripcion, cantidadOpciones()));
     }
 
-    public int calcularCantidadOpcionesCorrectas(){ return opcionesPregunta.size(); }
-
     public OpcionOrdenada obtenerOpcion(int posicion){
         return opcionesPregunta.get(posicion);
     }
 
+    @Override
     public int cantidadOpciones() {
         return opcionesPregunta.size();
     }
 
     @Override
-    public String getTipo(){
+    public int calcularCantidadOpcionesCorrectas(){ return opcionesPregunta.size(); }
+
+    @Override
+    public String tipo(){
         return nombre;
     }
 

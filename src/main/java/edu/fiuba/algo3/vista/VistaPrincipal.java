@@ -80,7 +80,7 @@ public class VistaPrincipal extends BorderPane{
         ImageView fondoPregunta = new ImageView("File:src\\resources\\imagenes\\fondoPregunta.png");
         fondoPregunta.fitWidthProperty().bind(this.widthProperty());
 
-        Label enunciadoPregunta = new Label(pregunta.getEnunciado());
+        Label enunciadoPregunta = new Label(pregunta.enunciado());
         enunciadoPregunta.setFont(Font.font("Core Mellow", FontWeight.BOLD,55));
 
         stackPane.getChildren().addAll(fondoPregunta,enunciadoPregunta);

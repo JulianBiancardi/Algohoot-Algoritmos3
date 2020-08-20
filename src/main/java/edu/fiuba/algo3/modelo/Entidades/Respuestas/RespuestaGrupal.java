@@ -15,14 +15,14 @@ public class RespuestaGrupal extends Respuesta{
         grupo2 = new Grupo(pregunta.nombreGrupo2());
     }
 
-    private void agregarOpcionALista(OpcionGrupal opcion, Grupo grupo){ grupo.agregarOpcionGrupo(opcion); }
+    private void agregarOpcionAGrupo(OpcionGrupal opcion, Grupo grupo){ grupo.agregarOpcionGrupo(opcion); }
 
     public void agregarOpcionGrupo1(OpcionGrupal opcion){
-        agregarOpcionALista(opcion, grupo1);
+        agregarOpcionAGrupo(opcion, grupo1);
     }
 
     public void agregarOpcionGrupo2(OpcionGrupal opcion){
-        agregarOpcionALista(opcion, grupo2);
+        agregarOpcionAGrupo(opcion, grupo2);
     }
 
     @Override

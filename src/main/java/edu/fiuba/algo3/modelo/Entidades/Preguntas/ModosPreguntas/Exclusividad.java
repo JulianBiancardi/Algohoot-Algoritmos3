@@ -1,7 +1,6 @@
 package edu.fiuba.algo3.modelo.Entidades.Preguntas.ModosPreguntas;
 
 import edu.fiuba.algo3.modelo.Entidades.Respuestas.Respuesta;
-
 import java.util.ArrayList;
 import java.util.Comparator;
 
@@ -15,25 +14,24 @@ public class Exclusividad extends ModoPregunta {
     }
 
     @Override
-    public void evaluarRespuestas(ArrayList<Respuesta> respuestas, int cantidadOpcionesCorrectaPregunta) {
-        int cantidadRespuestasCompletamenteCorrectas = (int) respuestas.stream()
-                .filter(respuesta -> esCompletamenteCorrecta(respuesta, cantidadOpcionesCorrectaPregunta)).count();
+    public void evaluarRespuestas(ArrayList<Respuesta> respuestas, int opcionesCorrectasPregunta) {
+        int respuestasCorrectas = (int)respuestas.stream().filter(respuesta -> esCorrecta(respuesta, opcionesCorrectasPregunta)).count();
 
-        if (cantidadRespuestasCompletamenteCorrectas == 1 && exclusividadesActivadas != 0) {
-            Respuesta respuestaCompletamenteCorrecta = respuestas.stream().max(Comparator.comparing(Respuesta::cantidadOpcionesCorrectas)).get();
-            int puntosAIncrementar = modoOriginal.calcularPuntos(respuestaCompletamenteCorrecta, cantidadOpcionesCorrectaPregunta);
-            respuestaCompletamenteCorrecta.modificarPuntosJugador(puntosAIncrementar * 2 * exclusividadesActivadas);
+        if (respuestasCorrectas == 1 && exclusividadesActivadas != 0) {
+            Respuesta respuestaCorrecta = respuestas.stream().max(Comparator.comparing(Respuesta::cantidadOpcionesCorrectas)).get();
+            int puntosASumar = modoOriginal.calcularPuntos(respuestaCorrecta, opcionesCorrectasPregunta);
+            respuestaCorrecta.modificarPuntosJugador(puntosASumar * 2 * exclusividadesActivadas);
         }
         exclusividadesActivadas = 0;
     }
 
-    private boolean esCompletamenteCorrecta(Respuesta respuesta, int cantidadOpcionesCorrectaDeLaPregunta) {
-        return (respuesta.cantidadOpcionesIncorrectas() == 0) && (respuesta.cantidadOpcionesCorrectas() == cantidadOpcionesCorrectaDeLaPregunta);
+    private boolean esCorrecta(Respuesta respuesta, int opcionesCorrectasPregunta) {
+        return (respuesta.cantidadOpcionesIncorrectas() == 0) && (respuesta.cantidadOpcionesCorrectas() == opcionesCorrectasPregunta);
     }
 
     @Override
-    public int calcularPuntos(Respuesta respuesta, int cantidadOpcionesCorrectaPregunta) {
-        return modoOriginal.calcularPuntos(respuesta, cantidadOpcionesCorrectaPregunta);
+    public int calcularPuntos(Respuesta respuesta, int opcionesCorrectasPregunta) {
+        return modoOriginal.calcularPuntos(respuesta, opcionesCorrectasPregunta);
     }
 
     @Override
@@ -46,6 +44,7 @@ public class Exclusividad extends ModoPregunta {
         return modoOriginal.aceptaExclusividad();
     }
 
+    @Override
     public String nombre(){
         return modoOriginal.nombre();
     }

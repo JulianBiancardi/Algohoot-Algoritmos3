@@ -5,7 +5,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import edu.fiuba.algo3.modelo.Entidades.Preguntas.*;
-
+import edu.fiuba.algo3.modelo.Excepciones.FormatoDesconocidoError;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -55,8 +55,7 @@ public class LectorPreguntas {
                     }
                     break;
                 default:
-                    //Excepcion
-                    break;
+                    throw new FormatoDesconocidoError();
             }
         }
 

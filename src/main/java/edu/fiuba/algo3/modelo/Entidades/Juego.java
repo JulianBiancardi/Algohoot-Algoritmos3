@@ -44,7 +44,7 @@ public class Juego {
     }
 
     public Jugador turnoDe(){
-        return sistemaTurnos.obtenerTurno();
+        return sistemaTurnos.jugadorActual();
     }
 
     public Ronda obtenerRondaActual() {

@@ -43,15 +43,15 @@ public class VistaIntroPregunta extends BorderPane {
     }
 
     private void mostrarPregunta() {
-        Label enunciadoPregunta = new Label(juego.obtenerRondaActual().obtenerPregunta().getEnunciado());
+        Label enunciadoPregunta = new Label(juego.obtenerRondaActual().obtenerPregunta().enunciado());
         enunciadoPregunta.setFont(Font.font("Core Mellow", FontWeight.BOLD,80));
         enunciadoPregunta.setTextFill(Color.WHITE);
 
-        Label tipoPregunta = new Label(juego.obtenerRondaActual().obtenerPregunta().getTipo() + ": ");
+        Label tipoPregunta = new Label(juego.obtenerRondaActual().obtenerPregunta().tipo() + ": ");
         tipoPregunta.setFont(Font.font("Core Mellow", FontWeight.LIGHT,30));
         tipoPregunta.setTextFill(Color.WHITE);
 
-        Label modoPregunta = new Label(juego.obtenerRondaActual().obtenerPregunta().getModo());
+        Label modoPregunta = new Label(juego.obtenerRondaActual().obtenerPregunta().modo());
         modoPregunta.setFont(Font.font("Core Mellow", FontWeight.LIGHT,30));
         modoPregunta.setTextFill(Color.WHITE);
 
