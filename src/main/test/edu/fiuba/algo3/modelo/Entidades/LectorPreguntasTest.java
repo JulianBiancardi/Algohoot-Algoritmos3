@@ -14,7 +14,7 @@ public class LectorPreguntasTest {
     ArrayList<Pregunta> preguntas;
 
     @BeforeEach
-    void setUp() throws IOException {
+    public void setUp() throws IOException {
         lector = new LectorPreguntas();
         preguntas = lector.leerPreguntas();
     }
