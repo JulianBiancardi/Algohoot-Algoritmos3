@@ -41,11 +41,11 @@ public class VistaFinJuego extends BorderPane {
         List<Jugador> listaJugadores = ordenarJugadores(jugadores);
         generarPodios(listaJugadores);
 
-        Button botonSalir = new Button("    Salir   ");
+        Button botonSalir = new Button("   Salir   ");
         botonSalir.setStyle("-fx-background-radius: 0px;"
                 + "-fx-background-color: #25076b;"
                 + "-fx-text-fill: #ffffff;"
-                + "-fx-font-size: 16;"
+                + "-fx-font-size: 58;"
                 + "-fx-padding: 5px;");
         botonSalir.setOnAction(new ControladorSalir());
         HBox hbox = new HBox(botonSalir);

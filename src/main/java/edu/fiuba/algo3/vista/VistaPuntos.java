@@ -74,11 +74,11 @@ public class VistaPuntos extends VBox {
     private void mostrarJugador(Jugador unJugador){
 
         Label nombreJugador = new Label(String.valueOf(puesto) + "  " + unJugador.nombre());
-        nombreJugador.setFont(Font.font("Montserrat", FontWeight.BOLD,25));
+        nombreJugador.setFont(Font.font("Montserrat", FontWeight.BOLD,50));
         nombreJugador.setTextFill(Color.WHITE);
 
         Label puntosJugador = new Label(String.valueOf(unJugador.puntos()));
-        puntosJugador.setFont(Font.font("Montserrat", FontWeight.BOLD,25));
+        puntosJugador.setFont(Font.font("Montserrat", FontWeight.BOLD,50));
         puntosJugador.setTextFill(Color.WHITE);
 
         AnchorPane anchorPane = new AnchorPane();

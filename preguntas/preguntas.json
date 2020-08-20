@@ -4,22 +4,27 @@
             "Tipo": "VoF",
             "PreguntasVoF": [
                 {
-                    "Enunciado": "¿2 + 2 = 4?",
-                    "Valor": true,
-                    "Modo": "Clasico"
-                },
-                {
-                    "Enunciado": "¿2 + 2 = 5?",
-                    "Valor": false,
-                    "Modo": "Clasico"
-                },
-                {
-                    "Enunciado": "¿Julian se sacó un 9 en un TP?",
+                    "Enunciado": "GitHUb fue creado en 2007",
                     "Valor": false,
                     "Modo": "Penalidad"
-                },
+                }
+            ]
+        },
+        {
+            "Tipo": "VoF",
+            "PreguntasVoF": [
                 {
-                    "Enunciado": "¿Julian ha puteado a Leo alguna vez?",
+                    "Enunciado": "America es el continente más poblado de la Tierra",
+                    "Valor": false,
+                    "Modo": "Clasico"
+                }
+            ]
+        },
+        {
+            "Tipo": "VoF",
+            "PreguntasVoF": [
+                {
+                    "Enunciado": "China es el país mas poblado del mundo",
                     "Valor": true,
                     "Modo": "Penalidad"
                 }
@@ -45,11 +50,115 @@
                             "Valor": true
                         },
                         {
-                            "Descripcion": "San LeoProgramador del Valle de Catamarca",
+                            "Descripcion": "Ninguna de las anteriores",
+                            "Valor": false
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "Tipo": "MultipleChoice",
+            "PreguntasMC": [
+                {
+                    "Enunciado": "A que hecho histórico corresponde el Día D",
+                    "Modo": "Clasico",
+                    "Opciones": [
+                        {
+                            "Descripcion": "Desembarco en Normandía",
+                            "Valor": true
+                        },
+                        {
+                            "Descripcion": "Liberación de París",
                             "Valor": false
                         },
                         {
-                            "Descripcion": "Ninguna de las anteriores",
+                            "Descripcion": "Rendición de los Nazis",
+                            "Valor": false
+                        },
+                        {
+                            "Descripcion": "Bombardeo sobre Londres",
+                            "Valor": false
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "Tipo": "MultipleChoice",
+            "PreguntasMC": [
+                {
+                    "Enunciado": "¿Dónde fue la Guerra Cristera?",
+                    "Modo": "Clasico",
+                    "Opciones": [
+                        {
+                            "Descripcion": "Italia",
+                            "Valor": false
+                        },
+                        {
+                            "Descripcion": "España",
+                            "Valor": false
+                        },
+                        {
+                            "Descripcion": "México",
+                            "Valor": true
+                        },
+                        {
+                            "Descripcion": "Francia",
+                            "Valor": false
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "Tipo": "MultipleChoice",
+            "PreguntasMC": [
+                {
+                    "Enunciado": "¿Qué cambio de estado ocurre en la sublimación?",
+                    "Modo": "Clasico",
+                    "Opciones": [
+                        {
+                            "Descripcion": "De sólido a líquido",
+                            "Valor": false
+                        },
+                        {
+                            "Descripcion": "De sólido a gaseoso",
+                            "Valor": true
+                        },
+                        {
+                            "Descripcion": "De gaseoso a liquido",
+                            "Valor": false
+                        },
+                        {
+                            "Descripcion": "De líquido a solido",
+                            "Valor": false
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "Tipo": "MultipleChoice",
+            "PreguntasMC": [
+                {
+                    "Enunciado": "El que no hace palmas...",
+                    "Modo": "PuntajeParcial",
+                    "Opciones": [
+                        {
+                            "Descripcion": "No come en bandeja",
+                            "Valor": true
+                        },
+                        {
+                            "Descripcion": "Se deja, se deja",
+                            "Valor": true
+                        },
+                        {
+                            "Descripcion": "Se queja y se queja",
+                            "Valor": false
+                        },
+                        {
+                            "Descripcion": "Ninguna es correcta",
                             "Valor": false
                         }
                     ]
@@ -60,19 +169,41 @@
             "Tipo": "OrderedChoice",
             "PreguntasOC": [
                 {
-                    "Enunciado": "Ordenar de menor a mayor",
+                    "Enunciado": "Ordenar en orden cronológico la fundación de las siguientes empresas",
                     "Opciones": [
                         {
-                            "Descripcion": "1"
+                            "Descripcion": "Netflix"
                         },
                         {
-                            "Descripcion": "3"
+                            "Descripcion": "Facebook"
                         },
                         {
-                            "Descripcion": "5"
+                            "Descripcion": "Youtube"
                         },
                         {
-                            "Descripcion": "7"
+                            "Descripcion": "Twitter"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "Tipo": "OrderedChoice",
+            "PreguntasOC": [
+                {
+                    "Enunciado": "Ordenar en orden cronológico la fundación de las siguientes empresas",
+                    "Opciones": [
+                        {
+                            "Descripcion": "Fiat"
+                        },
+                        {
+                            "Descripcion": "Ford"
+                        },
+                        {
+                            "Descripcion": "Porsche"
+                        },
+                        {
+                            "Descripcion": "Toyota"
                         }
                     ]
                 }
@@ -83,16 +214,25 @@
             "PreguntasGC": [
                 {
                     "Enunciado": "Separar",
-                    "Grupo 1": "El mejor del mundo",
-                    "Grupo 2": "El resto",
+                    "Grupo 1": "Banderas con rojo",
+                    "Grupo 2": "Banderas con amarillo",
                     "Opciones Grupo 1": [
                         {
-                            "Descripcion": "Julian (Lo dice él, preguntale sino)"
+                            "Descripcion": "Chile"
+                        },
+                        {
+                            "Descripcion": "Marruecos"
+                        },
+                        {
+                            "Descripcion": "Azerbaiyán"
                         }
                     ],
                     "Opciones Grupo 2": [
                         {
-                            "Descripcion": "Literalmente todos los demás"
+                            "Descripcion": "Bután"
+                        },
+                        {
+                            "Descripcion": "Jamaica"
                         }
                     ]
                 }
@@ -103,21 +243,25 @@
             "PreguntasGC": [
                 {
                     "Enunciado": "Separar",
-                    "Grupo 1": "El mejor del mundo",
-                    "Grupo 2": "El resto",
+                    "Grupo 1": "Capitales de Europa",
+                    "Grupo 2": "Capitales de America",
                     "Opciones Grupo 1": [
                         {
-                            "Descripcion": "Julian (Lo dice él, preguntale sino)"},
+                            "Descripcion": "Sarajevo"
+                        },
                         {
-                            "Descripcion": "Julian (Lo dice él, preguntale sino)"},
+                            "Descripcion": "Berna"
+                        },
                         {
-                            "Descripcion": "Julian (Lo dice él, preguntale sino)"
+                            "Descripcion": "La Valeta"
                         }
                     ],
                     "Opciones Grupo 2": [
                         {
-                            "Descripcion": "Literalmente todos los demás"},
-                        {   "Descripcion": "Julian (Lo dice él, preguntale sino)"
+                            "Descripcion": "Saint John"
+                        },
+                        {
+                            "Descripcion": "Belmopán"
                         }
                     ]
                 }

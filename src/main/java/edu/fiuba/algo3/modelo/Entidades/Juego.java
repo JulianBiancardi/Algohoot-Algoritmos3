@@ -10,7 +10,7 @@ public class Juego {
     private final ArrayList<Ronda> rondas = new ArrayList<>();
     private final SistemaTurnos sistemaTurnos = new SistemaTurnos();
     private int rondaActual;
-    private final static int cantidadRondas = 6;
+    private final static int cantidadRondas = 5;
 
     public Juego () throws IOException {
         LectorPreguntas lectorPreguntas = new LectorPreguntas();

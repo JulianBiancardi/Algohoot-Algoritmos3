@@ -32,11 +32,11 @@ public class VistaCargaJugadores extends StackPane {
         Label notificacionMensaje = new Label();
         notificacionMensaje.getStyleClass().add("notificacionMensaje");
 
-        TextField NombreJugador = new TextField("xd");
+        TextField NombreJugador = new TextField("");
         NombreJugador.setPromptText("Nombre jugador 1");
         NombreJugador.getStyleClass().add("ingresoNombreJugadores");
 
-        TextField NombreJugador2 = new TextField("a");
+        TextField NombreJugador2 = new TextField("");
         NombreJugador2.setPromptText("Nombre jugador 2");
         NombreJugador2.getStyleClass().add("ingresoNombreJugadores");
 

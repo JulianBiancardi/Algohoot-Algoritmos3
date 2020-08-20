@@ -4,6 +4,8 @@ import edu.fiuba.algo3.modelo.Entidades.Juego;
 import edu.fiuba.algo3.modelo.Entidades.Opciones.Opcion;
 import edu.fiuba.algo3.modelo.Entidades.Jugador;
 import edu.fiuba.algo3.vista.Preguntas.VistaPregunta;
+import edu.fiuba.algo3.vista.VistaIntroPregunta;
+import edu.fiuba.algo3.vista.VistaIntroTurno;
 import edu.fiuba.algo3.vista.VistaPrincipal;
 import edu.fiuba.algo3.vista.VistaPuntos;
 import javafx.animation.Timeline;
@@ -44,9 +46,8 @@ public class ControladorEnviar implements EventHandler<ActionEvent> {
             stage.getScene().setRoot(vistaPuntos);
         }
         else{
-
-            VistaPrincipal vistaPrincipal = new VistaPrincipal(stage,juego,juego.obtenerRondaActual().obtenerPregunta());
-            stage.getScene().setRoot(vistaPrincipal);
+            VistaIntroTurno vistaIntroTurno = new VistaIntroTurno(stage,juego);
+            stage.getScene().setRoot(vistaIntroTurno);
         }
         stage.setFullScreen(true);
     }
