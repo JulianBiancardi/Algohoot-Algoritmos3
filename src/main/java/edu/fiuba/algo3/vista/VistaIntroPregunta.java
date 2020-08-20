@@ -3,10 +3,13 @@ package edu.fiuba.algo3.vista;
 import edu.fiuba.algo3.modelo.Entidades.Juego;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -29,14 +32,30 @@ public class VistaIntroPregunta extends BorderPane {
         this.setStyle("-fx-background-color: #5133a5");
 
         Label enunciadoPregunta = new Label(juego.obtenerRondaActual().obtenerPregunta().getEnunciado());
-        enunciadoPregunta.setFont(Font.font("Core Mellow", FontWeight.BOLD,55));
+        enunciadoPregunta.setFont(Font.font("Core Mellow", FontWeight.BOLD,80));
         enunciadoPregunta.setTextFill(Color.WHITE);
+
+        Label modoPregunta = new Label(juego.obtenerRondaActual().obtenerPregunta().getModo());
+        modoPregunta.setFont(Font.font("Core Mellow", FontWeight.LIGHT,40));
+        modoPregunta.setTextFill(Color.WHITE);
+
+        Label tipoPregunta = new Label(juego.obtenerRondaActual().obtenerPregunta().getTipo() + ":");
+        tipoPregunta.setFont(Font.font("Core Mellow", FontWeight.LIGHT,40));
+        tipoPregunta.setTextFill(Color.WHITE);
+
+        HBox hBox = new HBox(20);
+        hBox.getChildren().addAll(tipoPregunta,modoPregunta);
+        hBox.setAlignment(Pos.CENTER);
+
+        VBox vBox = new VBox();
+        vBox.getChildren().addAll(enunciadoPregunta,hBox);
+        vBox.setAlignment(Pos.CENTER);
 
         progressBar.prefWidthProperty().bind(this.widthProperty());
 
         inicializarContador();
 
-        this.setCenter(enunciadoPregunta);
+        this.setCenter(vBox);
         this.setBottom(progressBar);
     }
 
@@ -59,4 +78,6 @@ public class VistaIntroPregunta extends BorderPane {
             stage.setFullScreen(true);
         }
     }
+
+
 }

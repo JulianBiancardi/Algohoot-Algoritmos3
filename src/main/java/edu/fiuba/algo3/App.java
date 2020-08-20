@@ -22,6 +22,12 @@ public class App extends Application {
         stagePrincipal.setFullScreen(true);
         stagePrincipal.setFullScreenExitHint("");
         stagePrincipal.show();
+
+        /*
+        * Poner musica
+        * Cambiar botones reset multiplicadores y exclusividad
+        * Poner el fondo de colores que cambia
+         */
     }
 
     public static void main(String[] args) {

@@ -74,4 +74,8 @@ public class VoF extends Pregunta {
         return recuperar(jsonObject);
     }
 
+    @Override
+    public String getTipo(){
+        return "Verdadero Falso";
+    }
 }

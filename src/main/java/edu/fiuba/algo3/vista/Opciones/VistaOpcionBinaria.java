@@ -42,16 +42,7 @@ public class VistaOpcionBinaria extends StackPane {
         botonEstado.setOnAction(new ControladorOpcionBinaria(opcionesElegidas,unaOpcion,estadoImagenView));
 
         hBox.getChildren().addAll(descripcionLabel,botonEstado);
-
-        /*
-        AnchorPane.setLeftAnchor(descripcionLabel,10.0);
-        AnchorPane.setTopAnchor(descripcionLabel,10.0);
-        AnchorPane.setBottomAnchor(descripcionLabel,10.0);
-
-        AnchorPane.setRightAnchor(botonEstado,10.0);
-        AnchorPane.setTopAnchor(botonEstado,10.0);
-        AnchorPane.setBottomAnchor(botonEstado,10.0);
-         */
+        hBox.setAlignment(Pos.CENTER_RIGHT);
 
         this.setMaxHeight(80);
         this.getChildren().addAll(imageView,hBox);

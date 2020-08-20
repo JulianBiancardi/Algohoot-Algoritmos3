@@ -42,4 +42,10 @@ public abstract class Pregunta {
     }
 
     public abstract int cantidadOpciones();
+
+    public String getModo() {
+        return modo.nombre();
+    }
+
+    public abstract String getTipo();
 }

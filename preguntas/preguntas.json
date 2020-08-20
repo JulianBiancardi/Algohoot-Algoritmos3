@@ -101,6 +101,31 @@
                     ]
                 }
             ]
+        },
+        {
+            "Tipo": "GroupChoice",
+            "PreguntasGC": [
+                {
+                    "Enunciado": "Separar",
+                    "Grupo 1": "El mejor del mundo",
+                    "Grupo 2": "El resto",
+                    "Opciones Grupo 1": [
+                        {
+                            "Descripcion": "Julian (Lo dice él, preguntale sino)"},
+                        {
+                            "Descripcion": "Julian (Lo dice él, preguntale sino)"},
+                        {
+                            "Descripcion": "Julian (Lo dice él, preguntale sino)"
+                        }
+                    ],
+                    "Opciones Grupo 2": [
+                        {
+                            "Descripcion": "Literalmente todos los demás"},
+                        {   "Descripcion": "Julian (Lo dice él, preguntale sino)"
+                        }
+                    ]
+                }
+            ]
         }
     ]
 }

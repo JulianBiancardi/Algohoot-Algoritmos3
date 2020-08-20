@@ -91,4 +91,8 @@ public class MultipleChoice extends Pregunta {
         return recuperar(jsonObject);
     }
 
+    @Override
+    public String getTipo(){
+        return "Multiple Choice";
+    }
 }

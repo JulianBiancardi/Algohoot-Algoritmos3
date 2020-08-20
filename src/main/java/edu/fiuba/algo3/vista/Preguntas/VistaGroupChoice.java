@@ -8,6 +8,7 @@ import edu.fiuba.algo3.modelo.Entidades.Respuestas.Respuesta;
 import edu.fiuba.algo3.modelo.Entidades.Respuestas.RespuestaGrupal;
 import edu.fiuba.algo3.vista.Opciones.VistaOpcionData;
 import edu.fiuba.algo3.vista.Opciones.VistaOpcionGrupal;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
@@ -45,14 +46,14 @@ public class VistaGroupChoice extends VistaPregunta{
         Grupo1.setFont(Font.font("Core Mellow", FontWeight.BOLD,30));
         Grupo1.setTextFill(Color.WHITE);
         Grupo1.setStyle("-fx-background-color: #575757");
-        Grupo1.setPrefSize(300,50);
+        Grupo1.setPadding(new Insets(10));
 
         Label Grupo2 = new Label("B: " + pregunta.nombreGrupo2());
         Grupo2.setAlignment(Pos.CENTER);
         Grupo2.setFont(Font.font("Core Mellow", FontWeight.BOLD,30));
         Grupo2.setTextFill(Color.WHITE);
         Grupo2.setStyle("-fx-background-color: #575757");
-        Grupo2.setPrefSize(300,50);
+        Grupo2.setPadding(new Insets(10));
 
         this.addRow(0,Grupo1,Grupo2);
     }

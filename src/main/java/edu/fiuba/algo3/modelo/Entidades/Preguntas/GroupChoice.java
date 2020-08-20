@@ -86,4 +86,9 @@ public class GroupChoice extends Pregunta{
 
         return recuperar(jsonObject);
     }
+
+    @Override
+    public String getTipo(){
+        return "Group Choice";
+    }
 }

@@ -37,7 +37,6 @@ public class Juego {
     ArrayList<Pregunta> preguntas = new ArrayList<>();
 
     public Juego () throws IOException {
-
         ArrayList<Pregunta> preguntas = lectorPreguntas.leerPreguntas();
         Collections.shuffle(preguntas);
 
