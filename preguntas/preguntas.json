@@ -4,8 +4,18 @@
             "Tipo": "VoF",
             "PreguntasVoF": [
                 {
-                    "Enunciado": "GitHUb fue creado en 2007",
+                    "Enunciado": "GitHub fue creado en 2007",
                     "Valor": false,
+                    "Modo": "Penalidad"
+                }
+            ]
+        },
+        {
+            "Tipo": "VoF",
+            "PreguntasVoF": [
+                {
+                    "Enunciado": "Messi es el mejor jugador del mundo",
+                    "Valor": true,
                     "Modo": "Penalidad"
                 }
             ]
@@ -26,7 +36,7 @@
                 {
                     "Enunciado": "China es el país mas poblado del mundo",
                     "Valor": true,
-                    "Modo": "Penalidad"
+                    "Modo": "Clasico"
                 }
             ]
         },
@@ -46,7 +56,61 @@
                             "Valor": true
                         },
                         {
-                            "Descripcion": "Mendoza",
+                            "Descripcion": "Ninguna de las anteriores",
+                            "Valor": false
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "Tipo": "MultipleChoice",
+            "PreguntasMC": [
+                {
+                    "Enunciado": "Ciudades de la Provincia de Buenos Aires",
+                    "Modo": "PuntajeParcial",
+                    "Opciones": [
+                        {
+                            "Descripcion": "La Plata",
+                            "Valor": true
+                        },
+                        {
+                            "Descripcion": "Chascomus",
+                            "Valor": true
+                        },
+                        {
+                            "Descripcion": "Junin",
+                            "Valor": true
+                        },
+                        {
+                            "Descripcion": "Ninguna de las anteriores",
+                            "Valor": false
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "Tipo": "MultipleChoice",
+            "PreguntasMC": [
+                {
+                    "Enunciado": "Pueblos de la Provincia de La Pampa",
+                    "Modo": "PuntajeParcial",
+                    "Opciones": [
+                        {
+                            "Descripcion": "Trenel",
+                            "Valor": true
+                        },
+                        {
+                            "Descripcion": "America",
+                            "Valor": false
+                        },
+                        {
+                            "Descripcion": "Arata",
+                            "Valor": true
+                        },
+                        {
+                            "Descripcion": "Caleufu",
                             "Valor": true
                         },
                         {
@@ -75,10 +139,6 @@
                         {
                             "Descripcion": "Rendición de los Nazis",
                             "Valor": false
-                        },
-                        {
-                            "Descripcion": "Bombardeo sobre Londres",
-                            "Valor": false
                         }
                     ]
                 }
@@ -88,23 +148,23 @@
             "Tipo": "MultipleChoice",
             "PreguntasMC": [
                 {
-                    "Enunciado": "¿Dónde fue la Guerra Cristera?",
+                    "Enunciado": "¿Dónde fue la Guerra Mundial?",
                     "Modo": "Clasico",
                     "Opciones": [
                         {
                             "Descripcion": "Italia",
-                            "Valor": false
-                        },
-                        {
-                            "Descripcion": "España",
-                            "Valor": false
-                        },
-                        {
-                            "Descripcion": "México",
                             "Valor": true
                         },
                         {
-                            "Descripcion": "Francia",
+                            "Descripcion": "España",
+                            "Valor": true
+                        },
+                        {
+                            "Descripcion": "México",
+                            "Valor": false
+                        },
+                        {
+                            "Descripcion": "Chile",
                             "Valor": false
                         }
                     ]
@@ -115,23 +175,27 @@
             "Tipo": "MultipleChoice",
             "PreguntasMC": [
                 {
-                    "Enunciado": "¿Qué cambio de estado ocurre en la sublimación?",
+                    "Enunciado": "¿Cuales de los siguientes son cambios de estados?",
                     "Modo": "Clasico",
                     "Opciones": [
                         {
-                            "Descripcion": "De sólido a líquido",
-                            "Valor": false
-                        },
-                        {
-                            "Descripcion": "De sólido a gaseoso",
+                            "Descripcion": "Fusion",
                             "Valor": true
                         },
                         {
-                            "Descripcion": "De gaseoso a liquido",
+                            "Descripcion": "Fision",
                             "Valor": false
                         },
                         {
-                            "Descripcion": "De líquido a solido",
+                            "Descripcion": "Liquidacion",
+                            "Valor": false
+                        },
+                        {
+                            "Descripcion": "La Matanza",
+                            "Valor": false
+                        },
+                        {
+                            "Descripcion": "Solidificacion",
                             "Valor": false
                         }
                     ]
@@ -143,7 +207,7 @@
             "PreguntasMC": [
                 {
                     "Enunciado": "El que no hace palmas...",
-                    "Modo": "PuntajeParcial",
+                    "Modo": "Penalidad",
                     "Opciones": [
                         {
                             "Descripcion": "No come en bandeja",
@@ -156,10 +220,84 @@
                         {
                             "Descripcion": "Se queja y se queja",
                             "Valor": false
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "Tipo": "MultipleChoice",
+            "PreguntasMC": [
+                {
+                    "Enunciado": "Si el amor se cae...",
+                    "Modo": "Penalidad",
+                    "Opciones": [
+                        {
+                            "Descripcion": "Todo alrededor se cae",
+                            "Valor": true
                         },
                         {
-                            "Descripcion": "Ninguna es correcta",
+                            "Descripcion": "No pasa nada padreee",
                             "Valor": false
+                        },
+                        {
+                            "Descripcion": "No sos vos, soy yo",
+                            "Valor": true
+                        },
+                        {
+                            "Descripcion": "Se rompe todo",
+                            "Valor": false
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "Tipo": "MultipleChoice",
+            "PreguntasMC": [
+                {
+                    "Enunciado": "Jugadores Argentinos",
+                    "Modo": "Penalidad",
+                    "Opciones": [
+                        {
+                            "Descripcion": "Cholo Guiñazu",
+                            "Valor": true
+                        },
+                        {
+                            "Descripcion": "Ronaldo",
+                            "Valor": false
+                        },
+                        {
+                            "Descripcion": "Wanchope Avila",
+                            "Valor": true
+                        },
+                        {
+                            "Descripcion": "Cafu",
+                            "Valor": false
+                        },
+
+                        {
+                            "Descripcion": "Arturo Vidal",
+                            "Valor": false
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "Tipo": "OrderedChoice",
+            "PreguntasOC": [
+                {
+                    "Enunciado": "Ordenar en orden cronológico los siguientes hechos",
+                    "Opciones": [
+                        {
+                            "Descripcion": "La revolucion de mayo"
+                        },
+                        {
+                            "Descripcion": "La declaracion de la independencia"
+                        },
+                        {
+                            "Descripcion": "Se va un presidente en helicoptero"
                         }
                     ]
                 }
@@ -191,7 +329,7 @@
             "Tipo": "OrderedChoice",
             "PreguntasOC": [
                 {
-                    "Enunciado": "Ordenar en orden cronológico la fundación de las siguientes empresas",
+                    "Enunciado": "Ordenar en orden cronológico la fundación las siguientes compañias",
                     "Opciones": [
                         {
                             "Descripcion": "Fiat"
@@ -204,6 +342,9 @@
                         },
                         {
                             "Descripcion": "Toyota"
+                        },
+                        {
+                            "Descripcion": "Tesla"
                         }
                     ]
                 }
@@ -213,7 +354,56 @@
             "Tipo": "GroupChoice",
             "PreguntasGC": [
                 {
-                    "Enunciado": "Separar",
+                    "Enunciado": "Separar por escudos",
+                    "Grupo 1": "Escudos con celeste",
+                    "Grupo 2": "Escudos con rojo",
+                    "Opciones Grupo 1": [
+                        {
+                            "Descripcion": "Belgrano"
+                        },
+                        {
+                            "Descripcion": "Atletico Rafaela"
+                        }
+                    ],
+                    "Opciones Grupo 2": [
+                        {
+                            "Descripcion": "Patronatos"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "Tipo": "GroupChoice",
+            "PreguntasGC": [
+                {
+                    "Enunciado": "Separar por tipo de paises",
+                    "Grupo 1": "Paises desarrollados",
+                    "Grupo 2": "Paises subdesarrollados",
+                    "Opciones Grupo 1": [
+                        {
+                            "Descripcion": "Estados Unidos"
+                        },
+                        {
+                            "Descripcion": "China"
+                        }
+                    ],
+                    "Opciones Grupo 2": [
+                        {
+                            "Descripcion": "Liberia"
+                        },
+                        {
+                            "Descripcion": "Chad"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "Tipo": "GroupChoice",
+            "PreguntasGC": [
+                {
+                    "Enunciado": "Separar por colores de bandera",
                     "Grupo 1": "Banderas con rojo",
                     "Grupo 2": "Banderas con amarillo",
                     "Opciones Grupo 1": [
@@ -242,7 +432,7 @@
             "Tipo": "GroupChoice",
             "PreguntasGC": [
                 {
-                    "Enunciado": "Separar",
+                    "Enunciado": "Separar por contiente",
                     "Grupo 1": "Capitales de Europa",
                     "Grupo 2": "Capitales de America",
                     "Opciones Grupo 1": [
