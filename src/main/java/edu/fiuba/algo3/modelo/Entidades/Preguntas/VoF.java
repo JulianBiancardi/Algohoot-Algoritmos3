@@ -5,12 +5,7 @@ import edu.fiuba.algo3.modelo.Entidades.Opciones.OpcionBinaria;
 import edu.fiuba.algo3.modelo.Entidades.Preguntas.ModosPreguntas.Clasico;
 import edu.fiuba.algo3.modelo.Entidades.Preguntas.ModosPreguntas.Penalidad;
 import edu.fiuba.algo3.modelo.Entidades.Preguntas.ModosPreguntas.ModoPregunta;
-
-
 import com.google.gson.*;
-import com.google.gson.stream.JsonReader;
-
-import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -18,6 +13,7 @@ import java.util.ArrayList;
 
 public class VoF extends Pregunta {
     private final ArrayList<OpcionBinaria> opcionesPregunta = new ArrayList<>();
+    static final String nombre = "Verdadero o Falso";
 
     private VoF(String unEnunciado, ModoPregunta unModo, boolean esCorrecta)  {
         super(unEnunciado, unModo);
@@ -30,7 +26,8 @@ public class VoF extends Pregunta {
     }
 
     public static VoF conModoPenalidad(String unEnunciado, boolean esCorrecta){
-        return new VoF(unEnunciado, new Penalidad(), esCorrecta); }
+        return new VoF(unEnunciado, new Penalidad(), esCorrecta);
+    }
 
     public OpcionBinaria obtenerOpcion(int posicion){
         return opcionesPregunta.get(posicion);
@@ -41,6 +38,11 @@ public class VoF extends Pregunta {
     @Override
     public int cantidadOpciones() {
         return opcionesPregunta.size();
+    }
+
+    @Override
+    public String getTipo(){
+        return nombre;
     }
 
     //JSON
@@ -72,10 +74,5 @@ public class VoF extends Pregunta {
         JsonObject jsonObject = JsonParser.parseString(texto).getAsJsonObject();
 
         return recuperar(jsonObject);
-    }
-
-    @Override
-    public String getTipo(){
-        return "Verdadero Falso";
     }
 }

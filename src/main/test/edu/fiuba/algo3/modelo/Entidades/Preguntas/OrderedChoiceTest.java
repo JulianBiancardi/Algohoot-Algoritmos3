@@ -8,7 +8,7 @@ import edu.fiuba.algo3.modelo.Entidades.Jugador;
 
 import edu.fiuba.algo3.modelo.Entidades.Respuestas.Respuesta;
 import edu.fiuba.algo3.modelo.Entidades.Respuestas.RespuestaOrdenada;
-import edu.fiuba.algo3.modelo.Excepciones.OrderedTieneMaxCincoOpcionesError;
+import edu.fiuba.algo3.modelo.Excepciones.PreguntaSuperaMaxOpcionesError;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -180,7 +180,7 @@ public class OrderedChoiceTest {
         pregunta.nuevaOpcion("Cinco");
         pregunta.nuevaOpcion("Diez");
 
-        assertThrows(OrderedTieneMaxCincoOpcionesError.class,
+        assertThrows(PreguntaSuperaMaxOpcionesError.class,
                 () -> pregunta.nuevaOpcion("Treinta"));
     }
 

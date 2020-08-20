@@ -3,11 +3,11 @@ package edu.fiuba.algo3.modelo.Entidades.Opciones;
 import com.google.gson.JsonObject;
 
 public class OpcionBinaria implements Opcion{
-    private String descripcion;
-    private boolean valor;
+    private final String descripcion;
+    private final boolean valor;
 
-    public OpcionBinaria(String unaDescripcion, boolean valor){
-        descripcion = unaDescripcion;
+    public OpcionBinaria(String descripcion, boolean valor){
+        this.descripcion = descripcion;
         this.valor = valor;
     }
 
@@ -16,18 +16,16 @@ public class OpcionBinaria implements Opcion{
         return valor;
     }
 
+    @Override
+    public String getDescripcion() {
+        return descripcion;
+    }
 
+    //JSON
     public static OpcionBinaria recuperar(JsonObject jsonObjectOpcion) {
         String enunciado = jsonObjectOpcion.get("Descripcion").getAsString();
         boolean valor = jsonObjectOpcion.get("Valor").getAsBoolean();
 
-        OpcionBinaria opcion = new OpcionBinaria(enunciado, valor);
-
-        return opcion;
-    }
-
-    @Override
-    public String getDescripcion() {
-        return descripcion;
+        return new OpcionBinaria(enunciado, valor);
     }
 }

@@ -63,20 +63,16 @@
                     "Enunciado": "Ordenar de menor a mayor",
                     "Opciones": [
                         {
-                            "Descripcion": "1",
-                            "PosicionCorrecta": 0
+                            "Descripcion": "1"
                         },
                         {
-                            "Descripcion": "3",
-                            "PosicionCorrecta": 1
+                            "Descripcion": "3"
                         },
                         {
-                            "Descripcion": "5",
-                            "PosicionCorrecta": 2
+                            "Descripcion": "5"
                         },
                         {
-                            "Descripcion": "7",
-                            "PosicionCorrecta": 3
+                            "Descripcion": "7"
                         }
                     ]
                 }

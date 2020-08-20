@@ -1,11 +1,9 @@
 package edu.fiuba.algo3.modelo.Entidades.Preguntas.ModosPreguntas;
 
 import edu.fiuba.algo3.modelo.Entidades.Respuestas.Respuesta;
-
 import java.util.ArrayList;
 
 public abstract class ModoPregunta {
-    protected String nombre;
 
     public void evaluarRespuestas(ArrayList<Respuesta> respuestas, int cantidadOpcionesCorrectaPregunta){
         for (Respuesta respuesta : respuestas) {

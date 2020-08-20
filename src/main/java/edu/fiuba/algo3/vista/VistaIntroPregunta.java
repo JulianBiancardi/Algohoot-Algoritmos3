@@ -35,13 +35,13 @@ public class VistaIntroPregunta extends BorderPane {
         enunciadoPregunta.setFont(Font.font("Core Mellow", FontWeight.BOLD,80));
         enunciadoPregunta.setTextFill(Color.WHITE);
 
-        Label modoPregunta = new Label(juego.obtenerRondaActual().obtenerPregunta().getModo());
-        modoPregunta.setFont(Font.font("Core Mellow", FontWeight.LIGHT,40));
-        modoPregunta.setTextFill(Color.WHITE);
-
         Label tipoPregunta = new Label(juego.obtenerRondaActual().obtenerPregunta().getTipo() + ":");
         tipoPregunta.setFont(Font.font("Core Mellow", FontWeight.LIGHT,40));
         tipoPregunta.setTextFill(Color.WHITE);
+
+        Label modoPregunta = new Label(juego.obtenerRondaActual().obtenerPregunta().getModo());
+        modoPregunta.setFont(Font.font("Core Mellow", FontWeight.LIGHT,40));
+        modoPregunta.setTextFill(Color.WHITE);
 
         HBox hBox = new HBox(20);
         hBox.getChildren().addAll(tipoPregunta,modoPregunta);
@@ -65,7 +65,6 @@ public class VistaIntroPregunta extends BorderPane {
         tiempo.play();
     }
 
-
     public void contar(){
         if(seccondsPassed < MaxTime){
             seccondsPassed++;
@@ -78,6 +77,4 @@ public class VistaIntroPregunta extends BorderPane {
             stage.setFullScreen(true);
         }
     }
-
-
 }
