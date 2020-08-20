@@ -41,11 +41,11 @@ public class ControladorEnviar implements EventHandler<ActionEvent> {
         if(juego.terminoRonda()){
             juego.evaluarRespuestas();
             VistaPuntos vistaPuntos = new VistaPuntos(juego,stage);
-            stage.setScene(new Scene (vistaPuntos));
+            stage.getScene().setRoot(vistaPuntos);
         }
         else{
             VistaPrincipal vistaPrincipal = new VistaPrincipal(stage,juego,juego.obtenerRondaActual().obtenerPregunta());
-            stage.setScene(new Scene(vistaPrincipal));
+            stage.getScene().setRoot(vistaPrincipal);
         }
         stage.setFullScreen(true);
     }

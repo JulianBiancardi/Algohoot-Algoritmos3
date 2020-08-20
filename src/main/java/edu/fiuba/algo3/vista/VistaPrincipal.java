@@ -126,26 +126,29 @@ public class VistaPrincipal extends BorderPane{
         if(juego.obtenerRondaActual().obtenerPregunta().aceptaMultiplicador()) {
             if(juego.turnoDe().tieneMultiplicadorDoble()) {
                 Button multiplicadorDoble = new Button("Usar multiplicador doble");
+                multiplicadorDoble.setFont(Font.font("Core Mellow", FontWeight.BOLD,20));
                 multiplicadorDoble.setOnAction(new ControladorMultiplicadorDoble(juego.turnoDe(), vistaPregunta, multiplicadorDoble));
-                multiplicadorDoble.setPrefSize(150, 30);
+                multiplicadorDoble.setPrefSize(300, 30);
                 multiplicadorDoble.setBackground(new Background(new BackgroundFill(Color.valueOf("#D5D5D5"), null, Insets.EMPTY)));
 
                 bonificacions.getChildren().addAll(multiplicadorDoble);
             }
             if(juego.turnoDe().tieneMultiplicadorTriple()) {
                 Button multiplicadorTriple = new Button("Usar multiplicador triple");
+                multiplicadorTriple.setFont(Font.font("Core Mellow", FontWeight.BOLD,20));
                 multiplicadorTriple.setOnAction(new ControladorMultiplicadorTriple(juego.turnoDe(), vistaPregunta, multiplicadorTriple));
-                multiplicadorTriple.setPrefSize(150, 30);
+                multiplicadorTriple.setPrefSize(300, 30);
                 multiplicadorTriple.setBackground(new Background(new BackgroundFill(Color.valueOf("#D5D5D5"), null, Insets.EMPTY)));
                 bonificacions.getChildren().addAll(multiplicadorTriple);
                 bonificacions.setSpacing(5);
             }
-        }
-        else if (juego.turnoDe().tieneExclusividad()){
+        } else if (juego.turnoDe().tieneExclusividad()){
             Button exclusivad = new Button("Usar exclusividad");
+            exclusivad.setFont(Font.font("Core Mellow", FontWeight.BOLD,20));
             exclusivad.setOnAction(new ControladorExclusividad(juego.turnoDe(), vistaPregunta, exclusivad));
-            exclusivad.setPrefSize(150, 30);
+            exclusivad.setPrefSize(200, 30);
             exclusivad.setBackground(new Background(new BackgroundFill(Color.valueOf("#D5D5D5"), null, Insets.EMPTY)));
+
             bonificacions.getChildren().addAll(exclusivad);
         }
 

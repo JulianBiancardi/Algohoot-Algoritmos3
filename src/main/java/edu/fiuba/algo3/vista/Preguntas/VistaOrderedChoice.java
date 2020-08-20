@@ -10,7 +10,10 @@ import edu.fiuba.algo3.modelo.Entidades.Respuestas.Respuesta;
 import edu.fiuba.algo3.modelo.Entidades.Respuestas.RespuestaOrdenada;
 import edu.fiuba.algo3.vista.Opciones.VistaOpcionData;
 import edu.fiuba.algo3.vista.Opciones.VistaOpcionOrdenada;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
@@ -40,9 +43,20 @@ public class VistaOrderedChoice extends VistaPregunta{
     }
 
     private void inicializarBotonReset(){
-        Button botonReset = new Button("Reset");
-        botonReset.setOnAction(new ControladorReset(opcionesElegidas,vistasOpcionesOrdenadas));
-        this.addRow(0,botonReset);
+        Button botonReset = new Button("Reiniciar selección");
+        botonReset.setStyle("    -fx-background-radius: 5px;"
+                + "    -fx-padding: 5px;\n"
+                + "    -fx-background-color: rgb(51, 51, 51);"
+                + "    -fx-text-fill: rgb(255, 255, 255);"
+                + "    -fx-font-family: Arial;"
+                + "    -fx-font-weight: bold;"
+                + "    -fx-font-size: 18 ;");
+        botonReset.setOnAction(new ControladorReset(opcionesElegidas, vistasOpcionesOrdenadas));
+
+        HBox seccionA = new HBox(botonReset);
+        seccionA.setAlignment(Pos.CENTER_RIGHT);
+        seccionA.setPadding(new Insets(0, -93, 0, 10));
+        this.addRow(0,seccionA);
     }
 
     private void inicializarOpciones(OrderedChoice pregunta, ArrayList<OpcionOrdenada> opcionesElegidas){
@@ -50,9 +64,9 @@ public class VistaOrderedChoice extends VistaPregunta{
             return;
 
         for(int i = 0; i < pregunta.cantidadOpciones(); i++){
-            Opcion opcionActual = pregunta.obtenerOpcion(i);
+            OpcionOrdenada opcionActual = pregunta.obtenerOpcion(i);
             VistaOpcionData dataActual = opcionesInfo.get(i);
-            VistaOpcionOrdenada vistaActual = new VistaOpcionOrdenada((OpcionOrdenada) opcionActual,dataActual.getImagen(),opcionesElegidas,pregunta.cantidadOpciones() );
+            VistaOpcionOrdenada vistaActual = new VistaOpcionOrdenada(opcionActual,dataActual.getImagen(),opcionesElegidas,pregunta.cantidadOpciones() );
 
             vistasOpcionesOrdenadas.add(vistaActual);
 

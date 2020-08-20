@@ -13,7 +13,7 @@ import javafx.stage.Stage;
 public class ControladorSiguiente implements EventHandler<ActionEvent> {
     Stage stage;
     Juego juego;
-    private AudioClip sonido;
+    private final AudioClip sonido;
 
     public ControladorSiguiente(Stage stage, Juego juego, AudioClip sonido){
         this.stage = stage;
@@ -28,11 +28,11 @@ public class ControladorSiguiente implements EventHandler<ActionEvent> {
         if(juego.hayRondaSiguiente()) {
             juego.siguienteRonda();
             VistaIntroPregunta vistaIntroPregunta = new VistaIntroPregunta(stage,juego);
-            stage.setScene(new Scene(vistaIntroPregunta));
+            stage.getScene().setRoot(vistaIntroPregunta);
         }
         else{
             VistaFinJuego vistaFinJuego = new VistaFinJuego(juego.obtenerJugadores());
-            stage.setScene(new Scene(vistaFinJuego));
+            stage.getScene().setRoot(vistaFinJuego);
         }
         stage.setFullScreen(true);
     }

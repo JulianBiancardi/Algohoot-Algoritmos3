@@ -19,6 +19,7 @@ import javafx.scene.text.FontWeight;
 
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class VistaFinJuego extends BorderPane {
@@ -37,8 +38,8 @@ public class VistaFinJuego extends BorderPane {
         podioInfo.add(new PodioData(200, new Image("File:src\\resources\\imagenes\\IMG_SegundoPuesto.png")));
 
         crearEncabezado();
-        ordenarJugadores(jugadores);
-        generarPodios(jugadores);
+        List<Jugador> listaJugadores = ordenarJugadores(jugadores);
+        generarPodios(listaJugadores);
 
         Button botonSalir = new Button("Salir");
         botonSalir.setPrefSize(200,80);
@@ -61,20 +62,16 @@ public class VistaFinJuego extends BorderPane {
         this.setTop(stackPane);
     }
 
-    private void ordenarJugadores(ArrayList<Jugador> jugadores) {
-        jugadores.stream()
-                .sorted(Comparator.comparingInt(Jugador::puntos)
-                        .reversed()) // Ordeno para mostrar los de mayor puntaje primero!
-                .collect(Collectors.toList());
+    private List<Jugador> ordenarJugadores(ArrayList<Jugador> jugadores) {
+        return jugadores.stream().sorted(Comparator.comparingInt(Jugador::puntos).reversed()).collect(Collectors.toList());
     }
 
-    private void generarPodios(ArrayList<Jugador> jugadores) {
+    private void generarPodios(List<Jugador> jugadores) {
         for(int i = 0; i < jugadores.size(); i++){
             PodioData podioDataActal = podioInfo.get(i);
             crearPodio(jugadores.get(i), podioDataActal);
         }
     }
-
 
     private void crearPodio(Jugador jugador, PodioData podioData){
         VBox vBoxPrincipal = new VBox();

@@ -48,7 +48,7 @@ public class ControladorJugar implements EventHandler<ActionEvent> {
             juego.agregarJugador(jugador);
 
             VistaIntroPregunta vistaIntroPregunta = new VistaIntroPregunta(stage,juego);
-            stage.setScene(new Scene(vistaIntroPregunta));
+            stage.getScene().setRoot(vistaIntroPregunta);
             stage.setFullScreen(true);
 
         }catch (NombreVacioError error){

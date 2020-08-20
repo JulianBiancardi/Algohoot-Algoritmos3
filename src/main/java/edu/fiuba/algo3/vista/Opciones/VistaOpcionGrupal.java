@@ -22,9 +22,8 @@ public class VistaOpcionGrupal extends StackPane {
 
     public VistaOpcionGrupal(OpcionGrupal unaOpcion, Image imagen, ArrayList<OpcionGrupal> opcionesGrupoA, ArrayList<OpcionGrupal> opcionesGrupoB){
         ImageView fondoView = new ImageView(imagen);
-       // fondoView.fitHeightProperty().bind(this.heightProperty());
+        fondoView.fitHeightProperty().bind(this.heightProperty());
         fondoView.fitWidthProperty().bind(this.widthProperty());
-        fondoView.setFitHeight(125);
 
         descripcionLabel.setText(unaOpcion.getDescripcion());
         descripcionLabel.setFont(Font.font("Montserrat", FontWeight.BOLD,30));

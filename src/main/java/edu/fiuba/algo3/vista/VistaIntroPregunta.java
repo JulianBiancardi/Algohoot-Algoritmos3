@@ -22,7 +22,7 @@ public class VistaIntroPregunta extends BorderPane {
     ProgressBar progressBar = new ProgressBar(0);
 
     private Float seccondsPassed = 0.F;
-    private final Float MaxTime =200F;
+    private final Float MaxTime = 2000F;
     private Timeline tiempo;
 
     public VistaIntroPregunta(Stage stage, Juego juego){
@@ -73,7 +73,7 @@ public class VistaIntroPregunta extends BorderPane {
         else {
             tiempo.pause();
             VistaPrincipal vistaPrincipal = new VistaPrincipal(stage,juego,juego.obtenerRondaActual().obtenerPregunta());
-            stage.setScene(new Scene(vistaPrincipal));
+            stage.getScene().setRoot(vistaPrincipal);
             stage.setFullScreen(true);
         }
     }
