@@ -43,6 +43,8 @@ Corrector: **[PICCO, Martín Alejandro](https://github.com/M-Picco)**
 
 ![Random](/Imagenes/Random.png)
 
+![Podio](/Imagenes/Podio.png)
+
 ### Pre-requisitos
 
 Listado de software/herramientas necesarias para el proyecto
