@@ -29,6 +29,20 @@ Corrector: **[PICCO, Martín Alejandro](https://github.com/M-Picco)**
 
 ### Ver el informe completo [aquí](https://github.com/JulianBiancardi/Algoritmos3---TP2/blob/master/Grupo9-tp2s.pdf)
 
+## Imagenes de la aplicación
+
+![Inicio](/Imagenes/Inicio.png)
+
+![VoF](/Imagenes/VerdaderoFalso.png)
+
+![MultipleChoice](/Imagenes/MultipleChoice.png)
+
+![OrderedChoice](/Imagenes/OrderedChoice.png)
+
+![GroupChoice](/Imagenes/GroupChoice.png)
+
+![Random](/Imagenes/Random.png)
+
 ### Pre-requisitos
 
 Listado de software/herramientas necesarias para el proyecto
